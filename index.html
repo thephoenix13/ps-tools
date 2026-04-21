@@ -125,7 +125,6 @@
       padding: 24px 20px 28px; border-top: 1px solid var(--border);
       display: flex; flex-direction: column; gap: 28px;
     }
-    .domain-tools-group {}
     .domain-tools-label {
       display: block; font-size: var(--text-xs); font-weight: 700;
       letter-spacing: 1.1px; text-transform: uppercase;
@@ -134,7 +133,6 @@
     .dtl-prompt { color: var(--blue); }
     .dtl-agent  { color: #7c3aed; }
 
-    /* Tool cards inside domain body */
     .domain-tools-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -149,14 +147,8 @@
     .domain-tool-item strong { display: block; font-size: var(--text-base); font-weight: 600; color: var(--dark); margin-bottom: 3px; }
     .domain-tool-item span { font-size: var(--text-sm); color: var(--muted); line-height: 1.5; }
 
-    .domain-tool-item.agent {
-      background: rgba(124,58,237,0.04);
-      border-color: rgba(124,58,237,0.15);
-    }
-    .domain-tool-item.agent:hover {
-      background: rgba(124,58,237,0.09);
-      border-color: rgba(124,58,237,0.35);
-    }
+    .domain-tool-item.agent { background: rgba(124,58,237,0.04); border-color: rgba(124,58,237,0.15); }
+    .domain-tool-item.agent:hover { background: rgba(124,58,237,0.09); border-color: rgba(124,58,237,0.35); }
     .domain-tool-item.agent strong { color: #5b21b6; }
     .domain-tool-item.agent span { color: #7c3aed; }
 
@@ -224,17 +216,17 @@
   <div class="wrap">
     <span class="sec-label">All Domains</span>
     <h2 class="sec-title">Browse by Domain</h2>
-    <p class="sec-sub">Click any domain to expand the full tool list — split by prompt-based tools and agentic tools.</p>
+    <p class="sec-sub">Click any domain to expand the full tool list — split by tools and agents.</p>
 
     <div class="domains-grid">
 
-      <!-- 1. HR Tech -->
+      <!-- HR -->
       <div class="domain-card" onclick="toggleDomain(this)">
         <div class="domain-card-header">
           <div class="domain-card-left">
             <div class="domain-icon">👥</div>
             <div class="domain-info">
-              <h3 class="domain-name">HR Tech</h3>
+              <h3 class="domain-name">HR</h3>
               <p class="domain-tagline">Recruitment, onboarding, performance & career tools</p>
             </div>
           </div>
@@ -247,7 +239,7 @@
         <div class="domain-card-body">
           <div class="domain-body-inner">
             <div class="domain-tools-group">
-              <span class="domain-tools-label dtl-prompt">Prompt-based · 20 tools</span>
+              <span class="domain-tools-label dtl-prompt">Tools · 20</span>
               <div class="domain-tools-grid">
                 <div class="domain-tool-item"><strong>Resume Parser & JD Matching Engine</strong><span>Parses resumes and scores fit against a job description automatically</span></div>
                 <div class="domain-tool-item"><strong>Job Description Generator</strong><span>Generates structured, bias-checked JDs from a role brief</span></div>
@@ -272,7 +264,7 @@
               </div>
             </div>
             <div class="domain-tools-group">
-              <span class="domain-tools-label dtl-agent">Agentic · 5 tools</span>
+              <span class="domain-tools-label dtl-agent">Agents · 5</span>
               <div class="domain-tools-grid">
                 <div class="domain-tool-item agent"><strong>AI Interview Bot</strong><span>Conducts multi-turn structured screening conversations and generates a summary for the recruiter</span></div>
                 <div class="domain-tool-item agent"><strong>AI Agents for Bulk Voice Calling</strong><span>Autonomous outbound voice agents that call candidates, ask screening questions, and log results</span></div>
@@ -285,242 +277,7 @@
         </div>
       </div>
 
-      <!-- 2. EdTech -->
-      <div class="domain-card" onclick="toggleDomain(this)">
-        <div class="domain-card-header">
-          <div class="domain-card-left">
-            <div class="domain-icon">🎓</div>
-            <div class="domain-info">
-              <h3 class="domain-name">EdTech</h3>
-              <p class="domain-tagline">Lesson planning, assessments, student support & curriculum tools</p>
-            </div>
-          </div>
-          <div class="domain-card-right">
-            <span class="domain-count-pill dcp-prompt">12 tools</span>
-            <span class="domain-count-pill dcp-agent">4 agents</span>
-            <svg class="domain-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-        </div>
-        <div class="domain-card-body">
-          <div class="domain-body-inner">
-            <div class="domain-tools-group">
-              <span class="domain-tools-label dtl-prompt">Prompt-based · 12 tools</span>
-              <div class="domain-tools-grid">
-                <div class="domain-tool-item"><strong>Lesson Plan Generator</strong><span>Builds structured lesson plans from topic, grade level, and duration</span></div>
-                <div class="domain-tool-item"><strong>Quiz & Assessment Generator</strong><span>Creates MCQ, short-answer, or case-based assessments from syllabus content</span></div>
-                <div class="domain-tool-item"><strong>Exam Paper Generator</strong><span>Produces full exam papers with marking schemes from a curriculum brief</span></div>
-                <div class="domain-tool-item"><strong>Assignment Rubric Generator</strong><span>Generates scoring rubrics for assignments aligned to learning outcomes</span></div>
-                <div class="domain-tool-item"><strong>Student Feedback Generator</strong><span>Writes personalised, constructive feedback for student submissions at scale</span></div>
-                <div class="domain-tool-item"><strong>Course Content Summarizer</strong><span>Condenses lecture notes, PDFs, or videos into structured study notes</span></div>
-                <div class="domain-tool-item"><strong>Study Guide & Flashcard Generator</strong><span>Creates topic-wise revision guides and flashcards for learners</span></div>
-                <div class="domain-tool-item"><strong>Parent Communication Generator</strong><span>Drafts progress update messages to parents in a clear, professional tone</span></div>
-                <div class="domain-tool-item"><strong>Curriculum Mapping Tool</strong><span>Maps learning outcomes to topics and assessments across a course</span></div>
-                <div class="domain-tool-item"><strong>Syllabus Builder</strong><span>Generates a complete course syllabus from learning objectives and constraints</span></div>
-                <div class="domain-tool-item"><strong>Student Progress Report Generator</strong><span>Produces detailed progress reports for individual students from performance data</span></div>
-                <div class="domain-tool-item"><strong>AI Content Detector for Submissions</strong><span>Flags AI-generated or plagiarised content in student work</span></div>
-              </div>
-            </div>
-            <div class="domain-tools-group">
-              <span class="domain-tools-label dtl-agent">Agentic · 4 tools</span>
-              <div class="domain-tools-grid">
-                <div class="domain-tool-item agent"><strong>AI Tutor Agent</strong><span>Multi-turn tutoring that explains concepts, answers follow-ups, and adapts to the student's level</span></div>
-                <div class="domain-tool-item agent"><strong>Adaptive Assessment Agent</strong><span>Adjusts question difficulty in real time based on student responses during the assessment</span></div>
-                <div class="domain-tool-item agent"><strong>Research Assistant Agent</strong><span>Searches, synthesises, and summarises academic sources on demand for students</span></div>
-                <div class="domain-tool-item agent"><strong>Personalised Learning Agent</strong><span>Delivers customised learning modules and adapts the path dynamically based on progress</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3. Health Tech -->
-      <div class="domain-card" onclick="toggleDomain(this)">
-        <div class="domain-card-header">
-          <div class="domain-card-left">
-            <div class="domain-icon">🏥</div>
-            <div class="domain-info">
-              <h3 class="domain-name">Health Tech</h3>
-              <p class="domain-tagline">Wellness tracking, health guidance & patient communication tools</p>
-            </div>
-          </div>
-          <div class="domain-card-right">
-            <span class="domain-count-pill dcp-prompt">10 tools</span>
-            <span class="domain-count-pill dcp-agent">3 agents</span>
-            <svg class="domain-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-        </div>
-        <div class="domain-card-body">
-          <div class="domain-body-inner">
-            <div class="domain-tools-group">
-              <span class="domain-tools-label dtl-prompt">Prompt-based · 10 tools</span>
-              <div class="domain-tools-grid">
-                <div class="domain-tool-item"><strong>Symptom Checker</strong><span>Describes possible causes for reported symptoms with clear medical disclaimers</span></div>
-                <div class="domain-tool-item"><strong>Health Report Simplifier</strong><span>Translates complex medical reports and lab results into plain English</span></div>
-                <div class="domain-tool-item"><strong>Nutrition Plan Generator</strong><span>Creates personalised meal plans based on dietary goals, restrictions, and preferences</span></div>
-                <div class="domain-tool-item"><strong>Medication Schedule Generator</strong><span>Produces a clear daily medication schedule from a list of prescriptions</span></div>
-                <div class="domain-tool-item"><strong>Wellness Check-in Questionnaire</strong><span>Generates personalised wellness surveys to track health habits over time</span></div>
-                <div class="domain-tool-item"><strong>Medical Appointment Prep Guide</strong><span>Prepares patients with questions and information to bring to a doctor's visit</span></div>
-                <div class="domain-tool-item"><strong>Family Health Summary Generator</strong><span>Compiles a household health summary from individual member data</span></div>
-                <div class="domain-tool-item"><strong>Discharge Summary Explainer</strong><span>Translates hospital discharge instructions into plain, actionable language</span></div>
-                <div class="domain-tool-item"><strong>Fitness Plan Generator</strong><span>Builds a structured workout plan tailored to goals, fitness level, and equipment</span></div>
-                <div class="domain-tool-item"><strong>Health Goal Setting Tool</strong><span>Helps users set realistic, trackable health goals with milestones and check-in points</span></div>
-              </div>
-            </div>
-            <div class="domain-tools-group">
-              <span class="domain-tools-label dtl-agent">Agentic · 3 tools</span>
-              <div class="domain-tools-grid">
-                <div class="domain-tool-item agent"><strong>Health Coaching Agent</strong><span>Ongoing multi-turn wellness conversations that track progress and adapt guidance over time</span></div>
-                <div class="domain-tool-item agent"><strong>Medication Management Agent</strong><span>Tracks medications, answers drug interaction queries, and sends adherence reminders</span></div>
-                <div class="domain-tool-item agent"><strong>Appointment Prep Agent</strong><span>Researches the patient's condition and generates tailored questions for the upcoming appointment</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 4. Legal Tech -->
-      <div class="domain-card" onclick="toggleDomain(this)">
-        <div class="domain-card-header">
-          <div class="domain-card-left">
-            <div class="domain-icon">⚖️</div>
-            <div class="domain-info">
-              <h3 class="domain-name">Legal Tech</h3>
-              <p class="domain-tagline">Contract analysis, compliance, document generation & bid automation</p>
-            </div>
-          </div>
-          <div class="domain-card-right">
-            <span class="domain-count-pill dcp-prompt">12 tools</span>
-            <span class="domain-count-pill dcp-agent">4 agents</span>
-            <svg class="domain-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-        </div>
-        <div class="domain-card-body">
-          <div class="domain-body-inner">
-            <div class="domain-tools-group">
-              <span class="domain-tools-label dtl-prompt">Prompt-based · 12 tools</span>
-              <div class="domain-tools-grid">
-                <div class="domain-tool-item"><strong>Contract Summarizer</strong><span>Condenses long contracts into a plain-English summary of key terms and obligations</span></div>
-                <div class="domain-tool-item"><strong>Legal Clause Explainer</strong><span>Explains specific contract clauses in plain language with risk notes</span></div>
-                <div class="domain-tool-item"><strong>NDA Generator</strong><span>Drafts non-disclosure agreements from party details and scope inputs</span></div>
-                <div class="domain-tool-item"><strong>Privacy Policy Generator</strong><span>Creates GDPR-compliant privacy policies tailored to the product and data practices</span></div>
-                <div class="domain-tool-item"><strong>Terms of Service Generator</strong><span>Produces terms of service documents from business model and jurisdiction inputs</span></div>
-                <div class="domain-tool-item"><strong>Contract Red Flag Detector</strong><span>Scans contracts for unusual, risky, or missing clauses and flags them clearly</span></div>
-                <div class="domain-tool-item"><strong>RFP / Bid Response Generator</strong><span>Drafts structured responses to RFPs and government bids from a brief</span></div>
-                <div class="domain-tool-item"><strong>Compliance Checklist Generator</strong><span>Produces role- and jurisdiction-specific compliance checklists</span></div>
-                <div class="domain-tool-item"><strong>Case Brief Generator</strong><span>Summarises legal cases into structured briefs with facts, issues, and holdings</span></div>
-                <div class="domain-tool-item"><strong>Employment Agreement Generator</strong><span>Drafts employment contracts from role, compensation, and terms inputs</span></div>
-                <div class="domain-tool-item"><strong>Legal Email Generator</strong><span>Writes formal legal correspondence for notices, demands, and responses</span></div>
-                <div class="domain-tool-item"><strong>GDPR Compliance Checker</strong><span>Reviews a product or process description against GDPR requirements</span></div>
-              </div>
-            </div>
-            <div class="domain-tools-group">
-              <span class="domain-tools-label dtl-agent">Agentic · 4 tools</span>
-              <div class="domain-tools-grid">
-                <div class="domain-tool-item agent"><strong>Contract Review Agent</strong><span>Analyses multiple contract documents, cross-references clauses, and produces a risk summary</span></div>
-                <div class="domain-tool-item agent"><strong>Legal Research Agent</strong><span>Searches regulations, case law, and legal databases to answer specific legal questions</span></div>
-                <div class="domain-tool-item agent"><strong>RFP Automation Agent</strong><span>Researches requirements, sources relevant content, and drafts a complete bid response end-to-end</span></div>
-                <div class="domain-tool-item agent"><strong>Due Diligence Agent</strong><span>Reviews document sets across a deal, flags issues, and produces a structured due diligence report</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 5. Enterprise -->
-      <div class="domain-card" onclick="toggleDomain(this)">
-        <div class="domain-card-header">
-          <div class="domain-card-left">
-            <div class="domain-icon">📊</div>
-            <div class="domain-info">
-              <h3 class="domain-name">Enterprise</h3>
-              <p class="domain-tagline">Operations, reporting, process documentation & business intelligence</p>
-            </div>
-          </div>
-          <div class="domain-card-right">
-            <span class="domain-count-pill dcp-prompt">12 tools</span>
-            <span class="domain-count-pill dcp-agent">4 agents</span>
-            <svg class="domain-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-        </div>
-        <div class="domain-card-body">
-          <div class="domain-body-inner">
-            <div class="domain-tools-group">
-              <span class="domain-tools-label dtl-prompt">Prompt-based · 12 tools</span>
-              <div class="domain-tools-grid">
-                <div class="domain-tool-item"><strong>Meeting Notes Summarizer</strong><span>Converts raw meeting transcripts or notes into structured summaries with action items</span></div>
-                <div class="domain-tool-item"><strong>SOP Generator</strong><span>Produces standard operating procedure documents from process descriptions</span></div>
-                <div class="domain-tool-item"><strong>Business Case Generator</strong><span>Drafts a structured business case with problem, solution, ROI, and risk sections</span></div>
-                <div class="domain-tool-item"><strong>Project Status Report Generator</strong><span>Generates formatted project status reports from update inputs</span></div>
-                <div class="domain-tool-item"><strong>Risk Assessment Generator</strong><span>Produces a risk register with likelihood, impact, and mitigation plans</span></div>
-                <div class="domain-tool-item"><strong>KPI Narrative Generator</strong><span>Converts KPI data into readable narrative summaries for leadership reports</span></div>
-                <div class="domain-tool-item"><strong>Stakeholder Update Generator</strong><span>Writes clear stakeholder communication updates from project data</span></div>
-                <div class="domain-tool-item"><strong>Vendor Evaluation Scorecard</strong><span>Generates a weighted vendor comparison scorecard from evaluation criteria</span></div>
-                <div class="domain-tool-item"><strong>Incident Report Generator</strong><span>Produces structured incident reports from event descriptions</span></div>
-                <div class="domain-tool-item"><strong>Change Management Communication Generator</strong><span>Drafts internal communications for organisational changes</span></div>
-                <div class="domain-tool-item"><strong>Budget Variance Explainer</strong><span>Translates budget vs. actual data into a plain-language variance explanation</span></div>
-                <div class="domain-tool-item"><strong>Process Documentation Tool</strong><span>Documents business processes in structured, step-by-step format</span></div>
-              </div>
-            </div>
-            <div class="domain-tools-group">
-              <span class="domain-tools-label dtl-agent">Agentic · 4 tools</span>
-              <div class="domain-tools-grid">
-                <div class="domain-tool-item agent"><strong>Executive Briefing Agent</strong><span>Researches a topic on demand and compiles a concise, structured executive briefing</span></div>
-                <div class="domain-tool-item agent"><strong>Predictive Maintenance Agent</strong><span>Monitors equipment data, identifies anomaly patterns, and flags maintenance needs proactively</span></div>
-                <div class="domain-tool-item agent"><strong>Business Intelligence Agent</strong><span>Analyses data inputs and generates insight reports with trend summaries and recommendations</span></div>
-                <div class="domain-tool-item agent"><strong>Process Audit Agent</strong><span>Reviews SOPs and workflow descriptions to identify inefficiencies and bottlenecks</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 6. NGO / Social Impact -->
-      <div class="domain-card" onclick="toggleDomain(this)">
-        <div class="domain-card-header">
-          <div class="domain-card-left">
-            <div class="domain-icon">🌱</div>
-            <div class="domain-info">
-              <h3 class="domain-name">NGO / Social Impact</h3>
-              <p class="domain-tagline">Grant writing, donor outreach, impact reporting & volunteer management</p>
-            </div>
-          </div>
-          <div class="domain-card-right">
-            <span class="domain-count-pill dcp-prompt">11 tools</span>
-            <span class="domain-count-pill dcp-agent">3 agents</span>
-            <svg class="domain-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-        </div>
-        <div class="domain-card-body">
-          <div class="domain-body-inner">
-            <div class="domain-tools-group">
-              <span class="domain-tools-label dtl-prompt">Prompt-based · 11 tools</span>
-              <div class="domain-tools-grid">
-                <div class="domain-tool-item"><strong>Grant Proposal Generator</strong><span>Drafts a full grant proposal from project goals, budget, and funder requirements</span></div>
-                <div class="domain-tool-item"><strong>Impact Report Generator</strong><span>Produces structured impact reports from program data and outcome metrics</span></div>
-                <div class="domain-tool-item"><strong>Donor Communication Generator</strong><span>Writes personalised donor updates, thank-you letters, and stewardship messages</span></div>
-                <div class="domain-tool-item"><strong>Volunteer Onboarding Kit Generator</strong><span>Creates tailored volunteer welcome packs with role guides and expectations</span></div>
-                <div class="domain-tool-item"><strong>Fundraising Campaign Copy Generator</strong><span>Writes campaign messaging, emails, and social content for fundraising drives</span></div>
-                <div class="domain-tool-item"><strong>Beneficiary Story Generator</strong><span>Structures compelling beneficiary stories from case notes and interview inputs</span></div>
-                <div class="domain-tool-item"><strong>Program Evaluation Report Generator</strong><span>Produces evaluation reports from assessment data and program objectives</span></div>
-                <div class="domain-tool-item"><strong>Partnership Proposal Generator</strong><span>Drafts partnership proposals for corporate, government, or NGO collaborations</span></div>
-                <div class="domain-tool-item"><strong>Annual Report Summarizer</strong><span>Condenses annual reports into accessible summaries for different audiences</span></div>
-                <div class="domain-tool-item"><strong>NGO Policy Document Generator</strong><span>Produces internal policies on safeguarding, data protection, and governance</span></div>
-                <div class="domain-tool-item"><strong>Social Media Content Generator</strong><span>Creates platform-specific posts for NGO campaigns and programme updates</span></div>
-              </div>
-            </div>
-            <div class="domain-tools-group">
-              <span class="domain-tools-label dtl-agent">Agentic · 3 tools</span>
-              <div class="domain-tools-grid">
-                <div class="domain-tool-item agent"><strong>Grant Research Agent</strong><span>Searches funding databases, identifies relevant grants, and drafts tailored applications</span></div>
-                <div class="domain-tool-item agent"><strong>Donor Outreach Agent</strong><span>Researches donor profiles and sends personalised cultivation messages at scale</span></div>
-                <div class="domain-tool-item agent"><strong>Impact Measurement Agent</strong><span>Collects field data through structured conversations and compiles measurement reports</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 7. Sales & Outreach -->
+      <!-- Sales & Outreach -->
       <div class="domain-card" onclick="toggleDomain(this)">
         <div class="domain-card-header">
           <div class="domain-card-left">
@@ -539,7 +296,7 @@
         <div class="domain-card-body">
           <div class="domain-body-inner">
             <div class="domain-tools-group">
-              <span class="domain-tools-label dtl-prompt">Prompt-based · 12 tools</span>
+              <span class="domain-tools-label dtl-prompt">Tools · 12</span>
               <div class="domain-tools-grid">
                 <div class="domain-tool-item"><strong>Cold Email Generator</strong><span>Writes personalised cold emails tailored to a prospect's role and company</span></div>
                 <div class="domain-tool-item"><strong>LinkedIn Connection Message Generator</strong><span>Crafts short, relevant connection request messages for target prospects</span></div>
@@ -556,7 +313,7 @@
               </div>
             </div>
             <div class="domain-tools-group">
-              <span class="domain-tools-label dtl-agent">Agentic · 4 tools</span>
+              <span class="domain-tools-label dtl-agent">Agents · 4</span>
               <div class="domain-tools-grid">
                 <div class="domain-tool-item agent"><strong>Lead Research Agent</strong><span>Researches target accounts, enriches contact profiles, and personalises outreach at scale</span></div>
                 <div class="domain-tool-item agent"><strong>Multi-touch Outreach Sequence Agent</strong><span>Manages a full multi-channel follow-up cadence from first contact to reply</span></div>
@@ -568,7 +325,242 @@
         </div>
       </div>
 
-      <!-- 8. Mental Wellness -->
+      <!-- Enterprise -->
+      <div class="domain-card" onclick="toggleDomain(this)">
+        <div class="domain-card-header">
+          <div class="domain-card-left">
+            <div class="domain-icon">📊</div>
+            <div class="domain-info">
+              <h3 class="domain-name">Enterprise</h3>
+              <p class="domain-tagline">Operations, reporting, process documentation & business intelligence</p>
+            </div>
+          </div>
+          <div class="domain-card-right">
+            <span class="domain-count-pill dcp-prompt">12 tools</span>
+            <span class="domain-count-pill dcp-agent">4 agents</span>
+            <svg class="domain-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="domain-card-body">
+          <div class="domain-body-inner">
+            <div class="domain-tools-group">
+              <span class="domain-tools-label dtl-prompt">Tools · 12</span>
+              <div class="domain-tools-grid">
+                <div class="domain-tool-item"><strong>Meeting Notes Summarizer</strong><span>Converts raw meeting transcripts or notes into structured summaries with action items</span></div>
+                <div class="domain-tool-item"><strong>SOP Generator</strong><span>Produces standard operating procedure documents from process descriptions</span></div>
+                <div class="domain-tool-item"><strong>Business Case Generator</strong><span>Drafts a structured business case with problem, solution, ROI, and risk sections</span></div>
+                <div class="domain-tool-item"><strong>Project Status Report Generator</strong><span>Generates formatted project status reports from update inputs</span></div>
+                <div class="domain-tool-item"><strong>Risk Assessment Generator</strong><span>Produces a risk register with likelihood, impact, and mitigation plans</span></div>
+                <div class="domain-tool-item"><strong>KPI Narrative Generator</strong><span>Converts KPI data into readable narrative summaries for leadership reports</span></div>
+                <div class="domain-tool-item"><strong>Stakeholder Update Generator</strong><span>Writes clear stakeholder communication updates from project data</span></div>
+                <div class="domain-tool-item"><strong>Vendor Evaluation Scorecard</strong><span>Generates a weighted vendor comparison scorecard from evaluation criteria</span></div>
+                <div class="domain-tool-item"><strong>Incident Report Generator</strong><span>Produces structured incident reports from event descriptions</span></div>
+                <div class="domain-tool-item"><strong>Change Management Communication Generator</strong><span>Drafts internal communications for organisational changes</span></div>
+                <div class="domain-tool-item"><strong>Budget Variance Explainer</strong><span>Translates budget vs. actual data into a plain-language variance explanation</span></div>
+                <div class="domain-tool-item"><strong>Process Documentation Tool</strong><span>Documents business processes in structured, step-by-step format</span></div>
+              </div>
+            </div>
+            <div class="domain-tools-group">
+              <span class="domain-tools-label dtl-agent">Agents · 4</span>
+              <div class="domain-tools-grid">
+                <div class="domain-tool-item agent"><strong>Executive Briefing Agent</strong><span>Researches a topic on demand and compiles a concise, structured executive briefing</span></div>
+                <div class="domain-tool-item agent"><strong>Predictive Maintenance Agent</strong><span>Monitors equipment data, identifies anomaly patterns, and flags maintenance needs proactively</span></div>
+                <div class="domain-tool-item agent"><strong>Business Intelligence Agent</strong><span>Analyses data inputs and generates insight reports with trend summaries and recommendations</span></div>
+                <div class="domain-tool-item agent"><strong>Process Audit Agent</strong><span>Reviews SOPs and workflow descriptions to identify inefficiencies and bottlenecks</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="domain-card" onclick="toggleDomain(this)">
+        <div class="domain-card-header">
+          <div class="domain-card-left">
+            <div class="domain-icon">🎓</div>
+            <div class="domain-info">
+              <h3 class="domain-name">Education</h3>
+              <p class="domain-tagline">Lesson planning, assessments, student support & curriculum tools</p>
+            </div>
+          </div>
+          <div class="domain-card-right">
+            <span class="domain-count-pill dcp-prompt">12 tools</span>
+            <span class="domain-count-pill dcp-agent">4 agents</span>
+            <svg class="domain-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="domain-card-body">
+          <div class="domain-body-inner">
+            <div class="domain-tools-group">
+              <span class="domain-tools-label dtl-prompt">Tools · 12</span>
+              <div class="domain-tools-grid">
+                <div class="domain-tool-item"><strong>Lesson Plan Generator</strong><span>Builds structured lesson plans from topic, grade level, and duration</span></div>
+                <div class="domain-tool-item"><strong>Quiz & Assessment Generator</strong><span>Creates MCQ, short-answer, or case-based assessments from syllabus content</span></div>
+                <div class="domain-tool-item"><strong>Exam Paper Generator</strong><span>Produces full exam papers with marking schemes from a curriculum brief</span></div>
+                <div class="domain-tool-item"><strong>Assignment Rubric Generator</strong><span>Generates scoring rubrics for assignments aligned to learning outcomes</span></div>
+                <div class="domain-tool-item"><strong>Student Feedback Generator</strong><span>Writes personalised, constructive feedback for student submissions at scale</span></div>
+                <div class="domain-tool-item"><strong>Course Content Summarizer</strong><span>Condenses lecture notes, PDFs, or videos into structured study notes</span></div>
+                <div class="domain-tool-item"><strong>Study Guide & Flashcard Generator</strong><span>Creates topic-wise revision guides and flashcards for learners</span></div>
+                <div class="domain-tool-item"><strong>Parent Communication Generator</strong><span>Drafts progress update messages to parents in a clear, professional tone</span></div>
+                <div class="domain-tool-item"><strong>Curriculum Mapping Tool</strong><span>Maps learning outcomes to topics and assessments across a course</span></div>
+                <div class="domain-tool-item"><strong>Syllabus Builder</strong><span>Generates a complete course syllabus from learning objectives and constraints</span></div>
+                <div class="domain-tool-item"><strong>Student Progress Report Generator</strong><span>Produces detailed progress reports for individual students from performance data</span></div>
+                <div class="domain-tool-item"><strong>AI Content Detector for Submissions</strong><span>Flags AI-generated or plagiarised content in student work</span></div>
+              </div>
+            </div>
+            <div class="domain-tools-group">
+              <span class="domain-tools-label dtl-agent">Agents · 4</span>
+              <div class="domain-tools-grid">
+                <div class="domain-tool-item agent"><strong>AI Tutor Agent</strong><span>Multi-turn tutoring that explains concepts, answers follow-ups, and adapts to the student's level</span></div>
+                <div class="domain-tool-item agent"><strong>Adaptive Assessment Agent</strong><span>Adjusts question difficulty in real time based on student responses during the assessment</span></div>
+                <div class="domain-tool-item agent"><strong>Research Assistant Agent</strong><span>Searches, synthesises, and summarises academic sources on demand for students</span></div>
+                <div class="domain-tool-item agent"><strong>Personalised Learning Agent</strong><span>Delivers customised learning modules and adapts the path dynamically based on progress</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Health -->
+      <div class="domain-card" onclick="toggleDomain(this)">
+        <div class="domain-card-header">
+          <div class="domain-card-left">
+            <div class="domain-icon">🏥</div>
+            <div class="domain-info">
+              <h3 class="domain-name">Health</h3>
+              <p class="domain-tagline">Wellness tracking, health guidance & patient communication tools</p>
+            </div>
+          </div>
+          <div class="domain-card-right">
+            <span class="domain-count-pill dcp-prompt">10 tools</span>
+            <span class="domain-count-pill dcp-agent">3 agents</span>
+            <svg class="domain-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="domain-card-body">
+          <div class="domain-body-inner">
+            <div class="domain-tools-group">
+              <span class="domain-tools-label dtl-prompt">Tools · 10</span>
+              <div class="domain-tools-grid">
+                <div class="domain-tool-item"><strong>Symptom Checker</strong><span>Describes possible causes for reported symptoms with clear medical disclaimers</span></div>
+                <div class="domain-tool-item"><strong>Health Report Simplifier</strong><span>Translates complex medical reports and lab results into plain English</span></div>
+                <div class="domain-tool-item"><strong>Nutrition Plan Generator</strong><span>Creates personalised meal plans based on dietary goals, restrictions, and preferences</span></div>
+                <div class="domain-tool-item"><strong>Medication Schedule Generator</strong><span>Produces a clear daily medication schedule from a list of prescriptions</span></div>
+                <div class="domain-tool-item"><strong>Wellness Check-in Questionnaire</strong><span>Generates personalised wellness surveys to track health habits over time</span></div>
+                <div class="domain-tool-item"><strong>Medical Appointment Prep Guide</strong><span>Prepares patients with questions and information to bring to a doctor's visit</span></div>
+                <div class="domain-tool-item"><strong>Family Health Summary Generator</strong><span>Compiles a household health summary from individual member data</span></div>
+                <div class="domain-tool-item"><strong>Discharge Summary Explainer</strong><span>Translates hospital discharge instructions into plain, actionable language</span></div>
+                <div class="domain-tool-item"><strong>Fitness Plan Generator</strong><span>Builds a structured workout plan tailored to goals, fitness level, and equipment</span></div>
+                <div class="domain-tool-item"><strong>Health Goal Setting Tool</strong><span>Helps users set realistic, trackable health goals with milestones and check-in points</span></div>
+              </div>
+            </div>
+            <div class="domain-tools-group">
+              <span class="domain-tools-label dtl-agent">Agents · 3</span>
+              <div class="domain-tools-grid">
+                <div class="domain-tool-item agent"><strong>Health Coaching Agent</strong><span>Ongoing multi-turn wellness conversations that track progress and adapt guidance over time</span></div>
+                <div class="domain-tool-item agent"><strong>Medication Management Agent</strong><span>Tracks medications, answers drug interaction queries, and sends adherence reminders</span></div>
+                <div class="domain-tool-item agent"><strong>Appointment Prep Agent</strong><span>Researches the patient's condition and generates tailored questions for the upcoming appointment</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legal -->
+      <div class="domain-card" onclick="toggleDomain(this)">
+        <div class="domain-card-header">
+          <div class="domain-card-left">
+            <div class="domain-icon">⚖️</div>
+            <div class="domain-info">
+              <h3 class="domain-name">Legal</h3>
+              <p class="domain-tagline">Contract analysis, compliance, document generation & bid automation</p>
+            </div>
+          </div>
+          <div class="domain-card-right">
+            <span class="domain-count-pill dcp-prompt">12 tools</span>
+            <span class="domain-count-pill dcp-agent">4 agents</span>
+            <svg class="domain-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="domain-card-body">
+          <div class="domain-body-inner">
+            <div class="domain-tools-group">
+              <span class="domain-tools-label dtl-prompt">Tools · 12</span>
+              <div class="domain-tools-grid">
+                <div class="domain-tool-item"><strong>Contract Summarizer</strong><span>Condenses long contracts into a plain-English summary of key terms and obligations</span></div>
+                <div class="domain-tool-item"><strong>Legal Clause Explainer</strong><span>Explains specific contract clauses in plain language with risk notes</span></div>
+                <div class="domain-tool-item"><strong>NDA Generator</strong><span>Drafts non-disclosure agreements from party details and scope inputs</span></div>
+                <div class="domain-tool-item"><strong>Privacy Policy Generator</strong><span>Creates GDPR-compliant privacy policies tailored to the product and data practices</span></div>
+                <div class="domain-tool-item"><strong>Terms of Service Generator</strong><span>Produces terms of service documents from business model and jurisdiction inputs</span></div>
+                <div class="domain-tool-item"><strong>Contract Red Flag Detector</strong><span>Scans contracts for unusual, risky, or missing clauses and flags them clearly</span></div>
+                <div class="domain-tool-item"><strong>RFP / Bid Response Generator</strong><span>Drafts structured responses to RFPs and government bids from a brief</span></div>
+                <div class="domain-tool-item"><strong>Compliance Checklist Generator</strong><span>Produces role- and jurisdiction-specific compliance checklists</span></div>
+                <div class="domain-tool-item"><strong>Case Brief Generator</strong><span>Summarises legal cases into structured briefs with facts, issues, and holdings</span></div>
+                <div class="domain-tool-item"><strong>Employment Agreement Generator</strong><span>Drafts employment contracts from role, compensation, and terms inputs</span></div>
+                <div class="domain-tool-item"><strong>Legal Email Generator</strong><span>Writes formal legal correspondence for notices, demands, and responses</span></div>
+                <div class="domain-tool-item"><strong>GDPR Compliance Checker</strong><span>Reviews a product or process description against GDPR requirements</span></div>
+              </div>
+            </div>
+            <div class="domain-tools-group">
+              <span class="domain-tools-label dtl-agent">Agents · 4</span>
+              <div class="domain-tools-grid">
+                <div class="domain-tool-item agent"><strong>Contract Review Agent</strong><span>Analyses multiple contract documents, cross-references clauses, and produces a risk summary</span></div>
+                <div class="domain-tool-item agent"><strong>Legal Research Agent</strong><span>Searches regulations, case law, and legal databases to answer specific legal questions</span></div>
+                <div class="domain-tool-item agent"><strong>RFP Automation Agent</strong><span>Researches requirements, sources relevant content, and drafts a complete bid response end-to-end</span></div>
+                <div class="domain-tool-item agent"><strong>Due Diligence Agent</strong><span>Reviews document sets across a deal, flags issues, and produces a structured due diligence report</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NGO / Social Impact -->
+      <div class="domain-card" onclick="toggleDomain(this)">
+        <div class="domain-card-header">
+          <div class="domain-card-left">
+            <div class="domain-icon">🌱</div>
+            <div class="domain-info">
+              <h3 class="domain-name">NGO / Social Impact</h3>
+              <p class="domain-tagline">Grant writing, donor outreach, impact reporting & volunteer management</p>
+            </div>
+          </div>
+          <div class="domain-card-right">
+            <span class="domain-count-pill dcp-prompt">11 tools</span>
+            <span class="domain-count-pill dcp-agent">3 agents</span>
+            <svg class="domain-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="domain-card-body">
+          <div class="domain-body-inner">
+            <div class="domain-tools-group">
+              <span class="domain-tools-label dtl-prompt">Tools · 11</span>
+              <div class="domain-tools-grid">
+                <div class="domain-tool-item"><strong>Grant Proposal Generator</strong><span>Drafts a full grant proposal from project goals, budget, and funder requirements</span></div>
+                <div class="domain-tool-item"><strong>Impact Report Generator</strong><span>Produces structured impact reports from program data and outcome metrics</span></div>
+                <div class="domain-tool-item"><strong>Donor Communication Generator</strong><span>Writes personalised donor updates, thank-you letters, and stewardship messages</span></div>
+                <div class="domain-tool-item"><strong>Volunteer Onboarding Kit Generator</strong><span>Creates tailored volunteer welcome packs with role guides and expectations</span></div>
+                <div class="domain-tool-item"><strong>Fundraising Campaign Copy Generator</strong><span>Writes campaign messaging, emails, and social content for fundraising drives</span></div>
+                <div class="domain-tool-item"><strong>Beneficiary Story Generator</strong><span>Structures compelling beneficiary stories from case notes and interview inputs</span></div>
+                <div class="domain-tool-item"><strong>Program Evaluation Report Generator</strong><span>Produces evaluation reports from assessment data and program objectives</span></div>
+                <div class="domain-tool-item"><strong>Partnership Proposal Generator</strong><span>Drafts partnership proposals for corporate, government, or NGO collaborations</span></div>
+                <div class="domain-tool-item"><strong>Annual Report Summarizer</strong><span>Condenses annual reports into accessible summaries for different audiences</span></div>
+                <div class="domain-tool-item"><strong>NGO Policy Document Generator</strong><span>Produces internal policies on safeguarding, data protection, and governance</span></div>
+                <div class="domain-tool-item"><strong>Social Media Content Generator</strong><span>Creates platform-specific posts for NGO campaigns and programme updates</span></div>
+              </div>
+            </div>
+            <div class="domain-tools-group">
+              <span class="domain-tools-label dtl-agent">Agents · 3</span>
+              <div class="domain-tools-grid">
+                <div class="domain-tool-item agent"><strong>Grant Research Agent</strong><span>Searches funding databases, identifies relevant grants, and drafts tailored applications</span></div>
+                <div class="domain-tool-item agent"><strong>Donor Outreach Agent</strong><span>Researches donor profiles and sends personalised cultivation messages at scale</span></div>
+                <div class="domain-tool-item agent"><strong>Impact Measurement Agent</strong><span>Collects field data through structured conversations and compiles measurement reports</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mental Wellness -->
       <div class="domain-card" onclick="toggleDomain(this)">
         <div class="domain-card-header">
           <div class="domain-card-left">
@@ -587,7 +579,7 @@
         <div class="domain-card-body">
           <div class="domain-body-inner">
             <div class="domain-tools-group">
-              <span class="domain-tools-label dtl-prompt">Prompt-based · 11 tools</span>
+              <span class="domain-tools-label dtl-prompt">Tools · 11</span>
               <div class="domain-tools-grid">
                 <div class="domain-tool-item"><strong>Daily Affirmation Generator</strong><span>Generates personalised affirmations based on current emotional state and goals</span></div>
                 <div class="domain-tool-item"><strong>Gratitude Journal Prompt Generator</strong><span>Creates guided gratitude prompts tailored to the user's context and mood</span></div>
@@ -603,7 +595,7 @@
               </div>
             </div>
             <div class="domain-tools-group">
-              <span class="domain-tools-label dtl-agent">Agentic · 3 tools</span>
+              <span class="domain-tools-label dtl-agent">Agents · 3</span>
               <div class="domain-tools-grid">
                 <div class="domain-tool-item agent"><strong>Daily Wellness Check-in Agent</strong><span>Conducts daily check-in conversations, tracks mood patterns, and adapts support over time</span></div>
                 <div class="domain-tool-item agent"><strong>CBT Coach Agent</strong><span>Guides users through CBT exercises in a structured, empathetic multi-turn conversation</span></div>
