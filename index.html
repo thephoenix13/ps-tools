@@ -308,6 +308,33 @@
       border-bottom: 1px solid var(--border);
     }
 
+    /* ── AGENTIC SECTION ── */
+    #agentic { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.06); }
+    #agentic .product-suite-label { color: #60a5fa; }
+    #agentic .product-suite-name { color: #f1f5f9; }
+    #agentic .product-suite-desc { color: #94a3b8; }
+    #agentic .product-intro { border-bottom-color: rgba(255,255,255,0.08); }
+    #agentic .product-meta-pill { background: rgba(37,99,235,0.2); border-color: rgba(37,99,235,0.3); color: #60a5fa; }
+    #agentic .product-audience { color: #475569; }
+    #agentic .tools-subgroup-label { color: #475569; border-bottom-color: rgba(255,255,255,0.07); }
+    #agentic .tool-item { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); }
+    #agentic .tool-item:hover { background: rgba(37,99,235,0.15); border-color: rgba(37,99,235,0.4); }
+    #agentic .tool-item strong { color: #e2e8f0; }
+    #agentic .tool-item span { color: #64748b; }
+    .agent-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      background: rgba(37,99,235,0.25);
+      color: #60a5fa;
+      border: 1px solid rgba(37,99,235,0.35);
+      padding: 2px 8px;
+      border-radius: 99px;
+      margin-bottom: 8px;
+    }
+
     /* ── CTA BANNER ── */
     .cta-section {
       background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
@@ -389,6 +416,7 @@
   <ul class="nav-links">
     <li><a href="#recruit-os">Recruit OS</a></li>
     <li><a href="#careerkit">CareerKit</a></li>
+    <li><a href="#agentic">Agents</a></li>
     <li><a href="mailto:pratikgade@perfectskills.in">Contact</a></li>
   </ul>
 </nav>
@@ -401,7 +429,7 @@
   <p class="hero-sub">Two focused product suites — one for the teams doing the hiring, one for the people trying to get hired.</p>
   <div class="hero-stats">
     <div class="hero-stat">
-      <span class="hero-stat-num">2</span>
+      <span class="hero-stat-num">3</span>
       <span class="hero-stat-label">Suites</span>
     </div>
     <div class="hero-stat">
@@ -425,16 +453,14 @@
         <p class="product-suite-desc">Operational AI for lean HR teams — automate the repetitive, keep humans on the decisions that matter.</p>
       </div>
       <div class="product-intro-right">
-        <span class="product-meta-pill">14 tools</span>
+        <span class="product-meta-pill">11 tools</span>
         <span class="product-audience">For HRs, Admins &amp; Recruiters</span>
       </div>
     </div>
 
     <div class="tools-subgroup">
-      <span class="tools-subgroup-label">Automation &amp; Outreach</span>
+      <span class="tools-subgroup-label">Outreach &amp; Engagement</span>
       <div class="tools-grid">
-        <div class="tool-item"><strong>AI Agents for Bulk Voice Calling</strong><span>Autonomous outbound calls for candidate outreach and screening — logs structured results back to your pipeline</span></div>
-        <div class="tool-item"><strong>Bulk Email Script with Research Agent</strong><span>Researches and enriches target contacts, then sends personalised outreach at scale</span></div>
         <div class="tool-item"><strong>Recruitment Outreach Message Generator</strong><span>Writes personalised LinkedIn/WhatsApp outreach messages tailored to each candidate's profile</span></div>
         <div class="tool-item"><strong>HR Policy Q&amp;A Bot</strong><span>Ingests your employee handbook and answers staff queries on leave, policies, and processes instantly</span></div>
       </div>
@@ -446,7 +472,6 @@
         <div class="tool-item"><strong>Resume Parser &amp; JD Matching Engine</strong><span>Parses resumes and scores fit against a job description automatically</span></div>
         <div class="tool-item"><strong>Job Description Generator</strong><span>Generates structured, bias-checked JDs from a role brief</span></div>
         <div class="tool-item"><strong>Interview Question Bank Generator</strong><span>Produces role-specific interview questions by seniority and function</span></div>
-        <div class="tool-item"><strong>AI Interview Bot</strong><span>Runs structured screening conversations and generates notes for recruiter review — hiring decisions stay with your team</span></div>
         <div class="tool-item"><strong>Candidate Shortlisting &amp; Ranking Tool</strong><span>Scores and ranks applicants from a bulk upload against defined criteria</span></div>
         <div class="tool-item"><strong>Background Verification Checklist Generator</strong><span>Produces a role- and geography-specific BGV checklist so nothing gets missed</span></div>
       </div>
@@ -474,7 +499,7 @@
         <p class="product-suite-desc">Not just tools to generate content — tools to decode what's actually happening in your job search and what to do about it.</p>
       </div>
       <div class="product-intro-right">
-        <span class="product-meta-pill">11 tools</span>
+        <span class="product-meta-pill">9 tools</span>
         <span class="product-audience">For Candidates &amp; Job Seekers</span>
       </div>
     </div>
@@ -485,15 +510,7 @@
         <div class="tool-item"><strong>Job Description Decoder</strong><span>Decodes what a JD actually means — real must-haves vs. filler, hidden red flags, and whether you should apply</span></div>
         <div class="tool-item"><strong>Skill Gap Analyzer</strong><span>Compares your profile to a target role and gives honest, specific gaps — not a generic checklist</span></div>
         <div class="tool-item"><strong>Career Path Advisor</strong><span>Maps realistic next roles based on your current skills, including transition paths and probability of getting there</span></div>
-        <div class="tool-item"><strong>Salary Negotiation Coach</strong><span>Role-plays the negotiation conversation with you using real market data — not just tactics, but practice</span></div>
         <div class="tool-item"><strong>Learning Path Generator</strong><span>Builds a structured upskilling plan for a target role, with specific resources and a realistic timeline</span></div>
-      </div>
-    </div>
-
-    <div class="tools-subgroup">
-      <span class="tools-subgroup-label">Interview Prep</span>
-      <div class="tools-grid">
-        <div class="tool-item"><strong>Mock Interview Simulator</strong><span>Live mock interview with AI feedback on your answers, structure, and delivery</span></div>
         <div class="tool-item"><strong>Interview Preparation Bot</strong><span>Generates likely questions and model answers tailored to a specific role and company</span></div>
       </div>
     </div>
@@ -505,6 +522,60 @@
         <div class="tool-item"><strong>Cover Letter Generator</strong><span>Writes tailored cover letters matched to a specific job and company</span></div>
         <div class="tool-item"><strong>LinkedIn Profile Reviewer</strong><span>Audits and rewrites LinkedIn sections for visibility and recruiter appeal — including a personal summary</span></div>
         <div class="tool-item"><strong>Cold Outreach Message Generator</strong><span>Writes networking emails or DMs to potential referrers and hiring managers</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENTIC TOOLS -->
+<section id="agentic">
+  <div class="wrap">
+    <div class="product-intro">
+      <div class="product-intro-left">
+        <span class="product-suite-label">Suite 03</span>
+        <h2 class="product-suite-name">Agentic Tools</h2>
+        <p class="product-suite-desc">Multi-step AI agents that go beyond single prompts — they converse, reason across turns, and connect to external systems to get work done autonomously.</p>
+      </div>
+      <div class="product-intro-right">
+        <span class="product-meta-pill">5 agents</span>
+        <span class="product-audience">Powered by Claude</span>
+      </div>
+    </div>
+
+    <div class="tools-subgroup">
+      <span class="tools-subgroup-label">For HR Teams</span>
+      <div class="tools-grid">
+        <div class="tool-item">
+          <span class="agent-badge">Agent</span>
+          <strong>AI Interview Bot</strong>
+          <span>Conducts multi-turn structured screening conversations, evaluates responses in real time, and generates a structured summary for the recruiter</span>
+        </div>
+        <div class="tool-item">
+          <span class="agent-badge">Agent</span>
+          <strong>AI Agents for Bulk Voice Calling</strong>
+          <span>Autonomous outbound voice agents that call candidates, ask screening questions, handle responses, and log structured results back to your pipeline</span>
+        </div>
+        <div class="tool-item">
+          <span class="agent-badge">Agent</span>
+          <strong>Bulk Email Script with Research Agent</strong>
+          <span>Researches each target contact, enriches their profile, crafts a personalised message, and sends at scale — with delivery outcomes logged</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tools-subgroup">
+      <span class="tools-subgroup-label">For Job Seekers</span>
+      <div class="tools-grid">
+        <div class="tool-item">
+          <span class="agent-badge">Agent</span>
+          <strong>Mock Interview Simulator</strong>
+          <span>Live, multi-turn interview simulation with real-time feedback on answers, structure, and delivery — adapts follow-up questions based on your responses</span>
+        </div>
+        <div class="tool-item">
+          <span class="agent-badge">Agent</span>
+          <strong>Salary Negotiation Coach</strong>
+          <span>Role-plays the negotiation conversation with real market data — practise pushback, counter-offers, and closing moves before the real call</span>
+        </div>
       </div>
     </div>
   </div>
