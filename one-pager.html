@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Tool Kit — Perfect Skills</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:       #2563eb;
+      --blue-light: #eff6ff;
+      --blue-mid:   #dbeafe;
+      --dark:       #0f172a;
+      --mid:        #334155;
+      --muted:      #64748b;
+      --border:     #e2e8f0;
+      --bg:         #f8fafc;
+      --white:      #ffffff;
+      --radius:     10px;
+      --radius-sm:  6px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      font-size: 13px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, #0a1628 0%, #0f172a 55%, #1a2d6e 100%);
+      padding: 28px 40px 24px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .header-left { flex: 1; }
+    .header-logo { height: 22px; width: auto; margin-bottom: 10px; display: block; }
+    header h1 {
+      font-size: 26px; font-weight: 700; color: #f1f5f9;
+      letter-spacing: -0.6px; line-height: 1.1; margin-bottom: 6px;
+    }
+    header p { font-size: 13px; color: #64748b; max-width: 400px; line-height: 1.55; }
+    .header-stats {
+      display: flex; gap: 20px; flex-shrink: 0; align-items: flex-start;
+      padding-top: 6px;
+    }
+    .stat { text-align: center; }
+    .stat-num { display: block; font-size: 22px; font-weight: 700; color: #f1f5f9; letter-spacing: -0.4px; }
+    .stat-label { display: block; font-size: 10px; color: #64748b; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 2px; }
+    .stat-divider { width: 1px; background: rgba(255,255,255,0.1); align-self: stretch; margin-top: 4px; }
+
+    /* ── GRID ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-top: 1px solid var(--border);
+    }
+    .domain {
+      background: var(--white);
+      padding: 16px;
+    }
+    .domain-head {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+    }
+    .domain-icon { font-size: 16px; flex-shrink: 0; }
+    .domain-name { font-size: 13px; font-weight: 700; color: var(--dark); }
+    .domain-tagline { font-size: 11px; color: var(--muted); margin-bottom: 10px; line-height: 1.4; }
+
+    .section-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.9px;
+      text-transform: uppercase; margin-bottom: 6px; padding-bottom: 4px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-label.tools { color: var(--blue); }
+    .section-label.agents { color: #7c3aed; margin-top: 10px; }
+
+    ul { list-style: none; display: flex; flex-direction: column; gap: 3px; }
+    ul li {
+      font-size: 11.5px; color: var(--mid);
+      padding: 3px 7px;
+      background: var(--bg);
+      border-radius: 4px;
+      line-height: 1.35;
+    }
+    ul.agent-list li {
+      background: rgba(124,58,237,0.05);
+      color: #5b21b6;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      padding: 18px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px;
+    }
+    footer p { font-size: 12px; color: #64748b; }
+    .footer-cta { display: flex; gap: 10px; }
+    .btn {
+      font-size: 12px; font-weight: 600; padding: 8px 18px;
+      border-radius: 6px; text-decoration: none; white-space: nowrap;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-ghost {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: #94a3b8;
+    }
+
+    @media print {
+      body { font-size: 11px; }
+      header { padding: 20px 28px 18px; }
+      .grid { grid-template-columns: repeat(4, 1fr); }
+      footer { padding: 14px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-left">
+    <img src="perfectskills_logo.png" alt="Perfect Skills" class="header-logo" />
+    <h1>AI Tools for Every Domain</h1>
+    <p>130 purpose-built AI tools and agents across 8 industries — prompt-based tools for instant results, multi-step agents for complex workflows.</p>
+  </div>
+  <div class="header-stats">
+    <div class="stat"><span class="stat-num">8</span><span class="stat-label">Domains</span></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><span class="stat-num">100</span><span class="stat-label">Tools</span></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><span class="stat-num">30</span><span class="stat-label">Agents</span></div>
+  </div>
+</header>
+
+<!-- DOMAIN GRID -->
+<div class="grid">
+
+  <!-- HR -->
+  <div class="domain">
+    <div class="domain-head"><span class="domain-icon">👥</span><span class="domain-name">HR</span></div>
+    <p class="domain-tagline">Recruitment, onboarding, performance & career</p>
+    <div class="section-label tools">Tools · 20</div>
+    <ul>
+      <li>Resume Parser & JD Matching Engine</li>
+      <li>Job Description Generator</li>
+      <li>Interview Question Bank Generator</li>
+      <li>Candidate Shortlisting & Ranking Tool</li>
+      <li>Offer Letter Generator</li>
+      <li>Onboarding Kit Generator</li>
+      <li>Recruitment Outreach Message Generator</li>
+      <li>HR Policy Q&A Bot</li>
+      <li>Exit Interview Summarizer</li>
+      <li>Performance Review Summarizer</li>
+      <li>Background Verification Checklist Generator</li>
+      <li>ATS Resume Optimizer</li>
+      <li>Cover Letter Generator</li>
+      <li>Skill Gap Analyzer</li>
+      <li>Career Path Advisor</li>
+      <li>Learning Path Generator</li>
+      <li>Interview Preparation Bot</li>
+      <li>Job Description Decoder</li>
+      <li>LinkedIn Profile Reviewer</li>
+      <li>Cold Outreach Message Generator</li>
+    </ul>
+    <div class="section-label agents">Agents · 5</div>
+    <ul class="agent-list">
+      <li>AI Interview Bot</li>
+      <li>AI Agents for Bulk Voice Calling</li>
+      <li>Bulk Email Script with Research Agent</li>
+      <li>Mock Interview Simulator</li>
+      <li>Salary Negotiation Coach</li>
+    </ul>
+  </div>
+
+  <!-- Sales & Outreach -->
+  <div class="domain">
+    <div class="domain-head"><span class="domain-icon">📈</span><span class="domain-name">Sales & Outreach</span></div>
+    <p class="domain-tagline">Cold outreach, sales materials, prospecting & pipeline</p>
+    <div class="section-label tools">Tools · 12</div>
+    <ul>
+      <li>Cold Email Generator</li>
+      <li>LinkedIn Connection Message Generator</li>
+      <li>Follow-up Email Sequence Generator</li>
+      <li>Sales Pitch Deck Outline Generator</li>
+      <li>Product Demo Script Generator</li>
+      <li>Objection Handling Guide Generator</li>
+      <li>Sales Proposal Generator</li>
+      <li>Customer Persona Generator</li>
+      <li>Competitive Analysis Summarizer</li>
+      <li>Case Study Generator</li>
+      <li>Sales Playbook Generator</li>
+      <li>Pricing Page Copy Generator</li>
+    </ul>
+    <div class="section-label agents">Agents · 4</div>
+    <ul class="agent-list">
+      <li>Lead Research Agent</li>
+      <li>Multi-touch Outreach Sequence Agent</li>
+      <li>Customer Discovery Agent</li>
+      <li>Competitive Intelligence Agent</li>
+    </ul>
+  </div>
+
+  <!-- Enterprise -->
+  <div class="domain">
+    <div class="domain-head"><span class="domain-icon">📊</span><span class="domain-name">Enterprise</span></div>
+    <p class="domain-tagline">Operations, reporting, process documentation & BI</p>
+    <div class="section-label tools">Tools · 12</div>
+    <ul>
+      <li>Meeting Notes Summarizer</li>
+      <li>SOP Generator</li>
+      <li>Business Case Generator</li>
+      <li>Project Status Report Generator</li>
+      <li>Risk Assessment Generator</li>
+      <li>KPI Narrative Generator</li>
+      <li>Stakeholder Update Generator</li>
+      <li>Vendor Evaluation Scorecard</li>
+      <li>Incident Report Generator</li>
+      <li>Change Management Communication Generator</li>
+      <li>Budget Variance Explainer</li>
+      <li>Process Documentation Tool</li>
+    </ul>
+    <div class="section-label agents">Agents · 4</div>
+    <ul class="agent-list">
+      <li>Executive Briefing Agent</li>
+      <li>Predictive Maintenance Agent</li>
+      <li>Business Intelligence Agent</li>
+      <li>Process Audit Agent</li>
+    </ul>
+  </div>
+
+  <!-- Education -->
+  <div class="domain">
+    <div class="domain-head"><span class="domain-icon">🎓</span><span class="domain-name">Education</span></div>
+    <p class="domain-tagline">Lesson planning, assessments, student support & curriculum</p>
+    <div class="section-label tools">Tools · 12</div>
+    <ul>
+      <li>Lesson Plan Generator</li>
+      <li>Quiz & Assessment Generator</li>
+      <li>Exam Paper Generator</li>
+      <li>Assignment Rubric Generator</li>
+      <li>Student Feedback Generator</li>
+      <li>Course Content Summarizer</li>
+      <li>Study Guide & Flashcard Generator</li>
+      <li>Parent Communication Generator</li>
+      <li>Curriculum Mapping Tool</li>
+      <li>Syllabus Builder</li>
+      <li>Student Progress Report Generator</li>
+      <li>AI Content Detector for Submissions</li>
+    </ul>
+    <div class="section-label agents">Agents · 4</div>
+    <ul class="agent-list">
+      <li>AI Tutor Agent</li>
+      <li>Adaptive Assessment Agent</li>
+      <li>Research Assistant Agent</li>
+      <li>Personalised Learning Agent</li>
+    </ul>
+  </div>
+
+  <!-- Health -->
+  <div class="domain">
+    <div class="domain-head"><span class="domain-icon">🏥</span><span class="domain-name">Health</span></div>
+    <p class="domain-tagline">Wellness tracking, health guidance & patient communication</p>
+    <div class="section-label tools">Tools · 10</div>
+    <ul>
+      <li>Symptom Checker</li>
+      <li>Health Report Simplifier</li>
+      <li>Nutrition Plan Generator</li>
+      <li>Medication Schedule Generator</li>
+      <li>Wellness Check-in Questionnaire</li>
+      <li>Medical Appointment Prep Guide</li>
+      <li>Family Health Summary Generator</li>
+      <li>Discharge Summary Explainer</li>
+      <li>Fitness Plan Generator</li>
+      <li>Health Goal Setting Tool</li>
+    </ul>
+    <div class="section-label agents">Agents · 3</div>
+    <ul class="agent-list">
+      <li>Health Coaching Agent</li>
+      <li>Medication Management Agent</li>
+      <li>Appointment Prep Agent</li>
+    </ul>
+  </div>
+
+  <!-- Legal -->
+  <div class="domain">
+    <div class="domain-head"><span class="domain-icon">⚖️</span><span class="domain-name">Legal</span></div>
+    <p class="domain-tagline">Contract analysis, compliance, document generation & bids</p>
+    <div class="section-label tools">Tools · 12</div>
+    <ul>
+      <li>Contract Summarizer</li>
+      <li>Legal Clause Explainer</li>
+      <li>NDA Generator</li>
+      <li>Privacy Policy Generator</li>
+      <li>Terms of Service Generator</li>
+      <li>Contract Red Flag Detector</li>
+      <li>RFP / Bid Response Generator</li>
+      <li>Compliance Checklist Generator</li>
+      <li>Case Brief Generator</li>
+      <li>Employment Agreement Generator</li>
+      <li>Legal Email Generator</li>
+      <li>GDPR Compliance Checker</li>
+    </ul>
+    <div class="section-label agents">Agents · 4</div>
+    <ul class="agent-list">
+      <li>Contract Review Agent</li>
+      <li>Legal Research Agent</li>
+      <li>RFP Automation Agent</li>
+      <li>Due Diligence Agent</li>
+    </ul>
+  </div>
+
+  <!-- NGO / Social Impact -->
+  <div class="domain">
+    <div class="domain-head"><span class="domain-icon">🌱</span><span class="domain-name">NGO / Social Impact</span></div>
+    <p class="domain-tagline">Grant writing, donor outreach, impact reporting & volunteers</p>
+    <div class="section-label tools">Tools · 11</div>
+    <ul>
+      <li>Grant Proposal Generator</li>
+      <li>Impact Report Generator</li>
+      <li>Donor Communication Generator</li>
+      <li>Volunteer Onboarding Kit Generator</li>
+      <li>Fundraising Campaign Copy Generator</li>
+      <li>Beneficiary Story Generator</li>
+      <li>Program Evaluation Report Generator</li>
+      <li>Partnership Proposal Generator</li>
+      <li>Annual Report Summarizer</li>
+      <li>NGO Policy Document Generator</li>
+      <li>Social Media Content Generator</li>
+    </ul>
+    <div class="section-label agents">Agents · 3</div>
+    <ul class="agent-list">
+      <li>Grant Research Agent</li>
+      <li>Donor Outreach Agent</li>
+      <li>Impact Measurement Agent</li>
+    </ul>
+  </div>
+
+  <!-- Mental Wellness -->
+  <div class="domain">
+    <div class="domain-head"><span class="domain-icon">🧠</span><span class="domain-name">Mental Wellness</span></div>
+    <p class="domain-tagline">Mindfulness, journaling, CBT tools & emotional wellbeing</p>
+    <div class="section-label tools">Tools · 11</div>
+    <ul>
+      <li>Daily Affirmation Generator</li>
+      <li>Gratitude Journal Prompt Generator</li>
+      <li>Stress Management Tip Generator</li>
+      <li>Mindfulness Exercise Generator</li>
+      <li>CBT Worksheet Generator</li>
+      <li>Self-Care Plan Generator</li>
+      <li>Coping Strategy Recommender</li>
+      <li>Sleep Hygiene Guide Generator</li>
+      <li>Boundary Setting Script Generator</li>
+      <li>Therapy Session Prep Guide</li>
+      <li>Mood Check-in Questionnaire</li>
+    </ul>
+    <div class="section-label agents">Agents · 3</div>
+    <ul class="agent-list">
+      <li>Daily Wellness Check-in Agent</li>
+      <li>CBT Coach Agent</li>
+      <li>Journaling Companion Agent</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Perfect Skills &nbsp;·&nbsp; All tools built on the Anthropic / Claude API</p>
+  <div class="footer-cta">
+    <a class="btn btn-primary" href="mailto:pratikgade@perfectskills.in">Get in Touch</a>
+    <a class="btn btn-ghost" href="https://linkedin.com/in/pratikgade13" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>
