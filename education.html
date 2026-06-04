@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Education Tools — Perfect Skills AI Tool Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}:root{--blue:#2563eb;--blue-light:#eff6ff;--dark:#0f172a;--mid:#334155;--muted:#64748b;--border:#e2e8f0;--bg:#f8fafc;--white:#ffffff;--radius:12px;--rsm:8px}html,body{height:100%}body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--dark);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:56px}.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}.nav-logo{height:26px;width:auto}.nav-sep{width:1px;height:16px;background:var(--border)}.nav-product{font-size:12px;font-weight:500;color:var(--blue)}.nav-domain{font-size:12px;color:var(--muted)}
+.page-layout{display:grid;grid-template-columns:260px 1fr;height:calc(100vh - 56px);overflow:hidden}.sidebar{border-right:1px solid var(--border);background:var(--white);overflow-y:auto;display:flex;flex-direction:column}.sidebar-header{padding:16px;border-bottom:1px solid var(--border);flex-shrink:0}.back-link{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);text-decoration:none;margin-bottom:10px}.back-link:hover{color:var(--blue)}.domain-row{display:flex;align-items:center;gap:10px}.d-icon{font-size:22px}.d-name{font-size:15px;font-weight:700;color:var(--dark)}.d-count{font-size:11px;color:var(--muted);margin-top:2px}
+.sec-lbl{font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--muted);padding:12px 16px 5px}.sec-lbl.ag{color:#7c3aed}.tool-btn{display:block;width:100%;text-align:left;padding:7px 16px;background:none;border:none;cursor:pointer;font-size:12px;font-family:inherit;color:var(--mid);line-height:1.4;transition:background .12s,color .12s}.tool-btn:hover{background:var(--bg);color:var(--dark)}.tool-btn.active{background:var(--blue-light);color:var(--blue);font-weight:600}.tool-btn.agent:hover{background:rgba(124,58,237,.06);color:#5b21b6}.tool-btn.agent.active{background:rgba(124,58,237,.1);color:#5b21b6;font-weight:600}
+.content{overflow-y:auto;background:var(--bg);padding:32px}.tool-header{margin-bottom:24px}.tool-name{font-size:20px;font-weight:700;color:var(--dark);letter-spacing:-.3px;margin-bottom:5px}.tool-desc{font-size:13px;color:var(--muted);line-height:1.6}.form-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:18px}.field-group{display:flex;flex-direction:column;gap:6px}.field-label{font-size:12px;font-weight:600;color:var(--mid)}.field-opt{font-weight:400;color:var(--muted)}
+input[type=text],select,textarea{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:var(--rsm);font-size:13px;font-family:inherit;color:var(--dark);background:var(--white);outline:none;transition:border-color .15s,box-shadow .15s}input[type=text]:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.08)}textarea{resize:vertical;line-height:1.6}.btn-upload{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:var(--white);border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;color:var(--muted);cursor:pointer;font-family:inherit;transition:all .15s;margin-top:2px}.btn-upload:hover{border-color:var(--blue);color:var(--blue)}.btn-upload input{display:none}.output-box{white-space:normal}.output-box.streaming{white-space:pre-wrap}.output-box h1,.output-box h2,.output-box h3,.output-box h4{font-weight:700;color:var(--dark)}.output-box h1{font-size:16px;margin:0 0 8px}.output-box h2{font-size:14px;margin:14px 0 6px;padding-bottom:4px;border-bottom:1px solid var(--border)}.output-box h3{font-size:13px;margin:12px 0 5px}.output-box h4{font-size:13px;margin:10px 0 4px;color:var(--mid)}.output-box p{margin:0 0 10px;line-height:1.7}.output-box p:last-child{margin-bottom:0}.output-box ul,.output-box ol{padding-left:20px;margin:0 0 10px}.output-box li{margin-bottom:4px;line-height:1.6}.output-box strong{font-weight:600}.output-box em{font-style:italic;color:var(--mid)}.output-box table{width:100%;border-collapse:collapse;margin:0 0 12px;font-size:12px}.output-box th{background:var(--bg);font-weight:600;padding:7px 10px;border:1px solid var(--border);text-align:left}.output-box td{padding:6px 10px;border:1px solid var(--border);vertical-align:top}.output-box tr:nth-child(even) td{background:#fafbfc}.output-box code{background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:1px 5px;font-size:11px;font-family:monospace}.output-box pre{background:var(--bg);border:1px solid var(--border);border-radius:var(--rsm);padding:14px;overflow-x:auto;margin:0 0 12px}.output-box pre code{background:none;border:none;padding:0}.output-box blockquote{border-left:3px solid #93c5fd;padding:8px 14px;color:var(--muted);margin:0 0 12px;background:var(--blue-light);border-radius:0 6px 6px 0}.output-box hr{border:none;border-top:1px solid var(--border);margin:14px 0}.btn-dl{padding:4px 12px;background:var(--white);border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;color:var(--muted);font-family:inherit;transition:all .15s}.btn-dl:hover{border-color:var(--blue);color:var(--blue)}.sidebar-search{padding:8px 16px 10px;border-bottom:1px solid var(--border);flex-shrink:0}.search-inp{width:100%;padding:6px 10px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:inherit;outline:none;color:var(--dark);background:var(--bg);transition:border-color .15s}.search-inp:focus{border-color:var(--blue)}.tool-btn.hidden{display:none}@keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}.dots span{animation:blink 1.2s infinite;display:inline-block;margin:0 1px}.dots span:nth-child(2){animation-delay:.2s}.dots span:nth-child(3){animation-delay:.4s}.out-empty{text-align:center;padding:36px 20px;color:var(--muted)}.out-empty-icon{font-size:24px;margin-bottom:8px}.out-empty p{font-size:12px;line-height:1.6}.btn-gen{align-self:stretch}
+.btn-gen{padding:10px 22px;background:var(--blue);color:#fff;border:none;border-radius:var(--rsm);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;transition:opacity .15s;align-self:flex-start}.btn-gen:hover{opacity:.88}.btn-gen:disabled{opacity:.5;cursor:not-allowed}.output-section{margin-top:20px}.output-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}.output-lbl{font-size:12px;font-weight:600;color:var(--mid)}.btn-copy{padding:4px 12px;background:var(--white);border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;color:var(--muted);font-family:inherit;transition:all .15s}.btn-copy:hover{border-color:var(--blue);color:var(--blue)}.output-box{background:var(--white);border:1px solid var(--border);border-radius:var(--rsm);padding:20px;font-size:13px;line-height:1.75;color:var(--dark);white-space:pre-wrap;min-height:180px;overflow-y:auto;font-family:inherit}
+</style>
+</head>
+<body>
+<nav><a class="nav-brand" href="index.html"><img src="perfectskills_logo.png" alt="Perfect Skills" class="nav-logo"><span class="nav-sep"></span><span class="nav-product">AI Tool Kit</span></a><span class="nav-domain">Education Tools</span></nav>
+<div class="page-layout">
+  <aside class="sidebar"><div class="sidebar-header"><a class="back-link" href="index.html">← All Domains</a><div class="domain-row"><span class="d-icon">🎓</span><div><div class="d-name">Education</div><div class="d-count">12 tools · 4 agents</div></div></div></div><div id="tool-list"></div></aside>
+  <main class="content" id="content"></main>
+</div>
+<script>
+const DOMAIN={name:'Education',icon:'🎓',tools:[
+{id:'lesson-plan',name:'Lesson Plan Generator',description:'Builds structured lesson plans from topic, grade level, and duration.',fields:[{id:'topic',label:'Topic',type:'text',placeholder:'e.g. Introduction to Fractions',required:true},{id:'grade',label:'Grade / Level',type:'text',placeholder:'e.g. Grade 5, Undergraduate, Adult learners',required:true},{id:'duration',label:'Duration',type:'select',options:['30 minutes','45 minutes','60 minutes','90 minutes','2 hours'],required:true},{id:'objectives',label:'Learning Objectives',type:'textarea',placeholder:'What should students know or be able to do after this lesson…',rows:3,required:true},{id:'context',label:'Class Context',type:'textarea',placeholder:'Class size, prior knowledge, any special considerations…',rows:2,required:false}],
+systemPrompt:`You are an experienced curriculum designer and educator. Create a detailed, pedagogically sound lesson plan.
+
+Format:
+# Lesson Plan: [Topic]
+**Grade/Level:** | **Duration:** | **Subject:**
+
+## Learning Objectives
+By the end of this lesson, students will be able to:
+• [Measurable objective using Bloom's Taxonomy verbs]
+
+## Materials & Resources
+• [List everything needed]
+
+## Lesson Structure
+
+### 1. Hook / Warm-Up ([X min])
+[Engaging opener to activate prior knowledge]
+
+### 2. Instruction / Exploration ([X min])
+[Main teaching activity — step by step]
+
+### 3. Guided Practice ([X min])
+[Practice activity with teacher support]
+
+### 4. Independent Practice ([X min])
+[Student-led activity to apply learning]
+
+### 5. Closing / Reflection ([X min])
+[Summary, exit ticket, or reflection activity]
+
+## Assessment
+[How you'll know students met the objectives]
+
+## Differentiation
+**For struggling learners:** [Support strategies]
+**For advanced learners:** [Extension activities]
+
+## Homework / Extension
+[Optional follow-up activity]`,
+buildUserMessage:f=>`Create a lesson plan.\nTopic: ${f.topic}\nGrade: ${f.grade}\nDuration: ${f.duration}\nObjectives: ${f.objectives}${f.context?'\nContext: '+f.context:''}`},
+
+{id:'quiz-generator',name:'Quiz & Assessment Generator',description:'Creates MCQ, short-answer, or case-based assessments from syllabus content.',fields:[{id:'topic',label:'Topic / Content',type:'textarea',placeholder:'Topic or paste the content to assess…',rows:5,required:true},{id:'type',label:'Question Type',type:'select',options:['Multiple Choice (MCQ)','Short Answer','True/False + MCQ mix','Case Study Based','Mixed (MCQ + Short Answer)'],required:true},{id:'count',label:'Number of Questions',type:'select',options:['5','10','15','20'],required:true},{id:'level',label:'Difficulty Level',type:'select',options:['Easy','Medium','Hard','Mixed'],required:true}],
+systemPrompt:`You are an assessment design specialist. Create a well-structured quiz with answer key.
+
+For MCQ format:
+**Q[N]. [Question]**
+A) [Option]
+B) [Option]
+C) [Option]
+D) [Option]
+
+For Short Answer:
+**Q[N]. [Question]** *(expected: [X] marks)*
+
+Include at end:
+## Answer Key
+Q1: [Answer] — *Explanation: [brief]*
+[Continue for all questions]
+
+## Learning Objectives Assessed
+[Map questions to learning objectives]
+
+Ensure questions test understanding, not just recall. Vary cognitive levels (recall, application, analysis).`,
+buildUserMessage:f=>`Create a ${f.type} quiz.\nContent: ${f.topic}\nNumber of Questions: ${f.count}\nDifficulty: ${f.level}`},
+
+{id:'exam-paper',name:'Exam Paper Generator',description:'Produces full exam papers with marking schemes from a curriculum brief.',fields:[{id:'subject',label:'Subject',type:'text',placeholder:'e.g. Business Studies',required:true},{id:'level',label:'Grade / Level',type:'text',placeholder:'e.g. Grade 12 / A-Level',required:true},{id:'topics',label:'Topics to Cover',type:'textarea',placeholder:'List the topics/units to be assessed…',rows:4,required:true},{id:'duration',label:'Exam Duration',type:'select',options:['1 hour','1.5 hours','2 hours','3 hours'],required:true},{id:'marks',label:'Total Marks',type:'text',placeholder:'e.g. 100',required:true}],
+systemPrompt:`You are an experienced examiner. Create a complete, balanced exam paper with marking scheme.
+
+Format:
+# [Subject] Examination
+**Level:** | **Duration:** | **Total Marks:** [N]
+**Instructions:** [Standard exam instructions]
+
+---
+## Section A: [Short questions] ([X] marks)
+[Questions]
+
+## Section B: [Medium questions] ([X] marks)
+[Questions]
+
+## Section C: [Long/essay questions] ([X] marks)
+[Questions]
+
+---
+# Marking Scheme
+
+For each question:
+**Q[N] — [X marks]**
+Award marks for:
+• [Mark scheme point] [1 mark]
+
+**Examiner Notes:** [Common errors to watch for]
+
+Ensure balanced coverage of all listed topics.`,
+buildUserMessage:f=>`Create an exam paper.\nSubject: ${f.subject}\nLevel: ${f.level}\nTopics: ${f.topics}\nDuration: ${f.duration}\nTotal Marks: ${f.marks}`},
+
+{id:'rubric-generator',name:'Assignment Rubric Generator',description:'Generates scoring rubrics for assignments aligned to learning outcomes.',fields:[{id:'assignment',label:'Assignment Description',type:'textarea',placeholder:'What students need to produce or do…',rows:4,required:true},{id:'outcomes',label:'Learning Outcomes',type:'textarea',placeholder:'What this assignment is meant to assess…',rows:3,required:true},{id:'marks',label:'Total Marks / Grade Scale',type:'text',placeholder:'e.g. 100 marks, or A-F, or 1-5 scale',required:true}],
+systemPrompt:`You are an assessment design specialist. Create a detailed, fair rubric.
+
+Format:
+# Assignment Rubric: [Assignment Name]
+**Total:** [Marks/Scale]
+
+## Rubric Table
+| Criterion | Weight | Excellent ([X]%) | Good ([X]%) | Satisfactory ([X]%) | Needs Improvement ([X]%) |
+[Complete rubric with 4-6 criteria, clear descriptors for each level]
+
+## Criterion Descriptions
+
+For each criterion:
+**[Criterion Name]** — [Weight]
+*What this assesses:* [Brief description]
+- Excellent: [Specific, observable behaviours]
+- Good: [Description]
+- Satisfactory: [Description]
+- Needs Improvement: [Description]
+
+## Grading Guide
+[How to total scores and convert to grades]
+
+## Feedback Template
+[A template instructors can use to give consistent feedback]`,
+buildUserMessage:f=>`Create an assignment rubric.\nAssignment: ${f.assignment}\nLearning Outcomes: ${f.outcomes}\nGrading Scale: ${f.marks}`},
+
+{id:'student-feedback',name:'Student Feedback Generator',description:'Writes personalised, constructive feedback for student submissions at scale.',fields:[{id:'assignment',label:'Assignment Type',type:'text',placeholder:'e.g. Essay, Lab Report, Presentation, Coding Project',required:true},{id:'student',label:'Student Work / Description',type:'textarea',placeholder:'Paste the student\'s submission or describe their work and performance…',rows:6,required:true},{id:'grade',label:'Grade / Score Awarded',type:'text',placeholder:'e.g. 72/100, B+, 3.5/5',required:true},{id:'criteria',label:'Assessment Criteria',type:'textarea',placeholder:'What the assignment was graded on…',rows:3,required:false}],
+systemPrompt:`You are an experienced educator. Write personalised, constructive, growth-oriented feedback.
+
+Format:
+## Feedback — [Assignment Type]
+**Grade:** [Grade]
+
+### What You Did Well
+• [Specific strengths — cite actual examples from their work]
+
+### Areas for Development
+• [Specific, actionable improvement areas — not just "improve X" but "how to improve X"]
+
+### Specific Suggestions
+1. [Concrete suggestion with example if possible]
+2. [Suggestion]
+
+### Overall Comment
+[2-3 sentences: acknowledge effort, reinforce strengths, encourage growth]
+
+### Next Steps
+[1-2 clear things to focus on for the next assignment]
+
+Tone: constructive, encouraging, specific. Avoid vague phrases like "good effort" without context.`,
+buildUserMessage:f=>`Write student feedback.\nAssignment: ${f.assignment}\nGrade: ${f.grade}${f.criteria?'\nCriteria: '+f.criteria:''}\n\nStudent Work:\n${f.student}`},
+
+{id:'course-summarizer',name:'Course Content Summarizer',description:'Condenses lecture notes, PDFs, or content into structured study notes.',fields:[{id:'content',label:'Course Content',type:'textarea',placeholder:'Paste lecture notes, chapter text, or describe the topic…',rows:10,required:true},{id:'subject',label:'Subject & Level',type:'text',placeholder:'e.g. Organic Chemistry, Undergraduate',required:true}],
+systemPrompt:`You are an expert study coach. Transform raw course content into clear, well-organised study notes.
+
+Format:
+# Study Notes: [Topic]
+**Subject:** [Subject] | **Level:** [Level]
+
+## Key Concepts
+[Brief definitions of the most important terms and concepts]
+
+## Core Ideas (What You Must Know)
+1. **[Concept]:** [Clear explanation]
+2. [Continue for all major concepts]
+
+## How They Connect
+[Diagram or explanation of how the key concepts relate to each other]
+
+## Examples & Applications
+• [Concrete example of each key concept]
+
+## Common Exam Questions on This Topic
+• [Likely question types]
+
+## Common Misconceptions
+• [Misconception] → [Correct understanding]
+
+## Summary in 5 Points
+1.
+2.
+3.
+4.
+5.`,
+buildUserMessage:f=>`Create study notes.\nSubject: ${f.subject}\n\nCONTENT:\n${f.content}`},
+
+{id:'study-guide',name:'Study Guide & Flashcard Generator',description:'Creates topic-wise revision guides and flashcards for learners.',fields:[{id:'topic',label:'Topic / Chapter',type:'text',placeholder:'e.g. Photosynthesis, World War II, Calculus Derivatives',required:true},{id:'level',label:'Level',type:'text',placeholder:'e.g. Grade 10, A-Level, Medical School',required:true},{id:'format',label:'Output Format',type:'select',options:['Flashcards only','Study guide only','Both flashcards + study guide'],required:true}],
+systemPrompt:`You are a study skills expert. Create effective revision materials.
+
+If flashcards requested:
+## Flashcards
+
+**Card 1**
+FRONT: [Question or term]
+BACK: [Answer or definition]
+[Continue for 15-20 cards minimum]
+
+If study guide requested:
+## Study Guide: [Topic]
+
+### Quick Reference Summary
+[One-page overview of the entire topic]
+
+### Key Terms Glossary
+**[Term]:** [Definition]
+
+### Concept Deep Dives
+[Each major concept with explanation + example]
+
+### Memory Aids
+[Mnemonics, diagrams descriptions, analogies for hard-to-remember facts]
+
+### Practice Questions
+[5-10 questions across difficulty levels]
+
+### Exam Strategy for This Topic
+[What examiners typically ask, how to structure answers]`,
+buildUserMessage:f=>`Create revision materials.\nTopic: ${f.topic}\nLevel: ${f.level}\nFormat: ${f.format}`},
+
+{id:'parent-comms',name:'Parent Communication Generator',description:'Drafts progress update messages to parents in a clear, professional tone.',fields:[{id:'student',label:'Student Name',type:'text',placeholder:'e.g. Aisha (use first name or initial as appropriate)',required:true},{id:'grade',label:'Grade / Class',type:'text',placeholder:'e.g. Grade 7B',required:true},{id:'message_type',label:'Communication Type',type:'select',options:['Progress Update','Concern / Issue','Positive Achievement','Meeting Request','Behaviour Update'],required:true},{id:'details',label:'Specific Details',type:'textarea',placeholder:'What do you want to communicate — specific observations, grades, behaviours, incidents…',rows:5,required:true}],
+systemPrompt:`You are an experienced teacher. Write a professional, empathetic parent communication.
+
+Structure:
+**Subject:** [Appropriate subject line]
+
+Dear Parent/Guardian of [Student Name],
+
+[Opening: state purpose clearly and warmly]
+
+[Body: specific, factual, balanced — mention positives even in concern messages]
+
+[For progress updates: specific academic performance, effort, growth areas]
+[For concerns: clear description of issue, impact, what's been tried]
+[For achievements: specific recognition with details]
+
+[Action/Next Steps: what you need from the parent, or what you're doing]
+
+[Closing: open door for questions, positive relationship-focused]
+
+Kind regards,
+[Teacher placeholder]
+
+Tone: professional yet warm. Specific not vague. Solution-focused not critical.`,
+buildUserMessage:f=>`Write a parent communication.\nStudent: ${f.student}\nGrade: ${f.grade}\nType: ${f.message_type}\nDetails: ${f.details}`},
+
+{id:'curriculum-map',name:'Curriculum Mapping Tool',description:'Maps learning outcomes to topics and assessments across a course.',fields:[{id:'course',label:'Course Name',type:'text',placeholder:'e.g. Introduction to Statistics',required:true},{id:'duration',label:'Course Duration',type:'text',placeholder:'e.g. 12 weeks, one semester',required:true},{id:'outcomes',label:'Learning Outcomes',type:'textarea',placeholder:'List the course learning outcomes (what students should know/do by the end)…',rows:5,required:true},{id:'topics',label:'Topics / Units',type:'textarea',placeholder:'List the topics or units to be covered…',rows:5,required:true}],
+systemPrompt:`You are a curriculum design specialist. Create a comprehensive curriculum map.
+
+Format:
+# Curriculum Map: [Course Name]
+**Duration:** [Duration]
+
+## Learning Outcomes Overview
+| # | Learning Outcome | Bloom's Level |
+
+## Week-by-Week Curriculum Map
+| Week | Topic/Unit | Learning Outcomes Addressed | Teaching Methods | Assessment |
+
+## Assessment Plan
+| Assessment | Type | Week | LOs Assessed | Weight |
+
+## Outcome Coverage Matrix
+| LO | Week(s) covered | Assessed in |
+[Show every LO is covered and assessed]
+
+## Recommended Sequencing Notes
+[Rationale for the sequence — what builds on what]
+
+## Resources Required
+[For each major unit: key resources, materials, tools]
+
+## Potential Gaps & Risks
+• [Any LOs under-covered or topics that need more time]`,
+buildUserMessage:f=>`Create a curriculum map.\nCourse: ${f.course}\nDuration: ${f.duration}\nLearning Outcomes: ${f.outcomes}\nTopics: ${f.topics}`},
+
+{id:'syllabus-builder',name:'Syllabus Builder',description:'Generates a complete course syllabus from learning objectives and constraints.',fields:[{id:'course',label:'Course Name',type:'text',placeholder:'e.g. Advanced Business Communication',required:true},{id:'institution',label:'Institution / Context',type:'text',placeholder:'e.g. MBA programme, Corporate training, Online course',required:true},{id:'duration',label:'Course Duration',type:'text',placeholder:'e.g. 10 weeks, 30 hours',required:true},{id:'objectives',label:'Course Learning Objectives',type:'textarea',placeholder:'What students will learn and be able to do…',rows:4,required:true}],
+systemPrompt:`You are a curriculum designer. Create a professional, complete course syllabus.
+
+Format:
+# [Course Name] — Course Syllabus
+**Institution/Programme:** | **Duration:** | **Credits/Hours:**
+
+## Course Description
+[2-3 sentence overview of the course]
+
+## Learning Objectives
+By the end of this course, students will:
+1. [Measurable objective]
+
+## Required Materials
+[Textbooks, software, access requirements]
+
+## Course Schedule
+| Week | Date | Topic | Activities | Readings | Due |
+
+## Assessment Structure
+| Component | Weight | Description | Due |
+
+## Grading Scale
+[Grade breakdown]
+
+## Course Policies
+### Attendance: [Policy]
+### Late Work: [Policy]
+### Academic Integrity: [Policy]
+### Communication: [How and when to reach instructor]
+
+## Accessibility & Support
+[Resources available to students]
+
+## Course Calendar
+[Week-by-week high-level overview]`,
+buildUserMessage:f=>`Build a course syllabus.\nCourse: ${f.course}\nContext: ${f.institution}\nDuration: ${f.duration}\nObjectives: ${f.objectives}`},
+
+{id:'progress-report',name:'Student Progress Report Generator',description:'Produces detailed progress reports for individual students from performance data.',fields:[{id:'student',label:'Student Name',type:'text',placeholder:'e.g. Rohan Verma',required:true},{id:'period',label:'Reporting Period',type:'text',placeholder:'e.g. Term 2, Semester 1 2025',required:true},{id:'subjects',label:'Subject Performance Data',type:'textarea',placeholder:'For each subject: name, grade/mark, attendance, key observations\ne.g. Mathematics: 78%, regular attendance, strong in algebra, struggles with geometry',rows:8,required:true},{id:'overall',label:'Overall Observations',type:'textarea',placeholder:'Behaviour, attitude, extra-curricular, social development…',rows:3,required:false}],
+systemPrompt:`You are a school administrator and educator. Write a comprehensive, balanced student progress report.
+
+Format:
+# Student Progress Report
+**Student:** [Name] | **Period:** [Period] | **Grade/Class:** [If provided]
+
+## Academic Performance
+| Subject | Grade/Mark | vs Last Term | Comment |
+
+## Subject-by-Subject Comments
+For each subject:
+**[Subject]:** [Grade]
+[2-3 specific sentences: strengths, areas for improvement, effort noted]
+
+## Overall Academic Standing
+[1-2 sentences on overall academic progress]
+
+## Personal Development & Character
+[Behaviour, attitude, classroom participation, social development]
+
+## Extra-Curricular & Achievements
+[Any notable achievements or participation]
+
+## Areas Requiring Attention
+• [Specific areas needing focus]
+
+## Goals for Next Term
+1. [Specific, achievable goal]
+2. [Goal]
+3. [Goal]
+
+## Teacher's Comment
+[Warm, honest, forward-looking closing comment]
+
+Be specific and evidence-based. Balance positives with honest assessment.`,
+buildUserMessage:f=>`Write a student progress report.\nStudent: ${f.student}\nPeriod: ${f.period}\nPerformance: ${f.subjects}${f.overall?'\nOverall: '+f.overall:''}`},
+
+{id:'ai-content-detector',name:'AI Content Detector for Submissions',description:'Analyses student writing for signs of AI generation or plagiarism patterns.',fields:[{id:'submission',label:'Student Submission',type:'textarea',placeholder:'Paste the student\'s submission text here…',rows:10,required:true},{id:'context',label:'Assignment Context',type:'text',placeholder:'e.g. Grade 10 essay on climate change, in-class exam',required:false}],
+systemPrompt:`You are an academic integrity specialist. Analyse this submission for signs of AI generation or academic dishonesty.
+
+Format:
+## Submission Analysis Report
+
+### Overall Assessment
+**AI Generation Likelihood:** High / Medium / Low / Unlikely
+**Plagiarism Concerns:** Yes / Possible / No
+
+### AI Generation Indicators
+For each indicator found:
+• **[Indicator]:** [Specific example from text] — *Significance: [explanation]*
+
+Common AI indicators to check:
+- Unnaturally perfect structure
+- Generic examples without personal perspective
+- Hedging language patterns typical of LLMs
+- Inconsistent voice or expertise level
+- Lack of specific details, dates, names
+- Overly balanced "on one hand/on the other hand" framing
+
+### Linguistic Analysis
+- Voice consistency: [Consistent / Inconsistent]
+- Vocabulary level vs expected: [Appropriate / Suspiciously elevated]
+- Specific knowledge depth: [Present / Surface-level]
+
+### Recommendations
+**Suggested action:** [No action / Verbal verification / Formal investigation]
+**Verification questions:** [Specific questions to ask the student to verify authorship]
+
+⚠️ This is an AI-assisted analysis, not definitive proof. Use as one input in a fair assessment process.`,
+buildUserMessage:f=>`Analyse this submission for AI generation.${f.context?'\nContext: '+f.context:''}\n\nSUBMISSION:\n${f.submission}`},
+
+// AGENTS
+{id:'ai-tutor',name:'AI Tutor Agent',isAgent:true,description:'Provides a comprehensive explanation of any concept with adaptive depth and practice questions.',fields:[{id:'topic',label:'Topic / Concept',type:'text',placeholder:'e.g. The French Revolution, Photosynthesis, Quadratic Equations',required:true},{id:'level',label:'Student Level',type:'text',placeholder:'e.g. Grade 9, GCSE, First-year university',required:true},{id:'prior',label:'What the Student Already Knows',type:'textarea',placeholder:'Prior knowledge or what was covered in class already…',rows:3,required:false},{id:'question',label:'Specific Question or Confusion',type:'textarea',placeholder:'What specifically is the student struggling with or asking about?',rows:3,required:false}],
+systemPrompt:`You are an expert, patient, and engaging tutor. Teach this topic in a way that builds genuine understanding.
+
+Format:
+## [Topic] — Explained
+
+### The Big Picture First
+[Start with why this topic matters and how it connects to things the student knows]
+
+### Core Explanation
+[Build from simple to complex — use analogies, examples, and vivid language]
+
+### Breaking It Down Step by Step
+[For procedural topics: numbered steps with worked examples]
+[For conceptual topics: key ideas in logical order]
+
+### Common Misconceptions
+"Many students think [X], but actually [Y] because [reason]."
+
+### Worked Example
+[Walk through a complete example showing your reasoning]
+
+### Now You Try
+Practice question 1: [Easier]
+Practice question 2: [Moderate]
+Practice question 3: [Challenging]
+
+*Answers below — try before looking!*
+---
+Answers: [Answers with explanations]
+
+### Summary
+[5 key points from this lesson]
+
+### What to Learn Next
+[Natural next topic that builds on this]`,
+buildUserMessage:f=>`Teach this topic.\nTopic: ${f.topic}\nStudent Level: ${f.level}${f.prior?'\nPrior Knowledge: '+f.prior:''}${f.question?'\nSpecific Question: '+f.question:''}`},
+
+{id:'adaptive-assessment',name:'Adaptive Assessment Agent',isAgent:true,description:'Creates a tiered assessment that adapts to different proficiency levels.',fields:[{id:'topic',label:'Topic',type:'text',placeholder:'e.g. The Water Cycle',required:true},{id:'level',label:'Grade / Level',type:'text',placeholder:'e.g. Grade 6',required:true},{id:'objectives',label:'Learning Objectives',type:'textarea',placeholder:'What this assessment covers…',rows:3,required:true}],
+systemPrompt:`You are an adaptive assessment designer. Create a tiered assessment that identifies and responds to different proficiency levels.
+
+Format:
+# Adaptive Assessment: [Topic]
+
+## Level 1 — Foundational (Entry Level)
+[Start here for all students]
+Questions that assess basic recall and comprehension.
+[5 questions with answers]
+
+## Level 2 — Developing
+[Students who score 4-5/5 on Level 1 proceed here]
+Questions requiring application and analysis.
+[5 questions with answers]
+
+## Level 3 — Proficient
+[Students scoring 4-5/5 on Level 2 proceed here]
+Questions requiring synthesis and evaluation.
+[5 questions with answers]
+
+## Level 4 — Advanced (Extension)
+[Students who complete Level 3 successfully]
+Open-ended challenge questions.
+[3 challenge questions]
+
+## Scoring & Routing Guide
+| Score on current level | Next step |
+[Routing table]
+
+## Diagnostic Insights
+What each level tells you about student understanding of each objective.
+
+## Differentiation Recommendations
+[Based on where students end their path, what to do next in teaching]`,
+buildUserMessage:f=>`Create an adaptive assessment.\nTopic: ${f.topic}\nLevel: ${f.level}\nObjectives: ${f.objectives}`},
+
+{id:'research-assistant',name:'Research Assistant Agent',isAgent:true,description:'Helps students structure, research, and write academic work on any topic.',fields:[{id:'topic',label:'Research Topic / Question',type:'text',placeholder:'e.g. The impact of social media on adolescent mental health',required:true},{id:'type',label:'Assignment Type',type:'select',options:['Research Essay','Literature Review','Argumentative Essay','Research Proposal','Report'],required:true},{id:'level',label:'Academic Level',type:'text',placeholder:'e.g. High school, Undergraduate, Masters',required:true},{id:'length',label:'Required Length',type:'text',placeholder:'e.g. 2000 words, 5 pages',required:true}],
+systemPrompt:`You are an expert academic research coach. Guide the student through the research and writing process.
+
+Format:
+# Research Guide: [Topic]
+**Assignment:** [Type] | **Level:** [Level] | **Length:** [Length]
+
+## Topic Analysis
+[Break down the topic — what it's really asking, key concepts to address]
+
+## Thesis / Central Argument
+**Recommended thesis:** "[Strong, specific, arguable thesis statement]"
+
+## Essay / Report Structure
+For each section:
+**[Section Name]** — ~[word count]
+*Purpose:* [What this section achieves]
+*Key content to include:* [Specific points]
+*Transition to next section:* [How to connect]
+
+## Key Arguments to Develop
+1. **[Argument 1]:** [Evidence types to look for]
+2. [Continue for 3-5 arguments]
+
+## Recommended Source Types
+• [Academic journals — search terms to use]
+• [Books — types to look for]
+• [Data sources — where to find statistics]
+
+## Common Pitfalls to Avoid
+• [Pitfall specific to this topic/type]
+
+## Research Questions to Answer
+[10 specific sub-questions that your research should answer]
+
+## Sample Paragraph (to model the style)
+[Write one model paragraph demonstrating academic style for this level]`,
+buildUserMessage:f=>`Help with this research assignment.\nTopic: ${f.topic}\nType: ${f.type}\nLevel: ${f.level}\nLength: ${f.length}`},
+
+{id:'personalised-learning',name:'Personalised Learning Agent',isAgent:true,description:'Creates a customised learning plan tailored to a student\'s level, goals, and schedule.',fields:[{id:'subject',label:'Subject / Skill',type:'text',placeholder:'e.g. Mathematics, English Writing, Python Programming',required:true},{id:'current_level',label:'Current Level',type:'textarea',placeholder:'What the student can currently do, where they struggle…',rows:3,required:true},{id:'goal',label:'Learning Goal',type:'text',placeholder:'e.g. Pass GCSE with a B, get confident with algebra, prepare for university',required:true},{id:'time',label:'Available Time Per Week',type:'select',options:['1-2 hours','3-4 hours','5-6 hours','7-10 hours','10+ hours'],required:true},{id:'timeline',label:'Timeline',type:'text',placeholder:'e.g. 8 weeks, before June exams',required:true}],
+systemPrompt:`You are a personalised education specialist. Create a tailored learning plan.
+
+Format:
+# Personalised Learning Plan
+**Student:** [Placeholder] | **Subject:** [Subject]
+**Goal:** [Goal] | **Timeline:** [Timeline] | **Time available:** [Time/week]
+
+## Starting Point Assessment
+[Based on provided level — what the student needs to address first]
+
+## Learning Path Overview
+[Visual timeline of phases]
+
+## Phase-by-Phase Plan
+
+### Phase 1: [Name] (Weeks 1-X)
+**Focus:** [What to master]
+**Activities:**
+- [ ] [Specific activity] — [Time estimate] — [Resource]
+**Milestone:** [How to know they're ready for Phase 2]
+
+[Continue for each phase]
+
+## Weekly Schedule Template
+| Day | Activity | Duration | Resource |
+
+## Resource List
+[Specific, named resources for this subject and level]
+
+## Progress Tracking
+[Simple weekly check-in questions and metrics]
+
+## Motivational Checkpoints
+[Celebrate wins at these milestones: ...]
+
+## What to Do If Falling Behind
+[Recovery strategies]`,
+buildUserMessage:f=>`Create a personalised learning plan.\nSubject: ${f.subject}\nCurrent Level: ${f.current_level}\nGoal: ${f.goal}\nTime: ${f.time}/week\nTimeline: ${f.timeline}`}
+]};
+
+/* PS Tools API base — configurable. Default :8000; override via ?api=http://host:port (persists in localStorage). */
+const _psApiQp=new URLSearchParams(location.search).get('api');
+if(_psApiQp)localStorage.setItem('ps_api_base',_psApiQp);
+const API_BASE=(_psApiQp||localStorage.getItem('ps_api_base')||'http://localhost:8000').replace(/\/$/,'');
+const API_GENERATE=API_BASE+'/generate';
+function selectTool(id) {
+  const tool = DOMAIN.tools.find(t => t.id === id);
+  if (!tool) return;
+  document.querySelectorAll('.tool-btn').forEach(b => b.classList.toggle('active', b.dataset.id === id));
+  renderTool(tool);
+}
+
+function renderTool(tool) {
+  const fieldsHtml = tool.fields.map(f => {
+    let inp = '';
+    if (f.type === 'text')
+      inp = `<input type="text" id="f_${f.id}" placeholder="${f.placeholder||''}"${f.required?' required':''}>`;
+    else if (f.type === 'textarea')
+      inp = `<textarea id="f_${f.id}" placeholder="${f.placeholder||''}" rows="${f.rows||4}"${f.required?' required':''}></textarea><label class="btn-upload"><input type="file" accept=".txt,.pdf,.docx" onchange="handleFileUpload('f_${f.id}',this)">📎 Upload file</label>`;
+    else if (f.type === 'select')
+      inp = `<select id="f_${f.id}">${f.options.map(o=>`<option>${o}</option>`).join('')}</select>`;
+    return `<div class="field-group"><label class="field-label" for="f_${f.id}">${f.label}${f.required?'':' <span class="field-opt">(optional)</span>'}</label>${inp}</div>`;
+  }).join('');
+
+  document.getElementById('content').innerHTML = `
+    <div class="tool-header">
+      <h2 class="tool-name">${tool.name}</h2>
+      <p class="tool-desc">${tool.description}</p>
+    </div>
+    <div class="form-card">
+      ${fieldsHtml}
+      <button class="btn-gen" onclick="runGenerate('${tool.id}')">Generate</button>
+    </div>
+    <div class="output-section" id="out-section">
+      <div class="output-header"><span class="output-lbl">Output</span><div style="display:flex;gap:6px"><button class="btn-dl" onclick="downloadOut()">↓ Save</button><button class="btn-copy" onclick="copyOut()">Copy</button></div></div>
+      <div class="output-box" id="out-box"><div class="out-empty"><div class="out-empty-icon">✨</div><p>Fill in the form and click Generate.</p></div></div>
+    </div>`;
+}
+
+async function runGenerate(toolId) {
+  const tool = DOMAIN.tools.find(t => t.id === toolId);
+  if (!tool) return;
+  const data = {};
+  let ok = true;
+  for (const f of tool.fields) {
+    const el = document.getElementById(`f_${f.id}`);
+    if (!el) continue;
+    const v = el.value.trim();
+    if (f.required && !v) { el.style.borderColor = '#ef4444'; ok = false; } else { el.style.borderColor = ''; data[f.id] = v; }
+  }
+  if (!ok) return;
+
+  const outBox = document.getElementById('out-box');
+  const btn = document.querySelector('.btn-gen');
+  outBox.classList.add('streaming');
+  outBox.innerHTML = '<span style="color:var(--muted)">Generating<span class="dots"><span>.</span><span>.</span><span>.</span></span></span>';
+  btn.disabled = true; btn.textContent = 'Generating…';
+
+  try {
+    const res = await fetch(API_GENERATE, {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({system_prompt: tool.systemPrompt, user_message: tool.buildUserMessage(data)})
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const reader = res.body.getReader(); const dec = new TextDecoder(); let out = '';
+    outBox.textContent = '';
+    while (true) {
+      const {done, value} = await reader.read(); if (done) break;
+      for (const line of dec.decode(value).split('\n')) {
+        if (!line.startsWith('data: ')) continue;
+        const d = line.slice(6); if (d === '[DONE]') break;
+        try { const p = JSON.parse(d); if (p.error) { outBox.classList.remove('streaming'); outBox.style.color='#ef4444'; outBox.textContent='Error: '+p.error; } else if (p.text) { out += p.text; outBox.textContent = out; outBox.scrollTop = outBox.scrollHeight; } } catch {}
+      }
+    }
+    if (out && typeof marked !== 'undefined') { outBox.classList.remove('streaming'); outBox.innerHTML = marked.parse(out); } else { outBox.classList.remove('streaming'); }
+  } catch(e) {
+    outBox.classList.remove('streaming');
+    outBox.style.color = '#ef4444';
+    outBox.textContent = `Connection error: ${e.message}\n\nStart the backend:\n  cd backend\n  uvicorn main:app --reload`;
+  }
+  btn.disabled = false; btn.textContent = 'Generate';
+}
+
+function copyOut() {
+  const text = document.getElementById('out-box')?.innerText;
+  if (!text || text.includes('Fill in the form')) return;
+  navigator.clipboard.writeText(text).then(() => { const b = document.querySelector('.btn-copy'); b.textContent='Copied!'; setTimeout(()=>b.textContent='Copy',2000); });
+}
+
+function init() {
+  const tools = DOMAIN.tools.filter(t => !t.isAgent);
+  const agents = DOMAIN.tools.filter(t => t.isAgent);
+  document.getElementById('tool-list').innerHTML =
+    `<div class="sidebar-search"><input class="search-inp" type="text" placeholder="Search tools…" oninput="filterTools(this.value)"></div>` +
+    `<div class="sec-lbl">Tools · ${tools.length}</div>` +
+    tools.map(t=>`<button class="tool-btn" data-id="${t.id}" onclick="selectTool('${t.id}')">${t.name}</button>`).join('') +
+    (agents.length ? `<div class="sec-lbl ag">Agents · ${agents.length}</div>` + agents.map(t=>`<button class="tool-btn agent" data-id="${t.id}" onclick="selectTool('${t.id}')">${t.name}</button>`).join('') : '');
+  if (tools.length) selectTool(tools[0].id);
+}
+function filterTools(q) {
+  const lq = q.toLowerCase();
+  document.querySelectorAll('.tool-btn').forEach(b => {
+    b.classList.toggle('hidden', !b.textContent.toLowerCase().includes(lq));
+  });
+}
+function downloadOut() {
+  const text = document.getElementById('out-box')?.innerText;
+  if (!text || text.includes('Fill in the form')) return;
+  const a = document.createElement('a');
+  a.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(text);
+  a.download = 'output.txt'; a.click();
+}
+async function handleFileUpload(fieldId, input) {
+  const file = input.files[0]; if (!file) return;
+  const ext = file.name.split('.').pop().toLowerCase();
+  const ta = document.getElementById(fieldId);
+  const prev = ta.placeholder; ta.placeholder = 'Reading file…'; ta.disabled = true;
+  try {
+    if (ext === 'txt' || ext === 'md' || ext === 'csv') {
+      ta.value = await file.text();
+    } else if (ext === 'pdf') {
+      if (typeof pdfjsLib === 'undefined') { alert('PDF library not loaded yet, please retry.'); ta.disabled = false; ta.placeholder = prev; return; }
+      const buf = await file.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({data: new Uint8Array(buf)}).promise;
+      let text = '';
+      for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const content = await page.getTextContent();
+        text += content.items.map(item => item.str).join(' ') + '\n\n';
+      }
+      ta.value = text.trim();
+    } else if (ext === 'docx') {
+      if (typeof mammoth === 'undefined') { alert('DOCX library not loaded yet, please retry.'); ta.disabled = false; ta.placeholder = prev; return; }
+      const buf = await file.arrayBuffer();
+      const result = await mammoth.extractRawText({arrayBuffer: buf});
+      ta.value = result.value;
+    }
+  } catch(e) { alert('Could not read file: ' + e.message); }
+  ta.disabled = false; ta.placeholder = prev; input.value = '';
+}
+window.addEventListener('DOMContentLoaded',init);
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>if(typeof pdfjsLib!=='undefined')pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HR Tools — Perfect Skills AI Tool Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563eb;--blue-light:#eff6ff;--dark:#0f172a;--mid:#334155;--muted:#64748b;--border:#e2e8f0;--bg:#f8fafc;--white:#ffffff;--radius:12px;--rsm:8px}
+html,body{height:100%}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--dark);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:56px}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo{height:26px;width:auto}
+.nav-sep{width:1px;height:16px;background:var(--border)}
+.nav-product{font-size:12px;font-weight:500;color:var(--blue)}
+.nav-domain{font-size:12px;color:var(--muted)}
+.page-layout{display:grid;grid-template-columns:260px 1fr;height:calc(100vh - 56px);overflow:hidden}
+.sidebar{border-right:1px solid var(--border);background:var(--white);overflow-y:auto;display:flex;flex-direction:column}
+.sidebar-header{padding:16px;border-bottom:1px solid var(--border);flex-shrink:0}
+.back-link{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);text-decoration:none;margin-bottom:10px}
+.back-link:hover{color:var(--blue)}
+.domain-row{display:flex;align-items:center;gap:10px}
+.d-icon{font-size:22px}
+.d-name{font-size:15px;font-weight:700;color:var(--dark)}
+.d-count{font-size:11px;color:var(--muted);margin-top:2px}
+.sec-lbl{font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--muted);padding:12px 16px 5px}
+.sec-lbl.ag{color:#7c3aed}
+.tool-btn{display:block;width:100%;text-align:left;padding:7px 16px;background:none;border:none;cursor:pointer;font-size:12px;font-family:inherit;color:var(--mid);line-height:1.4;transition:background .12s,color .12s}
+.tool-btn:hover{background:var(--bg);color:var(--dark)}
+.tool-btn.active{background:var(--blue-light);color:var(--blue);font-weight:600}
+.tool-btn.agent:hover{background:rgba(124,58,237,.06);color:#5b21b6}
+.tool-btn.agent.active{background:rgba(124,58,237,.1);color:#5b21b6;font-weight:600}
+.content{overflow-y:auto;background:var(--bg);padding:32px}
+.tool-header{margin-bottom:24px}
+.tool-name{font-size:20px;font-weight:700;color:var(--dark);letter-spacing:-.3px;margin-bottom:5px}
+.tool-desc{font-size:13px;color:var(--muted);line-height:1.6}
+.form-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:18px}
+.field-group{display:flex;flex-direction:column;gap:6px}
+.field-label{font-size:12px;font-weight:600;color:var(--mid)}
+.field-opt{font-weight:400;color:var(--muted)}
+input[type=text],select,textarea{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:var(--rsm);font-size:13px;font-family:inherit;color:var(--dark);background:var(--white);outline:none;transition:border-color .15s,box-shadow .15s}
+input[type=text]:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.08)}
+textarea{resize:vertical;line-height:1.6}
+.btn-upload{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:var(--white);border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;color:var(--muted);cursor:pointer;font-family:inherit;transition:all .15s;margin-top:2px}
+.btn-upload:hover{border-color:var(--blue);color:var(--blue)}
+.btn-upload input{display:none}
+.output-box{white-space:normal}
+.output-box.streaming{white-space:pre-wrap}
+.output-box h1,.output-box h2,.output-box h3,.output-box h4{font-weight:700;color:var(--dark)}
+.output-box h1{font-size:16px;margin:0 0 8px}
+.output-box h2{font-size:14px;margin:14px 0 6px;padding-bottom:4px;border-bottom:1px solid var(--border)}
+.output-box h3{font-size:13px;margin:12px 0 5px}
+.output-box h4{font-size:13px;margin:10px 0 4px;color:var(--mid)}
+.output-box p{margin:0 0 10px;line-height:1.7}
+.output-box p:last-child{margin-bottom:0}
+.output-box ul,.output-box ol{padding-left:20px;margin:0 0 10px}
+.output-box li{margin-bottom:4px;line-height:1.6}
+.output-box strong{font-weight:600}
+.output-box em{font-style:italic;color:var(--mid)}
+.output-box table{width:100%;border-collapse:collapse;margin:0 0 12px;font-size:12px}
+.output-box th{background:var(--bg);font-weight:600;padding:7px 10px;border:1px solid var(--border);text-align:left}
+.output-box td{padding:6px 10px;border:1px solid var(--border);vertical-align:top}
+.output-box tr:nth-child(even) td{background:#fafbfc}
+.output-box code{background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:1px 5px;font-size:11px;font-family:monospace}
+.output-box pre{background:var(--bg);border:1px solid var(--border);border-radius:var(--rsm);padding:14px;overflow-x:auto;margin:0 0 12px}
+.output-box pre code{background:none;border:none;padding:0}
+.output-box blockquote{border-left:3px solid #93c5fd;padding:8px 14px;color:var(--muted);margin:0 0 12px;background:var(--blue-light);border-radius:0 6px 6px 0}
+.output-box hr{border:none;border-top:1px solid var(--border);margin:14px 0}
+.btn-dl{padding:4px 12px;background:var(--white);border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;color:var(--muted);font-family:inherit;transition:all .15s}
+.btn-dl:hover{border-color:var(--blue);color:var(--blue)}
+.sidebar-search{padding:8px 16px 10px;border-bottom:1px solid var(--border);flex-shrink:0}
+.search-inp{width:100%;padding:6px 10px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:inherit;outline:none;color:var(--dark);background:var(--bg);transition:border-color .15s}
+.search-inp:focus{border-color:var(--blue)}
+.tool-btn.hidden{display:none}
+@keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
+.dots span{animation:blink 1.2s infinite;display:inline-block;margin:0 1px}
+.dots span:nth-child(2){animation-delay:.2s}
+.dots span:nth-child(3){animation-delay:.4s}
+.out-empty{text-align:center;padding:36px 20px;color:var(--muted)}
+.out-empty-icon{font-size:24px;margin-bottom:8px}
+.out-empty p{font-size:12px;line-height:1.6}
+.btn-gen{align-self:stretch}
+.btn-gen{padding:10px 22px;background:var(--blue);color:#fff;border:none;border-radius:var(--rsm);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;transition:opacity .15s;align-self:flex-start}
+.btn-gen:hover{opacity:.88}
+.btn-gen:disabled{opacity:.5;cursor:not-allowed}
+.output-section{margin-top:20px}
+.output-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.output-lbl{font-size:12px;font-weight:600;color:var(--mid)}
+.btn-copy{padding:4px 12px;background:var(--white);border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;color:var(--muted);font-family:inherit;transition:all .15s}
+.btn-copy:hover{border-color:var(--blue);color:var(--blue)}
+.output-box{background:var(--white);border:1px solid var(--border);border-radius:var(--rsm);padding:20px;font-size:13px;line-height:1.75;color:var(--dark);white-space:pre-wrap;min-height:180px;overflow-y:auto;font-family:inherit}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="index.html">
+    <img src="perfectskills_logo.png" alt="Perfect Skills" class="nav-logo">
+    <span class="nav-sep"></span>
+    <span class="nav-product">AI Tool Kit</span>
+  </a>
+  <span class="nav-domain">HR Tools</span>
+</nav>
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <a class="back-link" href="index.html">← All Domains</a>
+      <div class="domain-row"><span class="d-icon">👥</span><div><div class="d-name">HR</div><div class="d-count">20 tools · 5 agents</div></div></div>
+    </div>
+    <div id="tool-list"></div>
+  </aside>
+  <main class="content" id="content"></main>
+</div>
+<script>
+const DOMAIN = {
+  name:'HR', icon:'👥',
+  tools:[
+    {
+      id:'resume-parser', name:'Resume Parser & JD Matching Engine',
+      description:'Parses a resume and scores candidate fit against a job description.',
+      fields:[
+        {id:'resume',label:'Resume',type:'textarea',placeholder:'Paste the full resume text here…',rows:8,required:true},
+        {id:'jd',label:'Job Description',type:'textarea',placeholder:'Paste the full job description here…',rows:8,required:true}
+      ],
+      systemPrompt:`You are a senior HR analyst and recruiter. Analyse the resume against the job description and produce a structured match report.
+
+Format:
+## Match Score: [X/10]
+**Verdict:** Strong Consider / Consider / Weak Consider / Pass
+
+## Candidate Summary
+[3-4 sentence overview of background]
+
+## Matching Strengths
+• [Specific alignments with JD requirements]
+
+## Gaps & Concerns
+• [Missing requirements or red flags]
+
+## Recommended Interview Focus Areas
+• [Areas to probe further]
+
+Be objective and base every observation strictly on the provided content.`,
+      buildUserMessage:f=>`Analyse this resume against the job description.\n\nRESUME:\n${f.resume}\n\nJOB DESCRIPTION:\n${f.jd}`
+    },
+    {
+      id:'jd-generator', name:'Job Description Generator',
+      description:'Generates structured, bias-checked JDs from a role brief.',
+      fields:[
+        {id:'role',label:'Job Title',type:'text',placeholder:'e.g. Senior Product Manager',required:true},
+        {id:'seniority',label:'Seniority Level',type:'select',options:['Junior','Mid-level','Senior','Lead','Director','VP / C-Suite'],required:true},
+        {id:'responsibilities',label:'Key Responsibilities',type:'textarea',placeholder:'Describe the main duties…',rows:4,required:true},
+        {id:'skills',label:'Required Skills',type:'textarea',placeholder:'Technical and soft skills…',rows:3,required:true},
+        {id:'context',label:'Company / Team Context',type:'textarea',placeholder:'Company overview, team size, industry (optional)',rows:3,required:false}
+      ],
+      systemPrompt:`You are a senior HR specialist. Write a clear, inclusive, well-structured job description.
+
+Format:
+## [Job Title]
+**About the Role:** [2-3 sentences]
+**Key Responsibilities:**
+• [6-8 bullet points]
+**Required Qualifications:**
+• [5-6 bullet points]
+**Preferred Qualifications:**
+• [3-4 bullet points]
+**What We Offer:**
+• [4-5 bullet points]
+
+Use inclusive language. Avoid inflating requirements. Distinguish must-haves from nice-to-haves.`,
+      buildUserMessage:f=>`Create a job description.\nRole: ${f.role}\nSeniority: ${f.seniority}\nResponsibilities: ${f.responsibilities}\nRequired Skills: ${f.skills}${f.context?'\nContext: '+f.context:''}`
+    },
+    {
+      id:'interview-questions', name:'Interview Question Bank Generator',
+      description:'Produces role-specific interview questions by seniority and function.',
+      fields:[
+        {id:'role',label:'Role / Job Title',type:'text',placeholder:'e.g. Data Engineer',required:true},
+        {id:'seniority',label:'Seniority',type:'select',options:['Junior','Mid-level','Senior','Lead','Director'],required:true},
+        {id:'dept',label:'Department / Function',type:'text',placeholder:'e.g. Engineering, Sales, Finance',required:true},
+        {id:'count',label:'Number of Questions',type:'select',options:['10','15','20','25'],required:true}
+      ],
+      systemPrompt:`You are an expert interviewer and talent assessment specialist. Create a structured interview question bank.
+
+Organise as:
+## Behavioural Questions (STAR format)
+[Questions probing past behaviour — numbered]
+
+## Technical / Functional Questions
+[Role-specific knowledge and skills — numbered]
+
+## Situational Questions
+[Hypothetical scenarios relevant to the role — numbered]
+
+## Culture & Values Questions
+[Alignment and motivation — numbered]
+
+For each question, add a brief note: *What to listen for: …*
+Keep questions open-ended. Tailor difficulty to the seniority level.`,
+      buildUserMessage:f=>`Generate ${f.count} interview questions for a ${f.seniority} ${f.role} in ${f.dept}.`
+    },
+    {
+      id:'candidate-shortlisting', name:'Candidate Shortlisting & Ranking Tool',
+      description:'Scores and ranks applicants from a bulk upload against defined criteria.',
+      fields:[
+        {id:'criteria',label:'Evaluation Criteria / JD Requirements',type:'textarea',placeholder:'List the must-have and nice-to-have criteria…',rows:4,required:true},
+        {id:'candidates',label:'Candidate Profiles',type:'textarea',placeholder:'Paste each candidate profile separated by --- (name, background, skills, experience)…',rows:10,required:true}
+      ],
+      systemPrompt:`You are a talent acquisition specialist. Evaluate and rank the candidates against the provided criteria.
+
+For each candidate produce:
+**[Candidate Name]**
+Score: [X/10]
+Strengths: [bullet points]
+Gaps: [bullet points]
+Verdict: Strong / Consider / Pass
+
+End with:
+## Ranking Summary
+[Numbered list from highest to lowest score with one-line rationale each]
+
+Be objective. Base scores only on the information provided.`,
+      buildUserMessage:f=>`Rank these candidates against the criteria.\n\nCRITERIA:\n${f.criteria}\n\nCANDIDATES:\n${f.candidates}`
+    },
+    {
+      id:'offer-letter', name:'Offer Letter Generator',
+      description:'Drafts personalised offer letters from a template and candidate data.',
+      fields:[
+        {id:'candidate',label:'Candidate Name',type:'text',placeholder:'e.g. Priya Sharma',required:true},
+        {id:'role',label:'Role / Job Title',type:'text',placeholder:'e.g. Senior Software Engineer',required:true},
+        {id:'department',label:'Department',type:'text',placeholder:'e.g. Product Engineering',required:true},
+        {id:'start_date',label:'Start Date',type:'text',placeholder:'e.g. 1 June 2025',required:true},
+        {id:'salary',label:'Compensation',type:'text',placeholder:'e.g. ₹18 LPA / $85,000 per year',required:true},
+        {id:'manager',label:'Reporting To',type:'text',placeholder:'e.g. Rahul Mehta, VP Engineering',required:true},
+        {id:'benefits',label:'Key Benefits',type:'textarea',placeholder:'e.g. health insurance, 20 days leave, remote-first…',rows:3,required:false},
+        {id:'company',label:'Company Name',type:'text',placeholder:'e.g. Acme Technologies',required:true}
+      ],
+      systemPrompt:`You are an HR professional. Draft a formal, warm, and professional offer letter.
+
+Structure:
+- Date
+- Candidate name and address placeholder
+- Subject: Offer of Employment — [Role]
+- Opening congratulations paragraph
+- Role, department, and reporting structure
+- Start date and work location
+- Compensation package (detailed)
+- Benefits overview
+- Acceptance deadline (7 days from date)
+- Closing with excitement about joining
+- Signature block placeholder
+
+Keep the tone professional yet welcoming. Use [COMPANY_NAME] for the company name where appropriate.`,
+      buildUserMessage:f=>`Draft an offer letter.\nCandidate: ${f.candidate}\nRole: ${f.role}\nDepartment: ${f.department}\nStart Date: ${f.start_date}\nCompensation: ${f.salary}\nReporting To: ${f.manager}\nCompany: ${f.company}${f.benefits?'\nBenefits: '+f.benefits:''}`
+    },
+    {
+      id:'onboarding-kit', name:'Onboarding Kit Generator',
+      description:'Creates a tailored onboarding checklist and welcome pack per role.',
+      fields:[
+        {id:'role',label:'Role / Job Title',type:'text',placeholder:'e.g. Marketing Manager',required:true},
+        {id:'dept',label:'Department',type:'text',placeholder:'e.g. Marketing',required:true},
+        {id:'start_date',label:'Start Date',type:'text',placeholder:'e.g. 15 June 2025',required:false},
+        {id:'tools',label:'Key Tools & Systems',type:'textarea',placeholder:'e.g. Slack, Notion, Salesforce, Figma…',rows:2,required:false},
+        {id:'context',label:'Team / Company Context',type:'textarea',placeholder:'Team size, company stage, any special notes…',rows:3,required:false}
+      ],
+      systemPrompt:`You are an experienced HR specialist. Create a comprehensive, well-structured onboarding kit.
+
+Include:
+## Welcome Message
+[Warm, personal welcome note]
+
+## Week 1 Checklist — Day by Day
+[Day 1 through Day 5 with specific tasks]
+
+## Tools & Access Setup
+[List of tools to set up with brief instructions]
+
+## Key People to Meet
+[Roles/teams to connect with in the first 2 weeks]
+
+## 30-60-90 Day Goals Framework
+[Clear milestones for the first 3 months]
+
+## Useful Resources
+[Links placeholders, documents to read, processes to learn]
+
+Tailor everything to the specific role and department.`,
+      buildUserMessage:f=>`Create an onboarding kit.\nRole: ${f.role}\nDepartment: ${f.dept}${f.start_date?'\nStart Date: '+f.start_date:''}${f.tools?'\nTools & Systems: '+f.tools:''}${f.context?'\nContext: '+f.context:''}`
+    },
+    {
+      id:'recruitment-outreach', name:'Recruitment Outreach Message Generator',
+      description:'Writes personalised LinkedIn/WhatsApp outreach messages for sourcers.',
+      fields:[
+        {id:'channel',label:'Channel',type:'select',options:['LinkedIn','WhatsApp','Email'],required:true},
+        {id:'candidate_name',label:'Candidate Name',type:'text',placeholder:'e.g. Arjun Kapoor',required:true},
+        {id:'candidate_role',label:"Candidate's Current Role",type:'text',placeholder:"e.g. Senior Data Scientist at Flipkart",required:true},
+        {id:'recruiting_for',label:'Role You Are Recruiting For',type:'text',placeholder:'e.g. Lead Data Scientist at Startup XYZ',required:true},
+        {id:'your_context',label:'Your Name & Company',type:'text',placeholder:'e.g. Riya, Talent at Startup XYZ',required:true},
+        {id:'why_them',label:'Why This Candidate (personalization hook)',type:'textarea',placeholder:'What specifically caught your eye about them…',rows:3,required:false}
+      ],
+      systemPrompt:`You are an expert recruiter. Write a concise, personalised outreach message that feels human and gets responses.
+
+Guidelines:
+- LinkedIn/WhatsApp: 60-100 words max
+- Email: subject line + 120-150 words max
+- Open with a specific, genuine observation about the candidate
+- Briefly explain the opportunity and why it's relevant to them
+- Clear, low-friction CTA (e.g. "open to a quick chat?")
+- Avoid generic phrases like "I came across your profile"
+- Sound like a person, not a recruiter template`,
+      buildUserMessage:f=>`Write a ${f.channel} outreach message.\nCandidate: ${f.candidate_name} (${f.candidate_role})\nRole I'm recruiting for: ${f.recruiting_for}\nFrom: ${f.your_context}${f.why_them?'\nPersonalisation hook: '+f.why_them:''}`
+    },
+    {
+      id:'hr-policy-qa', name:'HR Policy Q&A Bot',
+      description:'Ingests your handbook and answers staff queries on leave and policies instantly.',
+      fields:[
+        {id:'policy',label:'HR Policy / Handbook Section',type:'textarea',placeholder:'Paste the relevant policy or handbook section here…',rows:8,required:true},
+        {id:'question',label:'Employee Question',type:'textarea',placeholder:'e.g. How many sick days am I entitled to per year?',rows:3,required:true}
+      ],
+      systemPrompt:`You are an HR policy assistant. Answer the employee's question based strictly on the provided policy document.
+
+Format:
+**Answer:** [Clear, direct answer]
+
+**Policy Reference:** [Quote the relevant section verbatim]
+
+**Important Notes:** [Any caveats, exceptions, or next steps if applicable]
+
+If the answer is not in the provided policy, say so clearly and suggest contacting HR directly. Do not invent information.`,
+      buildUserMessage:f=>`Answer this question based on the HR policy.\n\nPOLICY:\n${f.policy}\n\nQUESTION:\n${f.question}`
+    },
+    {
+      id:'exit-interview-summarizer', name:'Exit Interview Summarizer',
+      description:'Synthesises exit interview responses into key themes and actionable insights.',
+      fields:[
+        {id:'responses',label:'Exit Interview Responses',type:'textarea',placeholder:'Paste the raw exit interview transcript or responses here…',rows:10,required:true},
+        {id:'context',label:'Context (optional)',type:'text',placeholder:"e.g. Role: Sales Manager, Tenure: 2 years",required:false}
+      ],
+      systemPrompt:`You are an HR analytics specialist. Synthesise exit interview responses into a structured, actionable summary.
+
+Format:
+## Key Themes
+• [Top 3-5 themes that emerge from the responses]
+
+## Reasons for Leaving
+• [Direct and indirect reasons cited]
+
+## What Was Working Well
+• [Positive aspects mentioned]
+
+## Areas of Concern
+• [Issues that should be addressed]
+
+## Actionable Recommendations
+• [Specific, practical steps HR/management should take]
+
+## Verbatim Quotes Worth Sharing
+"[Impactful direct quotes from the interview]"
+
+Be honest and objective. Surface uncomfortable truths clearly.`,
+      buildUserMessage:f=>`Summarise this exit interview.${f.context?'\nContext: '+f.context:''}\n\nINTERVIEW RESPONSES:\n${f.responses}`
+    },
+    {
+      id:'performance-review', name:'Performance Review Summarizer',
+      description:'Condenses manager and peer feedback into structured review summaries.',
+      fields:[
+        {id:'employee',label:'Employee Name & Role',type:'text',placeholder:'e.g. Sneha Gupta, Product Designer',required:true},
+        {id:'period',label:'Review Period',type:'text',placeholder:'e.g. H1 2025',required:true},
+        {id:'manager',label:'Manager Feedback',type:'textarea',placeholder:'Paste manager feedback here…',rows:5,required:true},
+        {id:'peer',label:'Peer Feedback',type:'textarea',placeholder:'Paste peer feedback here (optional)…',rows:4,required:false},
+        {id:'self',label:'Self-Assessment',type:'textarea',placeholder:'Paste self-assessment here (optional)…',rows:4,required:false}
+      ],
+      systemPrompt:`You are a senior HR business partner. Synthesise feedback into a clear, balanced performance review summary.
+
+Format:
+## [Employee Name] — [Review Period] Performance Summary
+
+## Overall Assessment
+[3-4 sentence summary of performance]
+
+## Key Strengths
+• [Specific, evidenced strengths]
+
+## Areas for Development
+• [Specific, constructive development areas]
+
+## Notable Achievements
+• [Concrete accomplishments from the period]
+
+## Goals for Next Period
+• [3-5 suggested goals based on the feedback themes]
+
+## Manager Recommendation
+[Rating suggestion: Exceeds Expectations / Meets Expectations / Needs Improvement + rationale]
+
+Be constructive, specific, and balanced.`,
+      buildUserMessage:f=>`Summarise this performance review.\nEmployee: ${f.employee}\nPeriod: ${f.period}\n\nManager Feedback:\n${f.manager}${f.peer?'\n\nPeer Feedback:\n'+f.peer:''}${f.self?'\n\nSelf-Assessment:\n'+f.self:''}`
+    },
+    {
+      id:'bgv-checklist', name:'Background Verification Checklist Generator',
+      description:'Produces a role- and geography-specific BGV checklist so nothing gets missed.',
+      fields:[
+        {id:'role',label:'Job Title / Role',type:'text',placeholder:'e.g. Finance Controller',required:true},
+        {id:'seniority',label:'Seniority',type:'select',options:['Junior','Mid-level','Senior','Lead','Director','Executive'],required:true},
+        {id:'country',label:'Country / Region',type:'text',placeholder:'e.g. India, UK, USA',required:true},
+        {id:'industry',label:'Industry',type:'select',options:['Technology','Finance / Banking','Healthcare','Education','Legal','Manufacturing','Retail','Government','Other'],required:true}
+      ],
+      systemPrompt:`You are a background verification specialist. Create a comprehensive BGV checklist tailored to the role, seniority, location, and industry.
+
+Format:
+## Background Verification Checklist — [Role], [Country]
+
+### Mandatory Checks
+- [ ] [Check name] — [Brief description of what to verify and how]
+
+### Role-Specific Checks
+- [ ] [Check name] — [Rationale]
+
+### Documentation Required
+- [ ] [Document name] — [What's needed and acceptable formats]
+
+### Timelines & Notes
+[Expected timelines, local legal requirements, and important notes for this geography]
+
+Be specific about legal requirements and local regulations.`,
+      buildUserMessage:f=>`Create a BGV checklist.\nRole: ${f.role}\nSeniority: ${f.seniority}\nCountry: ${f.country}\nIndustry: ${f.industry}`
+    },
+    {
+      id:'ats-optimizer', name:'ATS Resume Optimizer',
+      description:'Rewrites resume sections to pass ATS filters for a specific JD.',
+      fields:[
+        {id:'resume',label:'Current Resume',type:'textarea',placeholder:'Paste your resume text here…',rows:8,required:true},
+        {id:'jd',label:'Target Job Description',type:'textarea',placeholder:'Paste the job description you are applying to…',rows:6,required:true}
+      ],
+      systemPrompt:`You are an ATS optimisation expert and career coach. Rewrite the resume to maximise ATS match for the specific job description.
+
+Provide:
+## ATS Score Analysis
+Current match: [X%] → Target: [Y%]
+
+## Key Missing Keywords
+[Keywords from the JD not present in the resume]
+
+## Optimised Professional Summary
+[Rewritten summary with ATS keywords naturally incorporated]
+
+## Rewritten Experience Bullets
+[For each relevant role, rewrite 2-3 bullets using JD language and strong action verbs with quantified outcomes]
+
+## Skills Section Update
+[Revised skills section aligned with JD terminology]
+
+## Tips
+[Any additional formatting or content tips]
+
+Preserve authenticity — only reframe real experience, never fabricate.`,
+      buildUserMessage:f=>`Optimise this resume for the target JD.\n\nRESUME:\n${f.resume}\n\nJOB DESCRIPTION:\n${f.jd}`
+    },
+    {
+      id:'cover-letter', name:'Cover Letter Generator',
+      description:'Writes tailored cover letters matched to a specific job and company.',
+      fields:[
+        {id:'name',label:'Your Name',type:'text',placeholder:'e.g. Rohan Mehta',required:true},
+        {id:'role',label:'Role Applying For',type:'text',placeholder:'e.g. Product Manager',required:true},
+        {id:'company',label:'Company Name',type:'text',placeholder:'e.g. Zomato',required:true},
+        {id:'highlights',label:'Key Experience Highlights',type:'textarea',placeholder:'Your most relevant achievements and experience for this role…',rows:4,required:true},
+        {id:'motivation',label:'Why This Company / Role',type:'textarea',placeholder:'What genuinely excites you about this specific company or role…',rows:3,required:true}
+      ],
+      systemPrompt:`You are a professional career coach and cover letter specialist. Write a compelling, personalised cover letter.
+
+Structure:
+- Header with contact details placeholder
+- Date
+- Hiring Manager salutation (Dear Hiring Manager, or Dear [Name] if provided)
+- Opening paragraph: Hook with genuine enthusiasm and a specific observation about the company
+- Body paragraph 1: Most relevant experience with a specific achievement
+- Body paragraph 2: Skills and how they directly address the company's needs
+- Closing paragraph: Clear expression of interest and CTA
+- Professional sign-off
+
+Keep it to 250-300 words. Sound human and specific, not templated.`,
+      buildUserMessage:f=>`Write a cover letter.\nApplicant: ${f.name}\nRole: ${f.role}\nCompany: ${f.company}\nKey Experience: ${f.highlights}\nMotivation: ${f.motivation}`
+    },
+    {
+      id:'skill-gap', name:'Skill Gap Analyzer',
+      description:'Compares a candidate profile to a target role and highlights missing skills.',
+      fields:[
+        {id:'profile',label:'Current Profile / Resume',type:'textarea',placeholder:'Paste the candidate profile or resume here…',rows:6,required:true},
+        {id:'target',label:'Target Role / Job Description',type:'textarea',placeholder:'Paste the target role or JD here…',rows:6,required:true}
+      ],
+      systemPrompt:`You are a career development specialist. Analyse the gap between the current profile and target role.
+
+Format:
+## Skill Gap Analysis
+
+### Match Overview
+[1-2 sentence overall assessment]
+
+### Current Strengths (Aligned with Target Role)
+• [Skills/experience that transfer well]
+
+### Critical Gaps (Must-Haves)
+• [Skill] — Gap Level: High/Medium — Estimated time to close: [X months]
+
+### Minor Gaps (Nice-to-Haves)
+• [Skill] — Gap Level: Low — Quick win or longer term
+
+### Recommended Action Plan
+1. [Immediate action — 0-1 month]
+2. [Short-term action — 1-3 months]
+3. [Medium-term action — 3-6 months]
+
+### Realistic Readiness Timeline
+[Honest assessment of when they could be competitive for this role]`,
+      buildUserMessage:f=>`Analyse the skill gap.\n\nCURRENT PROFILE:\n${f.profile}\n\nTARGET ROLE:\n${f.target}`
+    },
+    {
+      id:'career-path', name:'Career Path Advisor',
+      description:'Maps realistic next roles based on current skills including transition paths.',
+      fields:[
+        {id:'current_role',label:'Current Role / Title',type:'text',placeholder:'e.g. Software Engineer',required:true},
+        {id:'experience',label:'Years of Experience',type:'text',placeholder:'e.g. 4 years',required:true},
+        {id:'skills',label:'Key Skills',type:'textarea',placeholder:'Your main technical and soft skills…',rows:3,required:true},
+        {id:'goals',label:'Career Goals & Preferences',type:'textarea',placeholder:'What you want to achieve, preferred work style, industries of interest…',rows:3,required:true}
+      ],
+      systemPrompt:`You are a seasoned career advisor. Map out realistic and specific career paths based on the person's current position and goals.
+
+Format:
+## Career Path Options
+
+### Path 1: [Name — e.g. "Natural Progression"]
+Next Role: [Title] → [2nd Role] → [3rd Role]
+Timeline: [Realistic timeframe]
+Key skills to build: [3-4 skills]
+Why this fits: [Brief rationale]
+
+### Path 2: [Name — e.g. "Lateral Move for Growth"]
+[Same structure]
+
+### Path 3: [Name — e.g. "Career Transition" — if relevant]
+[Same structure]
+
+### Immediate Next Steps
+1. [Specific action]
+2. [Specific action]
+3. [Specific action]
+
+Be honest about timelines and difficulty. Give real role titles, not vague descriptions.`,
+      buildUserMessage:f=>`Map career paths.\nCurrent Role: ${f.current_role}\nExperience: ${f.experience}\nSkills: ${f.skills}\nGoals: ${f.goals}`
+    },
+    {
+      id:'learning-path', name:'Learning Path Generator',
+      description:'Builds a structured upskilling plan for a target role with a realistic timeline.',
+      fields:[
+        {id:'current',label:'Current Role / Background',type:'text',placeholder:'e.g. Junior Frontend Developer',required:true},
+        {id:'target',label:'Target Role',type:'text',placeholder:'e.g. Full-Stack Engineer',required:true},
+        {id:'skills',label:'Current Skills',type:'textarea',placeholder:'List your current skills and tools…',rows:3,required:true},
+        {id:'time',label:'Available Time Per Week',type:'select',options:['2-3 hours','4-5 hours','6-8 hours','10+ hours'],required:true},
+        {id:'timeline',label:'Target Timeline',type:'select',options:['3 months','6 months','9 months','12 months','18 months'],required:true}
+      ],
+      systemPrompt:`You are a learning and development specialist. Build a structured, realistic learning path.
+
+Format:
+## Learning Path: [Current] → [Target]
+**Total Timeline:** [X months] | **Weekly Commitment:** [X hours]
+
+### Phase 1: Foundation (Weeks 1-X)
+**Goal:** [What to achieve]
+**Topics:**
+• [Topic] — Resource: [Specific course/book/resource name] — Time: [X hours]
+
+### Phase 2: Core Skills (Weeks X-Y)
+[Same structure]
+
+### Phase 3: Advanced & Portfolio (Weeks Y-Z)
+[Same structure]
+
+### Milestone Projects
+1. [Specific project to build at end of each phase]
+
+### Assessment Checkpoints
+[How to know you're ready to move on]
+
+### Recommended Resources
+[Specific, named resources — courses, books, YouTube channels]
+
+Be specific about resources. Use real course names (Coursera, Udemy, etc.).`,
+      buildUserMessage:f=>`Build a learning path.\nFrom: ${f.current}\nTo: ${f.target}\nCurrent Skills: ${f.skills}\nTime Available: ${f.time}/week\nTimeline: ${f.timeline}`
+    },
+    {
+      id:'interview-prep', name:'Interview Preparation Bot',
+      description:'Generates likely questions and model answers tailored to a specific role.',
+      fields:[
+        {id:'role',label:'Role Applying For',type:'text',placeholder:'e.g. Senior Data Analyst',required:true},
+        {id:'company',label:'Company',type:'text',placeholder:'e.g. McKinsey',required:true},
+        {id:'jd',label:'Job Description',type:'textarea',placeholder:'Paste the JD here…',rows:6,required:true},
+        {id:'background',label:'Your Background (optional)',type:'textarea',placeholder:'Brief summary of your relevant experience to personalise the answers…',rows:3,required:false}
+      ],
+      systemPrompt:`You are a top-tier interview coach. Prepare a comprehensive interview prep guide for this specific role and company.
+
+Format:
+## Company Research Notes
+[Key things to know about this company before the interview]
+
+## Top 10 Likely Interview Questions
+For each:
+**Q: [Question]**
+*Why they ask this:* [Brief rationale]
+*Model Answer Framework:* [STAR or other structure with talking points]
+
+## Technical / Skills Questions to Expect
+• [5-6 specific technical questions for this role]
+
+## Questions to Ask the Interviewer
+• [5 smart, specific questions that show genuine interest]
+
+## Key Themes to Weave Throughout
+• [3-4 narrative points to reinforce in every answer]
+
+Tailor everything specifically to this company and role.`,
+      buildUserMessage:f=>`Create an interview prep guide.\nRole: ${f.role}\nCompany: ${f.company}\nJD: ${f.jd}${f.background?'\nMy Background: '+f.background:''}`
+    },
+    {
+      id:'jd-decoder', name:'Job Description Decoder',
+      description:"Decodes what a JD actually means — real must-haves, filler, and red flags.",
+      fields:[
+        {id:'jd',label:'Job Description',type:'textarea',placeholder:'Paste the full job description here…',rows:10,required:true}
+      ],
+      systemPrompt:`You are a savvy career expert who reads between the lines of job descriptions. Decode this JD for a job seeker.
+
+Format:
+## JD Decoder
+
+### The Role in Plain English
+[2-3 sentence honest summary of what this role actually is]
+
+### Real Must-Haves (Non-Negotiable)
+• [Requirement] — *Why it's real:* [explanation]
+
+### Probably Filler / Wishlist
+• [Requirement] — *Reality:* [what they actually need]
+
+### Green Flags
+• [Positive signals in the JD]
+
+### Red Flags to Investigate
+• [Concerning language or signals — what to ask in the interview]
+
+### Salary Expectations
+[Market range estimate based on role, level, and any hints in the JD]
+
+### What They're Really Looking For
+[The core profile they want, stripped of corporate language]
+
+Be honest and direct. Job seekers need real talk, not corporate spin.`,
+      buildUserMessage:f=>`Decode this job description.\n\n${f.jd}`
+    },
+    {
+      id:'linkedin-reviewer', name:'LinkedIn Profile Reviewer',
+      description:'Audits and rewrites LinkedIn sections for visibility and recruiter appeal.',
+      fields:[
+        {id:'headline',label:'Current Headline',type:'text',placeholder:'Paste your current LinkedIn headline…',required:true},
+        {id:'summary',label:'About / Summary Section',type:'textarea',placeholder:'Paste your About section…',rows:5,required:true},
+        {id:'experience',label:'Key Experience Entries',type:'textarea',placeholder:'Paste 2-3 of your most recent experience entries…',rows:6,required:true},
+        {id:'target',label:'Target Role / Goal',type:'text',placeholder:'e.g. Targeting Product Manager roles at SaaS startups',required:true}
+      ],
+      systemPrompt:`You are a LinkedIn optimisation expert and personal branding specialist. Review and rewrite the profile for maximum recruiter visibility.
+
+Format:
+## Profile Audit Score: [X/10]
+
+## Headline
+**Current:** [their headline]
+**Rewritten:** [optimised headline — keyword-rich, value-driven, under 220 chars]
+*Why:* [brief explanation]
+
+## About Section
+**Issues:** [what's weak]
+**Rewritten version:**
+[Full rewritten About section — 3-4 paragraphs, keyword-rich, story-driven, ends with CTA]
+
+## Experience Entry Rewrites
+For each entry:
+**Rewritten bullets:** [Action verb + task + quantified result]
+
+## Quick Wins
+• [5 additional tips: skills section, banner, featured section, etc.]
+
+Optimise for both ATS/search and human readers.`,
+      buildUserMessage:f=>`Review and rewrite this LinkedIn profile.\nTarget: ${f.target}\n\nHeadline: ${f.headline}\n\nAbout Section:\n${f.summary}\n\nExperience:\n${f.experience}`
+    },
+    {
+      id:'cold-outreach-msg', name:'Cold Outreach Message Generator',
+      description:'Writes networking emails or DMs to potential referrers and hiring managers.',
+      fields:[
+        {id:'your_name',label:'Your Name',type:'text',placeholder:'e.g. Aditya Kumar',required:true},
+        {id:'your_context',label:'Your Role / Background',type:'text',placeholder:'e.g. 5-year software engineer looking for senior roles',required:true},
+        {id:'target_name',label:"Target Person's Name",type:'text',placeholder:'e.g. Meera Nair',required:true},
+        {id:'target_role',label:"Target Person's Role / Company",type:'text',placeholder:'e.g. Engineering Manager at Google',required:true},
+        {id:'purpose',label:'Purpose / Ask',type:'textarea',placeholder:'e.g. Asking for a referral, requesting a 15-min informational call, seeking advice…',rows:3,required:true},
+        {id:'channel',label:'Channel',type:'select',options:['LinkedIn DM','Email','Twitter / X'],required:true}
+      ],
+      systemPrompt:`You are a networking and outreach expert. Write a concise, genuine cold outreach message.
+
+Guidelines:
+- LinkedIn/Twitter: 80-120 words
+- Email: Subject line + 150-180 words
+- Open with something specific and genuine (not "I came across your profile")
+- State who you are in one sentence
+- Make the ask clear and low-friction
+- Show you've done your research
+- No flattery, no desperation, no walls of text
+- End with a simple, easy-to-say-yes CTA
+
+Write the message ready to send.`,
+      buildUserMessage:f=>`Write a ${f.channel} cold outreach message.\nFrom: ${f.your_name} (${f.your_context})\nTo: ${f.target_name} (${f.target_role})\nPurpose: ${f.purpose}`
+    },
+    // AGENTS
+    {
+      id:'ai-interview-bot', name:'AI Interview Bot', isAgent:true,
+      description:'Generates a structured screening interview with scoring rubric for a recruiter to use or automate.',
+      fields:[
+        {id:'role',label:'Role',type:'text',placeholder:'e.g. Customer Success Manager',required:true},
+        {id:'jd',label:'Job Description',type:'textarea',placeholder:'Paste the JD…',rows:5,required:true},
+        {id:'candidate',label:'Candidate Background',type:'textarea',placeholder:"Paste the candidate's resume or profile summary…",rows:5,required:true},
+        {id:'focus',label:'Screening Focus Areas',type:'textarea',placeholder:'e.g. Communication skills, technical depth, culture fit…',rows:2,required:false}
+      ],
+      systemPrompt:`You are an expert interviewer. Design a complete structured screening interview for this candidate and role.
+
+Produce:
+## Screening Interview Script
+
+### Opening (2 min)
+[Warm-up question and instructions for the interviewer]
+
+### Core Questions (20 min)
+For each question:
+**Q[n]: [Question]**
+*Probe:* [Follow-up if the answer is vague]
+*Green flag:* [What a good answer sounds like]
+*Red flag:* [What to be concerned about]
+
+### Closing (5 min)
+[Questions to ask the candidate + how to close]
+
+## Scoring Rubric
+| Dimension | Weight | 1 (Poor) | 3 (Good) | 5 (Excellent) |
+|-----------|--------|----------|----------|---------------|
+[5 key dimensions with scoring criteria]
+
+## Post-Interview Summary Template
+[Fill-in-the-blank summary template for the recruiter to complete after the call]`,
+      buildUserMessage:f=>`Design a screening interview.\nRole: ${f.role}\nJD: ${f.jd}\nCandidate: ${f.candidate}${f.focus?'\nFocus: '+f.focus:''}`
+    },
+    {
+      id:'mock-interview', name:'Mock Interview Simulator', isAgent:true,
+      description:'Simulates a realistic job interview with questions, model answers, and feedback.',
+      fields:[
+        {id:'role',label:'Role You Are Interviewing For',type:'text',placeholder:'e.g. Product Manager at a fintech startup',required:true},
+        {id:'level',label:'Interview Stage',type:'select',options:['HR Screening','Technical Round','Managerial Round','Final / Leadership Round'],required:true},
+        {id:'background',label:'Your Background',type:'textarea',placeholder:'Brief summary of your experience and skills…',rows:4,required:true}
+      ],
+      systemPrompt:`You are a world-class interview coach running a mock interview session. Simulate a realistic interview and provide detailed feedback.
+
+Format:
+## Mock Interview — [Role] | [Stage]
+
+---
+
+**Interviewer:** [Opening + Q1]
+
+**Model Answer:**
+[A strong example answer using STAR or relevant framework]
+
+---
+
+[Continue for 6-8 questions, each with model answer]
+
+---
+
+## Performance Feedback
+
+### What You Did Well (based on the model answers as a reference)
+• [Specific positives]
+
+### Areas to Improve
+• [Specific, actionable feedback]
+
+### Top 3 Tips for the Real Interview
+1. [Tip]
+2. [Tip]
+3. [Tip]
+
+Make the questions realistic and progressively more challenging.`,
+      buildUserMessage:f=>`Run a mock interview.\nRole: ${f.role}\nStage: ${f.level}\nMy Background: ${f.background}`
+    },
+    {
+      id:'salary-negotiation', name:'Salary Negotiation Coach', isAgent:true,
+      description:'Builds a personalised negotiation strategy with scripts for the actual call.',
+      fields:[
+        {id:'role',label:'Role & Company',type:'text',placeholder:'e.g. Senior Engineer at Razorpay',required:true},
+        {id:'current_offer',label:'Current Offer',type:'text',placeholder:'e.g. ₹22 LPA base + 10% bonus',required:true},
+        {id:'target',label:'Your Target Compensation',type:'text',placeholder:'e.g. ₹26 LPA base',required:true},
+        {id:'context',label:'Your Leverage & Context',type:'textarea',placeholder:'Competing offers, current salary, unique skills, market data you have…',rows:4,required:true}
+      ],
+      systemPrompt:`You are a salary negotiation expert and career coach. Build a complete negotiation strategy and provide word-for-word scripts.
+
+Format:
+## Negotiation Strategy
+
+### Your Position
+[Honest assessment of your leverage]
+
+### Recommended Ask
+[Specific ask with rationale — be bold but realistic]
+
+### The Opening Statement
+"[Word-for-word script for how to open the negotiation call]"
+
+### Handling Key Objections
+**If they say "This is our best offer":**
+"[Script]"
+
+**If they say "We can't move on base":**
+"[Script — pivot to other comp elements]"
+
+**If they push back on your number:**
+"[Script]"
+
+### Closing the Negotiation
+"[Script for accepting or asking for time]"
+
+### Other Comp Elements to Negotiate
+• [List non-salary items: signing bonus, equity, remote work, leave, etc.]
+
+Be direct. Give real numbers and real scripts.`,
+      buildUserMessage:f=>`Build a salary negotiation strategy.\nRole: ${f.role}\nCurrent Offer: ${f.current_offer}\nTarget: ${f.target}\nLeverage: ${f.context}`
+    },
+    {
+      id:'bulk-email-agent', name:'Bulk Email Script with Research Agent', isAgent:true,
+      description:'Generates a personalised outreach email for each candidate profile provided.',
+      fields:[
+        {id:'role',label:'Role You Are Hiring For',type:'text',placeholder:'e.g. iOS Developer',required:true},
+        {id:'company',label:'Your Company & Value Prop',type:'textarea',placeholder:'Company name, what you do, why it is a great place to work…',rows:3,required:true},
+        {id:'candidates',label:'Candidate Profiles',type:'textarea',placeholder:'Paste profiles separated by ---\nName:\nCurrent Role:\nKey Background:\n---',rows:10,required:true}
+      ],
+      systemPrompt:`You are a talent acquisition specialist. Write a personalised outreach email for each candidate profile provided.
+
+For each candidate produce:
+---
+**To:** [Candidate Name]
+**Subject:** [Personalised subject line]
+
+[Email body — 100-130 words, personalised to their specific background, professional yet warm, clear CTA]
+
+---
+
+Rules:
+- Each email must reference something specific from their profile
+- Never use the same opening twice
+- CTA is always a low-friction ask ("15-min chat?", "open to hearing more?")
+- Sound like a real person, not a mass mailer`,
+      buildUserMessage:f=>`Write personalised outreach emails for each candidate.\nRole Hiring For: ${f.role}\nCompany: ${f.company}\n\nCANDIDATE PROFILES:\n${f.candidates}`
+    }
+  ]
+};
+
+// ── Shared Logic ──────────────────────────────────────────────
+/* PS Tools API base — configurable. Default :8000; override via ?api=http://host:port (persists in localStorage). */
+const _psApiQp=new URLSearchParams(location.search).get('api');
+if(_psApiQp)localStorage.setItem('ps_api_base',_psApiQp);
+const API_BASE=(_psApiQp||localStorage.getItem('ps_api_base')||'http://localhost:8000').replace(/\/$/,'');
+const API_GENERATE=API_BASE+'/generate';
+function selectTool(id) {
+  const tool = DOMAIN.tools.find(t => t.id === id);
+  if (!tool) return;
+  document.querySelectorAll('.tool-btn').forEach(b => b.classList.toggle('active', b.dataset.id === id));
+  renderTool(tool);
+}
+
+function renderTool(tool) {
+  const fieldsHtml = tool.fields.map(f => {
+    let inp = '';
+    if (f.type === 'text')
+      inp = `<input type="text" id="f_${f.id}" placeholder="${f.placeholder||''}"${f.required?' required':''}>`;
+    else if (f.type === 'textarea')
+      inp = `<textarea id="f_${f.id}" placeholder="${f.placeholder||''}" rows="${f.rows||4}"${f.required?' required':''}></textarea><label class="btn-upload"><input type="file" accept=".txt,.pdf,.docx" onchange="handleFileUpload('f_${f.id}',this)">📎 Upload file</label>`;
+    else if (f.type === 'select')
+      inp = `<select id="f_${f.id}">${f.options.map(o=>`<option>${o}</option>`).join('')}</select>`;
+    return `<div class="field-group"><label class="field-label" for="f_${f.id}">${f.label}${f.required?'':' <span class="field-opt">(optional)</span>'}</label>${inp}</div>`;
+  }).join('');
+
+  document.getElementById('content').innerHTML = `
+    <div class="tool-header">
+      <h2 class="tool-name">${tool.name}</h2>
+      <p class="tool-desc">${tool.description}</p>
+    </div>
+    <div class="form-card">
+      ${fieldsHtml}
+      <button class="btn-gen" onclick="runGenerate('${tool.id}')">Generate</button>
+    </div>
+    <div class="output-section" id="out-section">
+      <div class="output-header"><span class="output-lbl">Output</span><div style="display:flex;gap:6px"><button class="btn-dl" onclick="downloadOut()">↓ Save</button><button class="btn-copy" onclick="copyOut()">Copy</button></div></div>
+      <div class="output-box" id="out-box"><div class="out-empty"><div class="out-empty-icon">✨</div><p>Fill in the form and click Generate.</p></div></div>
+    </div>`;
+}
+
+async function runGenerate(toolId) {
+  const tool = DOMAIN.tools.find(t => t.id === toolId);
+  if (!tool) return;
+  const data = {};
+  let ok = true;
+  for (const f of tool.fields) {
+    const el = document.getElementById(`f_${f.id}`);
+    if (!el) continue;
+    const v = el.value.trim();
+    if (f.required && !v) { el.style.borderColor = '#ef4444'; ok = false; } else { el.style.borderColor = ''; data[f.id] = v; }
+  }
+  if (!ok) return;
+
+  const outBox = document.getElementById('out-box');
+  const btn = document.querySelector('.btn-gen');
+  outBox.classList.add('streaming');
+  outBox.innerHTML = '<span style="color:var(--muted)">Generating<span class="dots"><span>.</span><span>.</span><span>.</span></span></span>';
+  btn.disabled = true; btn.textContent = 'Generating…';
+
+  try {
+    const res = await fetch(API_GENERATE, {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({system_prompt: tool.systemPrompt, user_message: tool.buildUserMessage(data)})
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const reader = res.body.getReader(); const dec = new TextDecoder(); let out = '';
+    outBox.textContent = '';
+    while (true) {
+      const {done, value} = await reader.read(); if (done) break;
+      for (const line of dec.decode(value).split('\n')) {
+        if (!line.startsWith('data: ')) continue;
+        const d = line.slice(6); if (d === '[DONE]') break;
+        try { const p = JSON.parse(d); if (p.error) { outBox.classList.remove('streaming'); outBox.style.color='#ef4444'; outBox.textContent='Error: '+p.error; } else if (p.text) { out += p.text; outBox.textContent = out; outBox.scrollTop = outBox.scrollHeight; } } catch {}
+      }
+    }
+    if (out && typeof marked !== 'undefined') { outBox.classList.remove('streaming'); outBox.innerHTML = marked.parse(out); } else { outBox.classList.remove('streaming'); }
+  } catch(e) {
+    outBox.classList.remove('streaming');
+    outBox.style.color = '#ef4444';
+    outBox.textContent = `Connection error: ${e.message}\n\nStart the backend:\n  cd backend\n  uvicorn main:app --reload`;
+  }
+  btn.disabled = false; btn.textContent = 'Generate';
+}
+
+function copyOut() {
+  const text = document.getElementById('out-box')?.innerText;
+  if (!text || text.includes('Fill in the form')) return;
+  navigator.clipboard.writeText(text).then(() => { const b = document.querySelector('.btn-copy'); b.textContent='Copied!'; setTimeout(()=>b.textContent='Copy',2000); });
+}
+
+function init() {
+  const tools = DOMAIN.tools.filter(t => !t.isAgent);
+  const agents = DOMAIN.tools.filter(t => t.isAgent);
+  document.getElementById('tool-list').innerHTML =
+    `<div class="sidebar-search"><input class="search-inp" type="text" placeholder="Search tools…" oninput="filterTools(this.value)"></div>` +
+    `<div class="sec-lbl">Tools · ${tools.length}</div>` +
+    tools.map(t=>`<button class="tool-btn" data-id="${t.id}" onclick="selectTool('${t.id}')">${t.name}</button>`).join('') +
+    (agents.length ? `<div class="sec-lbl ag">Agents · ${agents.length}</div>` + agents.map(t=>`<button class="tool-btn agent" data-id="${t.id}" onclick="selectTool('${t.id}')">${t.name}</button>`).join('') : '');
+  if (tools.length) selectTool(tools[0].id);
+}
+function filterTools(q) {
+  const lq = q.toLowerCase();
+  document.querySelectorAll('.tool-btn').forEach(b => {
+    b.classList.toggle('hidden', !b.textContent.toLowerCase().includes(lq));
+  });
+}
+function downloadOut() {
+  const text = document.getElementById('out-box')?.innerText;
+  if (!text || text.includes('Fill in the form')) return;
+  const a = document.createElement('a');
+  a.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(text);
+  a.download = 'output.txt'; a.click();
+}
+async function handleFileUpload(fieldId, input) {
+  const file = input.files[0]; if (!file) return;
+  const ext = file.name.split('.').pop().toLowerCase();
+  const ta = document.getElementById(fieldId);
+  const prev = ta.placeholder; ta.placeholder = 'Reading file…'; ta.disabled = true;
+  try {
+    if (ext === 'txt' || ext === 'md' || ext === 'csv') {
+      ta.value = await file.text();
+    } else if (ext === 'pdf') {
+      if (typeof pdfjsLib === 'undefined') { alert('PDF library not loaded yet, please retry.'); ta.disabled = false; ta.placeholder = prev; return; }
+      const buf = await file.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({data: new Uint8Array(buf)}).promise;
+      let text = '';
+      for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const content = await page.getTextContent();
+        text += content.items.map(item => item.str).join(' ') + '\n\n';
+      }
+      ta.value = text.trim();
+    } else if (ext === 'docx') {
+      if (typeof mammoth === 'undefined') { alert('DOCX library not loaded yet, please retry.'); ta.disabled = false; ta.placeholder = prev; return; }
+      const buf = await file.arrayBuffer();
+      const result = await mammoth.extractRawText({arrayBuffer: buf});
+      ta.value = result.value;
+    }
+  } catch(e) { alert('Could not read file: ' + e.message); }
+  ta.disabled = false; ta.placeholder = prev; input.value = '';
+}
+window.addEventListener('DOMContentLoaded', init);
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>if(typeof pdfjsLib!=='undefined')pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+</body>
+</html>

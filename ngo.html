@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NGO / Social Impact Tools — Perfect Skills AI Tool Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}:root{--blue:#2563eb;--blue-light:#eff6ff;--dark:#0f172a;--mid:#334155;--muted:#64748b;--border:#e2e8f0;--bg:#f8fafc;--white:#ffffff;--radius:12px;--rsm:8px}html,body{height:100%}body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--dark);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:56px}.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}.nav-logo{height:26px;width:auto}.nav-sep{width:1px;height:16px;background:var(--border)}.nav-product{font-size:12px;font-weight:500;color:var(--blue)}.nav-domain{font-size:12px;color:var(--muted)}
+.page-layout{display:grid;grid-template-columns:260px 1fr;height:calc(100vh - 56px);overflow:hidden}.sidebar{border-right:1px solid var(--border);background:var(--white);overflow-y:auto;display:flex;flex-direction:column}.sidebar-header{padding:16px;border-bottom:1px solid var(--border);flex-shrink:0}.back-link{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);text-decoration:none;margin-bottom:10px}.back-link:hover{color:var(--blue)}.domain-row{display:flex;align-items:center;gap:10px}.d-icon{font-size:22px}.d-name{font-size:15px;font-weight:700;color:var(--dark)}.d-count{font-size:11px;color:var(--muted);margin-top:2px}
+.sec-lbl{font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--muted);padding:12px 16px 5px}.sec-lbl.ag{color:#7c3aed}.tool-btn{display:block;width:100%;text-align:left;padding:7px 16px;background:none;border:none;cursor:pointer;font-size:12px;font-family:inherit;color:var(--mid);line-height:1.4;transition:background .12s,color .12s}.tool-btn:hover{background:var(--bg);color:var(--dark)}.tool-btn.active{background:var(--blue-light);color:var(--blue);font-weight:600}.tool-btn.agent:hover{background:rgba(124,58,237,.06);color:#5b21b6}.tool-btn.agent.active{background:rgba(124,58,237,.1);color:#5b21b6;font-weight:600}
+.content{overflow-y:auto;background:var(--bg);padding:32px}.tool-header{margin-bottom:24px}.tool-name{font-size:20px;font-weight:700;color:var(--dark);letter-spacing:-.3px;margin-bottom:5px}.tool-desc{font-size:13px;color:var(--muted);line-height:1.6}.form-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:18px}.field-group{display:flex;flex-direction:column;gap:6px}.field-label{font-size:12px;font-weight:600;color:var(--mid)}.field-opt{font-weight:400;color:var(--muted)}
+input[type=text],select,textarea{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:var(--rsm);font-size:13px;font-family:inherit;color:var(--dark);background:var(--white);outline:none;transition:border-color .15s,box-shadow .15s}input[type=text]:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.08)}textarea{resize:vertical;line-height:1.6}.btn-upload{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:var(--white);border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;color:var(--muted);cursor:pointer;font-family:inherit;transition:all .15s;margin-top:2px}.btn-upload:hover{border-color:var(--blue);color:var(--blue)}.btn-upload input{display:none}.output-box{white-space:normal}.output-box.streaming{white-space:pre-wrap}.output-box h1,.output-box h2,.output-box h3,.output-box h4{font-weight:700;color:var(--dark)}.output-box h1{font-size:16px;margin:0 0 8px}.output-box h2{font-size:14px;margin:14px 0 6px;padding-bottom:4px;border-bottom:1px solid var(--border)}.output-box h3{font-size:13px;margin:12px 0 5px}.output-box h4{font-size:13px;margin:10px 0 4px;color:var(--mid)}.output-box p{margin:0 0 10px;line-height:1.7}.output-box p:last-child{margin-bottom:0}.output-box ul,.output-box ol{padding-left:20px;margin:0 0 10px}.output-box li{margin-bottom:4px;line-height:1.6}.output-box strong{font-weight:600}.output-box em{font-style:italic;color:var(--mid)}.output-box table{width:100%;border-collapse:collapse;margin:0 0 12px;font-size:12px}.output-box th{background:var(--bg);font-weight:600;padding:7px 10px;border:1px solid var(--border);text-align:left}.output-box td{padding:6px 10px;border:1px solid var(--border);vertical-align:top}.output-box tr:nth-child(even) td{background:#fafbfc}.output-box code{background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:1px 5px;font-size:11px;font-family:monospace}.output-box pre{background:var(--bg);border:1px solid var(--border);border-radius:var(--rsm);padding:14px;overflow-x:auto;margin:0 0 12px}.output-box pre code{background:none;border:none;padding:0}.output-box blockquote{border-left:3px solid #93c5fd;padding:8px 14px;color:var(--muted);margin:0 0 12px;background:var(--blue-light);border-radius:0 6px 6px 0}.output-box hr{border:none;border-top:1px solid var(--border);margin:14px 0}.btn-dl{padding:4px 12px;background:var(--white);border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;color:var(--muted);font-family:inherit;transition:all .15s}.btn-dl:hover{border-color:var(--blue);color:var(--blue)}.sidebar-search{padding:8px 16px 10px;border-bottom:1px solid var(--border);flex-shrink:0}.search-inp{width:100%;padding:6px 10px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:inherit;outline:none;color:var(--dark);background:var(--bg);transition:border-color .15s}.search-inp:focus{border-color:var(--blue)}.tool-btn.hidden{display:none}@keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}.dots span{animation:blink 1.2s infinite;display:inline-block;margin:0 1px}.dots span:nth-child(2){animation-delay:.2s}.dots span:nth-child(3){animation-delay:.4s}.out-empty{text-align:center;padding:36px 20px;color:var(--muted)}.out-empty-icon{font-size:24px;margin-bottom:8px}.out-empty p{font-size:12px;line-height:1.6}.btn-gen{align-self:stretch}
+.btn-gen{padding:10px 22px;background:var(--blue);color:#fff;border:none;border-radius:var(--rsm);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;transition:opacity .15s;align-self:flex-start}.btn-gen:hover{opacity:.88}.btn-gen:disabled{opacity:.5;cursor:not-allowed}.output-section{margin-top:20px}.output-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}.output-lbl{font-size:12px;font-weight:600;color:var(--mid)}.btn-copy{padding:4px 12px;background:var(--white);border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;color:var(--muted);font-family:inherit;transition:all .15s}.btn-copy:hover{border-color:var(--blue);color:var(--blue)}.output-box{background:var(--white);border:1px solid var(--border);border-radius:var(--rsm);padding:20px;font-size:13px;line-height:1.75;color:var(--dark);white-space:pre-wrap;min-height:180px;overflow-y:auto;font-family:inherit}
+</style>
+</head>
+<body>
+<nav><a class="nav-brand" href="index.html"><img src="perfectskills_logo.png" alt="Perfect Skills" class="nav-logo"><span class="nav-sep"></span><span class="nav-product">AI Tool Kit</span></a><span class="nav-domain">NGO / Social Impact Tools</span></nav>
+<div class="page-layout">
+  <aside class="sidebar"><div class="sidebar-header"><a class="back-link" href="index.html">← All Domains</a><div class="domain-row"><span class="d-icon">🌱</span><div><div class="d-name">NGO / Social Impact</div><div class="d-count">11 tools · 3 agents</div></div></div></div><div id="tool-list"></div></aside>
+  <main class="content" id="content"></main>
+</div>
+<script>
+const DOMAIN={name:'NGO / Social Impact',icon:'🌱',tools:[
+{id:'grant-proposal',name:'Grant Proposal Generator',description:'Drafts a full grant proposal from project goals, budget, and funder requirements.',fields:[{id:'org',label:'Organisation Name & Mission',type:'textarea',placeholder:'Your organisation name and 1-2 sentence mission statement…',rows:2,required:true},{id:'project',label:'Project Name & Description',type:'textarea',placeholder:'What the project aims to do, who it serves, and how…',rows:4,required:true},{id:'funder',label:'Funder / Grant Requirements',type:'textarea',placeholder:'Funder name, funding priorities, required format, word limits if known…',rows:3,required:true},{id:'budget',label:'Requested Amount & Budget Overview',type:'textarea',placeholder:'Total amount requested and main budget categories…',rows:3,required:true},{id:'outcomes',label:'Expected Outcomes',type:'textarea',placeholder:'Specific, measurable outcomes you expect to achieve…',rows:3,required:true}],
+systemPrompt:`You are an expert grant writer with 15+ years of experience. Write a compelling, professional grant proposal.
+
+Format:
+# Grant Proposal — [Project Name]
+**Submitted by:** [Organisation] | **To:** [Funder] | **Amount Requested:** [Amount]
+
+## Executive Summary
+[Powerful 150-word summary: the problem, your solution, expected impact, amount requested]
+
+## Organisation Overview
+[Mission, history, key achievements, credibility indicators]
+
+## Problem Statement / Needs Assessment
+[Data-driven, compelling description of the problem this project addresses]
+
+## Project Description
+[Detailed description of the project — what, how, where, with whom]
+
+## Goals & Objectives
+| Goal | SMART Objective | Timeline |
+
+## Activities & Timeline
+| Activity | Description | Timeline | Responsible |
+
+## Target Beneficiaries
+[Who will be served, how many, demographics, selection criteria]
+
+## Evaluation Plan
+[How you will measure success — indicators, data collection, reporting]
+
+## Budget Narrative
+| Line Item | Amount | Justification |
+**Total:** [Amount]
+
+## Sustainability Plan
+[How the project will continue after the grant period]
+
+## Conclusion
+[Compelling close — call to partnership]`,
+buildUserMessage:f=>`Write a grant proposal.\nOrganisation: ${f.org}\nProject: ${f.project}\nFunder: ${f.funder}\nBudget: ${f.budget}\nOutcomes: ${f.outcomes}`},
+
+{id:'impact-report',name:'Impact Report Generator',description:'Produces structured impact reports from program data and outcome metrics.',fields:[{id:'org',label:'Organisation Name',type:'text',placeholder:'e.g. Clean Water Foundation',required:true},{id:'program',label:'Program / Project',type:'text',placeholder:'e.g. Rural Water Access Programme, Maharashtra',required:true},{id:'period',label:'Reporting Period',type:'text',placeholder:'e.g. April 2024 – March 2025',required:true},{id:'data',label:'Program Data & Outcomes',type:'textarea',placeholder:'Numbers served, activities conducted, metrics achieved, stories, testimonials…',rows:8,required:true}],
+systemPrompt:`You are an impact communication specialist. Create a compelling impact report.
+
+Format:
+# Impact Report — [Program]
+**[Organisation]** | **Period:** [Period]
+
+## Our Impact at a Glance
+[Visually impactful stat blocks:]
+**[X]** — [Key metric]
+**[X]** — [Key metric]
+**[X]** — [Key metric]
+
+## Message from Leadership
+[Short quote/statement — mark as [INSERT REAL QUOTE]]
+
+## Program Overview
+[What the program does and why it matters]
+
+## Our Year in Numbers
+| What We Did | How Many |
+[Activity table]
+
+## Stories of Change
+### [Name/Pseudonym if privacy needed]
+[Compelling 150-word beneficiary story showing real human impact]
+
+## Results Against Goals
+| Goal | Target | Achieved | Status |
+
+## How We Use Funding
+[Budget breakdown — % to programs vs admin]
+
+## Partner & Donor Acknowledgements
+[Placeholder for acknowledgements]
+
+## Looking Ahead
+[Next year's goals and plans]
+
+Write to inspire donors to continue giving and partners to continue collaborating.`,
+buildUserMessage:f=>`Create an impact report.\nOrg: ${f.org}\nProgram: ${f.program}\nPeriod: ${f.period}\nData: ${f.data}`},
+
+{id:'donor-comms',name:'Donor Communication Generator',description:'Writes personalised donor updates, thank-you letters, and stewardship messages.',fields:[{id:'type',label:'Communication Type',type:'select',options:['Thank You Letter','Impact Update','Year-End Appeal','Renewal Ask','Major Donor Stewardship','New Donor Welcome'],required:true},{id:'donor',label:'Donor Name & Context',type:'text',placeholder:'e.g. Mrs. Lakshmi Rao — donated ₹50,000 last year for education programme',required:true},{id:'org',label:'Your Organisation',type:'text',placeholder:'e.g. Pratham Foundation',required:true},{id:'impact',label:'Impact to Share',type:'textarea',placeholder:'Specific impact their donation has had, outcomes achieved…',rows:4,required:true}],
+systemPrompt:`You are a development communications specialist. Write a warm, effective, personalised donor communication.
+
+Format:
+**Subject:** [Specific, heartfelt subject line]
+
+Dear [Donor Name],
+
+[Opening: personal, warm, specific to their giving]
+
+[Impact paragraph: show them exactly what their donation did — specific numbers and a human story]
+
+[Appreciation: genuine, not formulaic]
+
+[If asking: clear, specific ask with reason — state the amount if renewal]
+
+[Vision paragraph: where you're heading with their continued support]
+
+[Closing: warm, personal sign-off]
+
+[Handwritten signature placeholder]
+[P.S.: if relevant — P.S. messages have high read rates]
+
+Rules:
+- Reference their specific giving/relationship
+- Lead with impact, not the ask
+- One clear ask per letter (if asking)
+- Under 300 words for most types
+- Sound like a person, not a nonprofit`,
+buildUserMessage:f=>`Write a ${f.type}.\nDonor: ${f.donor}\nOrg: ${f.org}\nImpact to share: ${f.impact}`},
+
+{id:'volunteer-onboarding',name:'Volunteer Onboarding Kit Generator',description:'Creates tailored volunteer welcome packs with role guides and expectations.',fields:[{id:'org',label:'Organisation Name',type:'text',placeholder:'e.g. Teach for Change',required:true},{id:'role',label:'Volunteer Role',type:'text',placeholder:'e.g. Community Health Educator, After-school Tutor',required:true},{id:'commitment',label:'Time Commitment',type:'text',placeholder:'e.g. Every Saturday 9am-1pm, 4 hours/week',required:true},{id:'context',label:'Program Context',type:'textarea',placeholder:'What the program does, where, with whom…',rows:3,required:true}],
+systemPrompt:`You are an NGO volunteer manager. Create a comprehensive volunteer onboarding kit.
+
+Format:
+# Welcome to [Organisation] — Volunteer Onboarding Kit
+**Role:** [Role] | **Commitment:** [Commitment]
+
+## Welcome Message
+[Warm, inspiring welcome from the organisation]
+
+## Our Mission & Your Role in It
+[Connect their volunteer work to the bigger mission]
+
+## What to Expect in Your Role
+### Day 1 Checklist
+- [ ] [Orientation steps]
+
+### Your Responsibilities
+[Clear, specific list of what the role involves]
+
+### What We Expect
+[Standards, professionalism, communication norms]
+
+### What You Can Expect from Us
+[Support, training, recognition]
+
+## Key Contacts
+| Name | Role | Contact | When to Reach |
+
+## Practical Information
+- Arrival & sign-in process
+- What to bring
+- Dress code
+- Expenses & reimbursement
+
+## Training Required
+- [ ] [Training module with completion deadline]
+
+## Safety & Safeguarding
+[Key policies — especially for roles with vulnerable populations]
+
+## Volunteer Agreement Summary
+[Key commitments both parties make]
+
+## FAQ
+[5-7 most common volunteer questions answered]
+
+## First Month Goals
+[Simple milestones to help new volunteers settle in]`,
+buildUserMessage:f=>`Create a volunteer onboarding kit.\nOrg: ${f.org}\nRole: ${f.role}\nCommitment: ${f.commitment}\nContext: ${f.context}`},
+
+{id:'fundraising-copy',name:'Fundraising Campaign Copy Generator',description:'Writes campaign messaging, emails, and social content for fundraising drives.',fields:[{id:'org',label:'Organisation Name',type:'text',placeholder:'e.g. Akshaya Patra Foundation',required:true},{id:'campaign',label:'Campaign Name & Goal',type:'text',placeholder:'e.g. "Feed a Child" — raise ₹10 lakhs for school meals',required:true},{id:'cause',label:'The Cause',type:'textarea',placeholder:'What problem you\'re solving, who is affected, the urgency…',rows:3,required:true},{id:'ask',label:'Donation Ask',type:'text',placeholder:'e.g. ₹1,000 feeds a child for a month',required:true}],
+systemPrompt:`You are a nonprofit fundraising copywriter. Create a complete campaign copy package.
+
+Format:
+## Fundraising Campaign Copy — [Campaign]
+
+### Campaign Tagline
+[Short, memorable, emotionally resonant — under 10 words]
+
+### Core Campaign Message
+[3-4 sentence narrative that anchors all campaign materials]
+
+### Email Campaign
+
+**Email 1 — Launch**
+Subject: [Subject]
+[Email body — 200 words, lead with story, end with clear ask and link placeholder]
+
+**Email 2 — Midpoint (Day 7)**
+Subject: [Subject]
+[Progress update + restate urgency — 150 words]
+
+**Email 3 — Final Push (Day 13)**
+Subject: [Subject]
+[Last chance urgency — 120 words]
+
+### Social Media Posts
+
+**Instagram/Facebook (Long):**
+[200-word caption with storytelling and hashtags]
+
+**Twitter/X (Short):**
+[Under 280 chars — 3 variations]
+
+**WhatsApp Broadcast:**
+[Under 150 words — conversational, shareable]
+
+### Key Stats to Feature
+[5 impact numbers from the cause — format for use in graphics]
+
+### Donation Page Headline & Description
+**Headline:** [Impact-focused headline]
+**Description:** [3-4 sentences explaining impact of donation]`,
+buildUserMessage:f=>`Write fundraising campaign copy.\nOrg: ${f.org}\nCampaign: ${f.campaign}\nCause: ${f.cause}\nAsk: ${f.ask}`},
+
+{id:'beneficiary-story',name:'Beneficiary Story Generator',description:'Structures compelling beneficiary stories from case notes and interview inputs.',fields:[{id:'notes',label:'Case Notes / Interview',type:'textarea',placeholder:'Raw notes, interview transcript, or facts about the beneficiary\'s situation and journey…',rows:8,required:true},{id:'privacy',label:'Privacy Level',type:'select',options:['Use real name and details','Anonymise — change name and identifying details','Keep completely anonymous'],required:true},{id:'length',label:'Story Length',type:'select',options:['Short (150 words — social media)','Medium (300 words — newsletter)','Long (600 words — report or case study)'],required:true}],
+systemPrompt:`You are a nonprofit storyteller and communications specialist. Transform the raw notes into a compelling beneficiary story.
+
+Guidelines:
+- Lead with a vivid, specific scene — not background
+- Show, don't tell — use sensory details and direct speech
+- Centre the beneficiary's agency and resilience, not just their suffering
+- Connect their story to the wider systemic issue
+- Show the impact of the programme in human terms
+- End with hope and forward momentum
+- Maintain dignity throughout
+
+Format:
+## [Story Headline]
+*[Subheading]*
+
+[Story body — following the arc: before → turning point → transformation → now]
+
+---
+*[Organisation name] supports [number] individuals like [name/pseudonym] through [programme name]. [Call to action — donate/volunteer/share link placeholder]*
+
+If anonymised: clearly note at the top: *Name and some details changed to protect privacy.*`,
+buildUserMessage:f=>`Write a beneficiary story.\nPrivacy: ${f.privacy}\nLength: ${f.length}\n\nNOTES:\n${f.notes}`},
+
+{id:'program-evaluation',name:'Program Evaluation Report Generator',description:'Produces evaluation reports from assessment data and program objectives.',fields:[{id:'program',label:'Program Name',type:'text',placeholder:'e.g. Women\'s Livelihood Programme',required:true},{id:'objectives',label:'Program Objectives',type:'textarea',placeholder:'What the programme was designed to achieve…',rows:4,required:true},{id:'data',label:'Evaluation Data',type:'textarea',placeholder:'Data collected: survey results, observation findings, interviews, metrics, comparison to baseline…',rows:8,required:true},{id:'period',label:'Evaluation Period',type:'text',placeholder:'e.g. 12-month pilot: April 2024 – March 2025',required:true}],
+systemPrompt:`You are a program evaluation specialist. Write a rigorous, actionable program evaluation report.
+
+Format:
+# Program Evaluation Report — [Program]
+**Period:** [Period] | **Evaluation Type:** [Process/Outcome/Impact]
+
+## Executive Summary
+[250-word summary: program overview, key findings, main recommendations]
+
+## Program Overview
+[Theory of change, target group, activities, resources]
+
+## Evaluation Framework
+[Questions evaluated, methodology, data sources, limitations]
+
+## Findings
+
+### Output Findings (Did we deliver what we planned?)
+| Output Indicator | Target | Achieved | Variance | Analysis |
+
+### Outcome Findings (Did participants change?)
+[Evidence-based findings for each outcome]
+
+### Impact Findings (Did the community change?)
+[Broader changes observed]
+
+## Effectiveness Analysis
+[What worked, what didn't, why]
+
+## Efficiency Analysis
+[Cost per beneficiary, resource utilisation]
+
+## Relevance & Sustainability
+[Was the programme addressing real needs? Is it sustainable?]
+
+## Lessons Learned
+| Lesson | Evidence | Application for Future |
+
+## Recommendations
+| # | Recommendation | Priority | Responsible | Timeline |
+
+## Conclusion
+[Overall assessment and forward-looking statement]`,
+buildUserMessage:f=>`Write a program evaluation report.\nProgram: ${f.program}\nPeriod: ${f.period}\nObjectives: ${f.objectives}\nData: ${f.data}`},
+
+{id:'partnership-proposal',name:'Partnership Proposal Generator',description:'Drafts partnership proposals for corporate, government, or NGO collaborations.',fields:[{id:'your_org',label:'Your Organisation',type:'textarea',placeholder:'Your org name, mission, key programs, credibility…',rows:3,required:true},{id:'partner',label:'Proposed Partner',type:'text',placeholder:'e.g. Tata Consultancy Services, Department of Education, UNICEF',required:true},{id:'proposal',label:'Partnership Idea',type:'textarea',placeholder:'What you want to do together, how each party contributes, what each gains…',rows:4,required:true}],
+systemPrompt:`You are a strategic partnerships specialist in the development sector. Write a compelling partnership proposal.
+
+Format:
+# Partnership Proposal
+**Proposed by:** [Your Org]
+**Proposed to:** [Partner]
+
+## Vision for Partnership
+[2-3 sentence compelling vision of what this collaboration will achieve]
+
+## About [Your Organisation]
+[Brief, credibility-building overview]
+
+## Why [Partner Name]
+[Specific, genuine reasons why this partner is the right fit — shows you've done your homework]
+
+## Proposed Partnership Model
+
+### What We Are Proposing
+[Clear description of the collaboration]
+
+### What Each Party Brings
+| [Your Org] Contribution | [Partner] Contribution |
+
+### What Each Party Gains
+| [Your Org] Benefits | [Partner] Benefits |
+
+## Proposed Activities
+| Activity | Timeline | Lead | Resources |
+
+## Expected Impact
+[Quantified outcomes and beneficiary numbers]
+
+## Financial Structure
+[CSR budget ask / in-kind / co-funding — be specific about what you're asking]
+
+## Governance & Accountability
+[How decisions are made, reporting, IP ownership]
+
+## Why Now
+[Urgency and timeliness — why this partnership should happen this year]
+
+## Next Steps
+[Clear call to action — meeting request, MOU discussion, etc.]`,
+buildUserMessage:f=>`Write a partnership proposal.\nOur Org: ${f.your_org}\nProposed Partner: ${f.partner}\nPartnership Idea: ${f.proposal}`},
+
+{id:'annual-report-summarizer',name:'Annual Report Summarizer',description:'Condenses annual reports into accessible summaries for different audiences.',fields:[{id:'report',label:'Annual Report Content',type:'textarea',placeholder:'Paste key sections of the annual report — financial highlights, program summaries, statistics, achievements…',rows:10,required:true},{id:'audience',label:'Target Audience for Summary',type:'select',options:['General public / donors','Major donors / board','Government / regulators','Staff / volunteers','Media'],required:true}],
+systemPrompt:`You are a nonprofit communications specialist. Create a compelling annual report summary tailored to the specified audience.
+
+Format:
+## Annual Report Summary — [Organisation] [Year]
+*Prepared for: [Audience]*
+
+### The Year at a Glance
+[4-6 impactful statistics formatted as visual callouts]
+
+### Message from Leadership
+[2-3 sentence summary of the year's highlights — mark as [INSERT REAL QUOTE]]
+
+### Our Impact This Year
+[Key achievements organised by program area]
+
+### Stories of Change
+[1-2 brief human stories — 80 words each]
+
+### Financial Highlights
+| Revenue | Amount | % of Total |
+| Expenditure | Amount | % of Total |
+**Programme spend:** [X]% of total expenditure
+
+### Partnerships & Acknowledgements
+[Key partners and acknowledgements]
+
+### Looking Ahead
+[Top 3 priorities for the coming year]
+
+### How You Can Help
+[Tailored to the audience — donate, volunteer, advocate, partner]
+
+Tone and emphasis should match the specified audience.`,
+buildUserMessage:f=>`Summarise this annual report for: ${f.audience}\n\nREPORT CONTENT:\n${f.report}`},
+
+{id:'ngo-policy',name:'NGO Policy Document Generator',description:'Produces internal policies on safeguarding, data protection, and governance.',fields:[{id:'org',label:'Organisation Name',type:'text',placeholder:'e.g. Hope Foundation',required:true},{id:'policy_type',label:'Policy Type',type:'select',options:['Safeguarding / Child Protection Policy','Data Protection Policy','Code of Conduct','Financial Management Policy','Conflict of Interest Policy','Volunteer Management Policy','Anti-Fraud & Corruption Policy'],required:true},{id:'context',label:'Organisation Context',type:'textarea',placeholder:'What your organisation does, who you serve, size, geographic scope…',rows:3,required:false}],
+systemPrompt:`You are an NGO governance and compliance specialist. Draft a comprehensive, professional policy document.
+
+Format:
+# [Policy Type]
+**Organisation:** [Name] | **Version:** 1.0 | **Approved:** [Date placeholder] | **Review:** [Annual]
+
+## 1. Purpose & Scope
+[Why this policy exists and who it applies to]
+
+## 2. Policy Statement
+[The organisation's clear commitment and position]
+
+## 3. Definitions
+[Key terms used in this policy]
+
+## 4. Principles
+[Core principles underpinning this policy]
+
+## 5. Responsibilities
+| Role | Responsibilities under this policy |
+
+## 6. Procedures
+[Step-by-step procedures for key processes — specific and actionable]
+
+## 7. Reporting Mechanisms
+[How to report violations or concerns — including external channels]
+
+## 8. Consequences of Violations
+[Clear consequences for breach of policy]
+
+## 9. Training & Awareness
+[How this policy is communicated and trained]
+
+## 10. Monitoring & Review
+[How compliance is monitored, annual review process]
+
+## 11. Related Policies & Documents
+[Links to related policies]
+
+## Appendices
+[Forms, reporting templates, checklists]`,
+buildUserMessage:f=>`Draft a ${f.policy_type}.\nOrganisation: ${f.org}${f.context?'\nContext: '+f.context:''}`},
+
+{id:'social-media-content',name:'Social Media Content Generator',description:'Creates platform-specific posts for NGO campaigns and programme updates.',fields:[{id:'org',label:'Organisation Name',type:'text',placeholder:'e.g. Smile Foundation',required:true},{id:'content_type',label:'Content Type',type:'select',options:['Program Update','Fundraising Campaign','Volunteer Recruitment','Impact Story','Awareness Campaign','Event Promotion'],required:true},{id:'message',label:'Key Message / Story',type:'textarea',placeholder:'The core message you want to communicate — facts, story, or update…',rows:4,required:true},{id:'platforms',label:'Platforms',type:'select',options:['Instagram + Facebook','Twitter / X','LinkedIn','WhatsApp','All platforms'],required:true}],
+systemPrompt:`You are a social media manager for nonprofits. Create platform-optimised content.
+
+For each platform selected, write:
+
+**[Platform Name]**
+
+Post copy:
+[Platform-appropriate copy — respecting character limits and platform culture]
+
+Caption/body:
+[Full caption with hook, story/message, CTA]
+
+Hashtags:
+[5-10 relevant hashtags]
+
+Visual suggestion:
+[Description of ideal visual/image to accompany]
+
+Platform guidelines applied:
+- Instagram: storytelling, emotional, strong visual hook, hashtags
+- Facebook: longer form, community-focused, shareable
+- Twitter/X: punchy, shareable, thread-worthy if complex
+- LinkedIn: professional, impact-focused, stakeholder-appropriate
+- WhatsApp: conversational, personal, easy to forward
+
+Always include: clear CTA, link placeholder, accessible language.`,
+buildUserMessage:f=>`Create social media content.\nOrg: ${f.org}\nType: ${f.content_type}\nPlatforms: ${f.platforms}\nMessage: ${f.message}`},
+
+// AGENTS
+{id:'grant-research',name:'Grant Research Agent',isAgent:true,description:'Analyses your organisation and identifies suitable grant opportunities with tailored application guidance.',fields:[{id:'org',label:'Organisation Profile',type:'textarea',placeholder:'Your org name, mission, programs, geography, target beneficiaries, annual budget…',rows:5,required:true},{id:'need',label:'Funding Need',type:'textarea',placeholder:'What you need funding for, amount needed, project duration…',rows:3,required:true},{id:'geography',label:'Geographic Focus',type:'text',placeholder:'e.g. Maharashtra, India, South Asia, Global',required:true}],
+systemPrompt:`You are a grant research specialist. Analyse the organisation and provide targeted grant research guidance.
+
+Note: Since I cannot search live databases, I'll provide the strategic framework and specific leads to research.
+
+Format:
+## Grant Research Report — [Organisation]
+
+### Funding Readiness Assessment
+[Assessment of the organisation's readiness to apply — documentation needed, track record, capacity]
+
+### Recommended Funding Categories
+[Based on the mission and need — types of funders most likely to fund this]
+
+### Specific Funders to Research
+For each recommended funder type:
+**[Funder Type/Name (e.g. CSR from IT sector, FCRA grants, bilateral donors)]**
+- Who to target: [Specific companies/foundations in this category]
+- Typical grant size: [Range]
+- Application process: [General notes]
+- Why you're a fit: [Specific alignment with their priorities]
+- How to approach: [Research tips and first steps]
+
+### Where to Find Grant Listings
+[Specific databases, portals, and networks to search — India and international]
+
+### Your Grant Application Calendar
+[Suggested timeline for identifying and submitting 5 grants over the next 6 months]
+
+### Proposal Strengthening Recommendations
+[What to improve in the organisation to increase funding success]
+
+### Template for Grant Prospecting
+[A framework to quickly assess if a grant is worth applying for]`,
+buildUserMessage:f=>`Provide grant research guidance.\nOrg: ${f.org}\nNeed: ${f.need}\nGeography: ${f.geography}`},
+
+{id:'donor-outreach',name:'Donor Outreach Agent',isAgent:true,description:'Creates personalised donor cultivation strategies and outreach materials.',fields:[{id:'org',label:'Organisation & Programs',type:'textarea',placeholder:'Your org name, mission, key impact numbers, signature programs…',rows:3,required:true},{id:'donors',label:'Donor Profiles',type:'textarea',placeholder:'For each donor: name, giving history, interests, connection to your cause. Separate with ---',rows:8,required:true},{id:'goal',label:'Outreach Goal',type:'text',placeholder:'e.g. Renew lapsed donors, upgrade mid-level donors, steward major donors',required:true}],
+systemPrompt:`You are a major gifts and donor relations specialist. Create personalised donor cultivation strategies.
+
+For each donor profile provided:
+
+---
+## Donor: [Name]
+
+### Donor Assessment
+- Giving tier: [Major/Mid-level/Regular]
+- Relationship stage: [New/Active/Lapsed/Major prospect]
+- Connection to cause: [What motivates their giving]
+
+### Cultivation Strategy
+[3-step approach to deepen this donor's engagement]
+
+### Personalised Communication
+
+**Initial/Next Contact:**
+Subject: [Personalised subject line]
+[Email/letter body — 200 words, personalised to their interests and giving history]
+
+**Follow-up Touch (2 weeks later):**
+[Brief follow-up message or call script]
+
+### Ask Strategy
+[When to ask, how much to ask for, what to fund with their gift, framing for the ask]
+
+### Long-term Stewardship Plan
+[Quarterly touchpoints for the next 12 months]
+
+### Red Flags / Risks
+[Any relationship risks or sensitivities to manage]
+
+---
+
+End with:
+## Portfolio Summary
+[Overview of the donor portfolio and priority ranking]`,
+buildUserMessage:f=>`Create donor outreach strategies.\nOrg: ${f.org}\nGoal: ${f.goal}\n\nDONOR PROFILES:\n${f.donors}`},
+
+{id:'impact-measurement',name:'Impact Measurement Agent',isAgent:true,description:'Designs a comprehensive impact measurement framework for a program.',fields:[{id:'program',label:'Program Description',type:'textarea',placeholder:'What the program does, activities, target population, resources used…',rows:5,required:true},{id:'goals',label:'Program Goals',type:'textarea',placeholder:'What change you are trying to create in the world…',rows:3,required:true}],
+systemPrompt:`You are an impact measurement and M&E specialist. Design a comprehensive impact measurement framework.
+
+Format:
+## Impact Measurement Framework — [Program]
+
+### Theory of Change
+[Visual description:]
+Inputs → Activities → Outputs → Outcomes → Impact
+
+### Indicator Framework
+
+**Input Indicators**
+| Indicator | Definition | Data Source | Frequency |
+
+**Output Indicators** (what we deliver)
+| Indicator | Target | Definition | Data Source | Frequency |
+
+**Outcome Indicators** (changes in beneficiaries)
+| Indicator | Baseline | Target | Definition | Data Source | Frequency |
+
+**Impact Indicators** (longer-term change)
+| Indicator | Measurement approach |
+
+### Data Collection Tools
+For each key indicator:
+**[Indicator]:** [Tool — survey, observation, admin records] + [Sample questions or observation protocol]
+
+### Baseline Assessment Plan
+[How to establish baseline before programme delivery]
+
+### Data Analysis Approach
+[How to analyse and interpret the data collected]
+
+### Reporting Schedule
+| Audience | Frequency | Format | Key metrics |
+
+### Budget for M&E
+[Estimated % of programme budget for M&E — typically 5-10%]
+
+### Limitations & Risks
+[What this framework cannot measure and mitigation strategies]`,
+buildUserMessage:f=>`Design an impact measurement framework.\nProgram: ${f.program}\nGoals: ${f.goals}`}
+]};
+
+/* PS Tools API base — configurable. Default :8000; override via ?api=http://host:port (persists in localStorage). */
+const _psApiQp=new URLSearchParams(location.search).get('api');
+if(_psApiQp)localStorage.setItem('ps_api_base',_psApiQp);
+const API_BASE=(_psApiQp||localStorage.getItem('ps_api_base')||'http://localhost:8000').replace(/\/$/,'');
+const API_GENERATE=API_BASE+'/generate';
+function selectTool(id) {
+  const tool = DOMAIN.tools.find(t => t.id === id);
+  if (!tool) return;
+  document.querySelectorAll('.tool-btn').forEach(b => b.classList.toggle('active', b.dataset.id === id));
+  renderTool(tool);
+}
+
+function renderTool(tool) {
+  const fieldsHtml = tool.fields.map(f => {
+    let inp = '';
+    if (f.type === 'text')
+      inp = `<input type="text" id="f_${f.id}" placeholder="${f.placeholder||''}"${f.required?' required':''}>`;
+    else if (f.type === 'textarea')
+      inp = `<textarea id="f_${f.id}" placeholder="${f.placeholder||''}" rows="${f.rows||4}"${f.required?' required':''}></textarea><label class="btn-upload"><input type="file" accept=".txt,.pdf,.docx" onchange="handleFileUpload('f_${f.id}',this)">📎 Upload file</label>`;
+    else if (f.type === 'select')
+      inp = `<select id="f_${f.id}">${f.options.map(o=>`<option>${o}</option>`).join('')}</select>`;
+    return `<div class="field-group"><label class="field-label" for="f_${f.id}">${f.label}${f.required?'':' <span class="field-opt">(optional)</span>'}</label>${inp}</div>`;
+  }).join('');
+
+  document.getElementById('content').innerHTML = `
+    <div class="tool-header">
+      <h2 class="tool-name">${tool.name}</h2>
+      <p class="tool-desc">${tool.description}</p>
+    </div>
+    <div class="form-card">
+      ${fieldsHtml}
+      <button class="btn-gen" onclick="runGenerate('${tool.id}')">Generate</button>
+    </div>
+    <div class="output-section" id="out-section">
+      <div class="output-header"><span class="output-lbl">Output</span><div style="display:flex;gap:6px"><button class="btn-dl" onclick="downloadOut()">↓ Save</button><button class="btn-copy" onclick="copyOut()">Copy</button></div></div>
+      <div class="output-box" id="out-box"><div class="out-empty"><div class="out-empty-icon">✨</div><p>Fill in the form and click Generate.</p></div></div>
+    </div>`;
+}
+
+async function runGenerate(toolId) {
+  const tool = DOMAIN.tools.find(t => t.id === toolId);
+  if (!tool) return;
+  const data = {};
+  let ok = true;
+  for (const f of tool.fields) {
+    const el = document.getElementById(`f_${f.id}`);
+    if (!el) continue;
+    const v = el.value.trim();
+    if (f.required && !v) { el.style.borderColor = '#ef4444'; ok = false; } else { el.style.borderColor = ''; data[f.id] = v; }
+  }
+  if (!ok) return;
+
+  const outBox = document.getElementById('out-box');
+  const btn = document.querySelector('.btn-gen');
+  outBox.classList.add('streaming');
+  outBox.innerHTML = '<span style="color:var(--muted)">Generating<span class="dots"><span>.</span><span>.</span><span>.</span></span></span>';
+  btn.disabled = true; btn.textContent = 'Generating…';
+
+  try {
+    const res = await fetch(API_GENERATE, {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({system_prompt: tool.systemPrompt, user_message: tool.buildUserMessage(data)})
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const reader = res.body.getReader(); const dec = new TextDecoder(); let out = '';
+    outBox.textContent = '';
+    while (true) {
+      const {done, value} = await reader.read(); if (done) break;
+      for (const line of dec.decode(value).split('\n')) {
+        if (!line.startsWith('data: ')) continue;
+        const d = line.slice(6); if (d === '[DONE]') break;
+        try { const p = JSON.parse(d); if (p.error) { outBox.classList.remove('streaming'); outBox.style.color='#ef4444'; outBox.textContent='Error: '+p.error; } else if (p.text) { out += p.text; outBox.textContent = out; outBox.scrollTop = outBox.scrollHeight; } } catch {}
+      }
+    }
+    if (out && typeof marked !== 'undefined') { outBox.classList.remove('streaming'); outBox.innerHTML = marked.parse(out); } else { outBox.classList.remove('streaming'); }
+  } catch(e) {
+    outBox.classList.remove('streaming');
+    outBox.style.color = '#ef4444';
+    outBox.textContent = `Connection error: ${e.message}\n\nStart the backend:\n  cd backend\n  uvicorn main:app --reload`;
+  }
+  btn.disabled = false; btn.textContent = 'Generate';
+}
+
+function copyOut() {
+  const text = document.getElementById('out-box')?.innerText;
+  if (!text || text.includes('Fill in the form')) return;
+  navigator.clipboard.writeText(text).then(() => { const b = document.querySelector('.btn-copy'); b.textContent='Copied!'; setTimeout(()=>b.textContent='Copy',2000); });
+}
+
+function init() {
+  const tools = DOMAIN.tools.filter(t => !t.isAgent);
+  const agents = DOMAIN.tools.filter(t => t.isAgent);
+  document.getElementById('tool-list').innerHTML =
+    `<div class="sidebar-search"><input class="search-inp" type="text" placeholder="Search tools…" oninput="filterTools(this.value)"></div>` +
+    `<div class="sec-lbl">Tools · ${tools.length}</div>` +
+    tools.map(t=>`<button class="tool-btn" data-id="${t.id}" onclick="selectTool('${t.id}')">${t.name}</button>`).join('') +
+    (agents.length ? `<div class="sec-lbl ag">Agents · ${agents.length}</div>` + agents.map(t=>`<button class="tool-btn agent" data-id="${t.id}" onclick="selectTool('${t.id}')">${t.name}</button>`).join('') : '');
+  if (tools.length) selectTool(tools[0].id);
+}
+function filterTools(q) {
+  const lq = q.toLowerCase();
+  document.querySelectorAll('.tool-btn').forEach(b => {
+    b.classList.toggle('hidden', !b.textContent.toLowerCase().includes(lq));
+  });
+}
+function downloadOut() {
+  const text = document.getElementById('out-box')?.innerText;
+  if (!text || text.includes('Fill in the form')) return;
+  const a = document.createElement('a');
+  a.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(text);
+  a.download = 'output.txt'; a.click();
+}
+async function handleFileUpload(fieldId, input) {
+  const file = input.files[0]; if (!file) return;
+  const ext = file.name.split('.').pop().toLowerCase();
+  const ta = document.getElementById(fieldId);
+  const prev = ta.placeholder; ta.placeholder = 'Reading file…'; ta.disabled = true;
+  try {
+    if (ext === 'txt' || ext === 'md' || ext === 'csv') {
+      ta.value = await file.text();
+    } else if (ext === 'pdf') {
+      if (typeof pdfjsLib === 'undefined') { alert('PDF library not loaded yet, please retry.'); ta.disabled = false; ta.placeholder = prev; return; }
+      const buf = await file.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({data: new Uint8Array(buf)}).promise;
+      let text = '';
+      for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const content = await page.getTextContent();
+        text += content.items.map(item => item.str).join(' ') + '\n\n';
+      }
+      ta.value = text.trim();
+    } else if (ext === 'docx') {
+      if (typeof mammoth === 'undefined') { alert('DOCX library not loaded yet, please retry.'); ta.disabled = false; ta.placeholder = prev; return; }
+      const buf = await file.arrayBuffer();
+      const result = await mammoth.extractRawText({arrayBuffer: buf});
+      ta.value = result.value;
+    }
+  } catch(e) { alert('Could not read file: ' + e.message); }
+  ta.disabled = false; ta.placeholder = prev; input.value = '';
+}
+window.addEventListener('DOMContentLoaded',init);
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>if(typeof pdfjsLib!=='undefined')pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+</body>
+</html>

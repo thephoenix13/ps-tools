@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Health Tools — Perfect Skills AI Tool Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}:root{--blue:#2563eb;--blue-light:#eff6ff;--dark:#0f172a;--mid:#334155;--muted:#64748b;--border:#e2e8f0;--bg:#f8fafc;--white:#ffffff;--radius:12px;--rsm:8px}html,body{height:100%}body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--dark);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:56px}.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}.nav-logo{height:26px;width:auto}.nav-sep{width:1px;height:16px;background:var(--border)}.nav-product{font-size:12px;font-weight:500;color:var(--blue)}.nav-domain{font-size:12px;color:var(--muted)}
+.page-layout{display:grid;grid-template-columns:260px 1fr;height:calc(100vh - 56px);overflow:hidden}.sidebar{border-right:1px solid var(--border);background:var(--white);overflow-y:auto;display:flex;flex-direction:column}.sidebar-header{padding:16px;border-bottom:1px solid var(--border);flex-shrink:0}.back-link{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);text-decoration:none;margin-bottom:10px}.back-link:hover{color:var(--blue)}.domain-row{display:flex;align-items:center;gap:10px}.d-icon{font-size:22px}.d-name{font-size:15px;font-weight:700;color:var(--dark)}.d-count{font-size:11px;color:var(--muted);margin-top:2px}
+.sec-lbl{font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--muted);padding:12px 16px 5px}.sec-lbl.ag{color:#7c3aed}.tool-btn{display:block;width:100%;text-align:left;padding:7px 16px;background:none;border:none;cursor:pointer;font-size:12px;font-family:inherit;color:var(--mid);line-height:1.4;transition:background .12s,color .12s}.tool-btn:hover{background:var(--bg);color:var(--dark)}.tool-btn.active{background:var(--blue-light);color:var(--blue);font-weight:600}.tool-btn.agent:hover{background:rgba(124,58,237,.06);color:#5b21b6}.tool-btn.agent.active{background:rgba(124,58,237,.1);color:#5b21b6;font-weight:600}
+.content{overflow-y:auto;background:var(--bg);padding:32px}.tool-header{margin-bottom:24px}.tool-name{font-size:20px;font-weight:700;color:var(--dark);letter-spacing:-.3px;margin-bottom:5px}.tool-desc{font-size:13px;color:var(--muted);line-height:1.6}.form-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:18px}.field-group{display:flex;flex-direction:column;gap:6px}.field-label{font-size:12px;font-weight:600;color:var(--mid)}.field-opt{font-weight:400;color:var(--muted)}
+input[type=text],select,textarea{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:var(--rsm);font-size:13px;font-family:inherit;color:var(--dark);background:var(--white);outline:none;transition:border-color .15s,box-shadow .15s}input[type=text]:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.08)}textarea{resize:vertical;line-height:1.6}.btn-upload{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:var(--white);border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;color:var(--muted);cursor:pointer;font-family:inherit;transition:all .15s;margin-top:2px}.btn-upload:hover{border-color:var(--blue);color:var(--blue)}.btn-upload input{display:none}.output-box{white-space:normal}.output-box.streaming{white-space:pre-wrap}.output-box h1,.output-box h2,.output-box h3,.output-box h4{font-weight:700;color:var(--dark)}.output-box h1{font-size:16px;margin:0 0 8px}.output-box h2{font-size:14px;margin:14px 0 6px;padding-bottom:4px;border-bottom:1px solid var(--border)}.output-box h3{font-size:13px;margin:12px 0 5px}.output-box h4{font-size:13px;margin:10px 0 4px;color:var(--mid)}.output-box p{margin:0 0 10px;line-height:1.7}.output-box p:last-child{margin-bottom:0}.output-box ul,.output-box ol{padding-left:20px;margin:0 0 10px}.output-box li{margin-bottom:4px;line-height:1.6}.output-box strong{font-weight:600}.output-box em{font-style:italic;color:var(--mid)}.output-box table{width:100%;border-collapse:collapse;margin:0 0 12px;font-size:12px}.output-box th{background:var(--bg);font-weight:600;padding:7px 10px;border:1px solid var(--border);text-align:left}.output-box td{padding:6px 10px;border:1px solid var(--border);vertical-align:top}.output-box tr:nth-child(even) td{background:#fafbfc}.output-box code{background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:1px 5px;font-size:11px;font-family:monospace}.output-box pre{background:var(--bg);border:1px solid var(--border);border-radius:var(--rsm);padding:14px;overflow-x:auto;margin:0 0 12px}.output-box pre code{background:none;border:none;padding:0}.output-box blockquote{border-left:3px solid #93c5fd;padding:8px 14px;color:var(--muted);margin:0 0 12px;background:var(--blue-light);border-radius:0 6px 6px 0}.output-box hr{border:none;border-top:1px solid var(--border);margin:14px 0}.btn-dl{padding:4px 12px;background:var(--white);border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;color:var(--muted);font-family:inherit;transition:all .15s}.btn-dl:hover{border-color:var(--blue);color:var(--blue)}.sidebar-search{padding:8px 16px 10px;border-bottom:1px solid var(--border);flex-shrink:0}.search-inp{width:100%;padding:6px 10px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:inherit;outline:none;color:var(--dark);background:var(--bg);transition:border-color .15s}.search-inp:focus{border-color:var(--blue)}.tool-btn.hidden{display:none}@keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}.dots span{animation:blink 1.2s infinite;display:inline-block;margin:0 1px}.dots span:nth-child(2){animation-delay:.2s}.dots span:nth-child(3){animation-delay:.4s}.out-empty{text-align:center;padding:36px 20px;color:var(--muted)}.out-empty-icon{font-size:24px;margin-bottom:8px}.out-empty p{font-size:12px;line-height:1.6}.btn-gen{align-self:stretch}
+.btn-gen{padding:10px 22px;background:var(--blue);color:#fff;border:none;border-radius:var(--rsm);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;transition:opacity .15s;align-self:flex-start}.btn-gen:hover{opacity:.88}.btn-gen:disabled{opacity:.5;cursor:not-allowed}.output-section{margin-top:20px}.output-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}.output-lbl{font-size:12px;font-weight:600;color:var(--mid)}.btn-copy{padding:4px 12px;background:var(--white);border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;color:var(--muted);font-family:inherit;transition:all .15s}.btn-copy:hover{border-color:var(--blue);color:var(--blue)}.output-box{background:var(--white);border:1px solid var(--border);border-radius:var(--rsm);padding:20px;font-size:13px;line-height:1.75;color:var(--dark);white-space:pre-wrap;min-height:180px;overflow-y:auto;font-family:inherit}
+.disclaimer{background:#fef3c7;border:1px solid #fcd34d;border-radius:var(--rsm);padding:12px 16px;font-size:11px;color:#92400e;margin-bottom:16px}
+</style>
+</head>
+<body>
+<nav><a class="nav-brand" href="index.html"><img src="perfectskills_logo.png" alt="Perfect Skills" class="nav-logo"><span class="nav-sep"></span><span class="nav-product">AI Tool Kit</span></a><span class="nav-domain">Health Tools</span></nav>
+<div class="page-layout">
+  <aside class="sidebar"><div class="sidebar-header"><a class="back-link" href="index.html">← All Domains</a><div class="domain-row"><span class="d-icon">🏥</span><div><div class="d-name">Health</div><div class="d-count">10 tools · 3 agents</div></div></div></div><div id="tool-list"></div></aside>
+  <main class="content" id="content"></main>
+</div>
+<script>
+const DOMAIN={name:'Health',icon:'🏥',tools:[
+{id:'symptom-checker',name:'Symptom Checker',description:'Describes possible causes for reported symptoms with clear medical disclaimers.',fields:[{id:'symptoms',label:'Symptoms',type:'textarea',placeholder:'Describe your symptoms in detail — what, where, when, duration, severity…',rows:5,required:true},{id:'age',label:'Age & Sex',type:'text',placeholder:'e.g. 34, Female',required:true},{id:'history',label:'Relevant Medical History',type:'textarea',placeholder:'Any existing conditions, medications, recent events…',rows:3,required:false}],
+systemPrompt:`You are a health information assistant. Provide educational information about possible causes for reported symptoms.
+
+⚠️ IMPORTANT: Always include the disclaimer below. This is not medical advice.
+
+Format:
+## Symptom Analysis — Educational Information
+
+⚠️ **Medical Disclaimer:** This information is for educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Please consult a qualified healthcare provider for any medical concerns.
+
+### Symptoms Reported
+[Summary of what was reported]
+
+### Possible Explanations
+For each possible cause (list 3-5, most common first):
+**[Condition Name]**
+- Why it might fit: [How symptoms align]
+- Other typical symptoms: [What else usually accompanies this]
+- Urgency level: [Routine / See doctor soon / Urgent care / Emergency]
+
+### When to Seek Immediate Care
+🚨 Go to emergency care if you experience: [Red flag symptoms]
+
+### Recommended Next Steps
+1. [Practical step]
+
+### Questions to Ask Your Doctor
+• [Specific questions to raise]
+
+Always recommend seeing a healthcare professional.`,
+buildUserMessage:f=>`Provide symptom information.\nAge/Sex: ${f.age}\nSymptoms: ${f.symptoms}${f.history?'\nMedical History: '+f.history:''}`},
+
+{id:'health-report-simplifier',name:'Health Report Simplifier',description:'Translates complex medical reports and lab results into plain English.',fields:[{id:'report',label:'Medical Report / Lab Results',type:'textarea',placeholder:'Paste the medical report text, lab values, or scan results here…',rows:8,required:true}],
+systemPrompt:`You are a patient health educator. Translate complex medical information into clear, plain English.
+
+Format:
+## Report Summary in Plain English
+
+⚠️ This explanation is for general understanding only. Discuss all results with your doctor.
+
+### What This Report/Test Is For
+[Simple explanation of what was being assessed]
+
+### Your Results — Plain English
+For each finding/value:
+**[Test/Finding Name]:** [Value]
+- What it means: [Plain language explanation]
+- Your result vs normal range: [Normal / Slightly above/below / Significantly outside range]
+- What this might indicate: [Simple explanation — not diagnosis]
+
+### What Looks Normal
+✓ [Normal findings listed]
+
+### What Your Doctor Will Likely Discuss
+• [Findings outside normal range or noteworthy]
+
+### Questions to Ask Your Doctor
+1. [Specific question about a finding]
+
+### Glossary of Medical Terms Used
+[Define any medical jargon in the report]`,
+buildUserMessage:f=>`Explain this medical report in plain English.\n\n${f.report}`},
+
+{id:'nutrition-plan',name:'Nutrition Plan Generator',description:'Creates personalised meal plans based on dietary goals, restrictions, and preferences.',fields:[{id:'goal',label:'Health / Dietary Goal',type:'select',options:['Weight loss','Weight gain / muscle building','Maintain weight','Manage diabetes','Heart health','Improve energy','General healthy eating'],required:true},{id:'restrictions',label:'Dietary Restrictions',type:'textarea',placeholder:'e.g. Vegetarian, lactose intolerant, no nuts, diabetic, religious restrictions…',rows:2,required:false},{id:'preferences',label:'Food Preferences & Dislikes',type:'textarea',placeholder:'Foods you like and dislike, cuisine preferences, cooking ability…',rows:2,required:false},{id:'calories',label:'Target Calories (if known)',type:'text',placeholder:'e.g. 1800 kcal, or leave blank for a recommendation',required:false}],
+systemPrompt:`You are a registered dietitian. Create a practical, nutritionally balanced meal plan.
+
+⚠️ This plan is for general guidance. Consult a registered dietitian or doctor for medical dietary needs.
+
+Format:
+## Personalised Nutrition Plan
+
+### Your Profile
+Goal: | Restrictions: | Approx. calories: [X]/day
+
+### Daily Nutritional Targets
+| Nutrient | Daily Target | Why |
+[Calories, protein, carbs, fat, fibre, key vitamins]
+
+### 7-Day Meal Plan
+For each day:
+**Day [N]**
+| Meal | Food | Portion | ~Calories |
+Breakfast:
+Snack:
+Lunch:
+Snack:
+Dinner:
+Daily total: ~[X] kcal
+
+### Shopping List
+[Organised by category: produce, protein, grains, dairy/alternatives, pantry]
+
+### Meal Prep Tips
+• [Practical tips to make this sustainable]
+
+### Foods to Emphasise & Limit
+✓ Emphasise: [list]
+⚠️ Limit: [list]`,
+buildUserMessage:f=>`Create a nutrition plan.\nGoal: ${f.goal}${f.restrictions?'\nRestrictions: '+f.restrictions:''}${f.preferences?'\nPreferences: '+f.preferences:''}${f.calories?'\nTarget Calories: '+f.calories:''}`},
+
+{id:'medication-schedule',name:'Medication Schedule Generator',description:'Produces a clear daily medication schedule from a list of prescriptions.',fields:[{id:'medications',label:'Medications List',type:'textarea',placeholder:'List each medication:\nName, dosage, frequency, special instructions\ne.g. Metformin 500mg — twice daily with meals\nAtorvastatin 10mg — once at night',rows:8,required:true}],
+systemPrompt:`You are a pharmacy technician and patient educator. Create a clear, safe medication schedule.
+
+⚠️ Always follow your doctor's and pharmacist's specific instructions. This schedule is for organisational guidance only.
+
+Format:
+## Daily Medication Schedule
+
+### Morning (Time: ___)
+| Medication | Dose | With/Without Food | Notes |
+
+### Midday (Time: ___)
+[If applicable]
+
+### Evening (Time: ___)
+[Medications]
+
+### Night (Time: ___)
+[Medications]
+
+### As Needed
+[PRN medications]
+
+### Important Interactions & Notes
+⚠️ [Any interactions to be aware of between listed medications — flag for doctor review]
+
+### General Tips
+• [Practical adherence tips]
+• [Storage instructions]
+
+### Refill Tracker
+| Medication | Days Supply | Refill Date |
+
+### When to Contact Your Doctor
+• [Situations requiring medical attention related to these medications]
+
+Clearly flag any concerning combinations for healthcare provider review.`,
+buildUserMessage:f=>`Create a medication schedule for:\n${f.medications}`},
+
+{id:'wellness-checkin',name:'Wellness Check-in Questionnaire',description:'Generates personalised wellness surveys to track health habits over time.',fields:[{id:'focus',label:'Wellness Focus Area',type:'select',options:['Overall health & lifestyle','Physical fitness','Sleep quality','Nutrition & diet','Mental wellbeing','Chronic condition management','Work-life balance'],required:true},{id:'context',label:'Individual Context',type:'textarea',placeholder:'Age, lifestyle, specific concerns or goals…',rows:3,required:false}],
+systemPrompt:`You are a wellness coach. Create a comprehensive, useful wellness check-in questionnaire.
+
+Format:
+## Wellness Check-in — [Focus Area]
+
+*Complete this weekly to track your progress. Rate items 1-5 where 1=Poor/Never and 5=Excellent/Always.*
+
+### Section 1: [Category]
+1. [Question] — Rating: 1 2 3 4 5
+   *Notes:* ___________
+
+[4-5 sections with 3-5 questions each]
+
+### Open Reflection Questions
+• This week I feel most proud of: ___
+• My biggest health challenge this week was: ___
+• One thing I want to improve next week: ___
+
+### Your Totals
+Section scores: [Section] _/[max]
+Overall score: __/[max]
+
+### Interpretation Guide
+| Score Range | What It Means | Suggested Focus |
+
+### Trend Tracker (fill over time)
+| Date | Score | Key Notes |
+
+### Next Steps Based on Your Score
+Low (under [X]): [Recommendations]
+Medium ([X]-[Y]): [Recommendations]
+High (above [Y]): [Recommendations]`,
+buildUserMessage:f=>`Create a wellness check-in questionnaire.\nFocus: ${f.focus}${f.context?'\nContext: '+f.context:''}`},
+
+{id:'appointment-prep',name:'Medical Appointment Prep Guide',description:'Prepares patients with questions and information to bring to a doctor\'s visit.',fields:[{id:'reason',label:'Reason for Visit',type:'textarea',placeholder:'Why are you seeing the doctor — symptoms, follow-up, specific concern…',rows:4,required:true},{id:'doctor_type',label:'Doctor Type',type:'text',placeholder:'e.g. GP, Cardiologist, Endocrinologist, Gynaecologist',required:true},{id:'history',label:'Relevant History',type:'textarea',placeholder:'Current medications, conditions, recent changes, family history of relevance…',rows:3,required:false}],
+systemPrompt:`You are a patient advocate and healthcare navigator. Help prepare for a productive medical appointment.
+
+Format:
+## Appointment Prep Guide — [Doctor Type]
+
+### Before You Go — Checklist
+- [ ] Bring: [list of documents, ID, insurance]
+- [ ] Prepare a symptom timeline
+
+### Your Symptom Summary (to share with doctor)
+[Help the patient articulate their situation clearly]
+Template: "I have been experiencing [X] for [Y] duration. It is [worse/better] when [Z]."
+
+### Questions to Ask Your Doctor
+**About your main concern:**
+1. [Specific, high-value question]
+2. [Question]
+
+**About any diagnosis given:**
+3. "What does this diagnosis mean for my daily life?"
+4. "What are the treatment options and their trade-offs?"
+
+**About medications if prescribed:**
+5. "What are the main side effects to watch for?"
+6. "Are there any interactions with my current medications?"
+
+**About next steps:**
+7. "What should I do if symptoms worsen before my next appointment?"
+8. [Follow-up question]
+
+### Information to Share with Your Doctor
+• Current medications and doses
+• [Other relevant info to prepare]
+
+### After the Appointment
+- [ ] Write down what the doctor said
+- [ ] Note prescription details
+- [ ] Schedule follow-up if needed`,
+buildUserMessage:f=>`Prepare for a medical appointment.\nReason: ${f.reason}\nDoctor Type: ${f.doctor_type}${f.history?'\nHistory: '+f.history:''}`},
+
+{id:'family-health-summary',name:'Family Health Summary Generator',description:'Compiles a household health summary from individual member data.',fields:[{id:'members',label:'Family Members Health Info',type:'textarea',placeholder:'For each family member:\nName/Relationship, Age, Conditions, Medications, Allergies, Last check-up\nSeparate with ---',rows:10,required:true}],
+systemPrompt:`You are a family health coordinator. Create a clear, organised family health summary.
+
+Format:
+# Family Health Summary
+*Last Updated: [Date placeholder]*
+
+## Quick Reference — Emergency Info
+| Member | Age | Critical Conditions | Allergies | Emergency Contact |
+
+## Individual Profiles
+
+For each family member:
+### [Name/Relationship] — Age: [Age]
+**Conditions:** [List]
+**Current Medications:** [Medication — Dose — Frequency]
+**Allergies:** [Drug/food allergies — reaction type]
+**Last Check-ups:**
+- GP: [Date]
+- Specialist: [Date]
+- Dental: [Date]
+**Upcoming Appointments:** [If known]
+
+## Family Health Priorities
+[Based on the profiles: age-appropriate screenings due, vaccinations, health risks to monitor]
+
+## Upcoming Screening Checklist
+| Who | Screening | Recommended Frequency | Last Done | Due |
+
+## Shared Family Health Goals
+[Lifestyle suggestions relevant to the family composition]`,
+buildUserMessage:f=>`Create a family health summary.\n\nFAMILY MEMBERS:\n${f.members}`},
+
+{id:'discharge-explainer',name:'Discharge Summary Explainer',description:'Translates hospital discharge instructions into plain, actionable language.',fields:[{id:'discharge',label:'Discharge Instructions / Summary',type:'textarea',placeholder:'Paste the hospital discharge instructions or summary here…',rows:10,required:true}],
+systemPrompt:`You are a patient educator. Translate hospital discharge instructions into clear, actionable plain English.
+
+Format:
+## Your Discharge Guide — Plain English
+
+⚠️ Follow your doctor's instructions exactly. Call them if you have any concerns.
+
+### What Happened / Your Diagnosis
+[Plain English explanation of the condition or procedure]
+
+### Your Medications
+For each medication:
+**[Name]** — [Dose] — [Frequency]
+- What it's for: [Simple explanation]
+- Important: [Key instructions — with food, timing, side effects to watch]
+
+### Activity & Rest
+✓ You CAN: [Activities permitted]
+✗ You should NOT: [Restrictions — and for how long]
+
+### Diet & Food
+[What to eat, avoid, and why]
+
+### Wound / Recovery Care (if applicable)
+[Step-by-step care instructions in plain language]
+
+### Warning Signs — Seek Help Immediately If:
+🚨 [Red flag symptoms listed clearly]
+
+### Your Follow-up Appointments
+| Date | Who | Where | Why |
+
+### Questions to Ask at Your Follow-up
+• [Specific questions based on their situation]`,
+buildUserMessage:f=>`Explain these discharge instructions in plain English.\n\n${f.discharge}`},
+
+{id:'fitness-plan',name:'Fitness Plan Generator',description:'Builds a structured workout plan tailored to goals, fitness level, and equipment.',fields:[{id:'goal',label:'Fitness Goal',type:'select',options:['Weight loss','Build muscle','General fitness','Improve endurance','Flexibility & mobility','Sports performance','Rehabilitation / low impact'],required:true},{id:'level',label:'Current Fitness Level',type:'select',options:['Beginner (rarely exercise)','Intermediate (exercise 1-2x/week)','Active (3-4x/week)','Advanced (5+ times/week)'],required:true},{id:'equipment',label:'Available Equipment',type:'select',options:['No equipment (bodyweight only)','Basic home (dumbbells, resistance bands)','Home gym','Full gym access'],required:true},{id:'days',label:'Days Per Week',type:'select',options:['2 days','3 days','4 days','5 days','6 days'],required:true},{id:'limitations',label:'Physical Limitations',type:'textarea',placeholder:'Injuries, conditions, or movements to avoid…',rows:2,required:false}],
+systemPrompt:`You are a certified personal trainer. Create a safe, progressive, effective fitness plan.
+
+Format:
+## Fitness Plan — [Goal]
+**Level:** [Level] | **Equipment:** [Equipment] | **Days/week:** [Days]
+
+### Weekly Schedule
+| Day | Session | Focus |
+
+### Exercise Programme
+
+For each workout day:
+**[Day Name] — [Focus, e.g. Upper Body Strength]**
+
+| Exercise | Sets | Reps/Duration | Rest | Notes |
+[Complete table for every exercise]
+
+**Warm-up (5 min):**
+[Specific warm-up]
+
+**Main workout:**
+[Table]
+
+**Cool-down (5 min):**
+[Stretches]
+
+### Progression Plan
+Week 1-2: [Starting load/volume]
+Week 3-4: [Progression]
+Week 5-6: [Further progression]
+
+### Nutrition Notes
+[Basic fuelling guidance for the goal]
+
+### Recovery & Rest
+[Rest day activities, sleep targets, recovery tips]
+
+### Tracking Your Progress
+[Simple metrics to track weekly]`,
+buildUserMessage:f=>`Create a fitness plan.\nGoal: ${f.goal}\nLevel: ${f.level}\nEquipment: ${f.equipment}\nDays/week: ${f.days}${f.limitations?'\nLimitations: '+f.limitations:''}`},
+
+{id:'health-goals',name:'Health Goal Setting Tool',description:'Helps users set realistic, trackable health goals with milestones and check-in points.',fields:[{id:'goals',label:'Health Goals',type:'textarea',placeholder:'What do you want to achieve with your health? Be as specific or vague as you like…',rows:4,required:true},{id:'current',label:'Current Situation',type:'textarea',placeholder:'Where you are now — current habits, challenges, relevant health info…',rows:3,required:true},{id:'timeline',label:'Timeline',type:'text',placeholder:'e.g. 3 months, by end of year',required:true}],
+systemPrompt:`You are a health coach specialising in behaviour change. Help set realistic, motivating health goals.
+
+Format:
+## Health Goal Plan
+
+### Your SMART Goals
+For each goal:
+**Goal [N]: [Reworded as SMART goal]**
+- Specific: [What exactly]
+- Measurable: [How you'll track it]
+- Achievable: [Why this is realistic for your situation]
+- Relevant: [Why this matters to you]
+- Time-bound: [By when / weekly targets]
+
+### Your Starting Point
+[Honest assessment of current situation — without judgment]
+
+### Action Plan
+
+#### Immediate (Week 1)
+- [ ] [Specific, small first step]
+
+#### Short-term (Weeks 2-4)
+- [ ] [Habit to build]
+
+#### Medium-term (Month 2-3)
+- [ ] [Progressive target]
+
+### Potential Obstacles & Solutions
+| Obstacle | Strategy to Overcome |
+
+### Weekly Check-in Questions
+1. [Progress check question]
+2. [Habit adherence question]
+3. [Wellbeing check]
+
+### Milestones to Celebrate
+• [Week 2 milestone]
+• [Month 1 milestone]
+• [Final milestone]
+
+### If You Fall Off Track
+[Compassionate, practical advice for setbacks]`,
+buildUserMessage:f=>`Create a health goal plan.\nGoals: ${f.goals}\nCurrent Situation: ${f.current}\nTimeline: ${f.timeline}`},
+
+// AGENTS
+{id:'health-coaching',name:'Health Coaching Agent',isAgent:true,description:'Creates a personalised wellness coaching plan with habits, tracking, and support strategies.',fields:[{id:'focus',label:'Coaching Focus',type:'textarea',placeholder:'What aspect of health do you want to work on — weight, energy, sleep, stress, diet…',rows:3,required:true},{id:'context',label:'Your Context',type:'textarea',placeholder:'Age, lifestyle, job, family situation, what you\'ve tried before…',rows:4,required:true},{id:'commitment',label:'Commitment Level',type:'select',options:['Light (small changes, low effort)','Moderate (consistent effort, lifestyle tweaks)','Intensive (significant lifestyle change)'],required:true}],
+systemPrompt:`You are a holistic health coach. Create a personalised wellness coaching plan.
+
+Format:
+## Your Personal Health Coaching Plan
+
+### Your Coaching Assessment
+[Honest assessment of situation, opportunities, and what will and won't work]
+
+### Core Focus Areas
+[3 prioritised areas ranked by impact for this person]
+
+### 12-Week Habit Programme
+**The 3 Foundation Habits (start these in Week 1):**
+1. [Habit] — Implementation intention: "When [X], I will [Y]"
+2. [Habit]
+3. [Habit]
+
+**Week 1-4: Foundation**
+[Specific habits and targets]
+
+**Week 5-8: Build**
+[Progressive additions]
+
+**Week 9-12: Reinforce**
+[Consolidation and stretch targets]
+
+### Daily Routine Template
+[Morning / Afternoon / Evening — realistic for their lifestyle]
+
+### Tracking System
+[Simple, practical tracking method for each habit]
+
+### Common Obstacles & Scripts
+For each likely obstacle: "When I [obstacle], I will [specific coping strategy]"
+
+### Progress Milestones
+[Weekly check-in questions and monthly review framework]
+
+### Support Resources
+[Recommended apps, communities, or simple tools]`,
+buildUserMessage:f=>`Create a health coaching plan.\nFocus: ${f.focus}\nContext: ${f.context}\nCommitment: ${f.commitment}`},
+
+{id:'medication-mgmt',name:'Medication Management Agent',isAgent:true,description:'Reviews a medication list for scheduling, adherence strategies, and interaction flags.',fields:[{id:'medications',label:'Current Medications',type:'textarea',placeholder:'List all medications:\nName, dose, frequency, prescribing condition\nInclude supplements and OTC medications',rows:8,required:true},{id:'challenges',label:'Adherence Challenges',type:'textarea',placeholder:'What makes it hard to take medications consistently — forgetfulness, side effects, cost…',rows:3,required:false}],
+systemPrompt:`You are a clinical pharmacist and medication adherence specialist. Review this medication regimen and provide comprehensive management guidance.
+
+⚠️ Always consult your pharmacist and doctor. Do not change medications without medical supervision.
+
+Format:
+## Medication Management Review
+
+### Medication Summary
+| # | Medication | Dose | Frequency | Condition |
+
+### Optimised Daily Schedule
+[Best timing for each medication considering absorption, interactions, and adherence]
+
+**Morning:** [Medications + optimal time]
+**With meals:** [If applicable]
+**Evening/Night:** [Medications]
+
+### Interaction Flags
+⚠️ [Flag any potential interactions between listed medications — recommend discussing with pharmacist/doctor]
+Note: This requires professional pharmacist verification.
+
+### Adherence Strategies
+Based on the stated challenges:
+• [Specific strategy — practical and realistic]
+
+### Pill Organiser Setup
+[Day-by-day organisation guide]
+
+### Side Effects to Monitor
+| Medication | Side Effects | When to Call Doctor |
+
+### Refill Planning
+| Medication | Days supply | Refill reminder |
+
+### Questions for Your Doctor / Pharmacist
+• [Specific questions to ask at next visit]`,
+buildUserMessage:f=>`Review this medication list.\n\nMEDICATIONS:\n${f.medications}${f.challenges?'\n\nAdherence Challenges:\n'+f.challenges:''}`},
+
+{id:'appointment-prep-agent',name:'Appointment Prep Agent',isAgent:true,description:'Creates a comprehensive pre-appointment preparation package for a specific medical visit.',fields:[{id:'condition',label:'Condition / Concern',type:'textarea',placeholder:'What the appointment is about — symptoms, diagnosis, follow-up…',rows:4,required:true},{id:'specialist',label:'Specialist / Doctor Type',type:'text',placeholder:'e.g. Cardiologist, Oncologist, Psychiatrist',required:true},{id:'history',label:'Medical History',type:'textarea',placeholder:'Relevant history, current medications, previous treatments…',rows:4,required:true}],
+systemPrompt:`You are a patient advocate and medical preparation specialist. Create a comprehensive appointment preparation package.
+
+Format:
+## Appointment Preparation Package — [Specialist]
+
+### About This Specialty
+[What this specialist does, what to expect at the appointment]
+
+### Understanding Your Condition
+[Educational information about the likely topic of discussion]
+
+### Documents to Bring
+- [ ] [Specific document list]
+
+### Your Medical History Summary (to hand to doctor)
+[Formatted one-page summary they can share]
+Condition: | Duration: | Severity: | Previous treatments:
+Current medications: [List]
+Allergies: [List]
+Family history: [Relevant]
+Recent tests: [List]
+
+### Questions Prepared for Your Appointment
+**About your condition:**
+1. [High-value specific question]
+2. [Question]
+
+**About treatment options:**
+3. [Question about treatment choices]
+4. [Side effects / alternatives question]
+
+**About monitoring:**
+5. [Question about follow-up and markers to watch]
+
+### Medical Terminology Glossary
+[Define likely terms you'll encounter]
+
+### After the Appointment Checklist
+- [ ] [Things to do after the visit]`,
+buildUserMessage:f=>`Prepare for a medical appointment.\nSpecialist: ${f.specialist}\nCondition: ${f.condition}\nHistory: ${f.history}`}
+]};
+
+/* PS Tools API base — configurable. Default :8000; override via ?api=http://host:port (persists in localStorage). */
+const _psApiQp=new URLSearchParams(location.search).get('api');
+if(_psApiQp)localStorage.setItem('ps_api_base',_psApiQp);
+const API_BASE=(_psApiQp||localStorage.getItem('ps_api_base')||'http://localhost:8000').replace(/\/$/,'');
+const API_GENERATE=API_BASE+'/generate';
+function selectTool(id) {
+  const tool = DOMAIN.tools.find(t => t.id === id);
+  if (!tool) return;
+  document.querySelectorAll('.tool-btn').forEach(b => b.classList.toggle('active', b.dataset.id === id));
+  renderTool(tool);
+}
+
+function renderTool(tool) {
+  const fieldsHtml = tool.fields.map(f => {
+    let inp = '';
+    if (f.type === 'text')
+      inp = `<input type="text" id="f_${f.id}" placeholder="${f.placeholder||''}"${f.required?' required':''}>`;
+    else if (f.type === 'textarea')
+      inp = `<textarea id="f_${f.id}" placeholder="${f.placeholder||''}" rows="${f.rows||4}"${f.required?' required':''}></textarea><label class="btn-upload"><input type="file" accept=".txt,.pdf,.docx" onchange="handleFileUpload('f_${f.id}',this)">📎 Upload file</label>`;
+    else if (f.type === 'select')
+      inp = `<select id="f_${f.id}">${f.options.map(o=>`<option>${o}</option>`).join('')}</select>`;
+    return `<div class="field-group"><label class="field-label" for="f_${f.id}">${f.label}${f.required?'':' <span class="field-opt">(optional)</span>'}</label>${inp}</div>`;
+  }).join('');
+
+  document.getElementById('content').innerHTML = `
+    <div class="tool-header">
+      <h2 class="tool-name">${tool.name}</h2>
+      <p class="tool-desc">${tool.description}</p>
+    </div>
+    <div class="form-card">
+      ${fieldsHtml}
+      <button class="btn-gen" onclick="runGenerate('${tool.id}')">Generate</button>
+    </div>
+    <div class="output-section" id="out-section">
+      <div class="output-header"><span class="output-lbl">Output</span><div style="display:flex;gap:6px"><button class="btn-dl" onclick="downloadOut()">↓ Save</button><button class="btn-copy" onclick="copyOut()">Copy</button></div></div>
+      <div class="output-box" id="out-box"><div class="out-empty"><div class="out-empty-icon">✨</div><p>Fill in the form and click Generate.</p></div></div>
+    </div>`;
+}
+
+async function runGenerate(toolId) {
+  const tool = DOMAIN.tools.find(t => t.id === toolId);
+  if (!tool) return;
+  const data = {};
+  let ok = true;
+  for (const f of tool.fields) {
+    const el = document.getElementById(`f_${f.id}`);
+    if (!el) continue;
+    const v = el.value.trim();
+    if (f.required && !v) { el.style.borderColor = '#ef4444'; ok = false; } else { el.style.borderColor = ''; data[f.id] = v; }
+  }
+  if (!ok) return;
+
+  const outBox = document.getElementById('out-box');
+  const btn = document.querySelector('.btn-gen');
+  outBox.classList.add('streaming');
+  outBox.innerHTML = '<span style="color:var(--muted)">Generating<span class="dots"><span>.</span><span>.</span><span>.</span></span></span>';
+  btn.disabled = true; btn.textContent = 'Generating…';
+
+  try {
+    const res = await fetch(API_GENERATE, {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({system_prompt: tool.systemPrompt, user_message: tool.buildUserMessage(data)})
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const reader = res.body.getReader(); const dec = new TextDecoder(); let out = '';
+    outBox.textContent = '';
+    while (true) {
+      const {done, value} = await reader.read(); if (done) break;
+      for (const line of dec.decode(value).split('\n')) {
+        if (!line.startsWith('data: ')) continue;
+        const d = line.slice(6); if (d === '[DONE]') break;
+        try { const p = JSON.parse(d); if (p.error) { outBox.classList.remove('streaming'); outBox.style.color='#ef4444'; outBox.textContent='Error: '+p.error; } else if (p.text) { out += p.text; outBox.textContent = out; outBox.scrollTop = outBox.scrollHeight; } } catch {}
+      }
+    }
+    if (out && typeof marked !== 'undefined') { outBox.classList.remove('streaming'); outBox.innerHTML = marked.parse(out); } else { outBox.classList.remove('streaming'); }
+  } catch(e) {
+    outBox.classList.remove('streaming');
+    outBox.style.color = '#ef4444';
+    outBox.textContent = `Connection error: ${e.message}\n\nStart the backend:\n  cd backend\n  uvicorn main:app --reload`;
+  }
+  btn.disabled = false; btn.textContent = 'Generate';
+}
+
+function copyOut() {
+  const text = document.getElementById('out-box')?.innerText;
+  if (!text || text.includes('Fill in the form')) return;
+  navigator.clipboard.writeText(text).then(() => { const b = document.querySelector('.btn-copy'); b.textContent='Copied!'; setTimeout(()=>b.textContent='Copy',2000); });
+}
+
+function init() {
+  const tools = DOMAIN.tools.filter(t => !t.isAgent);
+  const agents = DOMAIN.tools.filter(t => t.isAgent);
+  document.getElementById('tool-list').innerHTML =
+    `<div class="sidebar-search"><input class="search-inp" type="text" placeholder="Search tools…" oninput="filterTools(this.value)"></div>` +
+    `<div class="sec-lbl">Tools · ${tools.length}</div>` +
+    tools.map(t=>`<button class="tool-btn" data-id="${t.id}" onclick="selectTool('${t.id}')">${t.name}</button>`).join('') +
+    (agents.length ? `<div class="sec-lbl ag">Agents · ${agents.length}</div>` + agents.map(t=>`<button class="tool-btn agent" data-id="${t.id}" onclick="selectTool('${t.id}')">${t.name}</button>`).join('') : '');
+  if (tools.length) selectTool(tools[0].id);
+}
+function filterTools(q) {
+  const lq = q.toLowerCase();
+  document.querySelectorAll('.tool-btn').forEach(b => {
+    b.classList.toggle('hidden', !b.textContent.toLowerCase().includes(lq));
+  });
+}
+function downloadOut() {
+  const text = document.getElementById('out-box')?.innerText;
+  if (!text || text.includes('Fill in the form')) return;
+  const a = document.createElement('a');
+  a.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(text);
+  a.download = 'output.txt'; a.click();
+}
+async function handleFileUpload(fieldId, input) {
+  const file = input.files[0]; if (!file) return;
+  const ext = file.name.split('.').pop().toLowerCase();
+  const ta = document.getElementById(fieldId);
+  const prev = ta.placeholder; ta.placeholder = 'Reading file…'; ta.disabled = true;
+  try {
+    if (ext === 'txt' || ext === 'md' || ext === 'csv') {
+      ta.value = await file.text();
+    } else if (ext === 'pdf') {
+      if (typeof pdfjsLib === 'undefined') { alert('PDF library not loaded yet, please retry.'); ta.disabled = false; ta.placeholder = prev; return; }
+      const buf = await file.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({data: new Uint8Array(buf)}).promise;
+      let text = '';
+      for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const content = await page.getTextContent();
+        text += content.items.map(item => item.str).join(' ') + '\n\n';
+      }
+      ta.value = text.trim();
+    } else if (ext === 'docx') {
+      if (typeof mammoth === 'undefined') { alert('DOCX library not loaded yet, please retry.'); ta.disabled = false; ta.placeholder = prev; return; }
+      const buf = await file.arrayBuffer();
+      const result = await mammoth.extractRawText({arrayBuffer: buf});
+      ta.value = result.value;
+    }
+  } catch(e) { alert('Could not read file: ' + e.message); }
+  ta.disabled = false; ta.placeholder = prev; input.value = '';
+}
+window.addEventListener('DOMContentLoaded',init);
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>if(typeof pdfjsLib!=='undefined')pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mental Wellness Tools — Perfect Skills AI Tool Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}:root{--blue:#2563eb;--blue-light:#eff6ff;--dark:#0f172a;--mid:#334155;--muted:#64748b;--border:#e2e8f0;--bg:#f8fafc;--white:#ffffff;--radius:12px;--rsm:8px}html,body{height:100%}body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--dark);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:56px}.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}.nav-logo{height:26px;width:auto}.nav-sep{width:1px;height:16px;background:var(--border)}.nav-product{font-size:12px;font-weight:500;color:var(--blue)}.nav-domain{font-size:12px;color:var(--muted)}
+.page-layout{display:grid;grid-template-columns:260px 1fr;height:calc(100vh - 56px);overflow:hidden}.sidebar{border-right:1px solid var(--border);background:var(--white);overflow-y:auto;display:flex;flex-direction:column}.sidebar-header{padding:16px;border-bottom:1px solid var(--border);flex-shrink:0}.back-link{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);text-decoration:none;margin-bottom:10px}.back-link:hover{color:var(--blue)}.domain-row{display:flex;align-items:center;gap:10px}.d-icon{font-size:22px}.d-name{font-size:15px;font-weight:700;color:var(--dark)}.d-count{font-size:11px;color:var(--muted);margin-top:2px}
+.sec-lbl{font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--muted);padding:12px 16px 5px}.sec-lbl.ag{color:#7c3aed}.tool-btn{display:block;width:100%;text-align:left;padding:7px 16px;background:none;border:none;cursor:pointer;font-size:12px;font-family:inherit;color:var(--mid);line-height:1.4;transition:background .12s,color .12s}.tool-btn:hover{background:var(--bg);color:var(--dark)}.tool-btn.active{background:var(--blue-light);color:var(--blue);font-weight:600}.tool-btn.agent:hover{background:rgba(124,58,237,.06);color:#5b21b6}.tool-btn.agent.active{background:rgba(124,58,237,.1);color:#5b21b6;font-weight:600}
+.content{overflow-y:auto;background:var(--bg);padding:32px}.tool-header{margin-bottom:24px}.tool-name{font-size:20px;font-weight:700;color:var(--dark);letter-spacing:-.3px;margin-bottom:5px}.tool-desc{font-size:13px;color:var(--muted);line-height:1.6}.form-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:18px}.field-group{display:flex;flex-direction:column;gap:6px}.field-label{font-size:12px;font-weight:600;color:var(--mid)}.field-opt{font-weight:400;color:var(--muted)}
+input[type=text],select,textarea{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:var(--rsm);font-size:13px;font-family:inherit;color:var(--dark);background:var(--white);outline:none;transition:border-color .15s,box-shadow .15s}input[type=text]:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.08)}textarea{resize:vertical;line-height:1.6}.btn-upload{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:var(--white);border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;color:var(--muted);cursor:pointer;font-family:inherit;transition:all .15s;margin-top:2px}.btn-upload:hover{border-color:var(--blue);color:var(--blue)}.btn-upload input{display:none}.output-box{white-space:normal}.output-box.streaming{white-space:pre-wrap}.output-box h1,.output-box h2,.output-box h3,.output-box h4{font-weight:700;color:var(--dark)}.output-box h1{font-size:16px;margin:0 0 8px}.output-box h2{font-size:14px;margin:14px 0 6px;padding-bottom:4px;border-bottom:1px solid var(--border)}.output-box h3{font-size:13px;margin:12px 0 5px}.output-box h4{font-size:13px;margin:10px 0 4px;color:var(--mid)}.output-box p{margin:0 0 10px;line-height:1.7}.output-box p:last-child{margin-bottom:0}.output-box ul,.output-box ol{padding-left:20px;margin:0 0 10px}.output-box li{margin-bottom:4px;line-height:1.6}.output-box strong{font-weight:600}.output-box em{font-style:italic;color:var(--mid)}.output-box table{width:100%;border-collapse:collapse;margin:0 0 12px;font-size:12px}.output-box th{background:var(--bg);font-weight:600;padding:7px 10px;border:1px solid var(--border);text-align:left}.output-box td{padding:6px 10px;border:1px solid var(--border);vertical-align:top}.output-box tr:nth-child(even) td{background:#fafbfc}.output-box code{background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:1px 5px;font-size:11px;font-family:monospace}.output-box pre{background:var(--bg);border:1px solid var(--border);border-radius:var(--rsm);padding:14px;overflow-x:auto;margin:0 0 12px}.output-box pre code{background:none;border:none;padding:0}.output-box blockquote{border-left:3px solid #93c5fd;padding:8px 14px;color:var(--muted);margin:0 0 12px;background:var(--blue-light);border-radius:0 6px 6px 0}.output-box hr{border:none;border-top:1px solid var(--border);margin:14px 0}.btn-dl{padding:4px 12px;background:var(--white);border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;color:var(--muted);font-family:inherit;transition:all .15s}.btn-dl:hover{border-color:var(--blue);color:var(--blue)}.sidebar-search{padding:8px 16px 10px;border-bottom:1px solid var(--border);flex-shrink:0}.search-inp{width:100%;padding:6px 10px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:inherit;outline:none;color:var(--dark);background:var(--bg);transition:border-color .15s}.search-inp:focus{border-color:var(--blue)}.tool-btn.hidden{display:none}@keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}.dots span{animation:blink 1.2s infinite;display:inline-block;margin:0 1px}.dots span:nth-child(2){animation-delay:.2s}.dots span:nth-child(3){animation-delay:.4s}.out-empty{text-align:center;padding:36px 20px;color:var(--muted)}.out-empty-icon{font-size:24px;margin-bottom:8px}.out-empty p{font-size:12px;line-height:1.6}.btn-gen{align-self:stretch}
+.btn-gen{padding:10px 22px;background:var(--blue);color:#fff;border:none;border-radius:var(--rsm);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;transition:opacity .15s;align-self:flex-start}.btn-gen:hover{opacity:.88}.btn-gen:disabled{opacity:.5;cursor:not-allowed}.output-section{margin-top:20px}.output-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}.output-lbl{font-size:12px;font-weight:600;color:var(--mid)}.btn-copy{padding:4px 12px;background:var(--white);border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;color:var(--muted);font-family:inherit;transition:all .15s}.btn-copy:hover{border-color:var(--blue);color:var(--blue)}.output-box{background:var(--white);border:1px solid var(--border);border-radius:var(--rsm);padding:20px;font-size:13px;line-height:1.75;color:var(--dark);white-space:pre-wrap;min-height:180px;overflow-y:auto;font-family:inherit}
+.disclaimer{background:#f0fdf4;border:1px solid #86efac;border-radius:var(--rsm);padding:12px 16px;font-size:11px;color:#166534;margin-bottom:16px}
+</style>
+</head>
+<body>
+<nav><a class="nav-brand" href="index.html"><img src="perfectskills_logo.png" alt="Perfect Skills" class="nav-logo"><span class="nav-sep"></span><span class="nav-product">AI Tool Kit</span></a><span class="nav-domain">Mental Wellness Tools</span></nav>
+<div class="page-layout">
+  <aside class="sidebar"><div class="sidebar-header"><a class="back-link" href="index.html">← All Domains</a><div class="domain-row"><span class="d-icon">🧠</span><div><div class="d-name">Mental Wellness</div><div class="d-count">11 tools · 3 agents</div></div></div></div><div id="tool-list"></div></aside>
+  <main class="content" id="content"></main>
+</div>
+<script>
+const DOMAIN={name:'Mental Wellness',icon:'🧠',tools:[
+{id:'affirmation-gen',name:'Daily Affirmation Generator',description:'Generates personalised affirmations based on current emotional state and goals.',fields:[{id:'state',label:'Current Emotional State',type:'text',placeholder:'e.g. Anxious about work, feeling low energy, stressed about finances',required:true},{id:'goals',label:'What You Need Support With',type:'textarea',placeholder:'e.g. Building confidence, staying motivated, managing anxiety, feeling worthy…',rows:3,required:true},{id:'count',label:'Number of Affirmations',type:'select',options:['5','7','10','15'],required:true}],
+systemPrompt:`You are a compassionate wellness coach specialising in positive psychology and affirmations. Create personalised, meaningful affirmations.
+
+⚠️ These tools support general wellbeing. For mental health concerns, please speak with a qualified professional.
+
+Guidelines:
+- Affirmations should be present tense ("I am", "I have", "I choose")
+- Specific to the person's stated situation — not generic
+- Believable and realistic — not toxic positivity
+- Target both the emotional state and the goal
+- Mix of self-compassion, strength, and forward-looking statements
+- Avoid: "Everything is perfect" (dismissive) — prefer: "I am learning to..."
+
+Format:
+## Your Personalised Affirmations
+
+### Morning Affirmations (read on waking)
+1. [Affirmation]
+*Why this works for you:* [Brief note on why this affirmation addresses their specific situation]
+
+### During the Day (when you need a reset)
+[3-4 shorter affirmations to repeat in moments of stress]
+
+### Evening Affirmations (before sleep)
+[2-3 affirmations focused on self-compassion and rest]
+
+### Your Core Affirmation
+[One powerful statement that encapsulates their growth — make this memorable]
+
+### How to Use These
+[Brief practical guide on making affirmations work]`,
+buildUserMessage:f=>`Create ${f.count} personalised affirmations.\nEmotional state: ${f.state}\nNeeds: ${f.goals}`},
+
+{id:'gratitude-prompts',name:'Gratitude Journal Prompt Generator',description:'Creates guided gratitude prompts tailored to the user\'s context and mood.',fields:[{id:'mood',label:'Current Mood',type:'select',options:['Low / Struggling','Neutral / Okay','Good','Excellent'],required:true},{id:'context',label:'What\'s Going On in Your Life',type:'textarea',placeholder:'Brief context — what\'s on your mind, any challenges or good things happening…',rows:3,required:true},{id:'depth',label:'Journaling Depth',type:'select',options:['Quick (5 min)','Medium (15 min)','Deep reflection (30 min)'],required:true}],
+systemPrompt:`You are a mindfulness and journaling coach. Create thoughtful, personalised gratitude journal prompts.
+
+⚠️ Journaling supports wellbeing but is not a replacement for professional mental health care.
+
+Format:
+## Your Gratitude Journal — [Date placeholder]
+
+### Starting Check-in
+"Before I begin, I acknowledge that today I feel ___. And that's okay."
+
+### Warm-up Prompt
+[Easy, gentle opening prompt to ease into the practice]
+
+### Core Gratitude Prompts
+For each prompt:
+**[N]. [Prompt]**
+*Go deeper:* [Follow-up question to explore further]
+
+Include a mix of:
+- People gratitude
+- Situation gratitude (even from difficulty)
+- Self-gratitude
+- Sensory/present-moment gratitude
+- Future gratitude (anticipatory)
+
+### Reflection Prompt
+[A prompt to synthesise the session]
+
+### Closing Intention
+"Today I intend to ___."
+
+### For When Gratitude Feels Hard
+[Special prompts for when the person is in a low mood — acknowledging that gratitude can feel forced, and offering gentler entry points]`,
+buildUserMessage:f=>`Create gratitude journal prompts.\nMood: ${f.mood}\nDepth: ${f.depth}\nContext: ${f.context}`},
+
+{id:'stress-tips',name:'Stress Management Tip Generator',description:'Suggests practical, evidence-based techniques for managing specific stressors.',fields:[{id:'stressor',label:'Source of Stress',type:'textarea',placeholder:'What specifically is causing stress — be as detailed as you like…',rows:4,required:true},{id:'intensity',label:'Stress Intensity',type:'select',options:['Mild (manageable)','Moderate (affecting daily life)','High (overwhelming)'],required:true},{id:'constraints',label:'Your Constraints',type:'textarea',placeholder:'Time, location, what you\'ve already tried, any health conditions…',rows:2,required:false}],
+systemPrompt:`You are a stress management coach with expertise in evidence-based techniques. Provide personalised, practical stress management guidance.
+
+⚠️ For persistent or severe stress, please consider speaking with a mental health professional.
+
+Format:
+## Stress Management Guide — Personalised for You
+
+### Understanding Your Stress
+[Brief, validating acknowledgment of what they're dealing with — no toxic positivity]
+
+### Immediate Relief (Right Now — Under 5 Minutes)
+1. **[Technique]** — [Exact steps]
+   *Why it works:* [Brief science explanation]
+   *How to do it:* [Step-by-step instructions]
+
+### Short-term Strategies (This Week)
+[3-4 practical, specific strategies for the specific stressor]
+
+### Addressing the Root Cause
+[Honest analysis of the stressor and strategies to address the underlying cause, not just symptoms]
+
+### Body-Based Techniques
+[Physical practices: breathing, movement, sleep, nutrition specific to stress response]
+
+### Mind-Based Techniques
+[Cognitive reframing approaches for this specific situation]
+
+### Building Resilience (Over Time)
+[2-3 habits to build stress resilience long-term]
+
+### When to Seek Help
+[Clear guidance on when these tools aren't enough]`,
+buildUserMessage:f=>`Provide stress management guidance.\nStressor: ${f.stressor}\nIntensity: ${f.intensity}${f.constraints?'\nConstraints: '+f.constraints:''}`},
+
+{id:'mindfulness-exercise',name:'Mindfulness Exercise Generator',description:'Produces guided mindfulness exercises for different durations and situations.',fields:[{id:'duration',label:'Duration',type:'select',options:['2-3 minutes','5 minutes','10 minutes','15-20 minutes'],required:true},{id:'situation',label:'Situation',type:'select',options:['Morning wake-up','Work break / desk','Before a stressful event','After a difficult conversation','Evening wind-down','Before sleep','Feeling anxious','Feeling overwhelmed','General practice'],required:true},{id:'style',label:'Mindfulness Style',type:'select',options:['Breath-focused','Body scan','Visualisation','Loving-kindness','Open awareness','Grounding (5 senses)'],required:true}],
+systemPrompt:`You are a certified mindfulness instructor. Write a complete, guided mindfulness exercise.
+
+Format:
+## [Style] — [Duration] Guided Practice
+*For: [Situation]*
+
+---
+
+[Write the exercise as a complete guided script, as if narrating it in person]
+
+Use:
+- Second person ("Now bring your attention to...")
+- Short sentences and natural pauses (indicate with [pause] or ...)
+- Warm, calm, non-prescriptive language
+- Progression from settling → focus → deepening → returning
+- Clear opening (how to begin) and closing (how to end the practice)
+
+Structure:
+**Setting Up** (1 min)
+[Finding position, closing eyes, arriving]
+
+**[Main Practice Name]** ([duration])
+[Full guided script]
+
+**Returning** (1 min)
+[Gentle return to the room]
+
+**Reflection**
+One question to sit with after the practice.
+
+End with:
+**Carry this with you:** [One micro-practice to take into the rest of the day]`,
+buildUserMessage:f=>`Create a ${f.duration} ${f.style} mindfulness exercise for: ${f.situation}`},
+
+{id:'cbt-worksheet',name:'CBT Worksheet Generator',description:'Creates structured cognitive behavioural therapy worksheets for common thought patterns.',fields:[{id:'thought_pattern',label:'Thought Pattern or Challenge',type:'select',options:['Catastrophising / worst-case thinking','All-or-nothing thinking','Mind reading','Negative self-talk','Rumination','Anxiety about future events','Imposter syndrome','Perfectionism'],required:true},{id:'situation',label:'Specific Situation',type:'textarea',placeholder:'Describe the specific situation or thought you want to work through…',rows:4,required:true}],
+systemPrompt:`You are a CBT-trained therapist. Create a structured, therapeutic CBT worksheet.
+
+⚠️ CBT worksheets support self-help but do not replace therapy. If you're struggling significantly, please seek professional support.
+
+Format:
+## CBT Worksheet — [Thought Pattern]
+
+### Understanding [Thought Pattern]
+[Brief psychoeducation: what this pattern is, why our brain does it, and why it's not serving us]
+
+### Step 1: Identify the Thought
+**Situation:** [Describe what happened]
+**Automatic thought:** [The thought that came up]
+**Emotion(s):** [What you felt] — Intensity: ___/10
+
+### Step 2: Examine the Evidence
+| Evidence FOR this thought | Evidence AGAINST this thought |
+[User fills in — provide guidance on what to look for]
+
+### Step 3: Challenge the Thought
+**[Guided questions specific to their thought pattern]**
+1. [Socratic question]
+2. [Reality-testing question]
+3. [Perspective-shifting question]
+
+### Step 4: Develop a Balanced Thought
+"A more balanced way to see this is: ___"
+[Template and example]
+
+### Step 5: Emotion Check
+After completing this exercise:
+Emotion(s): [Same emotions] — New Intensity: ___/10
+
+### Behavioural Experiment (optional)
+[A small real-world action to test the balanced thought]
+
+### For Your Journal
+[3 reflection questions to explore further]`,
+buildUserMessage:f=>`Create a CBT worksheet.\nPattern: ${f.thought_pattern}\nSituation: ${f.situation}`},
+
+{id:'self-care-plan',name:'Self-Care Plan Generator',description:'Builds a personalised self-care routine based on lifestyle and wellness goals.',fields:[{id:'lifestyle',label:'Your Lifestyle',type:'textarea',placeholder:'Work schedule, family situation, typical stress levels, energy patterns…',rows:3,required:true},{id:'needs',label:'What You Most Need Right Now',type:'textarea',placeholder:'More rest, social connection, movement, creative outlets, quietude…',rows:3,required:true},{id:'barriers',label:'What Gets in the Way',type:'textarea',placeholder:'Time, energy, guilt, not knowing where to start…',rows:2,required:false}],
+systemPrompt:`You are a holistic wellness coach. Create a personalised, realistic self-care plan.
+
+Format:
+## Your Self-Care Plan
+
+### Your Self-Care Assessment
+[Honest look at current self-care gaps and what matters most for this person]
+
+### Your Self-Care Pillars
+[3-4 personalised pillars based on their specific needs, not generic categories]
+
+### Daily Micro-Practices (5-15 min each)
+[Small, doable daily acts of self-care specific to their lifestyle]
+- Morning: [Practice — time]
+- During day: [Practice — time]
+- Evening: [Practice — time]
+
+### Weekly Practices (30-60 min)
+[Deeper self-care practices once or twice a week]
+
+### Monthly / As Needed
+[Bigger recharge practices]
+
+### Your Non-Negotiables
+[2-3 core practices that should never be the first thing to drop]
+
+### Overcoming Your Specific Barriers
+[Address their stated barriers with specific strategies]
+
+### Self-Care Emergency Kit
+[When you're at your lowest — 5 quick things to do right now]
+
+### Self-Care Check-in
+Weekly questions to assess your self-care:
+1. [Question]
+
+### Permission Statement
+"I give myself permission to ___"
+[A personalised permission statement addressing their specific patterns]`,
+buildUserMessage:f=>`Create a self-care plan.\nLifestyle: ${f.lifestyle}\nNeeds: ${f.needs}${f.barriers?'\nBarriers: '+f.barriers:''}`},
+
+{id:'coping-strategies',name:'Coping Strategy Recommender',description:'Suggests personalised coping strategies based on the situation and emotional state.',fields:[{id:'situation',label:'Situation / Challenge',type:'textarea',placeholder:'What are you dealing with right now? Be as specific as you like…',rows:4,required:true},{id:'emotion',label:'Primary Emotion',type:'select',options:['Anxiety / Worry','Sadness / Low mood','Anger / Frustration','Overwhelm','Loneliness','Grief','Shame / Guilt','Fear','Numbness'],required:true},{id:'capacity',label:'Current Capacity',type:'select',options:['Very low — barely functioning','Low — managing but struggling','Medium — doing okay','Good — looking to grow'],required:true}],
+systemPrompt:`You are a compassionate mental health coach. Recommend personalised, evidence-based coping strategies.
+
+⚠️ These are supportive strategies, not professional treatment. Seek help if you're in crisis.
+
+**If someone seems in crisis, always include the crisis line: iCall: 9152987821 (India) | Mind: 0300 123 3393 (UK) | NIMHANS: 080-46110007**
+
+Format:
+## Coping Strategies — Personalised for You
+
+### Acknowledging Where You Are
+[Validation of their experience — not dismissal, not excessive positivity]
+
+### Right Now (0-5 minutes)
+[Immediate, body-based regulation techniques for the specific emotion]
+**[Technique]:**
+[Exact steps — detailed enough to follow immediately]
+
+### Today (Activities and practices for the rest of the day)
+[3-4 specific, capacity-appropriate coping actions]
+
+### This Week (Ongoing strategies)
+[Longer-term strategies addressing the specific situation]
+
+### Reframing Approaches
+[Cognitive approaches specifically helpful for their emotion]
+
+### What to Avoid
+[Coping strategies that feel helpful but make things worse for this emotion]
+
+### Reach Out
+[Guidance on when and how to reach out for support]
+
+### Your Personalised Coping Toolkit
+[A shortlist of 5 go-to strategies matched to this person]`,
+buildUserMessage:f=>`Recommend coping strategies.\nEmotion: ${f.emotion}\nCapacity: ${f.capacity}\nSituation: ${f.situation}`},
+
+{id:'sleep-hygiene',name:'Sleep Hygiene Guide Generator',description:'Produces a tailored sleep improvement plan based on current habits and challenges.',fields:[{id:'challenges',label:'Sleep Challenges',type:'textarea',placeholder:'What specifically is the issue — trouble falling asleep, waking at night, early waking, feeling unrested, racing mind…',rows:4,required:true},{id:'habits',label:'Current Sleep Habits',type:'textarea',placeholder:'Bedtime, wake time, screen use, caffeine, exercise timing, bedroom environment…',rows:3,required:true},{id:'context',label:'Context',type:'textarea',placeholder:'Stress levels, life stage (shift work, parenting, etc.), how long this has been happening…',rows:2,required:false}],
+systemPrompt:`You are a sleep coach and CBT-I specialist. Create a personalised sleep improvement plan.
+
+⚠️ For persistent sleep disorders, consult a doctor. This is general guidance.
+
+Format:
+## Personalised Sleep Improvement Plan
+
+### Your Sleep Analysis
+[Assessment of what's likely causing the specific issues — connect habits to problems]
+
+### Your Sleep Foundation
+**Target bedtime:** ___
+**Target wake time:** ___
+**Sleep window:** ___ hours
+*Why this window for you:* [Explanation]
+
+### The Sleep Hygiene Reset
+
+**Evening Routine (2 hours before bed):**
+[Time-stamped wind-down routine specific to their challenges]
+
+**Bedroom Environment:**
+[Specific adjustments needed — light, temperature, noise, devices]
+
+**Daytime Habits:**
+[What to change during the day to improve night sleep]
+
+### Addressing Your Specific Challenges
+For each stated challenge:
+**[Challenge]:** [Targeted strategy with evidence basis]
+
+### The 2-Week Sleep Reset Plan
+Week 1: [Focus and changes]
+Week 2: [Build on Week 1]
+
+### When Your Mind Won't Quiet
+[Specific techniques for racing thoughts at bedtime]
+
+### Sleep Journal Template
+[Simple nightly log to track progress]
+
+### What to Expect
+[Realistic timeline for improvement — managing expectations]`,
+buildUserMessage:f=>`Create a sleep improvement plan.\nChallenges: ${f.challenges}\nCurrent Habits: ${f.habits}${f.context?'\nContext: '+f.context:''}`},
+
+{id:'boundary-scripts',name:'Boundary Setting Script Generator',description:'Writes scripts for setting boundaries in specific personal or professional situations.',fields:[{id:'situation',label:'Situation',type:'textarea',placeholder:'Describe the specific situation where you need to set a boundary — who, what, what keeps happening…',rows:4,required:true},{id:'relationship',label:'Type of Relationship',type:'select',options:['Manager / Employer','Colleague','Family member','Friend','Partner / Spouse','Client','Acquaintance / Stranger'],required:true},{id:'style',label:'Communication Style',type:'select',options:['Gentle and diplomatic','Direct and clear','Firm and assertive'],required:true}],
+systemPrompt:`You are an assertiveness coach and communication specialist. Write practical boundary-setting scripts.
+
+Format:
+## Boundary Setting — [Situation Type]
+
+### Understanding This Situation
+[Brief validation and framing — why this boundary is reasonable and important]
+
+### The Core Boundary Statement
+**Template:** "When [situation], I feel [impact]. I need [specific request]."
+**Your personalised version:** [Fill in with their specific details]
+
+### Full Scripts
+
+**In Person / On a Call:**
+"[Opening — don't apologise for the boundary]
+[State the boundary clearly]
+[Acknowledge their perspective briefly if needed]
+[Restate what you need]
+[Closing that keeps the door open if appropriate]"
+
+**Via Message / Email:**
+Subject: [If email]
+[Written version — more formal, clear, documented]
+
+### Handling Pushback
+
+**If they say "You're being too sensitive":**
+"[Response script]"
+
+**If they push back or try to negotiate the boundary:**
+"[Firm but calm response]"
+
+**If they get angry:**
+"[De-escalation + hold your ground script]"
+
+### After Setting the Boundary
+[What to expect, how to follow through if the boundary is violated]
+
+### Self-Care After
+[Because boundary setting is emotionally taxing — brief self-care note]`,
+buildUserMessage:f=>`Write boundary setting scripts.\nRelationship: ${f.relationship}\nStyle: ${f.style}\nSituation: ${f.situation}`},
+
+{id:'therapy-prep',name:'Therapy Session Prep Guide',description:'Helps users organise thoughts and prepare topics before a therapy appointment.',fields:[{id:'session_type',label:'Session Type',type:'select',options:['First session ever','Ongoing therapy','After a difficult period','After a long break','Specific issue to address'],required:true},{id:'themes',label:'What\'s Been on Your Mind',type:'textarea',placeholder:'What\'s been happening, what you\'ve been thinking about, what you want to explore…',rows:5,required:true},{id:'last_session',label:'From Last Session (if applicable)',type:'textarea',placeholder:'What was discussed, homework given, anything unresolved…',rows:3,required:false}],
+systemPrompt:`You are a therapy support specialist. Help the person prepare for a productive therapy session.
+
+Format:
+## Therapy Session Prep
+
+### Your Current State Check-in
+[Questions to answer before the session:]
+- On a scale of 1-10, my overall wellbeing is: ___
+- This week the emotion I felt most was: ___
+- One thing I'm proud of this week: ___
+
+### What to Prioritise in This Session
+[Help them rank their themes by importance and urgency]
+
+**Most important to discuss:**
+[Their #1 theme with suggested framing]
+
+**Would be helpful if time:**
+[Secondary themes]
+
+### How to Open the Session
+[A concise way to start the session that sets the direction]
+"Since we last spoke, the most significant thing has been ___"
+or
+"Today I'd most like to focus on ___"
+
+### Specific Things to Share
+• [Concrete experiences, observations, or feelings to share]
+
+### Questions to Ask Your Therapist
+• [Specific questions — about their approach, about their situation, about homework]
+
+### Homework Review (if applicable)
+[How to present homework or reflection from last session]
+
+### If You Feel Stuck in Session
+[What to say when words don't come: "I'm not sure how to say this, but ___"]
+
+### After the Session
+[Prompts to capture insights while fresh]`,
+buildUserMessage:f=>`Prepare for a therapy session.\nType: ${f.session_type}\nThemes: ${f.themes}${f.last_session?'\nLast Session: '+f.last_session:''}`},
+
+{id:'mood-checkin',name:'Mood Check-in Questionnaire',description:'Generates a structured mood check-in to track emotional patterns over time.',fields:[{id:'purpose',label:'Purpose',type:'select',options:['Daily personal tracking','Weekly review','Tracking specific concern (anxiety, depression)','After a difficult event','General wellbeing check'],required:true},{id:'depth',label:'Depth',type:'select',options:['Quick (5 questions — 3 min)','Standard (10 questions — 8 min)','Deep (20 questions — 15 min)'],required:true}],
+systemPrompt:`You are a mental health and wellbeing specialist. Create a thoughtful, clinically-informed mood check-in.
+
+Format:
+## Mood Check-in — [Purpose]
+*Complete honestly. There are no right or wrong answers.*
+
+### Emotional State
+Rate each: 1 (not at all) to 5 (very much so)
+
+**Positive emotions:**
+1. I feel hopeful about things. 1 2 3 4 5
+[Continue for depth specified]
+
+**Challenging emotions:**
+[Questions about difficult emotions — phrased non-stigmatisingly]
+
+### Energy & Functioning
+[Questions about sleep, appetite, concentration, motivation]
+
+### Relationships
+[Questions about connection and isolation]
+
+### Thoughts
+[Questions about thought patterns — catastrophising, rumination, etc.]
+
+### Body
+[Somatic questions — tension, fatigue, physical symptoms of stress]
+
+### Open Questions
+1. The one thing most affecting my mood right now is: ___
+2. Something I need more of this week: ___
+
+### Scoring Guide
+| Range | Interpretation | Suggested Action |
+[Ranges for each section]
+
+### Trend Questions (for weekly use)
+"Compared to last check-in, I feel ___"
+
+### When to Seek Support
+[Clear guidance on score ranges that indicate seeking professional help]
+
+⚠️ This check-in is not a clinical assessment. If you're concerned about your mental health, please speak with a professional.`,
+buildUserMessage:f=>`Create a ${f.depth} mood check-in for: ${f.purpose}`},
+
+// AGENTS
+{id:'wellness-checkin-agent',name:'Daily Wellness Check-in Agent',isAgent:true,description:'Generates a personalised daily wellness reflection and sets intentions for the day.',fields:[{id:'mood',label:'How Are You Feeling?',type:'textarea',placeholder:'What\'s your honest emotional and physical state right now?',rows:3,required:true},{id:'yesterday',label:'How Was Yesterday?',type:'textarea',placeholder:'What happened, what went well, what was hard…',rows:3,required:false},{id:'today',label:'What\'s Ahead Today',type:'textarea',placeholder:'What are you facing today — tasks, challenges, events?',rows:3,required:false}],
+systemPrompt:`You are a compassionate daily wellness coach. Lead a personalised daily check-in and intention-setting session.
+
+⚠️ This is a wellness support tool. For mental health concerns, please speak with a professional.
+
+Format:
+## Good [Morning/Day] — Daily Wellness Check-in
+
+### Acknowledging How You Are
+[Warm, non-judgmental reflection on what they shared — validate the feeling without dismissing or inflating it]
+
+### Yesterday's Reflection
+[If provided: acknowledge what went well and what was hard — reframe any self-criticism gently]
+
+### Your Emotional Landscape Today
+"What you're feeling is ___. This makes sense because ___."
+[A brief, grounding acknowledgment]
+
+### Today's Intentions
+
+**Your focus word for today:** [One word that will anchor them]
+
+**Three intentions:**
+1. [Action intention — something to do]
+2. [Being intention — how to show up]
+3. [Self-care intention — for yourself]
+
+### Preparing for Your Day
+[If they shared challenges ahead — brief, practical mental preparation]
+
+### Your Micro-Practices for Today
+[2-3 specific small practices tailored to how they're feeling]
+
+### A Question to Sit With
+"[A gentle, curious question that opens rather than pressures]"
+
+### Closing
+[Warm, encouraging close — personalised to their situation]`,
+buildUserMessage:f=>`Lead a daily wellness check-in.\nHow I'm feeling: ${f.mood}${f.yesterday?'\nYesterday: '+f.yesterday:''}${f.today?'\nToday ahead: '+f.today:''}`},
+
+{id:'cbt-coach',name:'CBT Coach Agent',isAgent:true,description:'Guides you through a complete CBT session to examine and reframe a specific thought or situation.',fields:[{id:'situation',label:'Situation to Work Through',type:'textarea',placeholder:'Describe the situation, the thought you\'re stuck on, or the emotion you want to process…',rows:5,required:true},{id:'goal',label:'What Would Help',type:'text',placeholder:'e.g. I want to feel less anxious about this, understand why I react this way, find a balanced perspective',required:true}],
+systemPrompt:`You are a CBT-trained therapist running a structured therapeutic session. Guide the person through a complete CBT session.
+
+⚠️ This is self-help CBT support, not professional therapy. For serious mental health concerns, please seek professional help.
+**Crisis support: iCall 9152987821 (India) | Samaritans 116 123 (UK)**
+
+Format:
+## CBT Session — Structured Reflection
+
+### Step 1: Grounding
+[Brief moment of acknowledgment — validate their situation, set a safe tone]
+
+### Step 2: Situation Analysis
+[Help them clearly articulate: the situation, the automatic thought, the resulting emotion]
+
+"Let me reflect back what I'm hearing: [paraphrase their situation clearly]"
+
+The automatic thought here seems to be: "[Identified core thought]"
+The emotion this creates: [Emotion and intensity estimate]
+
+### Step 3: Examining the Thought
+
+**Cognitive distortion check:**
+[Identify which cognitive distortion(s) are at play — name and explain briefly]
+
+**Socratic questions to explore:**
+1. [Question that gently challenges the thought]
+2. [Question about evidence]
+3. [Perspective question]
+
+### Step 4: Evidence & Reality Testing
+[Walk through the evidence for and against the automatic thought]
+
+**What supports this thought:**
+[Acknowledge the grain of truth]
+
+**What challenges this thought:**
+[Alternative evidence and perspectives]
+
+### Step 5: The Balanced Thought
+"A more balanced and accurate way to see this might be: [Balanced thought]"
+
+### Step 6: Behavioural Experiment
+[A small, concrete action to test the balanced thought in real life]
+
+### Session Summary
+[3 key insights from this session]
+
+### Take-Home Practice
+[One thing to practice before the next reflection]`,
+buildUserMessage:f=>`Run a CBT session.\nGoal: ${f.goal}\nSituation: ${f.situation}`},
+
+{id:'journaling-companion',name:'Journaling Companion Agent',isAgent:true,description:'Facilitates a reflective journaling session with context-aware follow-up prompts.',fields:[{id:'entry',label:'Your Journal Entry / Thoughts',type:'textarea',placeholder:'Write freely — whatever\'s on your mind. There\'s no wrong thing to write here…',rows:8,required:true},{id:'focus',label:'What You Want from This',type:'select',options:['Just to be heard / validated','To understand my feelings better','To find clarity or direction','To process something difficult','To celebrate something good','To explore a decision'],required:true}],
+systemPrompt:`You are a compassionate journaling companion and reflective listener. Respond to the journal entry with warmth, depth, and insight.
+
+⚠️ This is a journaling support tool. For serious emotional concerns, please seek professional support.
+
+Format:
+## Journaling Companion Response
+
+### What I'm Hearing
+[Reflect back the essence of their entry — not a summary, but an empathic resonance — show you truly heard them. Do NOT paraphrase robotically.]
+
+### Witnessing Your Experience
+[A few sentences that acknowledge the depth, complexity, or significance of what they shared — without judgment, without fixing]
+
+### What Stood Out
+[1-2 specific things from their entry that seem significant — a phrase, an observation, a contradiction]
+"When you wrote '[exact phrase from their entry],' I noticed ___"
+
+### Questions to Explore
+[3-5 genuine, curious follow-up questions that could deepen the reflection]
+These should open doors, not direct answers. Avoid "should" questions.
+
+### Patterns or Themes
+[If there are recurring themes — name them gently, not prescriptively]
+
+### A Reflection to Sit With
+[One observation or gentle reframe — offered as a possibility, not a truth]
+
+### If You'd Like to Keep Writing
+[A prompt to continue if they want to go deeper]
+
+### Closing
+[Warm, affirming close that honours the courage it takes to reflect]`,
+buildUserMessage:f=>`Respond to this journal entry.\nWhat I need: ${f.focus}\n\nENTRY:\n${f.entry}`}
+]};
+
+/* PS Tools API base — configurable. Default :8000; override via ?api=http://host:port (persists in localStorage). */
+const _psApiQp=new URLSearchParams(location.search).get('api');
+if(_psApiQp)localStorage.setItem('ps_api_base',_psApiQp);
+const API_BASE=(_psApiQp||localStorage.getItem('ps_api_base')||'http://localhost:8000').replace(/\/$/,'');
+const API_GENERATE=API_BASE+'/generate';
+function selectTool(id) {
+  const tool = DOMAIN.tools.find(t => t.id === id);
+  if (!tool) return;
+  document.querySelectorAll('.tool-btn').forEach(b => b.classList.toggle('active', b.dataset.id === id));
+  renderTool(tool);
+}
+
+function renderTool(tool) {
+  const fieldsHtml = tool.fields.map(f => {
+    let inp = '';
+    if (f.type === 'text')
+      inp = `<input type="text" id="f_${f.id}" placeholder="${f.placeholder||''}"${f.required?' required':''}>`;
+    else if (f.type === 'textarea')
+      inp = `<textarea id="f_${f.id}" placeholder="${f.placeholder||''}" rows="${f.rows||4}"${f.required?' required':''}></textarea><label class="btn-upload"><input type="file" accept=".txt,.pdf,.docx" onchange="handleFileUpload('f_${f.id}',this)">📎 Upload file</label>`;
+    else if (f.type === 'select')
+      inp = `<select id="f_${f.id}">${f.options.map(o=>`<option>${o}</option>`).join('')}</select>`;
+    return `<div class="field-group"><label class="field-label" for="f_${f.id}">${f.label}${f.required?'':' <span class="field-opt">(optional)</span>'}</label>${inp}</div>`;
+  }).join('');
+
+  document.getElementById('content').innerHTML = `
+    <div class="tool-header">
+      <h2 class="tool-name">${tool.name}</h2>
+      <p class="tool-desc">${tool.description}</p>
+    </div>
+    <div class="form-card">
+      ${fieldsHtml}
+      <button class="btn-gen" onclick="runGenerate('${tool.id}')">Generate</button>
+    </div>
+    <div class="output-section" id="out-section">
+      <div class="output-header"><span class="output-lbl">Output</span><div style="display:flex;gap:6px"><button class="btn-dl" onclick="downloadOut()">↓ Save</button><button class="btn-copy" onclick="copyOut()">Copy</button></div></div>
+      <div class="output-box" id="out-box"><div class="out-empty"><div class="out-empty-icon">✨</div><p>Fill in the form and click Generate.</p></div></div>
+    </div>`;
+}
+
+async function runGenerate(toolId) {
+  const tool = DOMAIN.tools.find(t => t.id === toolId);
+  if (!tool) return;
+  const data = {};
+  let ok = true;
+  for (const f of tool.fields) {
+    const el = document.getElementById(`f_${f.id}`);
+    if (!el) continue;
+    const v = el.value.trim();
+    if (f.required && !v) { el.style.borderColor = '#ef4444'; ok = false; } else { el.style.borderColor = ''; data[f.id] = v; }
+  }
+  if (!ok) return;
+
+  const outBox = document.getElementById('out-box');
+  const btn = document.querySelector('.btn-gen');
+  outBox.classList.add('streaming');
+  outBox.innerHTML = '<span style="color:var(--muted)">Generating<span class="dots"><span>.</span><span>.</span><span>.</span></span></span>';
+  btn.disabled = true; btn.textContent = 'Generating…';
+
+  try {
+    const res = await fetch(API_GENERATE, {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({system_prompt: tool.systemPrompt, user_message: tool.buildUserMessage(data)})
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const reader = res.body.getReader(); const dec = new TextDecoder(); let out = '';
+    outBox.textContent = '';
+    while (true) {
+      const {done, value} = await reader.read(); if (done) break;
+      for (const line of dec.decode(value).split('\n')) {
+        if (!line.startsWith('data: ')) continue;
+        const d = line.slice(6); if (d === '[DONE]') break;
+        try { const p = JSON.parse(d); if (p.error) { outBox.classList.remove('streaming'); outBox.style.color='#ef4444'; outBox.textContent='Error: '+p.error; } else if (p.text) { out += p.text; outBox.textContent = out; outBox.scrollTop = outBox.scrollHeight; } } catch {}
+      }
+    }
+    if (out && typeof marked !== 'undefined') { outBox.classList.remove('streaming'); outBox.innerHTML = marked.parse(out); } else { outBox.classList.remove('streaming'); }
+  } catch(e) {
+    outBox.classList.remove('streaming');
+    outBox.style.color = '#ef4444';
+    outBox.textContent = `Connection error: ${e.message}\n\nStart the backend:\n  cd backend\n  uvicorn main:app --reload`;
+  }
+  btn.disabled = false; btn.textContent = 'Generate';
+}
+
+function copyOut() {
+  const text = document.getElementById('out-box')?.innerText;
+  if (!text || text.includes('Fill in the form')) return;
+  navigator.clipboard.writeText(text).then(() => { const b = document.querySelector('.btn-copy'); b.textContent='Copied!'; setTimeout(()=>b.textContent='Copy',2000); });
+}
+
+function init() {
+  const tools = DOMAIN.tools.filter(t => !t.isAgent);
+  const agents = DOMAIN.tools.filter(t => t.isAgent);
+  document.getElementById('tool-list').innerHTML =
+    `<div class="sidebar-search"><input class="search-inp" type="text" placeholder="Search tools…" oninput="filterTools(this.value)"></div>` +
+    `<div class="sec-lbl">Tools · ${tools.length}</div>` +
+    tools.map(t=>`<button class="tool-btn" data-id="${t.id}" onclick="selectTool('${t.id}')">${t.name}</button>`).join('') +
+    (agents.length ? `<div class="sec-lbl ag">Agents · ${agents.length}</div>` + agents.map(t=>`<button class="tool-btn agent" data-id="${t.id}" onclick="selectTool('${t.id}')">${t.name}</button>`).join('') : '');
+  if (tools.length) selectTool(tools[0].id);
+}
+function filterTools(q) {
+  const lq = q.toLowerCase();
+  document.querySelectorAll('.tool-btn').forEach(b => {
+    b.classList.toggle('hidden', !b.textContent.toLowerCase().includes(lq));
+  });
+}
+function downloadOut() {
+  const text = document.getElementById('out-box')?.innerText;
+  if (!text || text.includes('Fill in the form')) return;
+  const a = document.createElement('a');
+  a.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(text);
+  a.download = 'output.txt'; a.click();
+}
+async function handleFileUpload(fieldId, input) {
+  const file = input.files[0]; if (!file) return;
+  const ext = file.name.split('.').pop().toLowerCase();
+  const ta = document.getElementById(fieldId);
+  const prev = ta.placeholder; ta.placeholder = 'Reading file…'; ta.disabled = true;
+  try {
+    if (ext === 'txt' || ext === 'md' || ext === 'csv') {
+      ta.value = await file.text();
+    } else if (ext === 'pdf') {
+      if (typeof pdfjsLib === 'undefined') { alert('PDF library not loaded yet, please retry.'); ta.disabled = false; ta.placeholder = prev; return; }
+      const buf = await file.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({data: new Uint8Array(buf)}).promise;
+      let text = '';
+      for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const content = await page.getTextContent();
+        text += content.items.map(item => item.str).join(' ') + '\n\n';
+      }
+      ta.value = text.trim();
+    } else if (ext === 'docx') {
+      if (typeof mammoth === 'undefined') { alert('DOCX library not loaded yet, please retry.'); ta.disabled = false; ta.placeholder = prev; return; }
+      const buf = await file.arrayBuffer();
+      const result = await mammoth.extractRawText({arrayBuffer: buf});
+      ta.value = result.value;
+    }
+  } catch(e) { alert('Could not read file: ' + e.message); }
+  ta.disabled = false; ta.placeholder = prev; input.value = '';
+}
+window.addEventListener('DOMContentLoaded',init);
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>if(typeof pdfjsLib!=='undefined')pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+</body>
+</html>

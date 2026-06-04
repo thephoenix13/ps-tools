@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Legal Tools — Perfect Skills AI Tool Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}:root{--blue:#2563eb;--blue-light:#eff6ff;--dark:#0f172a;--mid:#334155;--muted:#64748b;--border:#e2e8f0;--bg:#f8fafc;--white:#ffffff;--radius:12px;--rsm:8px}html,body{height:100%}body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--dark);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:56px}.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}.nav-logo{height:26px;width:auto}.nav-sep{width:1px;height:16px;background:var(--border)}.nav-product{font-size:12px;font-weight:500;color:var(--blue)}.nav-domain{font-size:12px;color:var(--muted)}
+.page-layout{display:grid;grid-template-columns:260px 1fr;height:calc(100vh - 56px);overflow:hidden}.sidebar{border-right:1px solid var(--border);background:var(--white);overflow-y:auto;display:flex;flex-direction:column}.sidebar-header{padding:16px;border-bottom:1px solid var(--border);flex-shrink:0}.back-link{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);text-decoration:none;margin-bottom:10px}.back-link:hover{color:var(--blue)}.domain-row{display:flex;align-items:center;gap:10px}.d-icon{font-size:22px}.d-name{font-size:15px;font-weight:700;color:var(--dark)}.d-count{font-size:11px;color:var(--muted);margin-top:2px}
+.sec-lbl{font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--muted);padding:12px 16px 5px}.sec-lbl.ag{color:#7c3aed}.tool-btn{display:block;width:100%;text-align:left;padding:7px 16px;background:none;border:none;cursor:pointer;font-size:12px;font-family:inherit;color:var(--mid);line-height:1.4;transition:background .12s,color .12s}.tool-btn:hover{background:var(--bg);color:var(--dark)}.tool-btn.active{background:var(--blue-light);color:var(--blue);font-weight:600}.tool-btn.agent:hover{background:rgba(124,58,237,.06);color:#5b21b6}.tool-btn.agent.active{background:rgba(124,58,237,.1);color:#5b21b6;font-weight:600}
+.content{overflow-y:auto;background:var(--bg);padding:32px}.tool-header{margin-bottom:24px}.tool-name{font-size:20px;font-weight:700;color:var(--dark);letter-spacing:-.3px;margin-bottom:5px}.tool-desc{font-size:13px;color:var(--muted);line-height:1.6}.form-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:18px}.field-group{display:flex;flex-direction:column;gap:6px}.field-label{font-size:12px;font-weight:600;color:var(--mid)}.field-opt{font-weight:400;color:var(--muted)}
+input[type=text],select,textarea{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:var(--rsm);font-size:13px;font-family:inherit;color:var(--dark);background:var(--white);outline:none;transition:border-color .15s,box-shadow .15s}input[type=text]:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.08)}textarea{resize:vertical;line-height:1.6}.btn-upload{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:var(--white);border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;color:var(--muted);cursor:pointer;font-family:inherit;transition:all .15s;margin-top:2px}.btn-upload:hover{border-color:var(--blue);color:var(--blue)}.btn-upload input{display:none}.output-box{white-space:normal}.output-box.streaming{white-space:pre-wrap}.output-box h1,.output-box h2,.output-box h3,.output-box h4{font-weight:700;color:var(--dark)}.output-box h1{font-size:16px;margin:0 0 8px}.output-box h2{font-size:14px;margin:14px 0 6px;padding-bottom:4px;border-bottom:1px solid var(--border)}.output-box h3{font-size:13px;margin:12px 0 5px}.output-box h4{font-size:13px;margin:10px 0 4px;color:var(--mid)}.output-box p{margin:0 0 10px;line-height:1.7}.output-box p:last-child{margin-bottom:0}.output-box ul,.output-box ol{padding-left:20px;margin:0 0 10px}.output-box li{margin-bottom:4px;line-height:1.6}.output-box strong{font-weight:600}.output-box em{font-style:italic;color:var(--mid)}.output-box table{width:100%;border-collapse:collapse;margin:0 0 12px;font-size:12px}.output-box th{background:var(--bg);font-weight:600;padding:7px 10px;border:1px solid var(--border);text-align:left}.output-box td{padding:6px 10px;border:1px solid var(--border);vertical-align:top}.output-box tr:nth-child(even) td{background:#fafbfc}.output-box code{background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:1px 5px;font-size:11px;font-family:monospace}.output-box pre{background:var(--bg);border:1px solid var(--border);border-radius:var(--rsm);padding:14px;overflow-x:auto;margin:0 0 12px}.output-box pre code{background:none;border:none;padding:0}.output-box blockquote{border-left:3px solid #93c5fd;padding:8px 14px;color:var(--muted);margin:0 0 12px;background:var(--blue-light);border-radius:0 6px 6px 0}.output-box hr{border:none;border-top:1px solid var(--border);margin:14px 0}.btn-dl{padding:4px 12px;background:var(--white);border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;color:var(--muted);font-family:inherit;transition:all .15s}.btn-dl:hover{border-color:var(--blue);color:var(--blue)}.sidebar-search{padding:8px 16px 10px;border-bottom:1px solid var(--border);flex-shrink:0}.search-inp{width:100%;padding:6px 10px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:inherit;outline:none;color:var(--dark);background:var(--bg);transition:border-color .15s}.search-inp:focus{border-color:var(--blue)}.tool-btn.hidden{display:none}@keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}.dots span{animation:blink 1.2s infinite;display:inline-block;margin:0 1px}.dots span:nth-child(2){animation-delay:.2s}.dots span:nth-child(3){animation-delay:.4s}.out-empty{text-align:center;padding:36px 20px;color:var(--muted)}.out-empty-icon{font-size:24px;margin-bottom:8px}.out-empty p{font-size:12px;line-height:1.6}.btn-gen{align-self:stretch}
+.btn-gen{padding:10px 22px;background:var(--blue);color:#fff;border:none;border-radius:var(--rsm);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;transition:opacity .15s;align-self:flex-start}.btn-gen:hover{opacity:.88}.btn-gen:disabled{opacity:.5;cursor:not-allowed}.output-section{margin-top:20px}.output-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}.output-lbl{font-size:12px;font-weight:600;color:var(--mid)}.btn-copy{padding:4px 12px;background:var(--white);border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;color:var(--muted);font-family:inherit;transition:all .15s}.btn-copy:hover{border-color:var(--blue);color:var(--blue)}.output-box{background:var(--white);border:1px solid var(--border);border-radius:var(--rsm);padding:20px;font-size:13px;line-height:1.75;color:var(--dark);white-space:pre-wrap;min-height:180px;overflow-y:auto;font-family:inherit}
+.disclaimer{background:#fef3c7;border:1px solid #fcd34d;border-radius:var(--rsm);padding:12px 16px;font-size:11px;color:#92400e;margin-bottom:16px}
+</style>
+</head>
+<body>
+<nav><a class="nav-brand" href="index.html"><img src="perfectskills_logo.png" alt="Perfect Skills" class="nav-logo"><span class="nav-sep"></span><span class="nav-product">AI Tool Kit</span></a><span class="nav-domain">Legal Tools</span></nav>
+<div class="page-layout">
+  <aside class="sidebar"><div class="sidebar-header"><a class="back-link" href="index.html">← All Domains</a><div class="domain-row"><span class="d-icon">⚖️</span><div><div class="d-name">Legal</div><div class="d-count">12 tools · 4 agents</div></div></div></div><div id="tool-list"></div></aside>
+  <main class="content" id="content"></main>
+</div>
+<script>
+const DOMAIN={name:'Legal',icon:'⚖️',tools:[
+{id:'contract-summarizer',name:'Contract Summarizer',description:'Condenses long contracts into a plain-English summary of key terms and obligations.',fields:[{id:'contract',label:'Contract Text',type:'textarea',placeholder:'Paste the full contract text here…',rows:12,required:true}],
+systemPrompt:`You are a senior legal analyst. Summarise this contract in clear, plain English.
+
+⚠️ Legal Disclaimer: This summary is for informational purposes only and does not constitute legal advice. Consult a qualified lawyer before signing or acting on any contract.
+
+Format:
+## Contract Summary
+
+### Contract Type & Parties
+[What kind of contract, who are the parties]
+
+### Key Terms at a Glance
+| Term | Summary |
+[Table: duration, payment, governing law, termination, key obligations]
+
+### Party A Obligations
+• [What Party A must do]
+
+### Party B Obligations
+• [What Party B must do]
+
+### Financial Terms
+[Payment amounts, schedules, penalties, refunds]
+
+### Important Dates & Deadlines
+| Event | Date/Trigger |
+
+### Termination Conditions
+[How and when either party can exit]
+
+### Notable Clauses
+• [Any unusual, restrictive, or important clauses]
+
+### Risk Flags
+⚠️ [Clauses that may be risky or unusual — recommend legal review]
+
+### Plain English Summary
+[3-4 sentence executive summary of what this contract is really saying]`,
+buildUserMessage:f=>`Summarise this contract.\n\n${f.contract}`},
+
+{id:'clause-explainer',name:'Legal Clause Explainer',description:'Explains specific contract clauses in plain language with risk notes.',fields:[{id:'clause',label:'Contract Clause',type:'textarea',placeholder:'Paste the specific clause or section to explain…',rows:6,required:true},{id:'context',label:'Contract Context',type:'text',placeholder:'e.g. Employment contract, SaaS subscription agreement, property lease',required:false}],
+systemPrompt:`You are a legal analyst. Explain this contract clause in plain, accessible language.
+
+⚠️ This is educational information only, not legal advice. Consult a lawyer for your specific situation.
+
+Format:
+## Clause Explanation
+
+### Plain English Translation
+"[The clause rewritten in simple, clear language]"
+
+### What This Means in Practice
+[Concrete explanation of how this clause would actually operate]
+
+### Who This Favours
+[Which party benefits more from this clause and why]
+
+### Your Obligations Under This Clause
+• [Specific things you must do or avoid]
+
+### Risk Assessment
+**Risk Level:** High / Medium / Low
+**Potential consequences if breached:** [Explanation]
+
+### Red Flags
+⚠️ [Any unusual, aggressive, or concerning aspects of this clause]
+
+### Standard vs Non-standard
+[Is this a typical clause for this contract type, or unusual?]
+
+### Suggested Questions for Your Lawyer
+• [Specific things to clarify or negotiate]`,
+buildUserMessage:f=>`Explain this contract clause.${f.context?'\nContract type: '+f.context:''}\n\nCLAUSE:\n${f.clause}`},
+
+{id:'nda-generator',name:'NDA Generator',description:'Drafts non-disclosure agreements from party details and scope inputs.',fields:[{id:'party_a',label:'Disclosing Party (Party A)',type:'text',placeholder:'e.g. Acme Technologies Pvt. Ltd., a company incorporated in India',required:true},{id:'party_b',label:'Receiving Party (Party B)',type:'text',placeholder:'e.g. John Smith, an individual',required:true},{id:'purpose',label:'Purpose of Disclosure',type:'textarea',placeholder:'Why is confidential information being shared…',rows:3,required:true},{id:'jurisdiction',label:'Governing Jurisdiction',type:'text',placeholder:'e.g. India (Maharashtra), United Kingdom, Delaware USA',required:true},{id:'duration',label:'Confidentiality Duration',type:'select',options:['1 year','2 years','3 years','5 years','Indefinite'],required:true},{id:'type',label:'NDA Type',type:'select',options:['One-way (Party A discloses to Party B)','Mutual (both parties disclose)'],required:true}],
+systemPrompt:`You are a commercial lawyer. Draft a professional, comprehensive Non-Disclosure Agreement.
+
+⚠️ This is a template draft for review purposes. Have it reviewed by a qualified lawyer before signing.
+
+Format:
+NON-DISCLOSURE AGREEMENT
+
+This Non-Disclosure Agreement ("Agreement") is entered into as of [DATE] between:
+
+[Party A details]
+— and —
+[Party B details]
+
+1. DEFINITION OF CONFIDENTIAL INFORMATION
+[Comprehensive definition clause]
+
+2. OBLIGATIONS OF RECEIVING PARTY
+[Obligations to keep information confidential]
+
+3. EXCLUSIONS FROM CONFIDENTIAL INFORMATION
+[Standard exclusions: publicly known, independently developed, etc.]
+
+4. TERM
+[Duration of confidentiality obligations]
+
+5. RETURN OF INFORMATION
+[Obligation to return or destroy]
+
+6. REMEDIES
+[Acknowledgment that breach would cause irreparable harm, injunctive relief]
+
+7. GOVERNING LAW
+[Jurisdiction and governing law]
+
+8. GENERAL PROVISIONS
+[Entire agreement, amendments, waiver, severability]
+
+SIGNATURES
+[Signature blocks for both parties]
+
+Draft with jurisdiction-appropriate language.`,
+buildUserMessage:f=>`Draft an NDA.\nType: ${f.type}\nParty A: ${f.party_a}\nParty B: ${f.party_b}\nPurpose: ${f.purpose}\nJurisdiction: ${f.jurisdiction}\nDuration: ${f.duration}`},
+
+{id:'privacy-policy',name:'Privacy Policy Generator',description:'Creates GDPR-compliant privacy policies tailored to the product and data practices.',fields:[{id:'company',label:'Company / Product Name',type:'text',placeholder:'e.g. FlowDesk by TechCo',required:true},{id:'product_type',label:'Product Type',type:'select',options:['SaaS / Web App','Mobile App','E-commerce','Content / Blog','B2B Platform','Healthcare App'],required:true},{id:'data',label:'Data Collected',type:'textarea',placeholder:'What personal data do you collect? e.g. Name, email, payment info, usage data, location…',rows:4,required:true},{id:'jurisdiction',label:'Primary Jurisdiction',type:'select',options:['India (IT Act / DPDP Act)','European Union (GDPR)','United Kingdom (UK GDPR)','United States','Global / Multiple'],required:true}],
+systemPrompt:`You are a data privacy lawyer. Draft a comprehensive, compliant privacy policy.
+
+⚠️ Have this reviewed by a qualified privacy lawyer before publishing.
+
+Format:
+# Privacy Policy — [Company/Product]
+*Last updated: [DATE PLACEHOLDER]*
+
+## 1. Introduction
+[Who we are and commitment to privacy]
+
+## 2. Information We Collect
+[Detailed breakdown of data types collected and how]
+
+## 3. How We Use Your Information
+[Specific, transparent list of use cases]
+
+## 4. Legal Basis for Processing (if GDPR)
+[Lawful basis for each processing activity]
+
+## 5. Data Sharing & Third Parties
+[Who data is shared with and why]
+
+## 6. Data Retention
+[How long data is kept and why]
+
+## 7. Your Rights
+[User rights: access, correction, deletion, portability, objection, etc.]
+
+## 8. Cookies & Tracking
+[Cookie policy and consent]
+
+## 9. Data Security
+[Security measures in place]
+
+## 10. International Transfers (if applicable)
+[Cross-border transfer safeguards]
+
+## 11. Children's Privacy
+[Age restrictions and parental consent]
+
+## 12. Changes to This Policy
+[How users will be notified]
+
+## 13. Contact Us
+[Data controller contact / DPO if applicable]
+
+Write in plain English, legally sound, jurisdiction-appropriate.`,
+buildUserMessage:f=>`Generate a privacy policy.\nCompany/Product: ${f.company}\nProduct Type: ${f.product_type}\nData Collected: ${f.data}\nJurisdiction: ${f.jurisdiction}`},
+
+{id:'terms-generator',name:'Terms of Service Generator',description:'Produces terms of service documents from business model and jurisdiction inputs.',fields:[{id:'company',label:'Company / Product Name',type:'text',placeholder:'e.g. Acme SaaS Platform',required:true},{id:'model',label:'Business Model',type:'select',options:['SaaS subscription','E-commerce','Marketplace / Platform','Content platform','Freemium app','B2B services'],required:true},{id:'jurisdiction',label:'Governing Jurisdiction',type:'text',placeholder:'e.g. India, UK, Delaware USA',required:true},{id:'key_terms',label:'Key Terms to Include',type:'textarea',placeholder:'Any specific terms, restrictions, or policies important to your business…',rows:3,required:false}],
+systemPrompt:`You are a tech lawyer. Draft comprehensive Terms of Service.
+
+⚠️ Have this reviewed by a qualified lawyer before publishing.
+
+Format:
+# Terms of Service — [Company]
+*Effective Date: [PLACEHOLDER]*
+
+## 1. Acceptance of Terms
+## 2. Description of Service
+## 3. User Accounts & Registration
+## 4. Acceptable Use Policy
+## 5. Subscription & Payment Terms (if applicable)
+## 6. Intellectual Property
+## 7. User Content (if applicable)
+## 8. Privacy
+## 9. Disclaimers & Limitation of Liability
+## 10. Indemnification
+## 11. Termination
+## 12. Governing Law & Dispute Resolution
+## 13. Changes to Terms
+## 14. Contact Information
+
+Write each section with appropriate legal language for the jurisdiction and model. Include specific, enforceable provisions rather than vague placeholders.`,
+buildUserMessage:f=>`Generate Terms of Service.\nCompany: ${f.company}\nModel: ${f.model}\nJurisdiction: ${f.jurisdiction}${f.key_terms?'\nKey Terms: '+f.key_terms:''}`},
+
+{id:'contract-red-flags',name:'Contract Red Flag Detector',description:'Scans contracts for unusual, risky, or missing clauses and flags them clearly.',fields:[{id:'contract',label:'Contract Text',type:'textarea',placeholder:'Paste the contract to review…',rows:12,required:true},{id:'party',label:'Your Role in This Contract',type:'text',placeholder:'e.g. Service provider, Client, Employee, Buyer',required:true}],
+systemPrompt:`You are a contract review specialist. Scan this contract and flag all risks from the specified party's perspective.
+
+⚠️ This analysis is informational only. Engage a lawyer before signing.
+
+Format:
+## Contract Risk Analysis — [Party Role] Perspective
+
+### Overall Risk Rating: 🔴 High / 🟡 Medium / 🟢 Low
+
+### Critical Red Flags (Must Address)
+For each:
+🔴 **[Issue Name]**
+- Clause: "[Relevant text]"
+- Why it's risky: [Explanation]
+- What to request: [Suggested amendment]
+
+### Significant Concerns (Should Address)
+🟡 **[Issue Name]**
+[Same structure]
+
+### Minor Observations
+🟢 [Note]
+
+### Missing Clauses (Should Be Added)
+• [Clause type] — Why it protects you: [Reason]
+
+### One-sided Provisions
+• [List of clauses that strongly favour the other party]
+
+### Negotiation Priority List
+1. [Most important to fix — with suggested language]
+2. [Second priority]
+[Continue ranked list]
+
+### Summary Assessment
+[2-3 sentences: overall recommendation — sign / negotiate / do not sign without legal review]`,
+buildUserMessage:f=>`Review this contract for red flags.\nMy role: ${f.party}\n\nCONTRACT:\n${f.contract}`},
+
+{id:'rfp-response',name:'RFP / Bid Response Generator',description:'Drafts structured responses to RFPs and government bids from a brief.',fields:[{id:'rfp',label:'RFP / Tender Requirements',type:'textarea',placeholder:'Paste the key RFP requirements, evaluation criteria, and scope…',rows:6,required:true},{id:'company',label:'Your Company & Capabilities',type:'textarea',placeholder:'Your company name, what you do, relevant experience and credentials…',rows:4,required:true},{id:'approach',label:'Proposed Approach',type:'textarea',placeholder:'How you plan to fulfil the requirements…',rows:4,required:true}],
+systemPrompt:`You are an expert bid writer. Draft a compelling, structured RFP response.
+
+Format:
+# Response to Request for Proposal
+*Submitted by: [Company] | Date: [Placeholder]*
+
+## Executive Summary
+[Compelling 3-4 sentence overview: understanding of requirement, proposed solution, key differentiators, commitment to deliver]
+
+## Understanding of Requirements
+[Demonstrate you've read and understood the RFP — paraphrase requirements and confirm compliance]
+
+## Proposed Solution / Approach
+[Detailed response to the scope — structured, specific, addresses each requirement]
+
+## Implementation Plan
+| Phase | Activities | Timeline | Deliverables |
+
+## Our Qualifications
+[Relevant experience, credentials, case studies, team expertise]
+
+## Why Choose Us
+[3-5 specific differentiators relevant to this RFP]
+
+## Compliance Statement
+[Confirm compliance with key requirements]
+
+## Pricing Summary
+[If pricing was requested — clear table format]
+
+## References
+[Placeholder for reference contacts]
+
+## Appendices
+[List of supporting documents to attach]
+
+Write to score highly against typical evaluation criteria: understanding, approach, experience, value.`,
+buildUserMessage:f=>`Write an RFP response.\n\nRFP REQUIREMENTS:\n${f.rfp}\n\nOUR COMPANY:\n${f.company}\n\nOUR APPROACH:\n${f.approach}`},
+
+{id:'compliance-checklist',name:'Compliance Checklist Generator',description:'Produces role- and jurisdiction-specific compliance checklists.',fields:[{id:'compliance_area',label:'Compliance Area',type:'text',placeholder:'e.g. GDPR data protection, SEBI regulations, HIPAA, ISO 27001',required:true},{id:'org_type',label:'Organisation Type',type:'text',placeholder:'e.g. SaaS startup, Hospital, Financial services firm',required:true},{id:'jurisdiction',label:'Jurisdiction',type:'text',placeholder:'e.g. India, EU, USA, UK',required:true}],
+systemPrompt:`You are a compliance specialist. Create a practical, actionable compliance checklist.
+
+⚠️ This is a starting framework. Engage a compliance professional for your specific situation.
+
+Format:
+# Compliance Checklist — [Area] | [Jurisdiction]
+**For:** [Organisation type]
+
+## Priority 1: Mandatory Requirements (Legal Obligation)
+- [ ] **[Requirement]** — [What specifically needs to be done] — [Deadline/frequency]
+  *Evidence required:* [Documentation needed]
+
+## Priority 2: Critical Best Practices (High Risk if Missing)
+- [ ] [Requirement]
+
+## Priority 3: Important Controls
+- [ ] [Control]
+
+## Priority 4: Recommended Practices
+- [ ] [Practice]
+
+## Key Documentation Required
+| Document | Purpose | Owner | Review Frequency |
+
+## Key Contacts & Regulators
+[Who oversees this compliance area]
+
+## Common Violations & How to Avoid
+• [Violation] → [Prevention]
+
+## Implementation Timeline Suggestion
+[Phased approach to achieving compliance]`,
+buildUserMessage:f=>`Create a compliance checklist.\nArea: ${f.compliance_area}\nOrg Type: ${f.org_type}\nJurisdiction: ${f.jurisdiction}`},
+
+{id:'case-brief',name:'Case Brief Generator',description:'Summarises legal cases into structured briefs with facts, issues, and holdings.',fields:[{id:'case',label:'Case Text / Description',type:'textarea',placeholder:'Paste the case text, judgment, or describe the case…',rows:10,required:true}],
+systemPrompt:`You are a law professor and legal researcher. Produce a comprehensive case brief.
+
+Format:
+## Case Brief
+
+**Case Name:** [Full citation if available]
+**Court:** [Court name and jurisdiction]
+**Year:** [Year decided]
+
+### Facts
+[Concise narrative of the relevant facts — who, what, when, where, why the case arose]
+
+### Issue(s)
+[The precise legal question(s) the court was asked to decide — framed as yes/no questions]
+1. Whether [legal question]?
+
+### Holding
+[The court's answer to each issue]
+1. [Yes/No] — [Brief explanation]
+
+### Reasoning / Rationale
+[The court's analysis and legal reasoning — the most important part]
+
+### Rule of Law
+[The legal principle or precedent established by this case]
+
+### Disposition
+[What the court ordered — affirmed, reversed, remanded, etc.]
+
+### Significance / Broader Implications
+[Why this case matters — what precedent it sets]
+
+### Dissent (if applicable)
+[Key points of any dissenting opinion]
+
+### Application
+[How this precedent might apply in future cases]`,
+buildUserMessage:f=>`Create a case brief for this case.\n\n${f.case}`},
+
+{id:'employment-agreement',name:'Employment Agreement Generator',description:'Drafts employment contracts from role, compensation, and terms inputs.',fields:[{id:'employer',label:'Employer Name',type:'text',placeholder:'e.g. Acme Technologies Pvt. Ltd.',required:true},{id:'employee',label:'Employee Name',type:'text',placeholder:'e.g. [Employee Name] — will be filled in',required:true},{id:'role',label:'Role & Department',type:'text',placeholder:'e.g. Senior Software Engineer, Engineering',required:true},{id:'compensation',label:'Compensation Details',type:'textarea',placeholder:'Salary, bonus structure, equity, benefits…',rows:3,required:true},{id:'terms',label:'Key Terms',type:'textarea',placeholder:'Notice period, probation period, work location, any special terms…',rows:3,required:true},{id:'jurisdiction',label:'Jurisdiction',type:'text',placeholder:'e.g. India, United Kingdom, Singapore',required:true}],
+systemPrompt:`You are an employment lawyer. Draft a comprehensive employment agreement.
+
+⚠️ Have this reviewed by a qualified employment lawyer before use.
+
+Format:
+# EMPLOYMENT AGREEMENT
+
+This Employment Agreement ("Agreement") is entered into as of [DATE] between:
+
+**Employer:** [Company details]
+**Employee:** [Employee details]
+
+## 1. Position & Duties
+## 2. Commencement Date & Probation
+## 3. Compensation & Benefits
+[Detailed breakdown of all compensation elements]
+## 4. Working Hours & Location
+## 5. Leave Entitlements
+## 6. Confidentiality & Intellectual Property
+## 7. Non-Compete & Non-Solicitation (if applicable)
+## 8. Code of Conduct & Policies
+## 9. Termination
+[Notice periods, grounds for termination, redundancy]
+## 10. Governing Law
+## 11. Entire Agreement
+
+SIGNATURES
+[Signature blocks]
+
+Draft with jurisdiction-appropriate employment law requirements.`,
+buildUserMessage:f=>`Draft an employment agreement.\nEmployer: ${f.employer}\nEmployee: ${f.employee}\nRole: ${f.role}\nCompensation: ${f.compensation}\nKey Terms: ${f.terms}\nJurisdiction: ${f.jurisdiction}`},
+
+{id:'legal-email',name:'Legal Email Generator',description:'Writes formal legal correspondence for notices, demands, and responses.',fields:[{id:'type',label:'Type of Legal Correspondence',type:'select',options:['Cease and Desist Notice','Payment Demand Letter','Contract Breach Notice','Response to Demand Letter','Dispute Resolution Notice','Legal Notice (General)'],required:true},{id:'sender',label:'Sender Details',type:'text',placeholder:'Name, company, legal capacity (e.g. on behalf of Acme Ltd.)',required:true},{id:'recipient',label:'Recipient Details',type:'text',placeholder:'Name and company of recipient',required:true},{id:'facts',label:'Relevant Facts & Background',type:'textarea',placeholder:'What happened, relevant dates, amounts, prior communications…',rows:5,required:true},{id:'demand',label:'What You Are Demanding / Stating',type:'textarea',placeholder:'What you want the recipient to do, by when, and consequences of non-compliance…',rows:3,required:true}],
+systemPrompt:`You are a commercial lawyer. Draft a professional, effective legal correspondence.
+
+⚠️ Have this reviewed by a qualified lawyer before sending.
+
+Format:
+[Sender letterhead block]
+[Date]
+
+[Recipient name and address]
+
+**Re: [Subject — specific and formal]**
+
+Dear [Recipient],
+
+[Opening: state legal capacity and purpose clearly]
+
+[Background: factual summary — dates, agreements, events]
+
+[Issue: what the problem is — specific and documented]
+
+[Legal basis: brief reference to relevant legal rights or obligations]
+
+[Demand/Notice: specific, clear, with deadline]
+
+[Consequences: what will happen if demand is not met]
+
+[Closing: professional]
+
+Yours faithfully/sincerely,
+[Sender signature block]
+
+[Any enclosures or attachments listed]
+
+Tone: firm, professional, legally precise. Avoid emotional language.`,
+buildUserMessage:f=>`Write a ${f.type}.\nFrom: ${f.sender}\nTo: ${f.recipient}\nFacts: ${f.facts}\nDemand: ${f.demand}`},
+
+{id:'gdpr-checker',name:'GDPR Compliance Checker',description:'Reviews a product or process description against GDPR requirements.',fields:[{id:'product',label:'Product / Process Description',type:'textarea',placeholder:'Describe your product or process — what data is collected, how it\'s used, stored, shared, processed…',rows:8,required:true},{id:'jurisdiction',label:'Applicable Regulation',type:'select',options:['GDPR (EU)','UK GDPR','India DPDP Act 2023','CCPA (California)','General Privacy Review'],required:true}],
+systemPrompt:`You are a data protection specialist. Review this product/process against the specified privacy regulation.
+
+⚠️ This is a preliminary assessment. Engage a qualified DPO or privacy lawyer for compliance certification.
+
+Format:
+## Privacy Compliance Review — [Regulation]
+
+### Compliance Score: [X/10]
+**Summary:** [1-2 sentence overall assessment]
+
+### Compliance Analysis
+
+For each key area:
+**[Compliance Area]** — Status: ✅ Compliant / ⚠️ Needs Attention / ❌ Non-Compliant
+- Current state: [What you're doing]
+- Requirement: [What the regulation requires]
+- Gap: [What needs to change]
+- Action required: [Specific remediation steps]
+
+Areas to cover:
+1. Lawful basis for processing
+2. Data subject rights
+3. Privacy notice / transparency
+4. Data minimisation
+5. Storage limitation
+6. Security measures
+7. Data breach procedures
+8. Third-party processors
+9. Cross-border transfers (if applicable)
+10. Consent mechanisms (if applicable)
+
+### Priority Action Plan
+🔴 Immediate (within 30 days): [Critical gaps]
+🟡 Short-term (within 90 days): [Important gaps]
+🟢 Medium-term (within 6 months): [Best practice improvements]`,
+buildUserMessage:f=>`Review for ${f.jurisdiction} compliance.\n\nPRODUCT/PROCESS:\n${f.product}`},
+
+// AGENTS
+{id:'contract-review',name:'Contract Review Agent',isAgent:true,description:'Performs comprehensive multi-document contract analysis with cross-reference and risk summary.',fields:[{id:'contracts',label:'Contract(s) to Review',type:'textarea',placeholder:'Paste one or multiple contracts. Separate multiple contracts with ===DOCUMENT===',rows:12,required:true},{id:'context',label:'Review Context',type:'textarea',placeholder:'What is the deal, your role, what to focus on…',rows:3,required:true}],
+systemPrompt:`You are a senior commercial lawyer performing a contract review. Analyse the contract(s) thoroughly.
+
+⚠️ This analysis is informational. Engage legal counsel before signing.
+
+Format:
+## Contract Review — Legal Analysis
+
+### Deal Overview
+[What this transaction is, parties, and what's being agreed]
+
+### Executive Summary for Decision Maker
+[3-5 sentence summary: is this deal structured fairly? Key risks? Recommend sign / negotiate / reject?]
+
+### Detailed Clause Analysis
+
+For each significant clause:
+**[Clause/Section Name]**
+- What it says: [Plain English summary]
+- Favours: [Party A / Party B / Neutral]
+- Risk level: 🔴/🟡/🟢
+- Our assessment: [Analysis]
+- Recommended action: [Accept / Negotiate / Reject + suggested language]
+
+### Cross-Document Issues (if multiple documents)
+[Inconsistencies, conflicts, or gaps between documents]
+
+### Commercial Risk Summary
+| Risk | Likelihood | Impact | Mitigation |
+
+### Negotiation Recommendations
+Prioritised list of changes to request, with suggested alternative language.
+
+### Missing Provisions
+[Standard protections that should be added]
+
+### Verdict
+**Recommended approach:** [Sign / Negotiate first / Do not sign]
+**Top 3 priorities before signing:** [List]`,
+buildUserMessage:f=>`Perform a legal contract review.\n\nCONTEXT:\n${f.context}\n\nCONTRACT(S):\n${f.contracts}`},
+
+{id:'due-diligence',name:'Due Diligence Agent',isAgent:true,description:'Reviews document sets to produce a structured due diligence report.',fields:[{id:'deal',label:'Deal Type & Context',type:'text',placeholder:'e.g. Acquisition of SaaS startup, Series A investment, Partnership agreement',required:true},{id:'documents',label:'Documents to Review',type:'textarea',placeholder:'Paste document summaries or key extracts. Separate with ===DOCUMENT===\nOr describe what documents are available.',rows:10,required:true}],
+systemPrompt:`You are an M&A lawyer and due diligence specialist. Conduct a thorough due diligence review.
+
+⚠️ This is a preliminary analysis. Full due diligence requires qualified legal, financial, and technical advisors.
+
+Format:
+## Due Diligence Report — [Deal Type]
+
+### Executive Summary
+**Deal Overview:** [What is being evaluated]
+**Overall Assessment:** 🔴 High Risk / 🟡 Medium Risk / 🟢 Proceed with conditions
+**Key Finding:** [The single most important thing to know]
+
+### Due Diligence Findings by Category
+
+**Legal & Compliance**
+[Findings, risks, open items]
+
+**Corporate & Governance**
+[Structure, ownership, board, shareholder agreements]
+
+**Contracts & Commitments**
+[Key contracts, liabilities, change-of-control provisions]
+
+**Intellectual Property**
+[IP ownership, registrations, infringement risks]
+
+**Employment & People**
+[Key person risk, employment contracts, disputes]
+
+**Financial Overview** (based on provided documents)
+[Key financial metrics and concerns]
+
+### Red Flags
+🔴 [Critical issues that could kill the deal or require price adjustment]
+
+### Conditions & Representations Required
+[What representations/warranties to seek from the seller]
+
+### Open Items — Information Requested
+[Information not yet received that is needed before signing]
+
+### Recommendation
+[Proceed / Proceed with conditions / Do not proceed + rationale]`,
+buildUserMessage:f=>`Conduct due diligence.\nDeal: ${f.deal}\n\nDOCUMENTS:\n${f.documents}`},
+
+{id:'legal-research',name:'Legal Research Agent',isAgent:true,description:'Researches and summarises the legal framework on any legal question.',fields:[{id:'question',label:'Legal Question',type:'textarea',placeholder:'What is the legal question you need to research?',rows:4,required:true},{id:'jurisdiction',label:'Jurisdiction',type:'text',placeholder:'e.g. India, UK, California, EU',required:true},{id:'context',label:'Context',type:'textarea',placeholder:'Background on why you need this research — deal type, dispute, compliance…',rows:3,required:false}],
+systemPrompt:`You are a legal researcher. Provide a structured legal research memo on the question asked.
+
+⚠️ This research is based on AI training data and may not reflect the most current law. Verify all citations and consult a qualified lawyer.
+
+Format:
+## Legal Research Memo
+
+**Re:** [Legal question]
+**Jurisdiction:** [Jurisdiction]
+**Prepared:** [Date placeholder]
+
+### Summary Answer
+[Direct, concise answer to the legal question — 2-3 sentences]
+
+### Legal Framework
+
+**Applicable Laws & Regulations:**
+• [Law/Regulation] — [Relevance to the question]
+
+**Key Legal Principles:**
+[The core rules that govern this area]
+
+**Relevant Case Law / Precedent:** (where applicable)
+• [Case name / description] — [Principle established]
+
+### Detailed Analysis
+[Step-by-step legal reasoning applying the law to the question]
+
+### Jurisdiction-Specific Considerations
+[Specific requirements, exceptions, or nuances for the stated jurisdiction]
+
+### Practical Implications
+[What this means in practical terms for the situation]
+
+### Risk Assessment
+[Legal risks and their severity]
+
+### Recommended Next Steps
+1. [Immediate action]
+2. [Further advice needed]
+
+### Sources to Verify
+[Types of primary sources that should be consulted to confirm this research]`,
+buildUserMessage:f=>`Research this legal question.\nJurisdiction: ${f.jurisdiction}\nQuestion: ${f.question}${f.context?'\nContext: '+f.context:''}`},
+
+{id:'rfp-agent',name:'RFP Automation Agent',isAgent:true,description:'Analyses RFP requirements and drafts a complete, tailored bid response.',fields:[{id:'rfp',label:'Full RFP Document',type:'textarea',placeholder:'Paste the complete RFP text…',rows:10,required:true},{id:'company',label:'Your Company Profile',type:'textarea',placeholder:'Company description, past projects, team credentials, key differentiators…',rows:5,required:true},{id:'win_theme',label:'Win Theme / Differentiator',type:'textarea',placeholder:'What is your strongest competitive angle for this bid?',rows:2,required:false}],
+systemPrompt:`You are an expert bid manager and proposal writer. Produce a complete, winning bid response.
+
+Format:
+## Bid Response — [RFP Reference if provided]
+
+### Compliance Matrix
+| RFP Requirement | Our Response | Section | Compliant? |
+[Map every requirement to a response]
+
+### Executive Summary
+[Compelling 4-5 sentence executive summary — lead with understanding of their need and confidence to deliver]
+
+### Section-by-Section Response
+
+For each RFP section:
+**[Section Title from RFP]**
+[Direct, specific response addressing every requirement in this section]
+
+### Our Methodology / Approach
+[Detailed approach that shows expertise and builds confidence]
+
+### Project Team
+[Organisational chart and key personnel bios — placeholders]
+
+### Relevant Experience / Case Studies
+[2-3 directly relevant project references with outcomes]
+
+### Risk Management Plan
+[How you'll manage the key risks in this engagement]
+
+### Quality Assurance
+[Your QA process and how you'll ensure delivery]
+
+### Pricing
+[If requested — structured pricing table with notes]
+
+### Why We Win This Bid
+[Final compelling close — what makes you the standout choice]`,
+buildUserMessage:f=>`Write a complete bid response.\n\nRFP:\n${f.rfp}\n\nOUR COMPANY:\n${f.company}${f.win_theme?'\n\nWin Theme: '+f.win_theme:''}`}
+]};
+
+/* PS Tools API base — configurable. Default :8000; override via ?api=http://host:port (persists in localStorage). */
+const _psApiQp=new URLSearchParams(location.search).get('api');
+if(_psApiQp)localStorage.setItem('ps_api_base',_psApiQp);
+const API_BASE=(_psApiQp||localStorage.getItem('ps_api_base')||'http://localhost:8000').replace(/\/$/,'');
+const API_GENERATE=API_BASE+'/generate';
+function selectTool(id) {
+  const tool = DOMAIN.tools.find(t => t.id === id);
+  if (!tool) return;
+  document.querySelectorAll('.tool-btn').forEach(b => b.classList.toggle('active', b.dataset.id === id));
+  renderTool(tool);
+}
+
+function renderTool(tool) {
+  const fieldsHtml = tool.fields.map(f => {
+    let inp = '';
+    if (f.type === 'text')
+      inp = `<input type="text" id="f_${f.id}" placeholder="${f.placeholder||''}"${f.required?' required':''}>`;
+    else if (f.type === 'textarea')
+      inp = `<textarea id="f_${f.id}" placeholder="${f.placeholder||''}" rows="${f.rows||4}"${f.required?' required':''}></textarea><label class="btn-upload"><input type="file" accept=".txt,.pdf,.docx" onchange="handleFileUpload('f_${f.id}',this)">📎 Upload file</label>`;
+    else if (f.type === 'select')
+      inp = `<select id="f_${f.id}">${f.options.map(o=>`<option>${o}</option>`).join('')}</select>`;
+    return `<div class="field-group"><label class="field-label" for="f_${f.id}">${f.label}${f.required?'':' <span class="field-opt">(optional)</span>'}</label>${inp}</div>`;
+  }).join('');
+
+  document.getElementById('content').innerHTML = `
+    <div class="tool-header">
+      <h2 class="tool-name">${tool.name}</h2>
+      <p class="tool-desc">${tool.description}</p>
+    </div>
+    <div class="form-card">
+      ${fieldsHtml}
+      <button class="btn-gen" onclick="runGenerate('${tool.id}')">Generate</button>
+    </div>
+    <div class="output-section" id="out-section">
+      <div class="output-header"><span class="output-lbl">Output</span><div style="display:flex;gap:6px"><button class="btn-dl" onclick="downloadOut()">↓ Save</button><button class="btn-copy" onclick="copyOut()">Copy</button></div></div>
+      <div class="output-box" id="out-box"><div class="out-empty"><div class="out-empty-icon">✨</div><p>Fill in the form and click Generate.</p></div></div>
+    </div>`;
+}
+
+async function runGenerate(toolId) {
+  const tool = DOMAIN.tools.find(t => t.id === toolId);
+  if (!tool) return;
+  const data = {};
+  let ok = true;
+  for (const f of tool.fields) {
+    const el = document.getElementById(`f_${f.id}`);
+    if (!el) continue;
+    const v = el.value.trim();
+    if (f.required && !v) { el.style.borderColor = '#ef4444'; ok = false; } else { el.style.borderColor = ''; data[f.id] = v; }
+  }
+  if (!ok) return;
+
+  const outBox = document.getElementById('out-box');
+  const btn = document.querySelector('.btn-gen');
+  outBox.classList.add('streaming');
+  outBox.innerHTML = '<span style="color:var(--muted)">Generating<span class="dots"><span>.</span><span>.</span><span>.</span></span></span>';
+  btn.disabled = true; btn.textContent = 'Generating…';
+
+  try {
+    const res = await fetch(API_GENERATE, {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({system_prompt: tool.systemPrompt, user_message: tool.buildUserMessage(data)})
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const reader = res.body.getReader(); const dec = new TextDecoder(); let out = '';
+    outBox.textContent = '';
+    while (true) {
+      const {done, value} = await reader.read(); if (done) break;
+      for (const line of dec.decode(value).split('\n')) {
+        if (!line.startsWith('data: ')) continue;
+        const d = line.slice(6); if (d === '[DONE]') break;
+        try { const p = JSON.parse(d); if (p.error) { outBox.classList.remove('streaming'); outBox.style.color='#ef4444'; outBox.textContent='Error: '+p.error; } else if (p.text) { out += p.text; outBox.textContent = out; outBox.scrollTop = outBox.scrollHeight; } } catch {}
+      }
+    }
+    if (out && typeof marked !== 'undefined') { outBox.classList.remove('streaming'); outBox.innerHTML = marked.parse(out); } else { outBox.classList.remove('streaming'); }
+  } catch(e) {
+    outBox.classList.remove('streaming');
+    outBox.style.color = '#ef4444';
+    outBox.textContent = `Connection error: ${e.message}\n\nStart the backend:\n  cd backend\n  uvicorn main:app --reload`;
+  }
+  btn.disabled = false; btn.textContent = 'Generate';
+}
+
+function copyOut() {
+  const text = document.getElementById('out-box')?.innerText;
+  if (!text || text.includes('Fill in the form')) return;
+  navigator.clipboard.writeText(text).then(() => { const b = document.querySelector('.btn-copy'); b.textContent='Copied!'; setTimeout(()=>b.textContent='Copy',2000); });
+}
+
+function init() {
+  const tools = DOMAIN.tools.filter(t => !t.isAgent);
+  const agents = DOMAIN.tools.filter(t => t.isAgent);
+  document.getElementById('tool-list').innerHTML =
+    `<div class="sidebar-search"><input class="search-inp" type="text" placeholder="Search tools…" oninput="filterTools(this.value)"></div>` +
+    `<div class="sec-lbl">Tools · ${tools.length}</div>` +
+    tools.map(t=>`<button class="tool-btn" data-id="${t.id}" onclick="selectTool('${t.id}')">${t.name}</button>`).join('') +
+    (agents.length ? `<div class="sec-lbl ag">Agents · ${agents.length}</div>` + agents.map(t=>`<button class="tool-btn agent" data-id="${t.id}" onclick="selectTool('${t.id}')">${t.name}</button>`).join('') : '');
+  if (tools.length) selectTool(tools[0].id);
+}
+function filterTools(q) {
+  const lq = q.toLowerCase();
+  document.querySelectorAll('.tool-btn').forEach(b => {
+    b.classList.toggle('hidden', !b.textContent.toLowerCase().includes(lq));
+  });
+}
+function downloadOut() {
+  const text = document.getElementById('out-box')?.innerText;
+  if (!text || text.includes('Fill in the form')) return;
+  const a = document.createElement('a');
+  a.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(text);
+  a.download = 'output.txt'; a.click();
+}
+async function handleFileUpload(fieldId, input) {
+  const file = input.files[0]; if (!file) return;
+  const ext = file.name.split('.').pop().toLowerCase();
+  const ta = document.getElementById(fieldId);
+  const prev = ta.placeholder; ta.placeholder = 'Reading file…'; ta.disabled = true;
+  try {
+    if (ext === 'txt' || ext === 'md' || ext === 'csv') {
+      ta.value = await file.text();
+    } else if (ext === 'pdf') {
+      if (typeof pdfjsLib === 'undefined') { alert('PDF library not loaded yet, please retry.'); ta.disabled = false; ta.placeholder = prev; return; }
+      const buf = await file.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({data: new Uint8Array(buf)}).promise;
+      let text = '';
+      for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const content = await page.getTextContent();
+        text += content.items.map(item => item.str).join(' ') + '\n\n';
+      }
+      ta.value = text.trim();
+    } else if (ext === 'docx') {
+      if (typeof mammoth === 'undefined') { alert('DOCX library not loaded yet, please retry.'); ta.disabled = false; ta.placeholder = prev; return; }
+      const buf = await file.arrayBuffer();
+      const result = await mammoth.extractRawText({arrayBuffer: buf});
+      ta.value = result.value;
+    }
+  } catch(e) { alert('Could not read file: ' + e.message); }
+  ta.disabled = false; ta.placeholder = prev; input.value = '';
+}
+window.addEventListener('DOMContentLoaded',init);
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>if(typeof pdfjsLib!=='undefined')pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+</body>
+</html>

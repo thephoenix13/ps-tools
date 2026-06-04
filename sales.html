@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sales & Outreach Tools — Perfect Skills AI Tool Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563eb;--blue-light:#eff6ff;--dark:#0f172a;--mid:#334155;--muted:#64748b;--border:#e2e8f0;--bg:#f8fafc;--white:#ffffff;--radius:12px;--rsm:8px}
+html,body{height:100%}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--dark);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:56px}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo{height:26px;width:auto}.nav-sep{width:1px;height:16px;background:var(--border)}
+.nav-product{font-size:12px;font-weight:500;color:var(--blue)}.nav-domain{font-size:12px;color:var(--muted)}
+.page-layout{display:grid;grid-template-columns:260px 1fr;height:calc(100vh - 56px);overflow:hidden}
+.sidebar{border-right:1px solid var(--border);background:var(--white);overflow-y:auto;display:flex;flex-direction:column}
+.sidebar-header{padding:16px;border-bottom:1px solid var(--border);flex-shrink:0}
+.back-link{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);text-decoration:none;margin-bottom:10px}
+.back-link:hover{color:var(--blue)}.domain-row{display:flex;align-items:center;gap:10px}
+.d-icon{font-size:22px}.d-name{font-size:15px;font-weight:700;color:var(--dark)}.d-count{font-size:11px;color:var(--muted);margin-top:2px}
+.sec-lbl{font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--muted);padding:12px 16px 5px}
+.sec-lbl.ag{color:#7c3aed}
+.tool-btn{display:block;width:100%;text-align:left;padding:7px 16px;background:none;border:none;cursor:pointer;font-size:12px;font-family:inherit;color:var(--mid);line-height:1.4;transition:background .12s,color .12s}
+.tool-btn:hover{background:var(--bg);color:var(--dark)}.tool-btn.active{background:var(--blue-light);color:var(--blue);font-weight:600}
+.tool-btn.agent:hover{background:rgba(124,58,237,.06);color:#5b21b6}.tool-btn.agent.active{background:rgba(124,58,237,.1);color:#5b21b6;font-weight:600}
+.content{overflow-y:auto;background:var(--bg);padding:32px}
+.tool-header{margin-bottom:24px}.tool-name{font-size:20px;font-weight:700;color:var(--dark);letter-spacing:-.3px;margin-bottom:5px}
+.tool-desc{font-size:13px;color:var(--muted);line-height:1.6}
+.form-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:18px}
+.field-group{display:flex;flex-direction:column;gap:6px}.field-label{font-size:12px;font-weight:600;color:var(--mid)}.field-opt{font-weight:400;color:var(--muted)}
+input[type=text],select,textarea{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:var(--rsm);font-size:13px;font-family:inherit;color:var(--dark);background:var(--white);outline:none;transition:border-color .15s,box-shadow .15s}
+input[type=text]:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.08)}
+textarea{resize:vertical;line-height:1.6}.btn-upload{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:var(--white);border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;color:var(--muted);cursor:pointer;font-family:inherit;transition:all .15s;margin-top:2px}.btn-upload:hover{border-color:var(--blue);color:var(--blue)}.btn-upload input{display:none}.output-box{white-space:normal}.output-box.streaming{white-space:pre-wrap}.output-box h1,.output-box h2,.output-box h3,.output-box h4{font-weight:700;color:var(--dark)}.output-box h1{font-size:16px;margin:0 0 8px}.output-box h2{font-size:14px;margin:14px 0 6px;padding-bottom:4px;border-bottom:1px solid var(--border)}.output-box h3{font-size:13px;margin:12px 0 5px}.output-box h4{font-size:13px;margin:10px 0 4px;color:var(--mid)}.output-box p{margin:0 0 10px;line-height:1.7}.output-box p:last-child{margin-bottom:0}.output-box ul,.output-box ol{padding-left:20px;margin:0 0 10px}.output-box li{margin-bottom:4px;line-height:1.6}.output-box strong{font-weight:600}.output-box em{font-style:italic;color:var(--mid)}.output-box table{width:100%;border-collapse:collapse;margin:0 0 12px;font-size:12px}.output-box th{background:var(--bg);font-weight:600;padding:7px 10px;border:1px solid var(--border);text-align:left}.output-box td{padding:6px 10px;border:1px solid var(--border);vertical-align:top}.output-box tr:nth-child(even) td{background:#fafbfc}.output-box code{background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:1px 5px;font-size:11px;font-family:monospace}.output-box pre{background:var(--bg);border:1px solid var(--border);border-radius:var(--rsm);padding:14px;overflow-x:auto;margin:0 0 12px}.output-box pre code{background:none;border:none;padding:0}.output-box blockquote{border-left:3px solid #93c5fd;padding:8px 14px;color:var(--muted);margin:0 0 12px;background:var(--blue-light);border-radius:0 6px 6px 0}.output-box hr{border:none;border-top:1px solid var(--border);margin:14px 0}.btn-dl{padding:4px 12px;background:var(--white);border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;color:var(--muted);font-family:inherit;transition:all .15s}.btn-dl:hover{border-color:var(--blue);color:var(--blue)}.sidebar-search{padding:8px 16px 10px;border-bottom:1px solid var(--border);flex-shrink:0}.search-inp{width:100%;padding:6px 10px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:inherit;outline:none;color:var(--dark);background:var(--bg);transition:border-color .15s}.search-inp:focus{border-color:var(--blue)}.tool-btn.hidden{display:none}@keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}.dots span{animation:blink 1.2s infinite;display:inline-block;margin:0 1px}.dots span:nth-child(2){animation-delay:.2s}.dots span:nth-child(3){animation-delay:.4s}.out-empty{text-align:center;padding:36px 20px;color:var(--muted)}.out-empty-icon{font-size:24px;margin-bottom:8px}.out-empty p{font-size:12px;line-height:1.6}.btn-gen{align-self:stretch}
+.btn-gen{padding:10px 22px;background:var(--blue);color:#fff;border:none;border-radius:var(--rsm);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;transition:opacity .15s;align-self:flex-start}
+.btn-gen:hover{opacity:.88}.btn-gen:disabled{opacity:.5;cursor:not-allowed}
+.output-section{margin-top:20px}.output-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.output-lbl{font-size:12px;font-weight:600;color:var(--mid)}
+.btn-copy{padding:4px 12px;background:var(--white);border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;color:var(--muted);font-family:inherit;transition:all .15s}
+.btn-copy:hover{border-color:var(--blue);color:var(--blue)}
+.output-box{background:var(--white);border:1px solid var(--border);border-radius:var(--rsm);padding:20px;font-size:13px;line-height:1.75;color:var(--dark);white-space:pre-wrap;min-height:180px;overflow-y:auto;font-family:inherit}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="index.html"><img src="perfectskills_logo.png" alt="Perfect Skills" class="nav-logo"><span class="nav-sep"></span><span class="nav-product">AI Tool Kit</span></a>
+  <span class="nav-domain">Sales & Outreach Tools</span>
+</nav>
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <a class="back-link" href="index.html">← All Domains</a>
+      <div class="domain-row"><span class="d-icon">📈</span><div><div class="d-name">Sales & Outreach</div><div class="d-count">12 tools · 4 agents</div></div></div>
+    </div>
+    <div id="tool-list"></div>
+  </aside>
+  <main class="content" id="content"></main>
+</div>
+<script>
+const DOMAIN = {
+  name:'Sales & Outreach', icon:'📈',
+  tools:[
+    {
+      id:'cold-email', name:'Cold Email Generator',
+      description:'Writes personalised cold emails tailored to a prospect\'s role and company.',
+      fields:[
+        {id:'prospect_name',label:'Prospect Name',type:'text',placeholder:'e.g. Vikram Nair',required:true},
+        {id:'prospect_role',label:'Prospect Role & Company',type:'text',placeholder:'e.g. VP Engineering at Infosys',required:true},
+        {id:'your_product',label:'Your Product / Service',type:'textarea',placeholder:'What you offer and the key value proposition…',rows:3,required:true},
+        {id:'pain_point',label:'Pain Point to Address',type:'textarea',placeholder:'The specific problem your product solves for this prospect…',rows:2,required:true},
+        {id:'your_name',label:'Your Name & Company',type:'text',placeholder:'e.g. Arjun, Founder at TechFlow',required:true}
+      ],
+      systemPrompt:`You are an expert B2B cold email copywriter. Write a high-converting personalised cold email.
+
+Rules:
+- Subject line: specific, curiosity-driven, under 50 chars
+- Email body: 100-140 words max
+- Open with a specific, relevant observation (not "I came across your profile")
+- One clear value proposition
+- One specific social proof or data point if you can infer one
+- Single, low-friction CTA
+- No attachments, no walls of text, no generic phrases
+- Sound like a human, not a salesperson
+
+Output:
+Subject: [subject line]
+
+[Email body]`,
+      buildUserMessage:f=>`Write a cold email.\nProspect: ${f.prospect_name} (${f.prospect_role})\nMy product: ${f.your_product}\nPain point: ${f.pain_point}\nFrom: ${f.your_name}`
+    },
+    {
+      id:'linkedin-connect', name:'LinkedIn Connection Message Generator',
+      description:'Crafts short, relevant connection request messages for target prospects.',
+      fields:[
+        {id:'prospect',label:'Prospect Name & Role',type:'text',placeholder:'e.g. Sanya Patel, Head of Growth at Swiggy',required:true},
+        {id:'reason',label:'Reason for Connecting',type:'textarea',placeholder:'Why you want to connect — shared interest, their work, your offering…',rows:3,required:true},
+        {id:'your_context',label:'Your Name & Context',type:'text',placeholder:'e.g. Ravi, co-founder at a B2B SaaS startup',required:true}
+      ],
+      systemPrompt:`You are a LinkedIn networking expert. Write a concise, genuine connection request message.
+
+Rules:
+- Maximum 280 characters (LinkedIn limit)
+- Personalised and specific — no generic "I'd like to connect"
+- Clear reason for connecting
+- Warm but professional tone
+- No sales pitch in the request itself
+
+Write the message ready to send.`,
+      buildUserMessage:f=>`Write a LinkedIn connection request.\nTo: ${f.prospect}\nReason: ${f.reason}\nFrom: ${f.your_context}`
+    },
+    {
+      id:'followup-sequence', name:'Follow-up Email Sequence Generator',
+      description:'Produces a multi-touch follow-up sequence for a given outreach goal.',
+      fields:[
+        {id:'goal',label:'Outreach Goal',type:'text',placeholder:'e.g. Book a product demo, get a reply, warm up a cold lead',required:true},
+        {id:'prospect',label:'Prospect Profile',type:'text',placeholder:'e.g. CFO at a mid-size logistics company',required:true},
+        {id:'product',label:'Your Product / Service',type:'textarea',placeholder:'Brief description and key value prop…',rows:3,required:true},
+        {id:'touches',label:'Number of Follow-ups',type:'select',options:['3','4','5'],required:true}
+      ],
+      systemPrompt:`You are a B2B sales sequence specialist. Write a complete multi-touch follow-up email sequence.
+
+For each email:
+**Email [N] — Day [X] — [Theme/Angle]**
+Subject: [subject line]
+[Email body — 80-120 words, different angle each touch]
+
+Angles to vary across the sequence:
+1. Value + CTA
+2. Social proof / case study angle
+3. Problem-focused angle
+4. Different stakeholder / use case
+5. Break-up email (final touch)
+
+Rules:
+- Each email stands alone — no "as I mentioned" references
+- Escalating urgency without being pushy
+- Every email has one clear CTA
+- Keep total sequence under 5 minutes to read`,
+      buildUserMessage:f=>`Write a ${f.touches}-touch follow-up sequence.\nGoal: ${f.goal}\nProspect: ${f.prospect}\nProduct: ${f.product}`
+    },
+    {
+      id:'pitch-deck-outline', name:'Sales Pitch Deck Outline Generator',
+      description:'Structures a compelling pitch deck from product and audience inputs.',
+      fields:[
+        {id:'product',label:'Product / Service',type:'textarea',placeholder:'What you sell and what it does…',rows:3,required:true},
+        {id:'audience',label:'Target Audience',type:'text',placeholder:'e.g. CTOs at mid-size fintech companies',required:true},
+        {id:'pain',label:'Core Problem You Solve',type:'textarea',placeholder:'The main pain point your product addresses…',rows:2,required:true},
+        {id:'outcome',label:'Key Outcome / Result',type:'text',placeholder:'e.g. 40% reduction in customer churn',required:true}
+      ],
+      systemPrompt:`You are a pitch deck strategist. Create a complete, compelling slide-by-slide pitch deck outline.
+
+Format each slide as:
+**Slide [N]: [Slide Title]**
+*Purpose:* [What this slide achieves]
+*Content:* [Specific content to include — bullet points, data, visuals]
+*Key message:* [The one thing the audience should take away]
+
+Cover these sections:
+1. Hook / Opening
+2. Problem
+3. Solution
+4. Product Demo / How It Works
+5. Traction / Proof
+6. Business Model
+7. Market Opportunity
+8. Why Us / Differentiation
+9. Pricing / Packages
+10. Call to Action / Next Steps
+
+Also include: Presenter notes for the 3 most important slides.`,
+      buildUserMessage:f=>`Create a pitch deck outline.\nProduct: ${f.product}\nAudience: ${f.audience}\nProblem: ${f.pain}\nKey Outcome: ${f.outcome}`
+    },
+    {
+      id:'demo-script', name:'Product Demo Script Generator',
+      description:'Writes a structured demo walkthrough script tailored to the prospect\'s pain points.',
+      fields:[
+        {id:'product',label:'Product Name & Description',type:'textarea',placeholder:'What your product does and key features…',rows:3,required:true},
+        {id:'prospect',label:'Prospect Profile',type:'text',placeholder:'e.g. Operations Director at a retail chain',required:true},
+        {id:'pain_points',label:"Prospect's Pain Points",type:'textarea',placeholder:'Specific challenges this prospect has…',rows:3,required:true},
+        {id:'duration',label:'Demo Duration',type:'select',options:['15 minutes','30 minutes','45 minutes','60 minutes'],required:true}
+      ],
+      systemPrompt:`You are a sales engineering expert. Write a detailed, prospect-specific product demo script.
+
+Structure:
+## Pre-Demo (2 min)
+[Opening, agenda setting, discovery question to confirm pain points]
+
+## Demo Flow — [Duration]
+For each section:
+**Section [N]: [Feature/Module] — [X min]**
+*Transition:* "[What to say moving into this section]"
+*Demo narration:* "[Exact script for what to say while showing this]"
+*Pain point connection:* "[How this directly addresses their specific challenge]"
+*Wow moment:* "[The specific thing that should impress them most]"
+
+## Discovery Questions During Demo
+• [Questions to ask at key moments]
+
+## Closing the Demo (3 min)
+[Summary, next steps, CTA script]
+
+## Objection Responses
+[Top 3 objections likely in this demo + responses]`,
+      buildUserMessage:f=>`Write a demo script.\nProduct: ${f.product}\nProspect: ${f.prospect}\nPain Points: ${f.pain_points}\nDuration: ${f.duration}`
+    },
+    {
+      id:'objection-handling', name:'Objection Handling Guide Generator',
+      description:'Produces a playbook of common objections and effective responses.',
+      fields:[
+        {id:'product',label:'Product / Service',type:'textarea',placeholder:'What you sell and key value prop…',rows:3,required:true},
+        {id:'market',label:'Target Market / Industry',type:'text',placeholder:'e.g. SME CFOs in manufacturing',required:true},
+        {id:'price_point',label:'Price Point / Commercial Model',type:'text',placeholder:'e.g. ₹50K/month SaaS, annual contract',required:false}
+      ],
+      systemPrompt:`You are a sales training expert. Create a comprehensive objection handling playbook.
+
+For each objection:
+**Objection: "[Exact words the prospect uses]"**
+*What it really means:* [The underlying concern]
+*Response framework:* [How to approach it]
+*Script:* "[Word-for-word response]"
+*Follow-up:* "[Next question to ask after your response]"
+
+Cover these objection categories:
+1. Price / Budget (3 variations)
+2. Timing / Not now (2 variations)
+3. Competitor / Already have a solution (2 variations)
+4. Need to check with stakeholders (2 variations)
+5. Not convinced it will work for us (2 variations)
+6. Too complex to implement (1 variation)
+
+End with: **The Golden Rule for Objection Handling** — [Your key principle]`,
+      buildUserMessage:f=>`Create an objection handling guide.\nProduct: ${f.product}\nMarket: ${f.market}${f.price_point?'\nPrice Point: '+f.price_point:''}`
+    },
+    {
+      id:'sales-proposal', name:'Sales Proposal Generator',
+      description:'Drafts a formal sales proposal from scope, pricing, and client context.',
+      fields:[
+        {id:'client',label:'Client Name & Company',type:'text',placeholder:'e.g. Meera Reddy, Head of Ops at LogiTech India',required:true},
+        {id:'problem',label:"Client's Problem / Need",type:'textarea',placeholder:'What they want to solve…',rows:3,required:true},
+        {id:'solution',label:'Proposed Solution',type:'textarea',placeholder:'What you are proposing to deliver…',rows:3,required:true},
+        {id:'pricing',label:'Pricing / Commercial Terms',type:'textarea',placeholder:'Pricing structure, payment terms, contract length…',rows:3,required:true},
+        {id:'your_company',label:'Your Company Name',type:'text',placeholder:'e.g. TechFlow Solutions',required:true}
+      ],
+      systemPrompt:`You are a business development professional. Write a clear, compelling, professional sales proposal.
+
+Structure:
+# Proposal for [Client Company]
+*Prepared by [Your Company] — [Date placeholder]*
+
+## Executive Summary
+[2-3 sentences: problem, solution, outcome]
+
+## Understanding Your Challenge
+[Articulate their problem back to them — shows you listened]
+
+## Our Proposed Solution
+[Detailed description of what you will deliver]
+
+## Scope of Work
+| Deliverable | Description | Timeline |
+[Table format]
+
+## Investment
+[Pricing breakdown — clear and professional]
+
+## Why [Your Company]
+[3-4 differentiators — specific, not generic]
+
+## Next Steps
+[Clear 3-step path to getting started]
+
+## Terms & Validity
+[Standard terms, proposal validity date]
+
+Professional tone throughout. No fluff.`,
+      buildUserMessage:f=>`Write a sales proposal.\nClient: ${f.client}\nProblem: ${f.problem}\nSolution: ${f.solution}\nPricing: ${f.pricing}\nOur Company: ${f.your_company}`
+    },
+    {
+      id:'customer-persona', name:'Customer Persona Generator',
+      description:'Builds detailed buyer personas from market segment and product inputs.',
+      fields:[
+        {id:'product',label:'Product / Service',type:'textarea',placeholder:'What you sell…',rows:3,required:true},
+        {id:'market',label:'Target Market Segment',type:'text',placeholder:'e.g. B2B mid-size logistics companies in India',required:true},
+        {id:'personas',label:'Number of Personas',type:'select',options:['1','2','3'],required:true}
+      ],
+      systemPrompt:`You are a market research and go-to-market strategist. Create detailed, realistic buyer personas.
+
+For each persona:
+## Persona [N]: [Name & Title]
+**"[A quote that captures their mindset]"**
+
+### Demographics
+Role, company size, industry, location, reports to
+
+### Goals & Motivations
+• [What they are trying to achieve professionally]
+
+### Frustrations & Pain Points
+• [Daily frustrations relevant to your product]
+
+### Buying Behaviour
+- Decision-making role: [Champion / Budget holder / Influencer]
+- Typical buying process: [How long, who is involved]
+- Key evaluation criteria: [What they care about most]
+
+### How to Reach Them
+- Preferred channels: [LinkedIn, events, email, etc.]
+- Content they consume: [Publications, podcasts, formats]
+- Messaging that resonates: [Key phrases and angles]
+
+### Objections to Anticipate
+• [Their top 2-3 objections]`,
+      buildUserMessage:f=>`Create ${f.personas} buyer persona${f.personas>1?'s':''}.\nProduct: ${f.product}\nTarget Market: ${f.market}`
+    },
+    {
+      id:'competitive-analysis', name:'Competitive Analysis Summarizer',
+      description:'Summarises competitor positioning, pricing, and differentiators from inputs.',
+      fields:[
+        {id:'your_product',label:'Your Product / Company',type:'textarea',placeholder:'What you offer, your positioning, key strengths…',rows:3,required:true},
+        {id:'competitors',label:'Competitor Details',type:'textarea',placeholder:'Paste competitor info here — name, features, pricing, positioning for each (separate with ---)…',rows:8,required:true}
+      ],
+      systemPrompt:`You are a competitive intelligence analyst. Produce a clear, structured competitive analysis.
+
+## Competitive Landscape Overview
+[2-3 sentence market summary]
+
+## Competitor Comparison Matrix
+| Dimension | [Your Product] | [Competitor 1] | [Competitor 2] | ... |
+[Fill in: Pricing, Key Features, Target Segment, Strengths, Weaknesses]
+
+## Detailed Competitor Profiles
+For each competitor:
+**[Competitor Name]**
+- Positioning: [How they present themselves]
+- Key Strengths: [bullet]
+- Key Weaknesses: [bullet]
+- Pricing: [if available]
+- Who they win against you: [their ideal customer]
+
+## Your Competitive Advantages
+• [Where you win and why]
+
+## Competitive Vulnerabilities
+• [Where you are at risk and mitigation]
+
+## Recommended Messaging Angles
+• [How to position against this competitive set]`,
+      buildUserMessage:f=>`Analyse the competitive landscape.\n\nOUR PRODUCT:\n${f.your_product}\n\nCOMPETITOR DETAILS:\n${f.competitors}`
+    },
+    {
+      id:'case-study', name:'Case Study Generator',
+      description:'Structures a compelling customer case study from outcome data and client details.',
+      fields:[
+        {id:'client',label:'Client Name & Industry',type:'text',placeholder:'e.g. RetailMax (name can be anonymised), E-commerce',required:true},
+        {id:'challenge',label:'Client Challenge / Problem',type:'textarea',placeholder:'What problem were they facing before your solution…',rows:3,required:true},
+        {id:'solution',label:'Your Solution',type:'textarea',placeholder:'What you implemented and how…',rows:3,required:true},
+        {id:'results',label:'Results & Outcomes',type:'textarea',placeholder:'Specific metrics, improvements, timeframes…',rows:3,required:true}
+      ],
+      systemPrompt:`You are a B2B content marketer. Write a compelling, results-focused case study.
+
+Structure:
+# [Client Name]: [Headline Result in One Line]
+
+## The Challenge
+[2-3 paragraphs: who the client is, what problem they faced, why it mattered to their business]
+
+## The Solution
+[2-3 paragraphs: what was implemented, why this approach, key elements of the solution]
+
+## The Results
+**[Key metric 1]** — [description]
+**[Key metric 2]** — [description]
+**[Key metric 3]** — [description]
+
+[1-2 sentences putting the results in business context]
+
+## Client Quote
+"[Fabricate a realistic, enthusiastic quote — mark as [PLACEHOLDER — get real quote]]"
+— [Name, Role, Company]
+
+## Key Takeaways
+• [3 lessons/insights from this implementation]
+
+Keep it specific, results-first, and buyer-focused.`,
+      buildUserMessage:f=>`Write a case study.\nClient: ${f.client}\nChallenge: ${f.challenge}\nSolution: ${f.solution}\nResults: ${f.results}`
+    },
+    {
+      id:'sales-playbook', name:'Sales Playbook Generator',
+      description:'Produces a structured sales playbook for a given product, market, and team.',
+      fields:[
+        {id:'product',label:'Product / Service',type:'textarea',placeholder:'What you sell and value proposition…',rows:3,required:true},
+        {id:'market',label:'Target Market',type:'text',placeholder:'e.g. Series A-C SaaS startups in India',required:true},
+        {id:'team',label:'Sales Team Context',type:'text',placeholder:'e.g. 3 SDRs + 2 AEs, remote team',required:false}
+      ],
+      systemPrompt:`You are a sales operations expert. Create a comprehensive sales playbook.
+
+## Sales Playbook — [Product] | [Market]
+
+### 1. Ideal Customer Profile (ICP)
+[Firmographic + technographic + behavioural criteria]
+
+### 2. Prospect Research Checklist
+- [ ] [Research step before any outreach]
+
+### 3. Outreach Cadence
+[Day-by-day touchpoint sequence with channels]
+
+### 4. Discovery Framework
+Key discovery questions (MEDDIC / SPIN / custom):
+• [Question — what it uncovers]
+
+### 5. Demo / Pitch Framework
+[Stage-by-stage structure with time allocations]
+
+### 6. Qualification Criteria
+[BANT or custom framework with scoring]
+
+### 7. Proposal & Pricing Guide
+[When to send, what to include, discount thresholds]
+
+### 8. Closing Techniques
+[Specific closing scripts for this market]
+
+### 9. CRM & Activity Standards
+[Required fields, activity minimums, stage definitions]
+
+### 10. Key Metrics & Targets
+[KPIs for SDRs and AEs]`,
+      buildUserMessage:f=>`Create a sales playbook.\nProduct: ${f.product}\nTarget Market: ${f.market}${f.team?'\nTeam: '+f.team:''}`
+    },
+    {
+      id:'pricing-copy', name:'Pricing Page Copy Generator',
+      description:'Writes clear, conversion-focused pricing page copy from plan details.',
+      fields:[
+        {id:'product',label:'Product Name',type:'text',placeholder:'e.g. FlowDesk',required:true},
+        {id:'plans',label:'Pricing Plans',type:'textarea',placeholder:'List each plan: name, price, features included…\ne.g. Starter: ₹999/mo — 5 users, core features\nGrowth: ₹2,999/mo — unlimited users, advanced analytics',rows:6,required:true},
+        {id:'audience',label:'Target Buyer',type:'text',placeholder:'e.g. SME founders and operations teams',required:true}
+      ],
+      systemPrompt:`You are a conversion copywriter specialising in SaaS pricing pages. Write compelling pricing page copy.
+
+Output:
+## Pricing Page Copy
+
+### Section Header
+**Headline:** [Value-focused, not feature-focused]
+**Subheadline:** [One sentence clarifying who this is for and what they get]
+
+### For Each Plan:
+**[Plan Name]**
+**Price:** [Price/period]
+**Tagline:** [One line who this plan is for]
+**Features:**
+✓ [Feature — phrased as a benefit]
+[6-8 features]
+**CTA Button:** [Button text]
+
+### FAQ Section
+5 most common pricing questions + answers
+
+### Trust Elements
+• [Social proof suggestions — testimonials, logos, guarantees]
+
+### Comparison to Alternatives
+[One sentence positioning vs spreadsheets/competitors]
+
+Write for conversion. Every word earns its place.`,
+      buildUserMessage:f=>`Write pricing page copy.\nProduct: ${f.product}\nPlans: ${f.plans}\nTarget Buyer: ${f.audience}`
+    },
+    // AGENTS
+    {
+      id:'customer-discovery', name:'Customer Discovery Agent', isAgent:true,
+      description:'Designs a structured discovery conversation framework to surface customer insights.',
+      fields:[
+        {id:'product',label:'Your Product / Solution',type:'textarea',placeholder:'What you offer and the problem it solves…',rows:3,required:true},
+        {id:'customer',label:'Target Customer Profile',type:'text',placeholder:'e.g. Head of Operations at a logistics company',required:true},
+        {id:'stage',label:'Stage',type:'select',options:['Early Discovery (Pre-product)','Validation (MVP stage)','Sales Discovery (Existing product)'],required:true}
+      ],
+      systemPrompt:`You are a customer discovery expert trained in Jobs-to-be-Done and SPIN selling. Design a complete discovery conversation framework.
+
+## Discovery Interview Guide
+
+### Pre-interview Setup
+[What to do before the call, context to research]
+
+### Opening (5 min)
+"[Exact script for opening the conversation and building rapport]"
+
+### Core Discovery Questions (25 min)
+Organised by theme:
+
+**Current Situation**
+Q: "[Open-ended question]"
+*Listen for:* [Key signals]
+*Probe:* "[If they give a shallow answer]"
+
+**Pain & Impact**
+[3-4 questions]
+
+**Current Solutions & Workarounds**
+[2-3 questions]
+
+**Desired Outcome**
+[2-3 questions]
+
+**Decision & Process**
+[2-3 questions]
+
+### Closing (5 min)
+"[Closing script and next step proposal]"
+
+### Synthesis Template
+After the interview, fill in:
+- Top pain: ___
+- Current workaround: ___
+- Ideal outcome: ___
+- Decision maker: ___
+- Next step agreed: ___`,
+      buildUserMessage:f=>`Design a discovery conversation framework.\nProduct: ${f.product}\nCustomer: ${f.customer}\nStage: ${f.stage}`
+    },
+    {
+      id:'lead-research', name:'Lead Research Agent', isAgent:true,
+      description:'Generates a personalised research brief and outreach strategy for a target account.',
+      fields:[
+        {id:'company',label:'Target Company',type:'text',placeholder:'e.g. Delhivery',required:true},
+        {id:'contact',label:'Target Contact Name & Role',type:'text',placeholder:'e.g. Rohan Sharma, VP Technology',required:true},
+        {id:'your_product',label:'Your Product / Service',type:'textarea',placeholder:'What you offer and key value prop…',rows:3,required:true}
+      ],
+      systemPrompt:`You are a sales intelligence analyst. Create a pre-outreach research brief and personalised account strategy.
+
+## Account Research Brief — [Company]
+
+### Company Overview
+[Business model, size, recent news, growth stage, key challenges in their industry]
+
+### Contact Profile — [Name, Role]
+[Role responsibilities, likely KPIs, reporting structure, tenure signals]
+
+### Relevance Assessment
+**Why this account now:** [Trigger events — funding, expansion, hiring, product launches]
+**Fit score:** [High / Medium / Low + rationale]
+
+### Pain Hypothesis
+"Based on their profile, [Contact Name] is likely struggling with [specific pain] because [reason]."
+
+### Personalised Outreach Angles
+1. [Angle 1 — specific hook]
+2. [Angle 2 — different approach]
+3. [Angle 3 — contrarian/insight-led]
+
+### Recommended First Touch
+Channel: [Best channel]
+Timing: [Best time to reach]
+Message draft: [Personalised 80-word email/DM]
+
+### Follow-up Strategy
+[2-step follow-up plan with timing]
+
+Note: Fill in real data where marked [research needed] — this framework maximises relevance once you add live data.`,
+      buildUserMessage:f=>`Create a lead research brief.\nCompany: ${f.company}\nContact: ${f.contact}\nOur Product: ${f.your_product}`
+    },
+    {
+      id:'competitive-intel', name:'Competitive Intelligence Agent', isAgent:true,
+      description:'Produces a competitive briefing and battle card for a specific competitor.',
+      fields:[
+        {id:'competitor',label:'Competitor Name',type:'text',placeholder:'e.g. HubSpot',required:true},
+        {id:'your_product',label:'Your Product & Strengths',type:'textarea',placeholder:'What you offer and where you are strongest…',rows:3,required:true},
+        {id:'context',label:'Deal Context',type:'textarea',placeholder:'e.g. We are in a deal where the prospect is evaluating us vs this competitor…',rows:3,required:false}
+      ],
+      systemPrompt:`You are a competitive intelligence specialist. Produce a comprehensive battle card and competitive briefing.
+
+## Battle Card — [Your Product] vs [Competitor]
+
+### Competitor at a Glance
+[Market position, target customer, pricing tier, recent moves]
+
+### Their Strengths (Be Honest)
+• [Genuine strength — acknowledge it]
+
+### Their Weaknesses & Vulnerabilities
+• [Specific weakness + how to exploit it]
+
+### Head-to-Head Feature Comparison
+| Feature | You | Competitor | Advantage |
+[10-15 key differentiating features]
+
+### How to Win
+**When prospect asks about [their strength]:**
+"[Script]"
+
+**Discovery questions to use against them:**
+• [Question that surfaces their weakness]
+
+### Win/Loss Patterns
+[Common scenarios where you win and where you lose]
+
+### Landmine Questions to Plant
+• [Questions to ask that favour your solution]
+
+### Messaging Framework
+**Against [Competitor], lead with:** [Key differentiator]
+**Proof point:** [Evidence to use]`,
+      buildUserMessage:f=>`Create a competitive battle card.\nCompetitor: ${f.competitor}\nOur Product: ${f.your_product}${f.context?'\nContext: '+f.context:''}`
+    },
+    {
+      id:'outreach-sequence', name:'Multi-touch Outreach Sequence Agent', isAgent:true,
+      description:'Designs a complete multi-channel outreach campaign for a target segment.',
+      fields:[
+        {id:'product',label:'Product / Service',type:'textarea',placeholder:'What you offer and key value prop…',rows:3,required:true},
+        {id:'target',label:'Target Segment',type:'text',placeholder:'e.g. CFOs at Series B fintech startups in India',required:true},
+        {id:'goal',label:'Campaign Goal',type:'text',placeholder:'e.g. Book 10 discovery calls in 30 days',required:true},
+        {id:'channels',label:'Available Channels',type:'select',options:['Email only','LinkedIn only','Email + LinkedIn','Email + LinkedIn + WhatsApp'],required:true}
+      ],
+      systemPrompt:`You are a demand generation specialist. Design a complete multi-touch outreach campaign.
+
+## Outreach Campaign Plan
+
+### Campaign Strategy
+**Goal:** [X outcome in Y days]
+**Message theme:** [Core narrative thread across all touches]
+**Angle progression:** [How the story evolves across touches]
+
+### Touch-by-Touch Sequence
+For each touch:
+**Touch [N] — Day [X] — Channel: [Channel]**
+*Angle:* [What this touch focuses on]
+*Template:*
+[Ready-to-send message — subject + body for email, message text for LinkedIn/WhatsApp]
+
+### Personalisation Variables
+[List of fields to personalise per prospect: {{first_name}}, {{company}}, {{pain_point}}, etc.]
+
+### Branching Logic
+- If replied positively: [Next step]
+- If replied negatively: [How to handle]
+- If no reply after full sequence: [Re-engagement play]
+
+### Campaign KPIs
+[Metrics to track — reply rate, meeting rate, conversion benchmarks]`,
+      buildUserMessage:f=>`Design a multi-touch outreach campaign.\nProduct: ${f.product}\nTarget: ${f.target}\nGoal: ${f.goal}\nChannels: ${f.channels}`
+    }
+  ]
+};
+
+/* PS Tools API base — configurable. Default :8000; override via ?api=http://host:port (persists in localStorage). */
+const _psApiQp=new URLSearchParams(location.search).get('api');
+if(_psApiQp)localStorage.setItem('ps_api_base',_psApiQp);
+const API_BASE=(_psApiQp||localStorage.getItem('ps_api_base')||'http://localhost:8000').replace(/\/$/,'');
+const API_GENERATE=API_BASE+'/generate';
+function selectTool(id) {
+  const tool = DOMAIN.tools.find(t => t.id === id);
+  if (!tool) return;
+  document.querySelectorAll('.tool-btn').forEach(b => b.classList.toggle('active', b.dataset.id === id));
+  renderTool(tool);
+}
+
+function renderTool(tool) {
+  const fieldsHtml = tool.fields.map(f => {
+    let inp = '';
+    if (f.type === 'text')
+      inp = `<input type="text" id="f_${f.id}" placeholder="${f.placeholder||''}"${f.required?' required':''}>`;
+    else if (f.type === 'textarea')
+      inp = `<textarea id="f_${f.id}" placeholder="${f.placeholder||''}" rows="${f.rows||4}"${f.required?' required':''}></textarea><label class="btn-upload"><input type="file" accept=".txt,.pdf,.docx" onchange="handleFileUpload('f_${f.id}',this)">📎 Upload file</label>`;
+    else if (f.type === 'select')
+      inp = `<select id="f_${f.id}">${f.options.map(o=>`<option>${o}</option>`).join('')}</select>`;
+    return `<div class="field-group"><label class="field-label" for="f_${f.id}">${f.label}${f.required?'':' <span class="field-opt">(optional)</span>'}</label>${inp}</div>`;
+  }).join('');
+
+  document.getElementById('content').innerHTML = `
+    <div class="tool-header">
+      <h2 class="tool-name">${tool.name}</h2>
+      <p class="tool-desc">${tool.description}</p>
+    </div>
+    <div class="form-card">
+      ${fieldsHtml}
+      <button class="btn-gen" onclick="runGenerate('${tool.id}')">Generate</button>
+    </div>
+    <div class="output-section" id="out-section">
+      <div class="output-header"><span class="output-lbl">Output</span><div style="display:flex;gap:6px"><button class="btn-dl" onclick="downloadOut()">↓ Save</button><button class="btn-copy" onclick="copyOut()">Copy</button></div></div>
+      <div class="output-box" id="out-box"><div class="out-empty"><div class="out-empty-icon">✨</div><p>Fill in the form and click Generate.</p></div></div>
+    </div>`;
+}
+
+async function runGenerate(toolId) {
+  const tool = DOMAIN.tools.find(t => t.id === toolId);
+  if (!tool) return;
+  const data = {};
+  let ok = true;
+  for (const f of tool.fields) {
+    const el = document.getElementById(`f_${f.id}`);
+    if (!el) continue;
+    const v = el.value.trim();
+    if (f.required && !v) { el.style.borderColor = '#ef4444'; ok = false; } else { el.style.borderColor = ''; data[f.id] = v; }
+  }
+  if (!ok) return;
+
+  const outBox = document.getElementById('out-box');
+  const btn = document.querySelector('.btn-gen');
+  outBox.classList.add('streaming');
+  outBox.innerHTML = '<span style="color:var(--muted)">Generating<span class="dots"><span>.</span><span>.</span><span>.</span></span></span>';
+  btn.disabled = true; btn.textContent = 'Generating…';
+
+  try {
+    const res = await fetch(API_GENERATE, {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({system_prompt: tool.systemPrompt, user_message: tool.buildUserMessage(data)})
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const reader = res.body.getReader(); const dec = new TextDecoder(); let out = '';
+    outBox.textContent = '';
+    while (true) {
+      const {done, value} = await reader.read(); if (done) break;
+      for (const line of dec.decode(value).split('\n')) {
+        if (!line.startsWith('data: ')) continue;
+        const d = line.slice(6); if (d === '[DONE]') break;
+        try { const p = JSON.parse(d); if (p.error) { outBox.classList.remove('streaming'); outBox.style.color='#ef4444'; outBox.textContent='Error: '+p.error; } else if (p.text) { out += p.text; outBox.textContent = out; outBox.scrollTop = outBox.scrollHeight; } } catch {}
+      }
+    }
+    if (out && typeof marked !== 'undefined') { outBox.classList.remove('streaming'); outBox.innerHTML = marked.parse(out); } else { outBox.classList.remove('streaming'); }
+  } catch(e) {
+    outBox.classList.remove('streaming');
+    outBox.style.color = '#ef4444';
+    outBox.textContent = `Connection error: ${e.message}\n\nStart the backend:\n  cd backend\n  uvicorn main:app --reload`;
+  }
+  btn.disabled = false; btn.textContent = 'Generate';
+}
+
+function copyOut() {
+  const text = document.getElementById('out-box')?.innerText;
+  if (!text || text.includes('Fill in the form')) return;
+  navigator.clipboard.writeText(text).then(() => { const b = document.querySelector('.btn-copy'); b.textContent='Copied!'; setTimeout(()=>b.textContent='Copy',2000); });
+}
+
+function init() {
+  const tools = DOMAIN.tools.filter(t => !t.isAgent);
+  const agents = DOMAIN.tools.filter(t => t.isAgent);
+  document.getElementById('tool-list').innerHTML =
+    `<div class="sidebar-search"><input class="search-inp" type="text" placeholder="Search tools…" oninput="filterTools(this.value)"></div>` +
+    `<div class="sec-lbl">Tools · ${tools.length}</div>` +
+    tools.map(t=>`<button class="tool-btn" data-id="${t.id}" onclick="selectTool('${t.id}')">${t.name}</button>`).join('') +
+    (agents.length ? `<div class="sec-lbl ag">Agents · ${agents.length}</div>` + agents.map(t=>`<button class="tool-btn agent" data-id="${t.id}" onclick="selectTool('${t.id}')">${t.name}</button>`).join('') : '');
+  if (tools.length) selectTool(tools[0].id);
+}
+function filterTools(q) {
+  const lq = q.toLowerCase();
+  document.querySelectorAll('.tool-btn').forEach(b => {
+    b.classList.toggle('hidden', !b.textContent.toLowerCase().includes(lq));
+  });
+}
+function downloadOut() {
+  const text = document.getElementById('out-box')?.innerText;
+  if (!text || text.includes('Fill in the form')) return;
+  const a = document.createElement('a');
+  a.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(text);
+  a.download = 'output.txt'; a.click();
+}
+async function handleFileUpload(fieldId, input) {
+  const file = input.files[0]; if (!file) return;
+  const ext = file.name.split('.').pop().toLowerCase();
+  const ta = document.getElementById(fieldId);
+  const prev = ta.placeholder; ta.placeholder = 'Reading file…'; ta.disabled = true;
+  try {
+    if (ext === 'txt' || ext === 'md' || ext === 'csv') {
+      ta.value = await file.text();
+    } else if (ext === 'pdf') {
+      if (typeof pdfjsLib === 'undefined') { alert('PDF library not loaded yet, please retry.'); ta.disabled = false; ta.placeholder = prev; return; }
+      const buf = await file.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({data: new Uint8Array(buf)}).promise;
+      let text = '';
+      for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const content = await page.getTextContent();
+        text += content.items.map(item => item.str).join(' ') + '\n\n';
+      }
+      ta.value = text.trim();
+    } else if (ext === 'docx') {
+      if (typeof mammoth === 'undefined') { alert('DOCX library not loaded yet, please retry.'); ta.disabled = false; ta.placeholder = prev; return; }
+      const buf = await file.arrayBuffer();
+      const result = await mammoth.extractRawText({arrayBuffer: buf});
+      ta.value = result.value;
+    }
+  } catch(e) { alert('Could not read file: ' + e.message); }
+  ta.disabled = false; ta.placeholder = prev; input.value = '';
+}
+window.addEventListener('DOMContentLoaded',init);
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>if(typeof pdfjsLib!=='undefined')pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+</body>
+</html>

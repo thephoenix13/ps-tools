@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Enterprise Tools — Perfect Skills AI Tool Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563eb;--blue-light:#eff6ff;--dark:#0f172a;--mid:#334155;--muted:#64748b;--border:#e2e8f0;--bg:#f8fafc;--white:#ffffff;--radius:12px;--rsm:8px}
+html,body{height:100%}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--dark);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:56px}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}.nav-logo{height:26px;width:auto}.nav-sep{width:1px;height:16px;background:var(--border)}.nav-product{font-size:12px;font-weight:500;color:var(--blue)}.nav-domain{font-size:12px;color:var(--muted)}
+.page-layout{display:grid;grid-template-columns:260px 1fr;height:calc(100vh - 56px);overflow:hidden}
+.sidebar{border-right:1px solid var(--border);background:var(--white);overflow-y:auto;display:flex;flex-direction:column}
+.sidebar-header{padding:16px;border-bottom:1px solid var(--border);flex-shrink:0}
+.back-link{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);text-decoration:none;margin-bottom:10px}.back-link:hover{color:var(--blue)}
+.domain-row{display:flex;align-items:center;gap:10px}.d-icon{font-size:22px}.d-name{font-size:15px;font-weight:700;color:var(--dark)}.d-count{font-size:11px;color:var(--muted);margin-top:2px}
+.sec-lbl{font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--muted);padding:12px 16px 5px}.sec-lbl.ag{color:#7c3aed}
+.tool-btn{display:block;width:100%;text-align:left;padding:7px 16px;background:none;border:none;cursor:pointer;font-size:12px;font-family:inherit;color:var(--mid);line-height:1.4;transition:background .12s,color .12s}.tool-btn:hover{background:var(--bg);color:var(--dark)}.tool-btn.active{background:var(--blue-light);color:var(--blue);font-weight:600}.tool-btn.agent:hover{background:rgba(124,58,237,.06);color:#5b21b6}.tool-btn.agent.active{background:rgba(124,58,237,.1);color:#5b21b6;font-weight:600}
+.content{overflow-y:auto;background:var(--bg);padding:32px}
+.tool-header{margin-bottom:24px}.tool-name{font-size:20px;font-weight:700;color:var(--dark);letter-spacing:-.3px;margin-bottom:5px}.tool-desc{font-size:13px;color:var(--muted);line-height:1.6}
+.form-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:18px}
+.field-group{display:flex;flex-direction:column;gap:6px}.field-label{font-size:12px;font-weight:600;color:var(--mid)}.field-opt{font-weight:400;color:var(--muted)}
+input[type=text],select,textarea{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:var(--rsm);font-size:13px;font-family:inherit;color:var(--dark);background:var(--white);outline:none;transition:border-color .15s,box-shadow .15s}
+input[type=text]:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.08)}
+textarea{resize:vertical;line-height:1.6}.btn-upload{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:var(--white);border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;color:var(--muted);cursor:pointer;font-family:inherit;transition:all .15s;margin-top:2px}.btn-upload:hover{border-color:var(--blue);color:var(--blue)}.btn-upload input{display:none}.output-box{white-space:normal}.output-box.streaming{white-space:pre-wrap}.output-box h1,.output-box h2,.output-box h3,.output-box h4{font-weight:700;color:var(--dark)}.output-box h1{font-size:16px;margin:0 0 8px}.output-box h2{font-size:14px;margin:14px 0 6px;padding-bottom:4px;border-bottom:1px solid var(--border)}.output-box h3{font-size:13px;margin:12px 0 5px}.output-box h4{font-size:13px;margin:10px 0 4px;color:var(--mid)}.output-box p{margin:0 0 10px;line-height:1.7}.output-box p:last-child{margin-bottom:0}.output-box ul,.output-box ol{padding-left:20px;margin:0 0 10px}.output-box li{margin-bottom:4px;line-height:1.6}.output-box strong{font-weight:600}.output-box em{font-style:italic;color:var(--mid)}.output-box table{width:100%;border-collapse:collapse;margin:0 0 12px;font-size:12px}.output-box th{background:var(--bg);font-weight:600;padding:7px 10px;border:1px solid var(--border);text-align:left}.output-box td{padding:6px 10px;border:1px solid var(--border);vertical-align:top}.output-box tr:nth-child(even) td{background:#fafbfc}.output-box code{background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:1px 5px;font-size:11px;font-family:monospace}.output-box pre{background:var(--bg);border:1px solid var(--border);border-radius:var(--rsm);padding:14px;overflow-x:auto;margin:0 0 12px}.output-box pre code{background:none;border:none;padding:0}.output-box blockquote{border-left:3px solid #93c5fd;padding:8px 14px;color:var(--muted);margin:0 0 12px;background:var(--blue-light);border-radius:0 6px 6px 0}.output-box hr{border:none;border-top:1px solid var(--border);margin:14px 0}.btn-dl{padding:4px 12px;background:var(--white);border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;color:var(--muted);font-family:inherit;transition:all .15s}.btn-dl:hover{border-color:var(--blue);color:var(--blue)}.sidebar-search{padding:8px 16px 10px;border-bottom:1px solid var(--border);flex-shrink:0}.search-inp{width:100%;padding:6px 10px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:inherit;outline:none;color:var(--dark);background:var(--bg);transition:border-color .15s}.search-inp:focus{border-color:var(--blue)}.tool-btn.hidden{display:none}@keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}.dots span{animation:blink 1.2s infinite;display:inline-block;margin:0 1px}.dots span:nth-child(2){animation-delay:.2s}.dots span:nth-child(3){animation-delay:.4s}.out-empty{text-align:center;padding:36px 20px;color:var(--muted)}.out-empty-icon{font-size:24px;margin-bottom:8px}.out-empty p{font-size:12px;line-height:1.6}.btn-gen{align-self:stretch}
+.btn-gen{padding:10px 22px;background:var(--blue);color:#fff;border:none;border-radius:var(--rsm);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;transition:opacity .15s;align-self:flex-start}.btn-gen:hover{opacity:.88}.btn-gen:disabled{opacity:.5;cursor:not-allowed}
+.output-section{margin-top:20px}.output-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}.output-lbl{font-size:12px;font-weight:600;color:var(--mid)}
+.btn-copy{padding:4px 12px;background:var(--white);border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;color:var(--muted);font-family:inherit;transition:all .15s}.btn-copy:hover{border-color:var(--blue);color:var(--blue)}
+.output-box{background:var(--white);border:1px solid var(--border);border-radius:var(--rsm);padding:20px;font-size:13px;line-height:1.75;color:var(--dark);white-space:pre-wrap;min-height:180px;overflow-y:auto;font-family:inherit}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="index.html"><img src="perfectskills_logo.png" alt="Perfect Skills" class="nav-logo"><span class="nav-sep"></span><span class="nav-product">AI Tool Kit</span></a>
+  <span class="nav-domain">Enterprise Tools</span>
+</nav>
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <a class="back-link" href="index.html">← All Domains</a>
+      <div class="domain-row"><span class="d-icon">📊</span><div><div class="d-name">Enterprise</div><div class="d-count">12 tools · 4 agents</div></div></div>
+    </div>
+    <div id="tool-list"></div>
+  </aside>
+  <main class="content" id="content"></main>
+</div>
+<script>
+const DOMAIN = {
+  name:'Enterprise', icon:'📊',
+  tools:[
+    {
+      id:'meeting-notes', name:'Meeting Notes Summarizer',
+      description:'Converts raw meeting transcripts or notes into structured summaries with action items.',
+      fields:[
+        {id:'notes',label:'Raw Meeting Notes / Transcript',type:'textarea',placeholder:'Paste the meeting transcript or notes here…',rows:10,required:true},
+        {id:'context',label:'Meeting Context',type:'text',placeholder:'e.g. Q2 Planning, Sprint Retro, Client Review',required:false}
+      ],
+      systemPrompt:`You are an executive assistant. Transform raw meeting notes into a clear, structured summary.
+
+Format:
+## Meeting Summary${' — [Context if provided]'}
+
+**Date:** [If mentioned]
+**Attendees:** [If mentioned]
+
+## Key Decisions Made
+• [Specific decisions agreed upon]
+
+## Discussion Points
+• [Main topics discussed with brief context]
+
+## Action Items
+| # | Action | Owner | Due Date |
+|---|--------|-------|----------|
+[Table of all action items]
+
+## Open Questions / Parking Lot
+• [Unresolved items that need follow-up]
+
+## Next Meeting
+[Date / agenda if mentioned]
+
+Be concise. Surface every commitment and decision.`,
+      buildUserMessage:f=>`Summarise this meeting.${f.context?'\nContext: '+f.context:''}\n\nNOTES:\n${f.notes}`
+    },
+    {
+      id:'sop-generator', name:'SOP Generator',
+      description:'Produces standard operating procedure documents from process descriptions.',
+      fields:[
+        {id:'process',label:'Process Name',type:'text',placeholder:'e.g. Customer Onboarding Process',required:true},
+        {id:'description',label:'Process Description',type:'textarea',placeholder:'Describe how the process works — steps, people involved, systems used…',rows:6,required:true},
+        {id:'dept',label:'Department / Team',type:'text',placeholder:'e.g. Customer Success',required:false}
+      ],
+      systemPrompt:`You are a business operations specialist. Create a clear, professional Standard Operating Procedure document.
+
+Format:
+# SOP: [Process Name]
+**Version:** 1.0 | **Department:** [Department] | **Last Updated:** [Date placeholder]
+
+## 1. Purpose
+[Why this SOP exists and what it achieves]
+
+## 2. Scope
+[Who this applies to and in what situations]
+
+## 3. Responsibilities
+| Role | Responsibility |
+[Table of people and their roles in this process]
+
+## 4. Process Steps
+For each step:
+**Step [N]: [Step Name]**
+- What to do: [Clear instruction]
+- Who does it: [Role]
+- Time required: [Estimate]
+- Tools/systems: [What to use]
+- Output/deliverable: [What is produced]
+
+## 5. Decision Points & Escalation
+[Where decisions are made, escalation paths]
+
+## 6. Quality Checks
+- [ ] [Checkpoint]
+
+## 7. Related Documents
+[Other SOPs or documents to reference]`,
+      buildUserMessage:f=>`Create an SOP.\nProcess: ${f.process}${f.dept?'\nDepartment: '+f.dept:''}\nDescription: ${f.description}`
+    },
+    {
+      id:'business-case', name:'Business Case Generator',
+      description:'Drafts a structured business case with problem, solution, ROI, and risk sections.',
+      fields:[
+        {id:'title',label:'Initiative / Project Title',type:'text',placeholder:'e.g. CRM System Implementation',required:true},
+        {id:'problem',label:'Problem / Opportunity',type:'textarea',placeholder:'What problem are you solving or opportunity are you capturing…',rows:3,required:true},
+        {id:'solution',label:'Proposed Solution',type:'textarea',placeholder:'What you are proposing to do…',rows:3,required:true},
+        {id:'investment',label:'Estimated Investment',type:'text',placeholder:'e.g. ₹15 lakhs, 6-month project',required:true},
+        {id:'benefits',label:'Expected Benefits / ROI',type:'textarea',placeholder:'Financial and non-financial benefits expected…',rows:3,required:true}
+      ],
+      systemPrompt:`You are a management consultant. Write a compelling, structured business case.
+
+Format:
+# Business Case: [Title]
+*Prepared for: [Stakeholder placeholder] | Date: [Placeholder]*
+
+## Executive Summary
+[3-4 sentences: problem, solution, investment, expected return]
+
+## Problem Statement
+[Detailed description of the current situation, its impact, and cost of inaction]
+
+## Proposed Solution
+[Clear description of what is being proposed and how it works]
+
+## Options Considered
+| Option | Description | Pros | Cons |
+[3 options: do nothing, proposed solution, alternative]
+
+## Financial Analysis
+**Investment Required:** [Amount and breakdown]
+**Expected Benefits:**
+- Year 1: [₹/$ amount or % improvement]
+- Year 2: [Amount]
+- Year 3: [Amount]
+**Payback Period:** [X months]
+**ROI:** [X%]
+
+## Risks & Mitigation
+| Risk | Probability | Impact | Mitigation |
+
+## Implementation Timeline
+[Phase-by-phase plan with milestones]
+
+## Recommendation
+[Clear ask: approve / reject / more information needed]`,
+      buildUserMessage:f=>`Write a business case.\nTitle: ${f.title}\nProblem: ${f.problem}\nSolution: ${f.solution}\nInvestment: ${f.investment}\nExpected Benefits: ${f.benefits}`
+    },
+    {
+      id:'project-status', name:'Project Status Report Generator',
+      description:'Generates formatted project status reports from update inputs.',
+      fields:[
+        {id:'project',label:'Project Name',type:'text',placeholder:'e.g. Platform Migration v2',required:true},
+        {id:'period',label:'Reporting Period',type:'text',placeholder:'e.g. Week 12, May 1-7 2025',required:true},
+        {id:'status',label:'Overall Status',type:'select',options:['On Track (Green)','At Risk (Amber)','Off Track (Red)'],required:true},
+        {id:'progress',label:'Progress This Period',type:'textarea',placeholder:'What was completed, key milestones hit…',rows:4,required:true},
+        {id:'blockers',label:'Issues & Blockers',type:'textarea',placeholder:'Current risks, blockers, or issues…',rows:3,required:false},
+        {id:'next',label:'Planned for Next Period',type:'textarea',placeholder:'What will be worked on next week/sprint…',rows:3,required:true}
+      ],
+      systemPrompt:`You are a PMO analyst. Create a professional, concise project status report.
+
+Format:
+# Project Status Report — [Project Name]
+**Period:** [Period] | **Status:** 🟢/🟡/🔴 [Status] | **Prepared by:** [Placeholder]
+
+## Executive Summary
+[2-3 sentences: overall health, key achievement, key risk]
+
+## Progress This Period
+• [Specific completed items with context]
+
+## Key Metrics
+| Metric | Target | Actual | Status |
+[Schedule, budget, quality, scope metrics]
+
+## Issues & Blockers
+| # | Issue | Impact | Owner | Resolution Plan |
+[Table — if none, state "No critical issues"]
+
+## Risks
+| Risk | Probability | Impact | Mitigation |
+
+## Next Period Plan
+• [Specific planned items with owners]
+
+## Decisions Required
+• [Any approvals or decisions needed from stakeholders]
+
+Keep it tight. Executives read this in 2 minutes.`,
+      buildUserMessage:f=>`Write a project status report.\nProject: ${f.project}\nPeriod: ${f.period}\nStatus: ${f.status}\nProgress: ${f.progress}${f.blockers?'\nBlockers: '+f.blockers:''}\nNext Period: ${f.next}`
+    },
+    {
+      id:'risk-assessment', name:'Risk Assessment Generator',
+      description:'Produces a risk register with likelihood, impact, and mitigation plans.',
+      fields:[
+        {id:'project',label:'Project / Initiative',type:'text',placeholder:'e.g. Cloud Infrastructure Migration',required:true},
+        {id:'context',label:'Context & Scope',type:'textarea',placeholder:'What the project involves, key dependencies, stakeholders…',rows:4,required:true},
+        {id:'category',label:'Primary Risk Category',type:'select',options:['Technology / IT','Financial','Operational','Compliance / Legal','People / HR','Strategic','All Categories'],required:true}
+      ],
+      systemPrompt:`You are a risk management specialist. Create a comprehensive risk register.
+
+Format:
+# Risk Register — [Project]
+
+## Risk Summary Dashboard
+Total Risks: [N] | Critical: [N] | High: [N] | Medium: [N] | Low: [N]
+
+## Risk Register
+
+| ID | Risk Description | Category | Likelihood (1-5) | Impact (1-5) | Risk Score | Priority | Mitigation Strategy | Owner | Status |
+[Complete table with 10-15 identified risks]
+
+## Critical & High Priority Risks — Detail
+
+For each critical/high risk:
+**Risk [ID]: [Name]**
+- Description: [Detailed description]
+- Trigger: [What would cause this risk to materialise]
+- Consequence: [What happens if it occurs]
+- Mitigation: [Preventive actions]
+- Contingency: [Response plan if it occurs]
+- Early Warning Signs: [Indicators to watch]
+
+## Risk Monitoring Plan
+[Cadence and method for reviewing risks]`,
+      buildUserMessage:f=>`Create a risk assessment.\nProject: ${f.project}\nContext: ${f.context}\nFocus: ${f.category}`
+    },
+    {
+      id:'kpi-narrative', name:'KPI Narrative Generator',
+      description:'Converts KPI data into readable narrative summaries for leadership reports.',
+      fields:[
+        {id:'kpis',label:'KPI Data',type:'textarea',placeholder:'Paste your KPI data — metrics, current values, targets, previous period values…\ne.g. Revenue: ₹4.2Cr (target ₹5Cr, prev ₹3.8Cr)\nCAC: ₹2,400 (target <₹2,000)',rows:8,required:true},
+        {id:'period',label:'Reporting Period',type:'text',placeholder:'e.g. Q1 FY26, April 2025',required:true},
+        {id:'audience',label:'Audience',type:'select',options:['Board / Investors','Executive Team','Department Heads','Operations Team'],required:true}
+      ],
+      systemPrompt:`You are a business analyst and executive communication specialist. Transform KPI data into a compelling narrative summary.
+
+Format:
+## Performance Summary — [Period]
+*For: [Audience]*
+
+### Headline Performance
+[2-3 sentence executive summary — lead with the most important insight]
+
+### Performance Against Targets
+| KPI | Target | Actual | vs Target | vs Prior Period | Trend |
+[Complete table with all provided KPIs]
+
+### What Drove Performance
+**Outperformance areas:**
+• [KPI] — [What drove this result]
+
+**Underperformance areas:**
+• [KPI] — [Root cause analysis]
+
+### Outlook & Actions
+[Forward-looking statement: what is expected next period and what actions are being taken]
+
+### Key Decisions Required
+• [Any decisions leadership needs to make based on this data]
+
+Be specific about numbers. Use clear business language, not jargon.`,
+      buildUserMessage:f=>`Write a KPI narrative.\nPeriod: ${f.period}\nAudience: ${f.audience}\n\nKPI DATA:\n${f.kpis}`
+    },
+    {
+      id:'stakeholder-update', name:'Stakeholder Update Generator',
+      description:'Writes clear stakeholder communication updates from project data.',
+      fields:[
+        {id:'project',label:'Project / Initiative',type:'text',placeholder:'e.g. ERP Implementation',required:true},
+        {id:'audience',label:'Stakeholder Audience',type:'text',placeholder:'e.g. Board of Directors, Client Executive Team',required:true},
+        {id:'update',label:'Key Updates to Communicate',type:'textarea',placeholder:'Progress, milestones, risks, decisions needed…',rows:5,required:true},
+        {id:'tone',label:'Tone',type:'select',options:['Formal (Board/Executive)','Professional (Management)','Collaborative (Team/Partner)'],required:true}
+      ],
+      systemPrompt:`You are a senior communications manager. Write a clear, appropriately toned stakeholder update.
+
+Format:
+**Subject:** [Clear, informative subject line]
+
+Dear [Stakeholder Title/Name],
+
+[Opening: purpose of this communication — 1 sentence]
+
+**Project Status:** 🟢/🟡/🔴 [On Track / At Risk / Off Track]
+
+**Key Updates:**
+• [Update 1 — specific and concrete]
+• [Update 2]
+• [Update 3]
+
+**Milestones This Period:**
+✓ [Completed milestone]
+
+**Upcoming Milestones:**
+→ [Next milestone — date]
+
+**Actions Required from You:**
+• [Specific ask — by when]
+
+**Next Update:** [Date of next communication]
+
+[Professional sign-off placeholder]
+
+Tailor language to the specified tone. Be transparent, not spin.`,
+      buildUserMessage:f=>`Write a stakeholder update.\nProject: ${f.project}\nAudience: ${f.audience}\nTone: ${f.tone}\nUpdates: ${f.update}`
+    },
+    {
+      id:'vendor-scorecard', name:'Vendor Evaluation Scorecard',
+      description:'Generates a weighted vendor comparison scorecard from evaluation criteria.',
+      fields:[
+        {id:'category',label:'Procurement Category',type:'text',placeholder:'e.g. Cloud Infrastructure, HR Software, Security Services',required:true},
+        {id:'criteria',label:'Evaluation Criteria & Weights',type:'textarea',placeholder:'List criteria and importance:\ne.g. Price (25%), Technical capability (30%), Support (20%), Security (15%), Scalability (10%)',rows:5,required:true},
+        {id:'vendors',label:'Vendor Details',type:'textarea',placeholder:'For each vendor: name, key info, scores or qualitative notes on each criterion (separate with ---)',rows:8,required:true}
+      ],
+      systemPrompt:`You are a procurement specialist. Create a comprehensive vendor evaluation scorecard and recommendation.
+
+Format:
+# Vendor Evaluation — [Category]
+
+## Evaluation Criteria & Weights
+| Criterion | Weight | Rationale |
+
+## Scoring Matrix
+| Criterion | Weight | [Vendor 1] | [Vendor 2] | [Vendor 3] |
+[Score 1-5 for each vendor on each criterion, calculate weighted scores]
+
+**Weighted Total Scores:**
+[Vendor 1]: [X/5]
+[Vendor 2]: [X/5]
+[Vendor 3]: [X/5]
+
+## Detailed Vendor Profiles
+For each vendor:
+**[Vendor Name]**
+Strengths: •
+Weaknesses: •
+Best suited for: [scenario]
+Risk factors: •
+
+## Recommendation
+**Recommended Vendor:** [Name]
+**Rationale:** [3-4 sentence justification]
+**Contract Negotiation Points:** [Key terms to negotiate]
+**Risk Mitigation:** [Steps to take before signing]`,
+      buildUserMessage:f=>`Create a vendor evaluation scorecard.\nCategory: ${f.category}\nCriteria: ${f.criteria}\n\nVENDOR DETAILS:\n${f.vendors}`
+    },
+    {
+      id:'incident-report', name:'Incident Report Generator',
+      description:'Produces structured incident reports from event descriptions.',
+      fields:[
+        {id:'incident',label:'Incident Description',type:'textarea',placeholder:'What happened, when, where, who was involved, what was affected…',rows:6,required:true},
+        {id:'type',label:'Incident Type',type:'select',options:['IT / System Outage','Security Breach','Operational Failure','Safety Incident','Data Loss','Customer Impact','Other'],required:true},
+        {id:'severity',label:'Severity',type:'select',options:['Critical (P1)','High (P2)','Medium (P3)','Low (P4)'],required:true}
+      ],
+      systemPrompt:`You are an incident management specialist. Create a comprehensive incident report.
+
+Format:
+# Incident Report — [Incident Type] | [Severity]
+**Incident ID:** INC-[placeholder] | **Date:** [placeholder] | **Status:** [Open/Resolved]
+
+## Executive Summary
+[3-4 sentence overview: what happened, impact, current status]
+
+## Incident Timeline
+| Time | Event |
+[Chronological table of events]
+
+## Impact Assessment
+- Systems affected: [List]
+- Users/customers affected: [Number/scope]
+- Business impact: [Revenue, SLA, reputation]
+- Duration: [Start to resolution time]
+
+## Root Cause Analysis
+**Root Cause:** [Primary cause]
+**Contributing Factors:**
+• [Factor 1]
+• [Factor 2]
+
+## Resolution Actions Taken
+• [Step-by-step what was done to resolve]
+
+## Corrective & Preventive Actions
+| Action | Owner | Due Date | Priority |
+[CAPA table — at least 5 items]
+
+## Lessons Learned
+• [Key takeaways]
+
+## Stakeholders Notified
+[List of who was informed and when]`,
+      buildUserMessage:f=>`Write an incident report.\nType: ${f.type}\nSeverity: ${f.severity}\nIncident: ${f.incident}`
+    },
+    {
+      id:'change-comms', name:'Change Management Communication Generator',
+      description:'Drafts internal communications for organisational changes.',
+      fields:[
+        {id:'change',label:'Change Being Communicated',type:'textarea',placeholder:'What is changing — restructure, new process, system migration, policy change…',rows:4,required:true},
+        {id:'audience',label:'Audience',type:'text',placeholder:'e.g. All employees, Sales team, Regional managers',required:true},
+        {id:'sender',label:'Sender / From',type:'text',placeholder:'e.g. CEO, HR Director, Department Head',required:true},
+        {id:'timeline',label:'Timeline',type:'text',placeholder:'e.g. Effective 1 June, phased over 3 months',required:true}
+      ],
+      systemPrompt:`You are an organisational change management specialist. Draft a clear, empathetic change communication.
+
+Write:
+**Subject:** [Clear, non-alarming subject line]
+
+Dear [Audience],
+
+**Opening:** [Acknowledge the significance of this communication]
+
+**What is changing:**
+[Clear, plain-language description of the change]
+
+**Why we are making this change:**
+[Honest rationale — business need, opportunity, external driver]
+
+**What this means for you:**
+• [Specific impact on this audience — be concrete]
+
+**What stays the same:**
+• [Important continuities — reduce anxiety]
+
+**Timeline:**
+[Key dates and phases]
+
+**What to expect next:**
+[Upcoming communications, transition support]
+
+**Questions & Support:**
+[Who to contact, how, and when]
+
+[Warm, confident sign-off]
+
+Tone: transparent, empathetic, confident. Address the "what's in it for me" and "should I be worried" questions directly.`,
+      buildUserMessage:f=>`Write a change management communication.\nChange: ${f.change}\nAudience: ${f.audience}\nFrom: ${f.sender}\nTimeline: ${f.timeline}`
+    },
+    {
+      id:'budget-variance', name:'Budget Variance Explainer',
+      description:'Translates budget vs. actual data into a plain-language variance explanation.',
+      fields:[
+        {id:'data',label:'Budget vs Actual Data',type:'textarea',placeholder:'Paste your budget data:\ne.g. Revenue: Budget ₹50Cr, Actual ₹43Cr, Variance -₹7Cr (-14%)\nMarketing: Budget ₹5Cr, Actual ₹6.2Cr, Variance +₹1.2Cr (+24%)',rows:8,required:true},
+        {id:'period',label:'Period',type:'text',placeholder:'e.g. Q1 FY2026',required:true},
+        {id:'context',label:'Business Context',type:'textarea',placeholder:'Any relevant context: market conditions, one-off events, strategic decisions…',rows:3,required:false}
+      ],
+      systemPrompt:`You are a financial analyst and business communicator. Transform budget variance data into a clear, insightful narrative.
+
+Format:
+# Budget Variance Report — [Period]
+
+## Headline Summary
+[2-3 sentences: overall variance, biggest driver, and whether this is a concern]
+
+## Variance Summary Table
+| Line Item | Budget | Actual | Variance (₹/$) | Variance (%) | Status |
+[Complete table with all provided items — 🟢 favourable, 🔴 unfavourable, 🟡 neutral]
+
+## Key Variances Explained
+
+**Significant Unfavourable Variances:**
+• [Line item] — [Plain-language explanation of why, business impact, is this temporary or structural?]
+
+**Significant Favourable Variances:**
+• [Line item] — [Explanation]
+
+## Outlook
+[Forward-looking assessment: is the trend reversing, what's the full-year projection risk?]
+
+## Actions & Decisions Required
+• [Specific actions leadership should take]
+
+Be honest. Don't hide bad news in business jargon.`,
+      buildUserMessage:f=>`Explain these budget variances.\nPeriod: ${f.period}${f.context?'\nContext: '+f.context:''}\n\nBUDGET DATA:\n${f.data}`
+    },
+    {
+      id:'process-doc', name:'Process Documentation Tool',
+      description:'Documents business processes in structured, step-by-step format.',
+      fields:[
+        {id:'process',label:'Process Name',type:'text',placeholder:'e.g. Monthly Invoice Reconciliation',required:true},
+        {id:'description',label:'Process Description',type:'textarea',placeholder:'Describe how the process works — who does what, in what order, using which tools…',rows:6,required:true},
+        {id:'complexity',label:'Process Complexity',type:'select',options:['Simple (under 10 steps)','Moderate (10-20 steps)','Complex (20+ steps, multiple branches)'],required:true}
+      ],
+      systemPrompt:`You are a business analyst and process documentation specialist. Create clear, comprehensive process documentation.
+
+Format:
+# Process Documentation: [Process Name]
+**Version:** 1.0 | **Last Updated:** [Placeholder] | **Owner:** [Placeholder]
+
+## Process Overview
+**Purpose:** [Why this process exists]
+**Trigger:** [What initiates this process]
+**End State:** [What successful completion looks like]
+**Frequency:** [How often this runs]
+
+## Roles & Responsibilities (RACI)
+| Role | Responsible | Accountable | Consulted | Informed |
+
+## Process Flow
+[Numbered steps with clear ownership and decision points]
+1. **[Step Name]** — [Who: Role] — [Tool/System if applicable]
+   - Action: [Precise instruction]
+   - Output: [What is produced]
+
+   ↓ Decision: [If applicable]
+   - Yes → Step [N]
+   - No → Step [N]
+
+## Tools & Systems Used
+| Tool | Purpose | Access Required |
+
+## Common Errors & How to Avoid Them
+• [Error] → [Prevention]
+
+## Process Metrics
+[How to measure this process is working well]`,
+      buildUserMessage:f=>`Document this business process.\nProcess: ${f.process}\nComplexity: ${f.complexity}\nDescription: ${f.description}`
+    },
+    // AGENTS
+    {
+      id:'bi-agent', name:'Business Intelligence Agent', isAgent:true,
+      description:'Analyses uploaded data and generates insight reports with trend summaries and recommendations.',
+      fields:[
+        {id:'data',label:'Business Data',type:'textarea',placeholder:'Paste your data — tables, metrics, reports, or describe what you have…',rows:8,required:true},
+        {id:'question',label:'Business Question to Answer',type:'textarea',placeholder:'What do you want to understand from this data? What decision does this need to support?',rows:3,required:true}
+      ],
+      systemPrompt:`You are a senior business intelligence analyst. Analyse the provided data and produce an actionable insight report.
+
+Format:
+## Business Intelligence Report
+
+### Data Overview
+[What data was provided, its quality, time period covered]
+
+### Key Findings
+1. **[Finding 1]** — [Specific data-backed insight with the exact numbers]
+2. **[Finding 2]**
+3. [Continue for all significant findings]
+
+### Trend Analysis
+[Patterns, inflections, anomalies in the data — be specific about what the data shows]
+
+### Root Cause Hypotheses
+[For any underperformance or anomalies — most likely explanations]
+
+### Strategic Implications
+• [What this means for the business]
+
+### Recommendations
+| # | Recommendation | Expected Impact | Effort | Priority |
+[Table of actionable next steps]
+
+### Suggested Next Analysis
+• [What additional data or analysis would sharpen these insights]
+
+Be precise with numbers. Separate facts from inferences clearly.`,
+      buildUserMessage:f=>`Analyse this data.\n\nBUSINESS QUESTION:\n${f.question}\n\nDATA:\n${f.data}`
+    },
+    {
+      id:'process-audit', name:'Process Audit Agent', isAgent:true,
+      description:'Reviews SOPs and workflow descriptions to identify inefficiencies and bottlenecks.',
+      fields:[
+        {id:'process',label:'Process Documentation',type:'textarea',placeholder:'Paste the SOP, workflow description, or process steps to be audited…',rows:10,required:true},
+        {id:'goal',label:'Audit Goal',type:'text',placeholder:'e.g. Reduce processing time, eliminate errors, improve handoffs',required:false}
+      ],
+      systemPrompt:`You are a process improvement specialist with Lean and Six Sigma expertise. Audit the process and identify improvement opportunities.
+
+Format:
+## Process Audit Report
+
+### Process Health Score: [X/10]
+[Brief rationale for the score]
+
+### Inefficiencies Identified
+For each:
+**[Issue N]: [Issue Name]**
+- Type: [Waste type: waiting, rework, duplication, bottleneck, etc.]
+- Where it occurs: [Step/stage in the process]
+- Current impact: [Time lost, error rate, cost]
+- Root cause: [Why this happens]
+- Fix: [Specific recommendation]
+- Effort to fix: [Low/Medium/High]
+- Expected benefit: [Time saved, error reduction]
+
+### Quick Wins (implement this week)
+• [List of easy, high-impact changes]
+
+### Structural Improvements (1-3 months)
+• [Larger changes that need planning]
+
+### Automation Opportunities
+• [Steps that could be automated and with what tools]
+
+### Redesigned Process Outline
+[A streamlined version of the process incorporating key improvements]`,
+      buildUserMessage:f=>`Audit this process.${f.goal?'\nAudit Goal: '+f.goal:''}\n\nPROCESS:\n${f.process}`
+    },
+    {
+      id:'exec-briefing', name:'Executive Briefing Agent', isAgent:true,
+      description:'Compiles a concise, structured executive briefing on any business topic.',
+      fields:[
+        {id:'topic',label:'Briefing Topic',type:'text',placeholder:'e.g. AI adoption trends in Indian banking sector',required:true},
+        {id:'context',label:'Context & Background',type:'textarea',placeholder:'What decision or meeting is this briefing for? What does the executive already know?',rows:3,required:false},
+        {id:'depth',label:'Briefing Depth',type:'select',options:['1-pager (5 min read)','Full briefing (10-15 min read)'],required:true}
+      ],
+      systemPrompt:`You are a senior strategy analyst. Produce a comprehensive executive briefing.
+
+Format:
+# Executive Briefing: [Topic]
+*Prepared for: [Recipient placeholder] | [Date placeholder]*
+
+## Bottom Line Up Front
+[3-4 sentences: the most important things to know about this topic right now]
+
+## Situation Overview
+[Current state — what is happening and why it matters]
+
+## Key Facts & Data Points
+• [Specific, verifiable facts with context]
+
+## Key Players & Stakeholders
+[Who the main actors are and their positions]
+
+## Trends & Implications
+[Directional trends — what this means for the business/decision maker]
+
+## Options / Scenarios
+[If decision-relevant: 2-3 scenarios or options with pros/cons]
+
+## Risks & Opportunities
+**Risks:** [bullet]
+**Opportunities:** [bullet]
+
+## Recommended Actions
+1. [Immediate]
+2. [Short-term]
+3. [Monitor]
+
+## Key Questions to Ask
+• [Questions worth asking in the meeting this brief is for]
+
+## Sources to Reference
+[Types of sources to validate — since this is AI-generated, mark key claims for verification]`,
+      buildUserMessage:f=>`Produce an executive briefing.\nTopic: ${f.topic}\nDepth: ${f.depth}${f.context?'\nContext: '+f.context:''}`
+    },
+    {
+      id:'predictive-maintenance', name:'Predictive Maintenance Agent', isAgent:true,
+      description:'Analyses equipment data to identify anomaly patterns and flag maintenance needs.',
+      fields:[
+        {id:'equipment',label:'Equipment / Asset Description',type:'textarea',placeholder:'What equipment is being monitored, its normal operating parameters, age, recent history…',rows:4,required:true},
+        {id:'data',label:'Current Sensor / Performance Data',type:'textarea',placeholder:'Paste current readings: temperature, vibration, pressure, error logs, runtime hours, etc.',rows:6,required:true}
+      ],
+      systemPrompt:`You are a predictive maintenance engineer with expertise in industrial IoT and reliability engineering. Analyse the equipment data and provide maintenance guidance.
+
+Format:
+## Predictive Maintenance Analysis Report
+
+### Equipment Health Score: [X/10]
+**Immediate Action Required:** Yes / No / Monitor
+
+### Anomaly Detection
+| Parameter | Normal Range | Current Value | Deviation | Risk Level |
+[Table of all provided parameters]
+
+### Identified Anomalies & Concerns
+For each anomaly:
+**[Parameter]: [Issue Description]**
+- Current reading: [Value]
+- Deviation from normal: [%]
+- Possible cause: [Technical explanation]
+- Failure mode risk: [What could fail and how]
+- Urgency: [Immediate / Within 7 days / Scheduled]
+
+### Maintenance Recommendations
+| # | Action | Priority | Estimated Downtime | Parts/Resources Needed |
+
+### Risk Assessment
+**Estimated time to failure if unaddressed:** [Range]
+**Consequences of failure:** [Operational, safety, cost impact]
+
+### Monitoring Plan
+[What to watch in the next 24-72 hours]
+
+Note: This analysis is based on provided data only. Verify with your maintenance engineer before taking action.`,
+      buildUserMessage:f=>`Analyse equipment data for maintenance needs.\n\nEQUIPMENT:\n${f.equipment}\n\nCURRENT DATA:\n${f.data}`
+    }
+  ]
+};
+
+/* PS Tools API base — configurable. Default :8000; override via ?api=http://host:port (persists in localStorage). */
+const _psApiQp=new URLSearchParams(location.search).get('api');
+if(_psApiQp)localStorage.setItem('ps_api_base',_psApiQp);
+const API_BASE=(_psApiQp||localStorage.getItem('ps_api_base')||'http://localhost:8000').replace(/\/$/,'');
+const API_GENERATE=API_BASE+'/generate';
+function selectTool(id) {
+  const tool = DOMAIN.tools.find(t => t.id === id);
+  if (!tool) return;
+  document.querySelectorAll('.tool-btn').forEach(b => b.classList.toggle('active', b.dataset.id === id));
+  renderTool(tool);
+}
+
+function renderTool(tool) {
+  const fieldsHtml = tool.fields.map(f => {
+    let inp = '';
+    if (f.type === 'text')
+      inp = `<input type="text" id="f_${f.id}" placeholder="${f.placeholder||''}"${f.required?' required':''}>`;
+    else if (f.type === 'textarea')
+      inp = `<textarea id="f_${f.id}" placeholder="${f.placeholder||''}" rows="${f.rows||4}"${f.required?' required':''}></textarea><label class="btn-upload"><input type="file" accept=".txt,.pdf,.docx" onchange="handleFileUpload('f_${f.id}',this)">📎 Upload file</label>`;
+    else if (f.type === 'select')
+      inp = `<select id="f_${f.id}">${f.options.map(o=>`<option>${o}</option>`).join('')}</select>`;
+    return `<div class="field-group"><label class="field-label" for="f_${f.id}">${f.label}${f.required?'':' <span class="field-opt">(optional)</span>'}</label>${inp}</div>`;
+  }).join('');
+
+  document.getElementById('content').innerHTML = `
+    <div class="tool-header">
+      <h2 class="tool-name">${tool.name}</h2>
+      <p class="tool-desc">${tool.description}</p>
+    </div>
+    <div class="form-card">
+      ${fieldsHtml}
+      <button class="btn-gen" onclick="runGenerate('${tool.id}')">Generate</button>
+    </div>
+    <div class="output-section" id="out-section">
+      <div class="output-header"><span class="output-lbl">Output</span><div style="display:flex;gap:6px"><button class="btn-dl" onclick="downloadOut()">↓ Save</button><button class="btn-copy" onclick="copyOut()">Copy</button></div></div>
+      <div class="output-box" id="out-box"><div class="out-empty"><div class="out-empty-icon">✨</div><p>Fill in the form and click Generate.</p></div></div>
+    </div>`;
+}
+
+async function runGenerate(toolId) {
+  const tool = DOMAIN.tools.find(t => t.id === toolId);
+  if (!tool) return;
+  const data = {};
+  let ok = true;
+  for (const f of tool.fields) {
+    const el = document.getElementById(`f_${f.id}`);
+    if (!el) continue;
+    const v = el.value.trim();
+    if (f.required && !v) { el.style.borderColor = '#ef4444'; ok = false; } else { el.style.borderColor = ''; data[f.id] = v; }
+  }
+  if (!ok) return;
+
+  const outBox = document.getElementById('out-box');
+  const btn = document.querySelector('.btn-gen');
+  outBox.classList.add('streaming');
+  outBox.innerHTML = '<span style="color:var(--muted)">Generating<span class="dots"><span>.</span><span>.</span><span>.</span></span></span>';
+  btn.disabled = true; btn.textContent = 'Generating…';
+
+  try {
+    const res = await fetch(API_GENERATE, {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({system_prompt: tool.systemPrompt, user_message: tool.buildUserMessage(data)})
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const reader = res.body.getReader(); const dec = new TextDecoder(); let out = '';
+    outBox.textContent = '';
+    while (true) {
+      const {done, value} = await reader.read(); if (done) break;
+      for (const line of dec.decode(value).split('\n')) {
+        if (!line.startsWith('data: ')) continue;
+        const d = line.slice(6); if (d === '[DONE]') break;
+        try { const p = JSON.parse(d); if (p.error) { outBox.classList.remove('streaming'); outBox.style.color='#ef4444'; outBox.textContent='Error: '+p.error; } else if (p.text) { out += p.text; outBox.textContent = out; outBox.scrollTop = outBox.scrollHeight; } } catch {}
+      }
+    }
+    if (out && typeof marked !== 'undefined') { outBox.classList.remove('streaming'); outBox.innerHTML = marked.parse(out); } else { outBox.classList.remove('streaming'); }
+  } catch(e) {
+    outBox.classList.remove('streaming');
+    outBox.style.color = '#ef4444';
+    outBox.textContent = `Connection error: ${e.message}\n\nStart the backend:\n  cd backend\n  uvicorn main:app --reload`;
+  }
+  btn.disabled = false; btn.textContent = 'Generate';
+}
+
+function copyOut() {
+  const text = document.getElementById('out-box')?.innerText;
+  if (!text || text.includes('Fill in the form')) return;
+  navigator.clipboard.writeText(text).then(() => { const b = document.querySelector('.btn-copy'); b.textContent='Copied!'; setTimeout(()=>b.textContent='Copy',2000); });
+}
+
+function init() {
+  const tools = DOMAIN.tools.filter(t => !t.isAgent);
+  const agents = DOMAIN.tools.filter(t => t.isAgent);
+  document.getElementById('tool-list').innerHTML =
+    `<div class="sidebar-search"><input class="search-inp" type="text" placeholder="Search tools…" oninput="filterTools(this.value)"></div>` +
+    `<div class="sec-lbl">Tools · ${tools.length}</div>` +
+    tools.map(t=>`<button class="tool-btn" data-id="${t.id}" onclick="selectTool('${t.id}')">${t.name}</button>`).join('') +
+    (agents.length ? `<div class="sec-lbl ag">Agents · ${agents.length}</div>` + agents.map(t=>`<button class="tool-btn agent" data-id="${t.id}" onclick="selectTool('${t.id}')">${t.name}</button>`).join('') : '');
+  if (tools.length) selectTool(tools[0].id);
+}
+function filterTools(q) {
+  const lq = q.toLowerCase();
+  document.querySelectorAll('.tool-btn').forEach(b => {
+    b.classList.toggle('hidden', !b.textContent.toLowerCase().includes(lq));
+  });
+}
+function downloadOut() {
+  const text = document.getElementById('out-box')?.innerText;
+  if (!text || text.includes('Fill in the form')) return;
+  const a = document.createElement('a');
+  a.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(text);
+  a.download = 'output.txt'; a.click();
+}
+async function handleFileUpload(fieldId, input) {
+  const file = input.files[0]; if (!file) return;
+  const ext = file.name.split('.').pop().toLowerCase();
+  const ta = document.getElementById(fieldId);
+  const prev = ta.placeholder; ta.placeholder = 'Reading file…'; ta.disabled = true;
+  try {
+    if (ext === 'txt' || ext === 'md' || ext === 'csv') {
+      ta.value = await file.text();
+    } else if (ext === 'pdf') {
+      if (typeof pdfjsLib === 'undefined') { alert('PDF library not loaded yet, please retry.'); ta.disabled = false; ta.placeholder = prev; return; }
+      const buf = await file.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({data: new Uint8Array(buf)}).promise;
+      let text = '';
+      for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const content = await page.getTextContent();
+        text += content.items.map(item => item.str).join(' ') + '\n\n';
+      }
+      ta.value = text.trim();
+    } else if (ext === 'docx') {
+      if (typeof mammoth === 'undefined') { alert('DOCX library not loaded yet, please retry.'); ta.disabled = false; ta.placeholder = prev; return; }
+      const buf = await file.arrayBuffer();
+      const result = await mammoth.extractRawText({arrayBuffer: buf});
+      ta.value = result.value;
+    }
+  } catch(e) { alert('Could not read file: ' + e.message); }
+  ta.disabled = false; ta.placeholder = prev; input.value = '';
+}
+window.addEventListener('DOMContentLoaded',init);
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>if(typeof pdfjsLib!=='undefined')pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+</body>
+</html>
