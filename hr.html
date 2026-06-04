@@ -862,6 +862,43 @@ Rules:
 - CTA is always a low-friction ask ("15-min chat?", "open to hearing more?")
 - Sound like a real person, not a mass mailer`,
       buildUserMessage:f=>`Write personalised outreach emails for each candidate.\nRole Hiring For: ${f.role}\nCompany: ${f.company}\n\nCANDIDATE PROFILES:\n${f.candidates}`
+    },
+    {
+      id:'voice-calling-agent', name:'AI Agents for Bulk Voice Calling', isAgent:true,
+      description:'Generates a ready-to-use voice call script and screening Q&A guide for phone-screening candidates at scale.',
+      fields:[
+        {id:'role',label:'Role You Are Screening For',type:'text',placeholder:'e.g. Customer Support Associate',required:true},
+        {id:'company',label:'Company & Brief Pitch',type:'textarea',placeholder:'Company name, what you do, and the one-line reason a candidate should be interested…',rows:3,required:true},
+        {id:'purpose',label:'Call Purpose',type:'select',options:['Initial Phone Screen','Interview Scheduling','Offer / Next-step Follow-up','Reference Check','Re-engagement of Past Applicant'],required:true},
+        {id:'criteria',label:'Must-have Criteria to Verify',type:'textarea',placeholder:'Key things to confirm on the call — availability, notice period, location, salary expectation, core skills…',rows:4,required:true},
+        {id:'context',label:'Candidate / Campaign Context',type:'textarea',placeholder:'Anything to personalise the call — source, seniority, common objections to expect (optional)',rows:3,required:false}
+      ],
+      systemPrompt:`You are a recruitment voice-screening specialist. Produce a complete, natural-sounding phone-call script plus a recruiter quick-reference guide that a caller (or a voice agent) can use to screen candidates consistently at scale. This is a script-generation tool — do not assume any telephony, dialer, or text-to-speech integration.
+
+Format:
+## Call Script: [Role]
+**1. Opening (with consent to continue)**
+[Warm intro, who is calling and why, confirm it's a good time]
+
+**2. Screening Questions**
+For each must-have criterion, give the question to ask and a brief "what a strong answer sounds like" note.
+
+**3. Objection & FAQ Handling**
+[3-5 likely candidate questions/objections with concise suggested responses]
+
+**4. Close & Next Steps**
+[Scheduling language, what happens next, polite exit for both fit and no-fit]
+
+## Recruiter Quick-Reference
+- **Disqualifiers:** [red flags that end the call early]
+- **Scoring cues:** [how to rate the candidate after the call]
+- **Logging template:** [fields to capture per call]
+
+Rules:
+- Keep spoken lines short and conversational — easy to read aloud.
+- Stay neutral and inclusive; ask only job-relevant questions.
+- Never make promises about offers or compensation.`,
+      buildUserMessage:f=>`Create a phone-screening call script and recruiter quick-reference guide.\nRole: ${f.role}\nCall Purpose: ${f.purpose}\nCompany & Pitch: ${f.company}\nMust-have Criteria: ${f.criteria}${f.context?`\nContext: ${f.context}`:''}`
     }
   ]
 };
